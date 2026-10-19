@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>IITM College of Engineering — Summer Training 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;min-height:0}
+body{overflow-x:hidden;font-family:"Poppins",sans-serif;background:#faf7f7;color:#2f1d1f;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+svg{display:block}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+:root{
+  --iitm-maroon:#8b1e2d;
+  --iitm-dark:#651421;
+  --iitm-gold:#d4a94f;
+  --iitm-light:#faf7f7;
+  --summer-cream:#fffaf1;
+  --soft-yellow:#fff3c7;
+  --pastel-orange:#ffe2c2;
+  --pastel-blue:#eaf5ff;
+  --pastel-cyan:#e8fbfb;
+  --pastel-green:#eaf8ef;
+  --pastel-pink:#fff0f4;
+  --soft-lavender:#f4efff;
+  --gold-grad:linear-gradient(135deg,#b88732,#d4a94f,#f0cf7a);
+  --shadow-sm:0 6px 20px rgba(74,20,30,.07);
+  --shadow-md:0 14px 38px rgba(74,20,30,.10);
+  --shadow-lg:0 22px 55px rgba(74,20,30,.14);
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:18px;
+  --radius-sm:14px;
+  --transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .7s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease;
+}
+
+.page-shell{width:100%;container-type:inline-size;overflow-x:hidden}
+.page-inner{width:100%;max-width:1440px;margin:0 auto;padding-inline:clamp(10px,2vw,28px);padding-top:clamp(10px,1.2vw,18px);padding-bottom:0}
+
+.section{position:relative;padding:clamp(36px,8vw,100px) 0;overflow:hidden}
+.section-tight{padding-top:clamp(28px,6vw,72px);padding-bottom:clamp(28px,6vw,72px)}
+.section-panel{border-radius:clamp(22px,2vw,30px);overflow:hidden}
+.section-header{text-align:center;max-width:920px;margin:0 auto clamp(20px,3vw,34px);padding-inline:clamp(8px,1vw,16px)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid rgba(212,169,79,.35);background:rgba(255,255,255,.72);color:var(--iitm-maroon);font-size:clamp(.72rem,.9vw,.82rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;box-shadow:var(--shadow-sm)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-grad);box-shadow:0 0 0 4px rgba(212,169,79,.12)}
+.section-header h2{margin:12px 0 10px;color:var(--iitm-maroon);font-size:clamp(1.7rem,3.8vw,3.2rem);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+.section-header p{margin:0 auto;color:#5c4447;font-size:clamp(.94rem,1.06vw,1.08rem);line-height:1.85;max-width:780px}
+.gold-line{width:clamp(52px,6vw,84px);height:3px;border-radius:999px;margin:14px auto 0;background:var(--gold-grad)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+
+.page-shell::before,.page-shell::after{content:"";position:fixed;inset:auto;pointer-events:none;z-index:-1;filter:blur(10px)}
+.page-shell::before{top:-10vh;left:-8vw;width:26vw;max-width:380px;height:26vw;max-height:380px;background:radial-gradient(circle,rgba(212,169,79,.08),transparent 68%)}
+.page-shell::after{right:-6vw;top:26vh;width:24vw;max-width:320px;height:24vw;max-height:320px;background:radial-gradient(circle,rgba(139,30,45,.06),transparent 70%)}
+
+.hero{position:relative;border-radius:clamp(22px,2.5vw,32px);overflow:hidden;background:
+  radial-gradient(circle at 12% 12%,rgba(212,169,79,.18),transparent 18%),
+  radial-gradient(circle at 84% 22%,rgba(232,251,251,.9),transparent 20%),
+  radial-gradient(circle at 88% 80%,rgba(234,245,255,.95),transparent 18%),
+  radial-gradient(circle at 18% 86%,rgba(255,226,194,.9),transparent 22%),
+  linear-gradient(135deg,#fffdf7 0%,#fff8ee 46%,#fffdfb 100%);
+  border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-lg)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:clamp(18px,3vw,40px);align-items:center;padding:clamp(18px,2.2vw,30px)}
+.hero-copy{position:relative;z-index:2;padding:clamp(14px,2vw,24px) clamp(8px,1vw,12px) clamp(10px,1vw,18px)}
+.hero-label{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.74);border:1px solid rgba(212,169,79,.4);color:var(--iitm-maroon);font-size:clamp(.7rem,.82vw,.8rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;box-shadow:var(--shadow-sm);opacity:0;transform:translateY(10px)}
+.hero.is-ready .hero-label{animation:riseIn .75s cubic-bezier(.22,1,.36,1) .08s forwards}
+.hero-title{margin:18px 0 16px;max-width:12ch;font-weight:800;letter-spacing:-.05em;line-height:.86;text-transform:uppercase}
+.hero-title .line-1,.hero-title .line-2{display:block;font-size:clamp(3rem,6vw,6rem);color:var(--iitm-maroon);opacity:0;transform:translateY(18px)}
+.hero-title .line-2{font-size:clamp(3.2rem,7vw,7rem);line-height:.84;color:transparent;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;text-shadow:0 1px 0 rgba(255,255,255,.2)}
+.hero.is-ready .hero-title .line-1{animation:riseIn .84s cubic-bezier(.22,1,.36,1) .14s forwards}
+.hero.is-ready .hero-title .line-2{animation:riseIn .84s cubic-bezier(.22,1,.36,1) .3s forwards}
+.hero-subtitle{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,250,241,.95);border:1px solid rgba(212,169,79,.28);color:var(--iitm-maroon);font-size:clamp(.74rem,.9vw,.85rem);font-weight:600;box-shadow:var(--shadow-sm)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--iitm-gold)}
+.hero-lead{margin:0 0 18px;max-width:690px;color:#4f3d40;font-size:clamp(.95rem,1.08vw,1.1rem);line-height:1.88;font-weight:400}
+.hero-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:710px}
+.meta-card{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.72);border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-sm);backdrop-filter:blur(8px)}
+.meta-card strong{display:block;color:var(--iitm-maroon);font-size:clamp(.9rem,1.02vw,1rem);margin-bottom:4px}
+.meta-card span{display:block;color:#665255;font-size:clamp(.78rem,.9vw,.86rem);line-height:1.6}
+.hero-accent{display:flex;gap:14px;align-items:center;margin-top:18px;color:var(--iitm-maroon);font-size:clamp(.8rem,.9vw,.9rem);font-weight:600}
+.hero-accent .line{width:clamp(42px,5vw,72px);height:2px;border-radius:999px;background:var(--gold-grad)}
+
+.hero-visual{position:relative;min-height:clamp(470px,54vw,700px);isolation:isolate}
+.hero-visual::before{content:"";position:absolute;inset:8% 6% 10% 8%;border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.8);backdrop-filter:blur(6px)}
+.hero-sun{position:absolute;top:8%;right:18%;width:clamp(120px,16vw,210px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(240,207,122,.44) 0%,rgba(212,169,79,.18) 35%,rgba(212,169,79,.04) 68%,transparent 74%);opacity:.75;filter:blur(1px)}
+.hero-sun::before{content:"";position:absolute;inset:18% 18%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.8),rgba(255,255,255,.1) 62%,transparent 68%)}
+.hero-rays{position:absolute;top:7%;right:15%;width:clamp(160px,19vw,250px);height:clamp(160px,19vw,250px);opacity:.18;transform-origin:center;animation:slowFloat 12s ease-in-out infinite}
+.hero-rays line{stroke:var(--iitm-gold);stroke-width:1.1;stroke-linecap:round}
+.hero-gridlines{position:absolute;inset:auto 0 0 0;height:58%;opacity:.09;pointer-events:none;background:
+  linear-gradient(90deg,transparent 0,transparent 48%,rgba(139,30,45,.14) 49%,transparent 50%),
+  linear-gradient(0deg,transparent 0,transparent 48%,rgba(139,30,45,.14) 49%,transparent 50%);
+  background-size:42px 42px;mask-image:linear-gradient(180deg,transparent,black 16%,black 84%,transparent)}
+.collage{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(12,1fr);gap:clamp(10px,1vw,14px);padding:clamp(18px,2vw,30px);z-index:2}
+.photo-card{position:relative;overflow:hidden;border-radius:22px;background:linear-gradient(145deg,#ffffff,#fffaf1);border:1px solid rgba(255,255,255,.82);box-shadow:0 12px 35px rgba(101,20,33,.10);padding:4px;display:flex;align-items:center;justify-content:center;transform:translateY(14px) scale(.98);opacity:0;transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+.hero.is-ready .photo-card{opacity:1;transform:translateY(0) scale(1)}
+.photo-card::after{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--gold-grad);opacity:.72;z-index:2;pointer-events:none}
+.photo-card img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit}
+.photo-card.a{grid-column:4/13;grid-row:2/8;transform:translate(14px,16px) rotate(3deg) scale(.98)}
+.photo-card.b{grid-column:1/6;grid-row:1/4;transform:translate(-10px,12px) rotate(-4deg) scale(.98)}
+.photo-card.c{grid-column:1/6;grid-row:6/9;transform:translate(-6px,-4px) rotate(2deg) scale(.98)}
+.photo-card.d{grid-column:8/13;grid-row:9/12;transform:translate(8px,-8px) rotate(-3deg) scale(.98)}
+.hero.is-ready .photo-card.a{transition-delay:.22s}.hero.is-ready .photo-card.b{transition-delay:.32s}.hero.is-ready .photo-card.c{transition-delay:.42s}.hero.is-ready .photo-card.d{transition-delay:.52s}
+
+.decor-chip{position:absolute;border-radius:999px;background:rgba(255,255,255,.6);border:1px solid rgba(212,169,79,.2);box-shadow:var(--shadow-sm);color:var(--iitm-maroon);font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;font-size:.8rem;z-index:4}
+.decor-chip .tiny{width:8px;height:8px;border-radius:50%;background:var(--iitm-gold)}
+.chip-1{top:14%;left:8%;transform:rotate(-8deg)}
+.chip-2{bottom:12%;right:10%;transform:rotate(7deg)}
+
+.partner-band{background:
+  radial-gradient(circle at 12% 0%,rgba(234,245,255,.8),transparent 22%),
+  radial-gradient(circle at 84% 96%,rgba(234,248,239,.9),transparent 22%),
+  linear-gradient(180deg,#ffffff 0%,#fffefc 100%);border-radius:clamp(22px,2vw,30px);border:1px solid rgba(139,30,45,.06);box-shadow:var(--shadow-sm)}
+.partner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,24px);padding:clamp(18px,2vw,28px)}
+.partner-card{position:relative;overflow:hidden;border-radius:24px;padding:clamp(18px,2vw,24px);background:rgba(255,255,255,.76);border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-sm);backdrop-filter:blur(10px);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.partner-card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--gold-grad);opacity:.74}
+.partner-card:nth-child(1){background:linear-gradient(180deg,rgba(234,245,255,.9),rgba(255,255,255,.75))}
+.partner-card:nth-child(2){background:linear-gradient(180deg,rgba(232,251,251,.95),rgba(255,255,255,.78))}
+.partner-card:nth-child(3){background:linear-gradient(180deg,rgba(255,250,241,.94),rgba(255,255,255,.8))}
+.partner-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(212,169,79,.24)}
+.partner-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.logo-box{flex:0 0 auto;width:80px;height:80px;border-radius:20px;background:rgba(255,255,255,.84);display:flex;align-items:center;justify-content:center;padding:10px;border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-sm)}
+.logo-box img{max-width:100%;max-height:100%;object-fit:contain}
+.partner-card h3{margin:0;color:var(--iitm-maroon);font-size:clamp(1rem,1.15vw,1.15rem);line-height:1.2;font-weight:700}
+.partner-role{display:inline-flex;margin-top:6px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(212,169,79,.24);color:#6a5054;font-size:.72rem;font-weight:600;letter-spacing:.04em}
+.partner-card p{margin:12px 0 0;color:#5d4a4d;font-size:clamp(.86rem,.95vw,.96rem);line-height:1.7}
+.partner-flow{margin-top:14px;display:grid;gap:8px}
+.flow-item{display:flex;align-items:center;gap:10px;color:var(--iitm-maroon);font-weight:600;font-size:.85rem}
+.flow-item .arrow{color:var(--iitm-gold);font-size:1rem;line-height:1}
+
+.story-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(18px,3vw,34px);align-items:center}
+.story-copy{padding:clamp(4px,1vw,10px) 0}
+.story-copy .kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(139,30,45,.08);color:var(--iitm-maroon);font-size:.76rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;box-shadow:var(--shadow-sm)}
+.story-copy h3{margin:14px 0 12px;color:var(--iitm-maroon);font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.08;font-weight:800;letter-spacing:-.03em}
+.story-copy p{margin:0 0 14px;color:#564549;font-size:clamp(.92rem,1.02vw,1.05rem);line-height:1.9;max-width:720px}
+.story-aside{position:relative;display:grid;grid-template-columns:1fr .9fr;gap:14px;align-items:end}
+.story-photo{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 35px rgba(101,20,33,.10)}
+.story-photo.small{transform:translateY(18px) rotate(4deg)}
+.story-photo img{width:100%;height:auto;object-fit:contain;object-position:center;border-radius:inherit}
+.story-photo::after{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--gold-grad);opacity:.72}
+.highlight-card{position:absolute;left:0;bottom:18px;z-index:2;max-width:230px;padding:14px 15px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(10px);border:1px solid rgba(212,169,79,.24);box-shadow:var(--shadow-md)}
+.highlight-card strong{display:block;color:var(--iitm-maroon);font-size:.92rem;margin-bottom:6px}
+.highlight-card span{display:block;color:#5f4b4e;font-size:.8rem;line-height:1.65}
+
+.journey-wrap{background:linear-gradient(180deg,#f7fbff 0%,#f8f4ff 100%);border:1px solid rgba(139,30,45,.06);border-radius:clamp(22px,2vw,30px);box-shadow:var(--shadow-sm);padding:clamp(18px,2.5vw,28px)}
+.journey-path{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.5vw,18px);align-items:stretch}
+.journey-path::before{content:"";position:absolute;left:7%;right:7%;top:34px;height:3px;background:linear-gradient(90deg,transparent,var(--iitm-gold),var(--iitm-gold),transparent);border-radius:999px;opacity:.8}
+.journey-card{position:relative;padding:18px 16px 16px;border-radius:20px;background:rgba(255,255,255,.82);border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-sm);z-index:1;min-height:190px;display:flex;flex-direction:column;gap:10px}
+.journey-step{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,rgba(139,30,45,.08),rgba(212,169,79,.12));display:flex;align-items:center;justify-content:center;color:var(--iitm-maroon);border:1px solid rgba(212,169,79,.22);box-shadow:0 6px 18px rgba(74,20,30,.06)}
+.journey-step svg{width:24px;height:24px}
+.journey-card h4{margin:0;color:var(--iitm-maroon);font-size:1rem;line-height:1.2;font-weight:700}
+.journey-card p{margin:0;color:#5f4b4e;font-size:.85rem;line-height:1.7}
+.journey-card::after{content:"";position:absolute;top:-10px;left:18px;width:14px;height:14px;border-radius:50%;background:var(--gold-grad);box-shadow:0 0 0 6px rgba(212,169,79,.10)}
+.journey-card:nth-child(2){transform:translateY(10px)}
+.journey-card:nth-child(4){transform:translateY(10px)}
+
+.focus-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.6vw,22px)}
+.focus-card{position:relative;padding:clamp(18px,2vw,24px);border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,250,241,.96));border:1px solid rgba(139,30,45,.08);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.focus-card::before{content:"";position:absolute;top:0;left:18px;right:18px;height:4px;background:var(--gold-grad);border-radius:999px;opacity:.78}
+.focus-card::after{content:"";position:absolute;right:-26px;bottom:-26px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,79,.10),transparent 68%);pointer-events:none}
+.focus-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(212,169,79,.24)}
+.focus-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(234,245,255,.9),rgba(232,251,251,.8));color:var(--iitm-maroon);border:1px solid rgba(212,169,79,.18);box-shadow:var(--shadow-sm);margin-bottom:14px}
+.focus-icon svg{width:24px;height:24px}
+.focus-card h4{margin:0 0 8px;color:var(--iitm-maroon);font-size:1rem;line-height:1.2;font-weight:700}
+.focus-card p{margin:0;color:#5d4a4d;font-size:.88rem;line-height:1.72}
+
+.gallery-band{background:
+  radial-gradient(circle at 10% 10%,rgba(255,240,244,.92),transparent 26%),
+  radial-gradient(circle at 92% 76%,rgba(234,248,239,.95),transparent 22%),
+  linear-gradient(180deg,#fff7f1 0%,#fffafb 100%);border-radius:clamp(22px,2vw,30px);border:1px solid rgba(139,30,45,.06);box-shadow:var(--shadow-sm)}
+.gallery-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(12px,1.4vw,18px);padding:clamp(18px,2vw,28px)}
+.gallery-item{position:relative;overflow:hidden;border-radius:24px;background:#fff;border:1px solid rgba(255,255,255,.84);box-shadow:0 12px 35px rgba(101,20,33,.10);transition:transform .35s ease,box-shadow .35s ease}
+.gallery-item::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--gold-grad);opacity:.72;z-index:2}
+.gallery-item img{width:100%;height:auto;object-fit:contain;object-position:center}
+.gallery-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.gallery-item.one,.gallery-item.six{grid-column:1/-1}
+.gallery-item.two,.gallery-item.three,.gallery-item.four,.gallery-item.five{grid-column:span 6}
+
+.closing{position:relative;border-radius:clamp(22px,2vw,30px);overflow:hidden;background:linear-gradient(135deg,var(--iitm-dark),var(--iitm-maroon));color:#fff;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.06)}
+.closing::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 16% 20%,rgba(212,169,79,.12),transparent 18%),
+  radial-gradient(circle at 86% 78%,rgba(240,207,122,.1),transparent 20%),
+  linear-gradient(90deg,transparent 0,rgba(255,255,255,.05) 50%,transparent 100%);pointer-events:none}
+.closing-inner{position:relative;padding:clamp(22px,3vw,36px) clamp(18px,2.6vw,32px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.72fr);gap:clamp(18px,2vw,28px);align-items:center}
+.closing-copy h2{margin:0 0 10px;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.05;font-weight:800;letter-spacing:-.03em;color:#fff}
+.closing-copy h2 span{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.closing-copy p{margin:0;max-width:740px;color:rgba(255,255,255,.84);font-size:clamp(.94rem,1.04vw,1.05rem);line-height:1.85}
+.closing-note{justify-self:end;max-width:340px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.closing-note strong{display:block;color:#fff;font-size:1rem;margin-bottom:6px}
+.closing-note span{display:block;color:rgba(255,255,255,.82);font-size:.88rem;line-height:1.7}
+
+.section-divider{position:absolute;left:0;right:0;top:0;height:16px;pointer-events:none;opacity:.85}
+.section-divider svg{width:100%;height:100%}
+.section-divider path{stroke:rgba(212,169,79,.38);stroke-width:2;fill:none;stroke-linecap:round;stroke-dasharray:1 7}
+
+.blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(2px)}
+.blob.one{width:240px;height:240px;background:radial-gradient(circle,rgba(255,243,199,.45),transparent 68%);top:-42px;left:-40px}
+.blob.two{width:220px;height:220px;background:radial-gradient(circle,rgba(232,251,251,.5),transparent 70%);bottom:-60px;right:-40px}
+.blob.three{width:180px;height:180px;background:radial-gradient(circle,rgba(255,240,244,.44),transparent 68%);top:25%;right:5%}
+
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slowFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes softDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+@media (hover:hover) and (pointer:fine){
+  .hero-copy:hover .hero-accent .line,.section-header:hover .gold-line{filter:saturate(1.06)}
+  .journey-card:hover,.focus-card:hover,.partner-card:hover,.gallery-item:hover{cursor:default}
+  .photo-card:hover,.story-photo:hover{box-shadow:0 16px 44px rgba(101,20,33,.15)}
+}
+
+@container (max-width: 1100px){
+  .hero-grid{grid-template-columns:1fr;gap:22px}
+  .hero-copy{padding-bottom:0}
+  .hero-visual{min-height:clamp(430px,70vw,640px)}
+  .photo-card.a{grid-column:5/13;grid-row:2/11}
+  .photo-card.b{grid-column:1/5;grid-row:1/5}
+  .photo-card.c{grid-column:1/4;grid-row:6/10}
+  .photo-card.d{grid-column:8/12;grid-row:9/13}
+  .story-grid{grid-template-columns:1fr;gap:22px}
+  .story-aside{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+  .closing-inner{grid-template-columns:1fr}
+  .closing-note{justify-self:start;max-width:100%}
+}
+
+@container (max-width: 880px){
+  .partner-grid{grid-template-columns:1fr;gap:14px}
+  .hero-meta{grid-template-columns:1fr}
+  .journey-path{grid-template-columns:1fr;gap:14px}
+  .journey-path::before{left:23px;right:auto;top:24px;bottom:24px;width:3px;height:auto;background:linear-gradient(180deg,transparent,var(--iitm-gold),transparent)}
+  .journey-card{min-height:0;padding-left:18px}
+  .journey-card::after{top:20px;left:-7px}
+  .focus-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gallery-item{grid-column:auto!important}
+  .gallery-item.one,.gallery-item.six{grid-column:1/-1!important}
+}
+
+@container (max-width: 600px){
+  .page-inner{padding-inline:12px}
+  .hero{border-radius:20px}
+  .hero-grid{padding:14px}
+  .hero-title .line-1{font-size:clamp(2.3rem,10vw,3.4rem)}
+  .hero-title .line-2{font-size:clamp(3rem,14vw,4.5rem)}
+  .hero-lead{font-size:.92rem;line-height:1.82}
+  .hero-visual{min-height:clamp(240px,66vw,470px)}
+  .hero-visual::before{inset:10% 4% 12% 4%}
+  .collage{grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(4,1fr);padding:14px;gap:8px}
+  .photo-card{border-radius:18px}
+  .photo-card.a{grid-column:1/5;grid-row:1/3;transform:translate(4px,10px) rotate(2deg)}
+  .photo-card.b{grid-column:5/9;grid-row:1/3;transform:translate(-12px,12px) rotate(-3deg)}
+  .photo-card.c{grid-column:1/5;grid-row:3/5;transform:translate(4px,-8px) rotate(-2deg)}
+  .photo-card.d{grid-column:5/9;grid-row:3/5;transform:translate(-12px,-8px) rotate(3deg)}
+  .decor-chip{font-size:.72rem;padding:8px 11px}
+  .chip-1{top:8%;left:4%}
+  .chip-2{bottom:8%;right:4%}
+  .section{padding:clamp(32px,8vw,58px) 0}
+  .section-header{text-align:left}
+  .section-header h2{font-size:clamp(1.6rem,8vw,2.4rem)}
+  .gold-line{margin-left:0}
+  .partner-top{align-items:flex-start}
+  .logo-box{width:70px;height:70px;border-radius:18px}
+  .story-aside{grid-template-columns:1fr}
+  .highlight-card{position:relative;left:auto;bottom:auto;max-width:none;margin-top:-16px}
+  .story-photo.small{transform:none}
+  .focus-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item{grid-column:auto!important}
+  .closing-inner{padding:18px 16px}
+  .closing-copy h2{font-size:clamp(1.7rem,8vw,2.5rem)}
+}
+
+@container (max-width: 390px){
+  .page-inner{padding-inline:10px}
+  .hero-title .line-1{font-size:clamp(2.2rem,10vw,2.6rem)}
+  .hero-title .line-2{font-size:clamp(3rem,14vw,3.8rem)}
+  .hero-meta .meta-card{padding:12px 13px}
+  .partner-card,.focus-card,.journey-card{border-radius:18px}
+  .journey-step{width:42px;height:42px}
+  .journey-step svg,.focus-icon svg{width:22px;height:22px}
+  .section-header p,.story-copy p,.closing-copy p{font-size:.9rem}
+}
+
+@media (max-width: 600px){
+  .page-inner{padding-inline:10px}
+  .hero-title{max-width:none}
+  .hero-title .line-1{font-size:clamp(2.2rem,10vw,3.4rem)}
+  .hero-title .line-2{font-size:clamp(3rem,14vw,4.6rem)}
+  .hero-meta{gap:10px}
+  .hero-accent{flex-wrap:wrap;gap:10px}
+  .partner-grid,.focus-grid,.gallery-grid{gap:12px}
+  .partner-card{padding:16px}
+  .story-photo{border-radius:20px}
+  .closing-note{padding:14px 15px}
+}
+
+@media (max-width: 390px){
+  .hero-copy{padding-inline:0}
+  .hero-label,.hero-badge{font-size:.72rem}
+  .hero-lead{font-size:.9rem}
+  .section-header p{font-size:.9rem}
+  .story-copy p,.focus-card p,.journey-card p,.partner-card p,.closing-copy p{font-size:.9rem}
+  .logo-box{width:64px;height:64px;border-radius:16px}
+}
+
+@media (max-width: 320px){
+  .page-inner{padding-inline:10px}
+  .hero{border-radius:18px}
+  .hero-grid{padding:10px}
+  .hero-title .line-1{font-size:2.15rem}
+  .hero-title .line-2{font-size:3rem}
+  .section-header h2{font-size:1.6rem}
+  .partner-card,.focus-card,.journey-card,.story-photo,.gallery-item{border-radius:16px}
+  .partner-top{gap:12px}
+  .logo-box{width:60px;height:60px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  .hero-label,.hero-title .line-1,.hero-title .line-2,.photo-card{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+  <div class="page-inner">
+    <main>
+      <header class="section" aria-labelledby="summer-training-hero-title">
+        <div class="hero is-ready">
+          <div class="blob one" aria-hidden="true"></div>
+          <div class="blob two" aria-hidden="true"></div>
+          <div class="hero-gridlines" aria-hidden="true"></div>
+          <div class="hero-grid">
+            <div class="hero-copy reveal">
+              <div class="hero-label">IBM SkillsBuild Training Program</div>
+              <div class="hero-subtitle">
+                <span class="hero-badge"><span class="dot"></span> IITM College of Engineering</span>
+                <span class="hero-badge"><span class="dot"></span> BCA &amp; B.Tech Students</span>
+              </div>
+              <h1 class="hero-title" id="summer-training-hero-title">
+                <span class="line-1">Summer</span>
+                <span class="line-1">Training</span>
+                <span class="line-2">2026</span>
+              </h1>
+              <p class="hero-lead">IITM College of Engineering's Summer Training 2026 brings industry-oriented technical learning to BCA and B.Tech students through the IBM SkillsBuild ecosystem, with CETPA Infotech as the training partner and nasscom foundation as the mentoring body.</p>
+              <div class="hero-meta">
+                <div class="meta-card">
+                  <strong>Industry-oriented learning</strong>
+                  <span>Structured sessions and practical exercises designed to connect classroom understanding with contemporary technology practice.</span>
+                </div>
+                <div class="meta-card">
+                  <strong>Professional readiness</strong>
+                  <span>A focused environment for strengthening technical confidence, problem-solving ability and industry awareness.</span>
+                </div>
+              </div>
+              <div class="hero-accent"><span class="line"></span><span>Fresh summer energy, IITM identity and technical learning in one editorial presentation.</span></div>
+            </div>
+            <div class="hero-visual reveal">
+              <div class="hero-sun" aria-hidden="true"></div>
+              <svg class="hero-rays" viewBox="0 0 240 240" aria-hidden="true">
+                <defs>
+                  <linearGradient id="sunrayGrad" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#d4a94f"/>
+                    <stop offset="100%" stop-color="#f0cf7a"/>
+                  </linearGradient>
+                </defs>
+                <g stroke="url(#sunrayGrad)">
+                  <circle cx="120" cy="120" r="48" fill="none"></circle>
+                  <line x1="120" y1="14" x2="120" y2="42"></line>
+                  <line x1="120" y1="198" x2="120" y2="226"></line>
+                  <line x1="14" y1="120" x2="42" y2="120"></line>
+                  <line x1="198" y1="120" x2="226" y2="120"></line>
+                  <line x1="44" y1="44" x2="64" y2="64"></line>
+                  <line x1="176" y1="176" x2="196" y2="196"></line>
+                  <line x1="176" y1="64" x2="196" y2="44"></line>
+                  <line x1="44" y1="196" x2="64" y2="176"></line>
+                </g>
+              </svg>
+              <div class="decor-chip chip-1"><span class="tiny"></span> Summer learning</div>
+              <div class="decor-chip chip-2"><span class="tiny"></span> Technology and career development</div>
+              <div class="collage">
+                <figure class="photo-card a">
+                  <img src="https://static.wixstatic.com/media/ab471d_9ef71e4e30e5416d97cfad5a65dbb2a2~mv2.jpeg" alt="Students participating in Summer Training 2026 learning activities" width="1280" height="960" loading="eager" fetchpriority="high">
+                </figure>
+                <figure class="photo-card b">
+                  <img src="https://static.wixstatic.com/media/ab471d_de7013c9f8074b7683adba8f350a1b90~mv2.jpeg" alt="Students engaged in an industry-oriented summer training session" width="1280" height="960" loading="eager">
+                </figure>
+                <figure class="photo-card c">
+                  <img src="https://static.wixstatic.com/media/ab471d_0046e923dcd142ceb38806d82218a519~mv2.jpeg" alt="Summer training participants during a collaborative learning moment" width="1280" height="960" loading="eager">
+                </figure>
+                <figure class="photo-card d">
+                  <img src="https://static.wixstatic.com/media/ab471d_6c79757401d64f25a88e9b0225fa564b~mv2.jpeg" alt="Students in a summer training environment connected to technology learning" width="1280" height="960" loading="eager">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section section-tight" aria-labelledby="ecosystem-title">
+        <div class="page-panel partner-band reveal">
+          <div class="section-header">
+            <span class="eyebrow">Collaborative learning initiative</span>
+            <h2 id="ecosystem-title">Industry Learning Ecosystem</h2>
+            <div class="gold-line"></div>
+            <p>Summer Training 2026 is framed as a shared learning ecosystem, bringing together IBM SkillsBuild, CETPA Infotech and nasscom foundation around a university-led training experience for BCA and B.Tech students.</p>
+          </div>
+          <div class="partner-grid">
+            <article class="partner-card reveal">
+              <div class="partner-top">
+                <div class="logo-box">
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvRxXXtCxbqB3Fp6ssw8Swi7Jq1gIo7rpaZgIlT7xO_TgzANl8NBCE6_iq&s=10" alt="IBM SkillsBuild logo" loading="lazy" decoding="async">
+                </div>
+                <div>
+                  <h3>IBM SkillsBuild</h3>
+                  <div class="partner-role">Learning Platform / Industry Skills Ecosystem</div>
+                </div>
+              </div>
+              <p>Provides the skills-oriented learning ecosystem associated with the training initiative and supports the program's industry-facing learning context.</p>
+              <div class="partner-flow">
+                <div class="flow-item"><span>IBM SkillsBuild</span><span class="arrow">↓</span><span>Industry learning</span></div>
+              </div>
+            </article>
+            <article class="partner-card reveal">
+              <div class="partner-top">
+                <div class="logo-box">
+                  <img src="https://www.cetpainfotech.com/wp-content/uploads/2022/12/cetpa-1.png" alt="CETPA Infotech logo" loading="lazy" decoding="async">
+                </div>
+                <div>
+                  <h3>CETPA Infotech</h3>
+                  <div class="partner-role">Training Partner</div>
+                </div>
+              </div>
+              <p>Supports the training delivery side of the program through structured guidance and practical learning experiences aligned with the summer training format.</p>
+              <div class="partner-flow">
+                <div class="flow-item"><span>CETPA Infotech</span><span class="arrow">↓</span><span>Training partner</span></div>
+              </div>
+            </article>
+            <article class="partner-card reveal">
+              <div class="partner-top">
+                <div class="logo-box">
+                  <img src="https://www.nasscomfoundation.org/uploads/nasscom-logo.svg" alt="nasscom foundation logo" loading="lazy" decoding="async">
+                </div>
+                <div>
+                  <h3>nasscom foundation</h3>
+                  <div class="partner-role">Mentoring Body</div>
+                </div>
+              </div>
+              <p>Acts as the mentoring body for the initiative, reinforcing the broader learning environment around employability, skills and technology awareness.</p>
+              <div class="partner-flow">
+                <div class="flow-item"><span>nasscom foundation</span><span class="arrow">↓</span><span>Mentoring body</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="intro-title">
+        <div class="story-grid">
+          <div class="story-copy reveal">
+            <span class="kicker">Summer Training 2026</span>
+            <h3 id="intro-title">A structured bridge between academic learning and practical technical experience</h3>
+            <p>The Training and Placement Cell of IITM College of Engineering organized Summer Training 2026 for BCA and B.Tech students with a focus on industry-oriented technical learning and practical skill development.</p>
+            <p>Associated with the IBM SkillsBuild ecosystem, the program brings together CETPA Infotech as the training partner and nasscom foundation as the mentoring body. It is intended to help students strengthen practical technical knowledge, problem-solving ability and industry readiness through guided sessions, practical exercises and exposure to industry-relevant skills.</p>
+            <p>By connecting classroom knowledge with contemporary technology practices, the training supports students in building technical confidence, professional awareness and a stronger foundation for future learning.</p>
+          </div>
+          <div class="story-aside reveal">
+            <figure class="story-photo large">
+              <img src="https://static.wixstatic.com/media/ab471d_0cac32d3ac304e41bfe2b7f18dd4b78a~mv2.jpeg" alt="Students taking part in a Summer Training 2026 learning session" width="1280" height="960" loading="lazy" decoding="async">
+            </figure>
+            <figure class="story-photo small">
+              <img src="https://static.wixstatic.com/media/ab471d_395c47bdd10940d787ec6627e2794d48~mv2.jpeg" alt="Small-group interaction during the training program" width="1280" height="960" loading="lazy" decoding="async">
+            </figure>
+            <div class="highlight-card">
+              <strong>Learning beyond the classroom</strong>
+              <span>Technical confidence grows when concepts are explored through practical exercises, structured guidance and collaborative discussion.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight" aria-labelledby="story-title">
+        <div class="section-panel journey-wrap reveal">
+          <div class="section-header" style="margin-bottom:18px">
+            <span class="eyebrow">Learning pathway</span>
+            <h2 id="story-title">Learning Beyond the Classroom</h2>
+            <div class="gold-line"></div>
+            <p>Summer Training 2026 gives students an environment where classroom understanding can be linked with practical application, guided learning and a clearer sense of professional expectations.</p>
+          </div>
+          <div class="journey-path" aria-label="Learning journey from foundation to industry readiness">
+            <article class="journey-card reveal">
+              <div class="journey-step" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5h16M7 4.5v6M10.5 12.5l4.5 4.5M15 17l3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 18.5h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <h4>Foundation</h4>
+              <p>Builds a clearer base for understanding technical ideas, terminology and the learning rhythm of the program.</p>
+            </article>
+            <article class="journey-card reveal">
+              <div class="journey-step" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5h15v9h-15z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 18.5h8M12 15.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 9.5h8M8 12.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <h4>Guided Learning</h4>
+              <p>Encourages students to move through the program with support, discussion and structured explanation.</p>
+            </article>
+            <article class="journey-card reveal">
+              <div class="journey-step" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4.5 6.5h15v10h-15z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 19.5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 10.5h6M9 13.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <h4>Practical Application</h4>
+              <p>Translates concepts into hands-on exercises so students can work with ideas rather than only read about them.</p>
+            </article>
+            <article class="journey-card reveal">
+              <div class="journey-step" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.7 5.4 6 .9-4.3 4.2 1 6-5.4-2.9-5.4 2.9 1-6-4.3-4.2 6-.9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <h4>Problem Solving</h4>
+              <p>Supports the habit of approaching technical challenges with reasoning, confidence and iteration.</p>
+            </article>
+            <article class="journey-card reveal">
+              <div class="journey-step" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4.8 16.5h14.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 16.5V8.5l4.8-3 4.2 2.7v8.3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11.8 11h.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M18.6 11.5l2.2 2.2-2.2 2.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <h4>Industry Readiness</h4>
+              <p>Helps students connect their learning with the expectations of modern technology environments and professional practice.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight" aria-labelledby="gallery-title">
+        <div class="section-header reveal">
+          <span class="eyebrow">Photo story</span>
+          <h2 id="gallery-title">Inside the Training Experience</h2>
+          <div class="gold-line"></div>
+          <p>A responsive editorial gallery brings together all the supplied training photographs in layered compositions that feel closer to a university feature spread than a simple image wall.</p>
+        </div>
+        <div class="gallery-band reveal">
+          <div class="gallery-grid">
+            <figure class="gallery-item one"><img src="https://static.wixstatic.com/media/ab471d_9ef71e4e30e5416d97cfad5a65dbb2a2~mv2.jpeg" alt="Students participating in Summer Training 2026" width="1280" height="960" loading="lazy" decoding="async"></figure>
+            <figure class="gallery-item two"><img src="https://static.wixstatic.com/media/ab471d_de7013c9f8074b7683adba8f350a1b90~mv2.jpeg" alt="Students in a summer training activity" width="1280" height="960" loading="lazy" decoding="async"></figure>
+            <figure class="gallery-item three"><img src="https://static.wixstatic.com/media/ab471d_0046e923dcd142ceb38806d82218a519~mv2.jpeg" alt="Summer training group learning experience" width="1280" height="960" loading="lazy" decoding="async"></figure>
+            <figure class="gallery-item four"><img src="https://static.wixstatic.com/media/ab471d_0cac32d3ac304e41bfe2b7f18dd4b78a~mv2.jpeg" alt="Training participants engaged in technical learning" width="1280" height="960" loading="lazy" decoding="async"></figure>
+            <figure class="gallery-item five"><img src="https://static.wixstatic.com/media/ab471d_395c47bdd10940d787ec6627e2794d48~mv2.jpeg" alt="Small-group interaction during the training program" width="1280" height="960" loading="lazy" decoding="async"></figure>
+            <figure class="gallery-item six"><img src="https://static.wixstatic.com/media/ab471d_6c79757401d64f25a88e9b0225fa564b~mv2.jpeg" alt="Summer training environment linked to industry learning" width="1280" height="960" loading="lazy" decoding="async"></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="builds-title">
+        <div class="section-header reveal">
+          <span class="eyebrow">Training emphasis</span>
+          <h2 id="builds-title">What the Training Experience Builds</h2>
+          <div class="gold-line"></div>
+          <p>The program builds broad, qualitative learning outcomes rather than numeric claims, keeping the focus on growth, exposure and the connection between academics and industry practice.</p>
+        </div>
+        <div class="focus-grid">
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 7.5h12M7.5 5.5h9M5.5 10.5h13v8h-13z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 14h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Technical Learning</h4>
+            <p>Supports clearer understanding of technology concepts and the vocabulary students need to engage with current tools and practices.</p>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 7.5h15v8h-15z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 19h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 15.5v3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 10.5v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Practical Application</h4>
+            <p>Encourages students to move from theory into action through structured exercises and guided hands-on learning.</p>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.8l7 4v8.4l-7 4-7-4V7.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 12h7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 8.6v6.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Problem Solving</h4>
+            <p>Builds a habit of analyzing challenges, testing ideas and approaching technical work with curiosity and structure.</p>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.8 15.8c1.7-1.9 3.5-2.9 5.7-2.9 2.2 0 4 1 5.7 2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 10.2l2.8-3.6 2.8 3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.6v6.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18.3 15.8h1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Industry Exposure</h4>
+            <p>Introduces students to the context of an industry-aligned learning ecosystem and the expectations that shape it.</p>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 6.5h14v9H5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 18.5h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 10.5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Professional Readiness</h4>
+            <p>Strengthens awareness, confidence and the ability to approach future learning and work with a more mature perspective.</p>
+          </article>
+          <article class="focus-card reveal">
+            <div class="focus-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9.5h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 6.5l-3 3 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 17.5l3-3-3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>Collaborative Learning</h4>
+            <p>Creates room for peer interaction, discussion and shared progress so students can learn from one another as well as from guided sessions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="closing-title">
+        <div class="closing reveal">
+          <div class="closing-inner">
+            <div class="closing-copy">
+              <h2 id="closing-title"><span>Skills That Extend Beyond the Classroom</span></h2>
+              <p>Summer Training 2026 reflects IITM College of Engineering's commitment to connecting academic learning with practical skill development and industry-oriented experiences for its students.</p>
+            </div>
+            <aside class="closing-note" aria-label="Program summary note">
+              <strong>IITM College of Engineering</strong>
+              <span>Summer Training 2026 is presented as a premium maroon-and-gold learning story, refreshed with summer warmth and technology-oriented visual language.</span>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+(function(){
+  var root = document.documentElement;
+  var shell = document.querySelector('.page-shell');
+  var revealItems = document.querySelectorAll('.reveal');
+  var scheduled = false;
+  var resizeObserver = null;
+
+  function reportHeight(){
+    if (!window.parent || window.parent === window) return;
+    var height = Math.ceil(document.documentElement.scrollHeight);
+    window.parent.postMessage({type:'iitm-iframe-height',height:height},'*');
+  }
+
+  function sendHeight(){
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(function(){
+      scheduled = false;
+      reportHeight();
+    });
+  }
+
+  function revealOnScroll(){
+    if (!('IntersectionObserver' in window)){
+      revealItems.forEach(function(el){ el.classList.add('show'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries, observer){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
+    revealItems.forEach(function(el){ io.observe(el); });
+  }
+
+  function monitorImages(){
+    document.querySelectorAll('img').forEach(function(img){
+      if (!img.complete){
+        img.addEventListener('load',sendHeight,{once:true});
+        img.addEventListener('error',sendHeight,{once:true});
+      }
+    });
+  }
+
+  function setupHeightObserver(){
+    sendHeight();
+    if ('ResizeObserver' in window){
+      try{
+        resizeObserver = new ResizeObserver(sendHeight);
+        resizeObserver.observe(document.body);
+        if (shell) resizeObserver.observe(shell);
+      }catch(e){}
+    }
+  }
+
+  function init(){
+    revealOnScroll();
+    monitorImages();
+    setupHeightObserver();
+    sendHeight();
+    window.addEventListener('load',sendHeight,{once:true});
+    window.addEventListener('resize',sendHeight,{passive:true});
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded',init,{once:true});
+  }else{
+    init();
+  }
+
+  root.classList.add('js-ready');
+})();
+</script>
+</body>
+</html>

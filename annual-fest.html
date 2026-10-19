@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Annual Fest — IITM</title>
+<script>document.documentElement.className='js'</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;margin:0;padding:0;min-height:0}
+body{width:100%;margin:0;padding:0;overflow-x:hidden;min-height:0;background:linear-gradient(180deg,#fffafc,#faf7f7 25%,#fffaf7 55%,#faf8ff 80%,#fffaf9);font-family:Poppins,sans-serif;color:#2d1b1b;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+svg{display:block}
+
+:root{--maroon:#8b1e2d;--dark:#651421;--gold:#d4a94f;--bg:#faf7f7;--pink:#F45B9A;--purple:#8B5CF6;--coral:#FF6B6B;--blue:#3B82F6;--cyan:#06B6D4;--green:#10B981;--orange:#F97316;--yellow:#F7B32B;--shadow-sm:0 6px 20px rgba(74,20,30,.08);--shadow-md:0 14px 38px rgba(74,20,30,.1);--shadow-lg:0 22px 55px rgba(74,20,30,.14)}
+
+.page-shell{container-type:inline-size;width:100%}
+.page-inner{max-width:1400px;margin:auto;padding:clamp(10px,1.5vw,20px) clamp(10px,1.5vw,20px) 0;position:relative;z-index:1}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+.reveal-photo{opacity:0;transition:opacity .6s ease}
+.reveal-photo.show{opacity:1}
+
+/* EVENT TITLE */
+.event-title{text-align:center;margin-bottom:clamp(20px,3vw,40px)}
+.event-title .flourish{display:flex;align-items:center;justify-content:center;gap:clamp(6px,.8vw,10px);margin-bottom:5px}
+.event-title .flourish-line{width:clamp(18px,2.2vw,34px);height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:50px}
+.event-title .flourish-star{width:clamp(9px,1vw,14px);height:clamp(9px,1vw,14px);color:var(--gold);opacity:.45}
+.event-title h2{color:var(--maroon);font-weight:700;font-size:clamp(1.25rem,2.4vw,2.2rem);margin:0}
+.event-title .line{width:clamp(32px,3.6vw,52px);height:3px;background:var(--gold);margin:6px auto 0;border-radius:50px}
+
+/* HERO */
+.hero{position:relative;border-radius:clamp(16px,1.8vw,26px);overflow:hidden;min-height:clamp(280px,40vw,560px);display:flex;align-items:center;justify-content:center;margin-bottom:clamp(28px,4vw,54px);
+background:
+radial-gradient(circle at 14% 16%,rgba(244,91,154,.28),transparent 30%),
+radial-gradient(circle at 86% 18%,rgba(249,115,22,.24),transparent 32%),
+radial-gradient(circle at 72% 82%,rgba(139,92,246,.22),transparent 34%),
+radial-gradient(circle at 26% 88%,rgba(247,179,43,.13),transparent 26%),
+linear-gradient(135deg,#57101c,#8b1e2d 50%,#651421)}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(212,169,79,.06),transparent 70%);pointer-events:none;z-index:1}
+.hero-content{position:relative;z-index:15;text-align:center;padding:clamp(24px,3.5vw,65px);max-width:820px}
+.hero-heading{font-weight:800;color:#fff;margin:0;letter-spacing:-.02em;opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.hero-heading.show{opacity:1;transform:translateY(0)}
+.hero-heading .annual{display:block;font-size:clamp(2.4rem,6.8vw,6.6rem);line-height:.9}
+.hero-heading .fest{display:block;font-size:clamp(2.2rem,6.2vw,6.2rem);line-height:.92;background:linear-gradient(135deg,#FBBF24,#F97316 40%,#F45B9A);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;margin-top:clamp(-2px,-.2vw,-4px)}
+.hero-line{width:clamp(44px,5vw,78px);height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:50px;margin:10px auto 16px;transform:scaleX(0);transition:transform 1s cubic-bezier(.22,1,.36,1) .35s}
+.hero-line.show{transform:scaleX(1)}
+.hero-sub{font-size:clamp(.82rem,1vw,1rem);font-weight:400;color:rgba(255,255,255,.82);margin:0 0 3px;line-height:1.6;opacity:0;transform:translateY(14px);transition:opacity .7s ease .55s,transform .7s ease .55s}
+.hero-sub.show{opacity:1;transform:translateY(0)}
+.hero-sub2{font-size:clamp(.7rem,.82vw,.82rem);font-weight:300;color:rgba(255,255,255,.55);margin:0;line-height:1.6;opacity:0;transform:translateY(14px);transition:opacity .7s ease .7s,transform .7s ease .7s}
+.hero-sub2.show{opacity:1;transform:translateY(0)}
+
+/* HERO DECOR */
+.hero-decor{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.hero-decor svg{position:absolute}
+.hero-star{width:clamp(12px,1.4vw,22px);height:clamp(12px,1.4vw,22px)}
+.hero-star--1{top:7%;left:14%;color:var(--gold);opacity:.3;animation:pulseStar 5s ease-in-out infinite}
+.hero-star--2{top:20%;right:12%;color:rgba(255,255,255,.2);animation:pulseStar 7s ease-in-out infinite 1s}
+.hero-star--3{bottom:18%;left:10%;color:var(--pink);opacity:.2;animation:pulseStar 6s ease-in-out infinite .5s}
+.hero-star--4{top:48%;right:6%;color:var(--yellow);opacity:.22;animation:pulseStar 8s ease-in-out infinite 2s}
+.hero-burst{top:8%;right:22%;width:clamp(22px,2.6vw,42px);height:clamp(22px,2.6vw,42px);color:var(--orange);opacity:.16;animation:spinSlow 25s linear infinite}
+.hero-stream{position:absolute;color:rgba(255,255,255,.05);pointer-events:none;width:clamp(200px,28vw,450px);height:clamp(100px,14vw,220px)}
+.hero-stream--1{bottom:10%;left:5%}.hero-stream--2{top:5%;right:3%;width:clamp(160px,22vw,360px);height:clamp(80px,11vw,180px);color:rgba(244,91,154,.08)}
+.hero-stream path{fill:none;stroke:currentColor;stroke-width:clamp(20,3,40)}
+.hero-dots{top:62%;left:5%;width:clamp(30px,3.6vw,56px);height:clamp(30px,3.6vw,56px);color:rgba(255,255,255,.05)}
+.hero-dots circle{fill:currentColor}
+.hero-blob{position:absolute;border-radius:50%;pointer-events:none}
+.hero-blob--1{width:clamp(70px,9vw,140px);height:clamp(70px,9vw,140px);bottom:22%;left:22%;background:radial-gradient(circle,rgba(244,91,154,.07),transparent 70%)}
+.hero-blob--2{width:clamp(90px,11vw,180px);height:clamp(90px,11vw,180px);top:16%;right:14%;background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%)}
+@keyframes pulseStar{0%,100%{opacity:.25;transform:scale(1)}50%{opacity:.55;transform:scale(1.12)}}
+@keyframes spinSlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/* HERO PHOTOS */
+.hero-photos{position:absolute;inset:0;pointer-events:none;z-index:5}
+.hero-photo{position:absolute;overflow:hidden;border-radius:clamp(10px,1.1vw,16px);opacity:0;transform:translateY(18px) scale(.96);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1),box-shadow .4s ease;box-shadow:0 8px 28px rgba(0,0,0,.22);border:2px solid rgba(255,255,255,.75)}
+.hero-photo.show{opacity:1;transform:translateY(0) scale(1)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.hero-photo::after{content:'';position:absolute;top:0;left:0;right:0;height:clamp(3px,.4vw,5px);background:linear-gradient(90deg,var(--gold),var(--pink),var(--purple));opacity:.6;border-radius:clamp(10px,1.1vw,16px) clamp(10px,1.1vw,16px) 0 0}
+.hero-photo--1{top:clamp(10px,2vw,28px);left:clamp(6px,1.5vw,22px);width:clamp(70px,12vw,180px);aspect-ratio:4/5;rotate:-5deg}
+.hero-photo--2{top:clamp(26px,4.2vw,60px);right:clamp(6px,1.8vw,28px);width:clamp(80px,13vw,195px);aspect-ratio:3/2;rotate:4deg}
+.hero-photo--3{bottom:clamp(45px,6.5vw,100px);left:clamp(60px,9vw,145px);width:clamp(55px,8vw,125px);aspect-ratio:1/1;rotate:-3deg}
+.hero-photo--4{top:clamp(90px,13vw,200px);right:clamp(50px,8vw,125px);width:clamp(55px,9vw,135px);aspect-ratio:3/4;rotate:6deg}
+.hero-photo--5{bottom:clamp(10px,2vw,28px);left:clamp(6px,1.5vw,22px);width:clamp(65px,11vw,165px);aspect-ratio:3/2;rotate:-4deg}
+.hero-photo--6{bottom:clamp(10px,2vw,28px);right:clamp(6px,1.5vw,22px);width:clamp(60px,10vw,150px);aspect-ratio:1/1;rotate:5deg}
+@media(hover:hover)and(pointer:fine){
+.hero-photo:hover{transform:rotate(0deg) scale(1.06)!important;box-shadow:0 16px 50px rgba(0,0,0,.35);z-index:10}
+.hero-photo:hover img{transform:scale(1.08)}
+}
+
+/* INTRO */
+.intro{text-align:center;max-width:880px;margin:0 auto clamp(28px,4vw,50px);padding:0 clamp(8px,1.5vw,20px);position:relative;z-index:2}
+.intro-glow{position:absolute;width:clamp(140px,20vw,300px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(212,169,79,.04),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.intro p{font-size:clamp(.95rem,1.12vw,1.12rem);line-height:1.85;color:#4a3535;font-weight:400;margin:0}
+
+/* FESTIVAL SECTION */
+.festival-section{position:relative;margin-bottom:clamp(36px,5.5vw,72px);border-radius:clamp(16px,2vw,26px);overflow:hidden;transition:box-shadow .45s ease}
+.festival-section--sarang{background:radial-gradient(circle at 12% 20%,rgba(244,91,154,.22),transparent 32%),radial-gradient(circle at 88% 75%,rgba(139,92,246,.18),transparent 36%),linear-gradient(135deg,#fff2f8,#f8f0ff 55%,#fff0eb);border:1px solid rgba(244,91,154,.14);box-shadow:var(--shadow-md)}
+.festival-section--sports{background:radial-gradient(circle at 90% 10%,rgba(6,182,212,.2),transparent 30%),radial-gradient(circle at 10% 90%,rgba(16,185,129,.14),transparent 30%),linear-gradient(135deg,#eff8ff,#ecfeff 50%,#eefff8);border:1px solid rgba(59,130,246,.1);box-shadow:var(--shadow-md)}
+.festival-section--navratri{background:radial-gradient(circle at 80% 15%,rgba(249,115,22,.2),transparent 30%),radial-gradient(circle at 20% 85%,rgba(139,92,246,.16),transparent 34%),linear-gradient(135deg,#fff4e8,#fff0f7 50%,#f6efff);border:1px solid rgba(249,115,22,.12);box-shadow:var(--shadow-md)}
+.festival-section--diwali{background:radial-gradient(circle at 20% 80%,rgba(245,158,11,.18),transparent 30%),radial-gradient(circle at 80% 20%,rgba(251,191,36,.12),transparent 32%),linear-gradient(135deg,#fff4d9,#fff0e5 50%,#fff8eb);border:1px solid rgba(245,158,11,.14);box-shadow:var(--shadow-md)}
+.festival-section--closing{background:linear-gradient(135deg,#57101c,#8b1e2d 48%,#651421);margin-bottom:0;border:none;box-shadow:none}
+.festival-section--closing::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 50% 50%,rgba(212,169,79,.06),transparent 70%);pointer-events:none}
+@media(hover:hover)and(pointer:fine){
+.festival-section:hover{box-shadow:var(--shadow-lg)!important}
+}
+
+.fest-inner{padding:clamp(16px,2.2vw,36px);position:relative;z-index:6}
+.fest-grid{display:grid;grid-template-columns:1fr;gap:clamp(18px,2.8vw,40px)}
+
+/* COLOR STREAMS */
+.fest-streams{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.fest-streams svg{position:absolute;opacity:.12}
+.fest-streams .stream{fill:none;stroke:currentColor;stroke-linecap:round}
+#sarang .fest-streams .stream{stroke-width:clamp(18,2.5vw,36)}
+#sports .fest-streams .stream{stroke-width:clamp(14,2vw,30)}
+#navratri .fest-streams .stream{stroke-width:clamp(16,2.2vw,32)}
+#diwali .fest-streams .stream{stroke-width:clamp(12,1.8vw,28)}
+.stream--1{width:clamp(200px,28vw,450px);height:clamp(100px,14vw,220px)}
+.stream--2{width:clamp(160px,22vw,360px);height:clamp(80px,11vw,180px)}
+.stream--3{width:clamp(140px,18vw,280px);height:clamp(70px,9vw,140px)}
+
+/* FLOATING SHAPES */
+.fest-shapes{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.fest-shapes .shape{position:absolute;opacity:.06;transition:transform .7s ease}
+.shape-circle{border-radius:50%;border:1px solid currentColor}
+.shape-diamond{transform:rotate(45deg);border:1px solid currentColor}
+.shape-dot{border-radius:50%;background:currentColor}
+.shape-ring{border-radius:50%;border:1.5px solid currentColor}
+
+/* FESTIVAL TEXT */
+.fest-copy{padding:clamp(18px,2.2vw,32px);border-radius:clamp(16px,1.8vw,22px);background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);position:relative;z-index:6}
+.fest-copy .eyebrow{display:inline-flex;padding:clamp(4px,0.4vw,6px) clamp(8px,0.8vw,12px);border-radius:999px;font-size:clamp(.68rem,.74vw,.78rem);letter-spacing:.12em;font-weight:600;text-transform:uppercase;margin-bottom:6px;transition:letter-spacing .8s ease,opacity .7s ease;border:1px solid}
+.fest-copy .eyebrow.show{letter-spacing:.14em}
+#sarang .eyebrow{background:rgba(244,91,154,.1);color:var(--pink);border-color:rgba(244,91,154,.2)}
+#sports .eyebrow{background:rgba(59,130,246,.1);color:var(--blue);border-color:rgba(59,130,246,.2)}
+#navratri .eyebrow{background:rgba(249,115,22,.1);color:var(--orange);border-color:rgba(249,115,22,.2)}
+#diwali .eyebrow{background:rgba(245,158,11,.1);color:#D97706;border-color:rgba(245,158,11,.2)}
+.fest-copy h2{font-size:clamp(1.6rem,2.8vw,3rem);font-weight:800;color:var(--maroon);margin:0;line-height:1.05}
+.fest-copy .heading-line{width:clamp(28px,2.8vw,42px);height:3px;border-radius:50px;margin:6px 0 10px;transform-origin:left;transition:transform .8s cubic-bezier(.22,1,.36,1);transform:scaleX(0)}
+.fest-copy .heading-line.show{transform:scaleX(1)}
+#sarang .heading-line{background:linear-gradient(90deg,var(--pink),var(--purple))}
+#sports .heading-line{background:linear-gradient(90deg,var(--blue),var(--green))}
+#navratri .heading-line{background:linear-gradient(90deg,var(--orange),var(--pink))}
+#diwali .heading-line{background:linear-gradient(90deg,#D97706,var(--yellow))}
+.fest-copy p{font-size:clamp(.92rem,1.04vw,1.08rem);line-height:1.82;color:#4a3535;margin:0 0 8px;max-width:540px}
+.fest-copy p:last-child{margin-bottom:0}
+
+/* PHOTO STAGE */
+.festival-photo-stage{position:relative;height:clamp(320px,30vw,460px);width:min(100%,560px);z-index:5;margin:auto}
+
+/* PHOTO */
+.photo-wrapper{position:absolute;top:50%;left:50%;width:clamp(180px,17vw,260px);transform:translate(-50%,-50%);transition:opacity .6s ease}
+.photo-wrapper--1{z-index:1;--cx:-28px;--cy:14px;--cr:-9deg;--ex:-142px;--ey:-82px;--er:-12deg}
+.photo-wrapper--2{z-index:2;--cx:-16px;--cy:6px;--cr:-5deg;--ex:-52px;--ey:-120px;--er:-5deg}
+.photo-wrapper--3{z-index:3;--cx:-4px;--cy:-2px;--cr:-2deg;--ex:88px;--ey:-96px;--er:7deg}
+.photo-wrapper--4{z-index:4;--cx:6px;--cy:-4px;--cr:2deg;--ex:-130px;--ey:72px;--er:-7deg}
+.photo-wrapper--5{z-index:5;--cx:16px;--cy:2px;--cr:5deg;--ex:6px;--ey:100px;--er:3deg}
+.photo-wrapper--6{z-index:6;--cx:28px;--cy:10px;--cr:8deg;--ex:132px;--ey:68px;--er:10deg}
+.photo{width:100%;aspect-ratio:3/4;border-radius:clamp(14px,1.5vw,20px);overflow:hidden;position:relative;transition:transform .72s cubic-bezier(.22,1,.36,1),box-shadow .55s ease,border-color .55s ease;background:#fff;will-change:transform}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+.photo::after{content:'';position:absolute;top:0;left:0;right:0;height:clamp(3px,.4vw,5px);border-radius:clamp(14px,1.5vw,20px) clamp(14px,1.5vw,20px) 0 0;opacity:.55;z-index:2}
+.photo::before{content:'';position:absolute;inset:4px;border:1px solid rgba(255,255,255,.4);border-radius:clamp(11px,1.25vw,17px);pointer-events:none;z-index:2}
+.photo:hover img{transform:scale(1.05)}
+.festival-section--sarang .photo{border:2px solid rgba(244,91,154,.4);box-shadow:0 14px 36px rgba(74,20,30,.12),0 0 0 4px rgba(244,91,154,.05)}
+.festival-section--sarang .photo::after{background:linear-gradient(90deg,var(--pink),var(--purple))}
+.festival-section--sarang .photo-wrapper--2 .photo{box-shadow:0 14px 36px rgba(74,20,30,.12),0 0 0 4px rgba(139,92,246,.05)}
+.festival-section--sarang .photo-wrapper--3 .photo{border-color:rgba(255,107,107,.4);box-shadow:0 14px 36px rgba(74,20,30,.12),0 0 0 4px rgba(255,107,107,.05)}
+.festival-section--sarang .photo-wrapper--4 .photo{border-color:rgba(139,92,246,.4);box-shadow:0 14px 36px rgba(74,20,30,.12),0 0 0 4px rgba(139,92,246,.05)}
+.festival-section--sarang .photo-wrapper--5 .photo{border-color:rgba(244,91,154,.35)}
+.festival-section--sarang .photo-wrapper--6 .photo{border-color:rgba(255,107,107,.35)}
+
+.festival-section--sports .photo{border:2px solid rgba(59,130,246,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(59,130,246,.05)}
+.festival-section--sports .photo::after{background:linear-gradient(90deg,var(--blue),var(--green))}
+.festival-section--sports .photo-wrapper--2 .photo{border-color:rgba(6,182,212,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(6,182,212,.05)}
+.festival-section--sports .photo-wrapper--3 .photo{border-color:rgba(16,185,129,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(16,185,129,.05)}
+.festival-section--sports .photo-wrapper--4 .photo{border-color:rgba(59,130,246,.35)}
+.festival-section--sports .photo-wrapper--5 .photo{border-color:rgba(6,182,212,.35)}
+.festival-section--sports .photo-wrapper--6 .photo{border-color:rgba(16,185,129,.35)}
+
+.festival-section--navratri .photo{border:2px solid rgba(249,115,22,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(249,115,22,.05)}
+.festival-section--navratri .photo::after{background:linear-gradient(90deg,var(--orange),var(--pink))}
+.festival-section--navratri .photo-wrapper--2 .photo{border-color:rgba(236,72,153,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(236,72,153,.05)}
+.festival-section--navratri .photo-wrapper--3 .photo{border-color:rgba(139,92,246,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(139,92,246,.05)}
+.festival-section--navratri .photo-wrapper--4 .photo{border-color:rgba(249,115,22,.35)}
+.festival-section--navratri .photo-wrapper--5 .photo{border-color:rgba(236,72,153,.35)}
+.festival-section--navratri .photo-wrapper--6 .photo{border-color:rgba(139,92,246,.35)}
+
+.festival-section--diwali .photo{border:2px solid rgba(245,158,11,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(245,158,11,.05)}
+.festival-section--diwali .photo::after{background:linear-gradient(90deg,#D97706,var(--yellow))}
+.festival-section--diwali .photo-wrapper--2 .photo{border-color:rgba(251,191,36,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(251,191,36,.05)}
+.festival-section--diwali .photo-wrapper--3 .photo{border-color:rgba(251,113,133,.4);box-shadow:0 14px 36px rgba(74,20,30,.1),0 0 0 4px rgba(251,113,133,.05)}
+.festival-section--diwali .photo-wrapper--4 .photo{border-color:rgba(245,158,11,.35)}
+.festival-section--diwali .photo-wrapper--5 .photo{border-color:rgba(251,191,36,.35)}
+.festival-section--diwali .photo-wrapper--6 .photo{border-color:rgba(251,113,133,.35)}
+
+.photo-wrapper .photo{transform:translate(var(--cx),var(--cy)) rotate(var(--cr))}
+
+/* IS-ACTIVE EXPAND — triggered by IntersectionObserver */
+.festival-section.is-active .photo-wrapper .photo{
+  transform:translate(var(--ex),var(--ey)) rotate(var(--er))
+}
+.festival-section.is-active .fan-glow{
+  opacity:1;transform:translate(-50%,-50%) scale(1.08)
+}
+.festival-section.is-active .photo-wrapper .photo::after{opacity:.75}
+.festival-section.is-active .photo-wrapper .photo img{transform:scale(1.04)}
+
+/* EXPAND STAGGER — is-active based */
+.festival-section.is-active .photo-wrapper--1 .photo{transition-delay:0s}
+.festival-section.is-active .photo-wrapper--2 .photo{transition-delay:45ms}
+.festival-section.is-active .photo-wrapper--3 .photo{transition-delay:90ms}
+.festival-section.is-active .photo-wrapper--4 .photo{transition-delay:135ms}
+.festival-section.is-active .photo-wrapper--5 .photo{transition-delay:180ms}
+.festival-section.is-active .photo-wrapper--6 .photo{transition-delay:225ms}
+
+/* SECONDARY HOVER EFFECTS ONLY (no photo transform) */
+@media(hover:hover)and(pointer:fine){
+.festival-section.is-active:hover .photo-wrapper .photo{
+  box-shadow:0 28px 68px rgba(74,20,30,.22)
+}
+.festival-section--sarang.is-active:hover .photo-wrapper .photo{border-color:rgba(244,91,154,.55);box-shadow:0 28px 68px rgba(74,20,30,.22),0 0 0 4px rgba(244,91,154,.08)}
+.festival-section--sports.is-active:hover .photo-wrapper .photo{border-color:rgba(59,130,246,.5);box-shadow:0 28px 68px rgba(74,20,30,.2),0 0 0 4px rgba(59,130,246,.08)}
+.festival-section--navratri.is-active:hover .photo-wrapper .photo{border-color:rgba(249,115,22,.5);box-shadow:0 28px 68px rgba(74,20,30,.2),0 0 0 4px rgba(249,115,22,.08)}
+.festival-section--diwali.is-active:hover .photo-wrapper .photo{border-color:rgba(245,158,11,.5);box-shadow:0 28px 68px rgba(74,20,30,.2),0 0 0 4px rgba(245,158,11,.08)}
+#sarang:hover .stream--1{transform:translateX(6px)}
+#sports:hover .stream--1{transform:translateX(8px)}
+#navratri:hover .stream--1{transform:translateX(-5px)}
+#diwali:hover .stream--1{transform:translateX(5px)}
+#sarang:hover .shape-circle--1{transform:scale(1.12)}
+#sports:hover .shape-ring--1{transform:rotate(6deg)}
+#navratri:hover .shape-ring--1{transform:scale(1.08)}
+#diwali:hover .shape-circle--1{transform:scale(1.1)}
+}
+
+/* SARANG EXPANDED — asymmetric artistic fan */
+#sarang .photo-wrapper--1{--ex:-140px;--ey:-75px;--er:-14deg}
+#sarang .photo-wrapper--2{--ex:-48px;--ey:-118px;--er:-6deg}
+#sarang .photo-wrapper--3{--ex:85px;--ey:-90px;--er:9deg}
+#sarang .photo-wrapper--4{--ex:-130px;--ey:68px;--er:-9deg}
+#sarang .photo-wrapper--5{--ex:12px;--ey:96px;--er:5deg}
+#sarang .photo-wrapper--6{--ex:132px;--ey:62px;--er:12deg}
+
+/* SPORTS EXPANDED — directional action flow */
+#sports .photo-wrapper--1{--ex:-130px;--ey:-88px;--er:-11deg}
+#sports .photo-wrapper--2{--ex:-40px;--ey:-122px;--er:-4deg}
+#sports .photo-wrapper--3{--ex:75px;--ey:-105px;--er:6deg}
+#sports .photo-wrapper--4{--ex:-120px;--ey:58px;--er:-7deg}
+#sports .photo-wrapper--5{--ex:16px;--ey:100px;--er:3deg}
+#sports .photo-wrapper--6{--ex:124px;--ey:65px;--er:9deg}
+
+/* NAVRATRI EXPANDED — radial flower spread */
+#navratri .photo-wrapper--1{--ex:-112px;--ey:-102px;--er:-10deg}
+#navratri .photo-wrapper--2{--ex:-16px;--ey:-128px;--er:-3deg}
+#navratri .photo-wrapper--3{--ex:80px;--ey:-108px;--er:7deg}
+#navratri .photo-wrapper--4{--ex:-114px;--ey:60px;--er:-6deg}
+#navratri .photo-wrapper--5{--ex:26px;--ey:106px;--er:2deg}
+#navratri .photo-wrapper--6{--ex:126px;--ey:68px;--er:8deg}
+
+/* DIWALI EXPANDED — symmetric balanced elegance */
+#diwali .photo-wrapper--1{--ex:-132px;--ey:-80px;--er:-10deg}
+#diwali .photo-wrapper--2{--ex:-40px;--ey:-120px;--er:-3deg}
+#diwali .photo-wrapper--3{--ex:75px;--ey:-105px;--er:5deg}
+#diwali .photo-wrapper--4{--ex:-124px;--ey:68px;--er:-5deg}
+#diwali .photo-wrapper--5{--ex:18px;--ey:102px;--er:2deg}
+#diwali .photo-wrapper--6{--ex:128px;--ey:64px;--er:7deg}
+
+/* FAN GLOW */
+.fan-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(140px,18vw,280px);aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity .7s ease,transform .7s ease}
+.fan-glow.show{opacity:1}
+.festival-section--sarang .fan-glow{background:radial-gradient(circle,rgba(244,91,154,.12),transparent 70%)}
+.festival-section--sports .fan-glow{background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%)}
+.festival-section--navratri .fan-glow{background:radial-gradient(circle,rgba(249,115,22,.1),transparent 70%)}
+.festival-section--diwali .fan-glow{background:radial-gradient(circle,rgba(245,158,11,.1),transparent 70%)}
+@media(hover:hover)and(pointer:fine){
+.festival-section.is-active:hover .fan-glow{transform:translate(-50%,-50%) scale(1.2)}
+}
+
+/* SECTION DIVIDER */
+.section-divider{height:clamp(28px,4vw,60px);position:relative;overflow:hidden;pointer-events:none}
+.section-divider svg{position:absolute;width:100%;height:100%;left:0;top:0}
+
+/* CLOSING */
+.closing-inner{text-align:center;padding:clamp(36px,5vw,72px) clamp(14px,2.5vw,40px);position:relative;z-index:4}
+.closing-inner h2{font-size:clamp(1.5rem,2.8vw,2.7rem);font-weight:800;color:#fff;margin:0 0 8px}
+.closing-inner .heading-line{background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:6px auto 12px;width:clamp(44px,5vw,80px)}
+.closing-inner p{font-size:clamp(.9rem,1.02vw,1.06rem);line-height:1.8;color:rgba(255,255,255,.68);max-width:500px;margin:0 auto}
+.closing-photos{position:absolute;inset:0;pointer-events:none;z-index:2}
+.closing-photo{position:absolute;overflow:hidden;border-radius:clamp(8px,.8vw,12px);border:2px solid rgba(255,255,255,.1);opacity:.2;transition:opacity .6s ease,transform .6s ease}
+.closing-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.closing-photo--1{top:clamp(8px,1.3vw,18px);left:clamp(8px,1.3vw,18px);width:clamp(50px,7vw,100px);aspect-ratio:4/3;rotate:-5deg}
+.closing-photo--2{bottom:clamp(8px,1.3vw,18px);right:clamp(8px,1.3vw,18px);width:clamp(50px,7vw,100px);aspect-ratio:1/1;rotate:4deg}
+.closing-photo--3{top:48%;right:clamp(24px,3.5vw,55px);width:clamp(36px,5vw,75px);aspect-ratio:3/4;rotate:7deg}
+.closing-photo--4{top:18%;left:clamp(40px,6vw,95px);width:clamp(32px,4vw,60px);aspect-ratio:3/2;rotate:-6deg}
+.closing-photo--5{bottom:12%;left:clamp(100px,14vw,220px);width:clamp(28px,3.5vw,50px);aspect-ratio:1/1;rotate:5deg}
+@media(hover:hover)and(pointer:fine){
+.festival-section--closing:hover .closing-photo{opacity:.3;transform:rotate(0deg) scale(1.03)}
+}
+.closing-decor{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.closing-decor .art-star{color:var(--gold);opacity:.06}
+.closing-decor-blob{position:absolute;border-radius:50%;pointer-events:none}
+.closing-decor-blob--1{width:clamp(100px,14vw,220px);height:clamp(100px,14vw,220px);top:-4%;right:-3%;background:radial-gradient(circle,rgba(244,91,154,.06),transparent 70%)}
+.closing-decor-blob--2{width:clamp(90px,12vw,190px);height:clamp(90px,12vw,190px);bottom:-4%;left:-3%;background:radial-gradient(circle,rgba(249,115,22,.05),transparent 70%)}
+
+/* RESPONSIVE */
+@container (min-width:880px){
+.fest-grid{grid-template-columns:.92fr 1.08fr}
+#sports .fest-grid{grid-template-columns:1.08fr .92fr}
+.fest-copy p{max-width:540px}
+}
+
+@container (min-width:880px){
+#sarang .fest-copy{order:1;padding-right:clamp(6px,1.2vw,18px)}
+#sarang .festival-photo-stage{order:2}
+#sports .fest-copy{order:2;padding-left:clamp(6px,1.2vw,18px)}
+#sports .festival-photo-stage{order:1}
+#navratri .fest-copy{order:1;padding-right:clamp(6px,1.2vw,18px)}
+#navratri .festival-photo-stage{order:2}
+#diwali .fest-copy{order:2;padding-left:clamp(6px,1.2vw,18px)}
+#diwali .festival-photo-stage{order:1}
+}
+
+@container (max-width:879px){
+.fest-grid{grid-template-columns:1fr!important}
+.fest-copy{order:1!important}
+.festival-photo-stage{order:2!important}
+.fest-copy p{max-width:none}
+.festival-photo-stage{height:clamp(300px,55vw,400px)}
+.photo-wrapper{width:clamp(130px,28vw,190px)}
+/* SARANG — asymmetric fan (tablet) */
+#sarang .photo-wrapper--1{--ex:-76px;--ey:-45px;--er:-10deg}
+#sarang .photo-wrapper--2{--ex:-26px;--ey:-68px;--er:-4deg}
+#sarang .photo-wrapper--3{--ex:48px;--ey:-56px;--er:6deg}
+#sarang .photo-wrapper--4{--ex:-68px;--ey:44px;--er:-6deg}
+#sarang .photo-wrapper--5{--ex:5px;--ey:58px;--er:3deg}
+#sarang .photo-wrapper--6{--ex:72px;--ey:40px;--er:8deg}
+/* SPORTS — directional flow (tablet) */
+#sports .photo-wrapper--1{--ex:-68px;--ey:-50px;--er:-8deg}
+#sports .photo-wrapper--2{--ex:-16px;--ey:-74px;--er:-3deg}
+#sports .photo-wrapper--3{--ex:42px;--ey:-60px;--er:4deg}
+#sports .photo-wrapper--4{--ex:-62px;--ey:44px;--er:-4deg}
+#sports .photo-wrapper--5{--ex:10px;--ey:62px;--er:2deg}
+#sports .photo-wrapper--6{--ex:68px;--ey:42px;--er:6deg}
+/* NAVRATRI — radial flower (tablet) */
+#navratri .photo-wrapper--1{--ex:-58px;--ey:-58px;--er:-6deg}
+#navratri .photo-wrapper--2{--ex:-10px;--ey:-74px;--er:-2deg}
+#navratri .photo-wrapper--3{--ex:38px;--ey:-64px;--er:4deg}
+#navratri .photo-wrapper--4{--ex:-56px;--ey:46px;--er:-3deg}
+#navratri .photo-wrapper--5{--ex:20px;--ey:64px;--er:2deg}
+#navratri .photo-wrapper--6{--ex:62px;--ey:44px;--er:5deg}
+/* DIWALI — symmetric balanced (tablet) */
+#diwali .photo-wrapper--1{--ex:-68px;--ey:-50px;--er:-5deg}
+#diwali .photo-wrapper--2{--ex:-16px;--ey:-72px;--er:-2deg}
+#diwali .photo-wrapper--3{--ex:40px;--ey:-64px;--er:3deg}
+#diwali .photo-wrapper--4{--ex:-58px;--ey:44px;--er:-3deg}
+#diwali .photo-wrapper--5{--ex:16px;--ey:60px;--er:1deg}
+#diwali .photo-wrapper--6{--ex:64px;--ey:40px;--er:5deg}
+}
+
+@media(max-width:768px){
+.hero{min-height:clamp(360px,68vw,470px)}
+.hero-heading .annual{font-size:clamp(2.6rem,10vw,4.2rem)}
+.hero-heading .fest{font-size:clamp(2.3rem,9vw,3.8rem)}
+.hero-sub{font-size:clamp(.82rem,2.7vw,.98rem);max-width:85vw;margin-inline:auto}
+.hero-sub2{font-size:clamp(.72rem,2.3vw,.86rem);max-width:85vw;margin-inline:auto}
+.hero-photo--1{width:clamp(80px,20vw,125px);top:clamp(8px,2vw,16px);left:clamp(4px,1.5vw,12px)}
+.hero-photo--2{width:clamp(80px,20vw,125px);top:clamp(20px,4vw,36px);right:clamp(4px,1.5vw,12px)}
+.hero-photo--3{width:clamp(65px,16vw,100px);bottom:clamp(35px,5vw,55px);left:clamp(55px,10vw,80px)}
+.hero-photo--4{width:clamp(65px,16vw,100px);top:clamp(75px,14vw,110px);right:clamp(40px,8vw,60px)}
+.hero-photo--5{width:clamp(72px,18vw,110px);bottom:clamp(6px,1.5vw,14px);left:clamp(4px,1.5vw,12px)}
+.hero-photo--6{width:clamp(65px,16vw,100px);bottom:clamp(6px,1.5vw,14px);right:clamp(4px,1.5vw,12px)}
+.hero-photo::after{display:none}
+.hero-star--2,.hero-burst,.hero-dots{display:none}
+.fest-inner{padding:clamp(14px,2.5vw,20px)}
+.fest-copy h2{font-size:clamp(1.75rem,5vw,2.3rem)}
+.fest-copy p{font-size:clamp(.95rem,1.8vw,1.04rem)}
+.festival-photo-stage{height:clamp(310px,54vw,430px);width:100%}
+.photo-wrapper{width:clamp(120px,26vw,175px)}
+.closing-photo--4,.closing-photo--5{display:none}
+.closing-inner h2{font-size:clamp(1.5rem,4.5vw,2rem)}
+.closing-inner p{font-size:clamp(.9rem,2vw,1rem)}
+}
+
+@media(max-width:600px){
+.hero{min-height:clamp(340px,82vw,430px)}
+.hero-heading .annual{font-size:clamp(2.4rem,11vw,3.6rem)}
+.hero-heading .fest{font-size:clamp(2.1rem,10vw,3.2rem)}
+.hero-sub{font-size:clamp(.82rem,2.7vw,.98rem)}
+.hero-sub2{font-size:clamp(.72rem,2.3vw,.86rem)}
+.hero-photo--1{width:clamp(72px,21vw,110px)}
+.hero-photo--2{width:clamp(72px,21vw,110px)}
+.hero-photo--3{width:clamp(58px,17vw,90px)}
+.hero-photo--4{width:clamp(58px,17vw,90px)}
+.hero-photo--5{width:clamp(65px,19vw,100px)}
+.hero-photo--6{width:clamp(58px,17vw,90px)}
+.festival-section{margin-bottom:clamp(28px,5vw,44px)}
+.fest-inner{padding:clamp(12px,3vw,16px)}
+.fest-copy{padding:clamp(16px,3vw,20px)}
+.fest-copy h2{font-size:clamp(1.65rem,6vw,2.05rem)}
+.fest-copy p{font-size:clamp(.94rem,3vw,1rem);line-height:1.75}
+.festival-photo-stage{height:clamp(330px,65vw,410px)}
+.photo-wrapper{width:clamp(105px,31vw,150px)}
+.closing-inner{padding:clamp(24px,5vw,32px) clamp(12px,3vw,20px)}
+.closing-inner h2{font-size:clamp(1.4rem,5vw,1.8rem)}
+.closing-inner p{font-size:clamp(.9rem,2.5vw,.96rem)}
+}
+
+@media(max-width:480px){
+.hero{min-height:clamp(330px,92vw,410px);border-radius:clamp(12px,2.5vw,16px)}
+.hero-heading .annual{font-size:clamp(2.25rem,11.5vw,3.1rem)}
+.hero-heading .fest{font-size:clamp(2rem,10.5vw,2.8rem)}
+.hero-sub{font-size:clamp(.82rem,2.7vw,.96rem);max-width:88vw}
+.hero-sub2{font-size:clamp(.74rem,2.4vw,.84rem);max-width:88vw}
+.hero-photo--1{width:clamp(68px,22vw,95px);top:clamp(6px,1.8vw,12px);left:clamp(4px,1.5vw,8px)}
+.hero-photo--2{width:clamp(68px,22vw,95px);top:clamp(16px,3.5vw,25px);right:clamp(4px,1.5vw,8px)}
+.hero-photo--3{width:clamp(54px,17vw,78px);bottom:clamp(30px,5vw,45px);left:clamp(40px,9vw,65px)}
+.hero-photo--4{width:clamp(54px,17vw,78px);top:clamp(60px,12vw,85px);right:clamp(30px,7vw,48px)}
+.hero-photo--5{width:clamp(62px,20vw,85px);bottom:clamp(4px,1.2vw,10px);left:clamp(4px,1.5vw,8px)}
+.hero-photo--6{width:clamp(54px,17vw,78px);bottom:clamp(4px,1.2vw,10px);right:clamp(4px,1.5vw,8px)}
+.hero-star--2,.hero-burst,.hero-dots{display:none}
+.festival-section{border-radius:clamp(12px,2.5vw,16px)}
+.fest-inner{padding:clamp(10px,2.5vw,14px)}
+.fest-copy{padding:clamp(14px,2.5vw,18px);border-radius:14px}
+.fest-copy h2{font-size:clamp(1.55rem,7vw,1.95rem)}
+.fest-copy p{font-size:clamp(.92rem,3.2vw,.98rem);line-height:1.72}
+.festival-photo-stage{height:clamp(300px,72vw,370px)}
+.photo-wrapper{width:clamp(100px,32vw,140px)}
+.photo{border-radius:12px}
+.closing-inner{padding:clamp(20px,5vw,28px) clamp(10px,2.5vw,16px)}
+.closing-inner h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+.closing-inner p{font-size:clamp(.88rem,2.8vw,.94rem)}
+}
+
+@media(max-width:390px){
+.hero{min-height:clamp(320px,98vw,385px)}
+.hero-heading .annual{font-size:clamp(2.1rem,12vw,2.8rem)}
+.hero-heading .fest{font-size:clamp(1.9rem,11vw,2.5rem)}
+.hero-sub{font-size:clamp(.8rem,2.8vw,.92rem)}
+.hero-sub2{font-size:clamp(.7rem,2.4vw,.8rem)}
+.hero-photo--1{width:clamp(62px,21vw,82px)}
+.hero-photo--2{width:clamp(62px,21vw,82px)}
+.hero-photo--3{width:clamp(48px,16vw,66px)}
+.hero-photo--4{width:clamp(48px,16vw,66px)}
+.hero-photo--5{width:clamp(55px,19vw,74px)}
+.hero-photo--6{width:clamp(48px,16vw,66px)}
+.fest-copy h2{font-size:clamp(1.45rem,7.5vw,1.8rem)}
+.fest-copy p{font-size:clamp(.9rem,3.4vw,.96rem);line-height:1.7}
+.festival-photo-stage{height:clamp(290px,74vw,350px)}
+.photo-wrapper{width:clamp(96px,32vw,125px)}
+}
+
+@media(max-width:360px){
+.hero{min-height:clamp(310px,100vw,370px)}
+.hero-heading .annual{font-size:clamp(2rem,11.5vw,2.5rem)}
+.hero-heading .fest{font-size:clamp(1.8rem,10.5vw,2.3rem)}
+.hero-sub{font-size:clamp(.78rem,3vw,.9rem)}
+.hero-sub2{font-size:clamp(.68rem,2.5vw,.78rem)}
+.hero-photo--1{width:clamp(58px,20vw,75px)}
+.hero-photo--2{width:clamp(58px,20vw,75px)}
+.hero-photo--3{width:clamp(45px,16vw,60px)}
+.hero-photo--4{width:clamp(45px,16vw,60px)}
+.hero-photo--5{width:clamp(50px,18vw,68px)}
+.hero-photo--6{width:clamp(45px,16vw,60px)}
+.fest-copy h2{font-size:clamp(1.35rem,8vw,1.7rem)}
+.fest-copy p{font-size:clamp(.88rem,3.6vw,.94rem)}
+.festival-photo-stage{height:clamp(280px,78vw,335px)}
+.photo-wrapper{width:clamp(90px,31vw,115px)}
+}
+
+@media(max-width:320px){
+.hero{min-height:310px}
+.hero-heading .annual{font-size:clamp(1.9rem,12vw,2.2rem)}
+.hero-heading .fest{font-size:clamp(1.7rem,11vw,2rem)}
+.hero-sub{font-size:clamp(.78rem,3.2vw,.86rem)}
+.hero-sub2{font-size:clamp(.68rem,2.6vw,.76rem)}
+.hero-photo--1{width:clamp(55px,18vw,65px)}
+.hero-photo--2{width:clamp(55px,18vw,65px)}
+.hero-photo--3{width:clamp(44px,15vw,52px)}
+.hero-photo--4{width:clamp(44px,15vw,52px)}
+.hero-photo--5{width:clamp(48px,17vw,58px)}
+.hero-photo--6{width:clamp(44px,15vw,52px)}
+.festival-photo-stage{height:clamp(275px,82vw,315px)}
+.photo-wrapper{width:clamp(82px,30vw,100px)}
+.fest-copy h2{font-size:clamp(1.3rem,9vw,1.55rem)}
+.fest-copy p{font-size:clamp(.86rem,4vw,.92rem)}
+}
+
+@media(min-width:1200px){
+.photo-wrapper{width:clamp(210px,16vw,270px)}
+.festival-photo-stage{width:min(100%,600px)}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+.photo,.hero-photo,.closing-photo,.fan-glow,.festival-section,.reveal,.reveal-photo{transition:none!important}
+.reveal,.reveal-photo,.hero-heading,.hero-sub,.hero-sub2,.hero-line{opacity:1!important}
+.hero-heading,.hero-sub,.hero-sub2,.hero-line{transform:none!important}
+.hero-star,.hero-burst,.page-decor-blob{animation:none!important}
+.festival-section.is-active .photo-wrapper .photo{transform:translate(var(--ex),var(--ey)) rotate(var(--er))!important}
+.festival-section .photo-wrapper .photo{transform:translate(var(--cx),var(--cy)) rotate(var(--cr))!important}
+}
+</style>
+</head>
+<body>
+
+<div class="page-shell">
+<div class="page-inner">
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero" id="hero">
+  <div class="hero-decor" aria-hidden="true">
+    <svg class="hero-star hero-star--1" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0l1.8 6.2L18 7.6l-4.6 4.2L14.6 18 10 14.6 5.4 18l1.2-6.2L2 7.6l6.2-1.4z"/></svg>
+    <svg class="hero-star hero-star--2" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.4 4.8L14.4 6 10 9.8l1 5.2-3-3.2-3 3.2 1-5.2L1.6 6l5-1.2z"/></svg>
+    <svg class="hero-star hero-star--3" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0l1.8 6.2L18 7.6l-4.6 4.2L14.6 18 10 14.6 5.4 18l1.2-6.2L2 7.6l6.2-1.4z"/></svg>
+    <svg class="hero-star hero-star--4" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0l1 3.5L11 4.5 8 7.4l.8 4.1L6 9.5 3.2 11.5l.8-4.1L1 4.5l4-1z"/></svg>
+    <svg class="hero-burst" viewBox="0 0 40 40" fill="currentColor"><path d="M20 2l2.5 7.5L30 8l-4 8 8 2-6 6 6 6-8 2 4 8-8-4-2 7.5L16 36l-8 4 4-8-8-2 6-6-6-6 8-2-4-8 7.5 2.5z"/></svg>
+    <svg class="hero-stream hero-stream--1" viewBox="0 0 240 100" fill="none" stroke="currentColor" stroke-width="25" stroke-linecap="round" opacity=".5"><path d="M-20 60 Q60 20 120 50 Q180 80 260 30"/></svg>
+    <svg class="hero-stream hero-stream--2" viewBox="0 0 200 80" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"><path d="M-10 40 Q50 10 100 35 Q150 60 210 20"/></svg>
+    <svg class="hero-dots" viewBox="0 0 40 40"><circle cx="6" cy="6" r="1.2"/><circle cx="20" cy="4" r=".8"/><circle cx="34" cy="8" r="1"/><circle cx="4" cy="22" r=".7"/><circle cx="30" cy="26" r="1.1"/><circle cx="16" cy="36" r=".9"/><circle cx="38" cy="38" r=".6"/></svg>
+    <div class="hero-blob hero-blob--1"></div>
+    <div class="hero-blob hero-blob--2"></div>
+  </div>
+
+  <div class="hero-photos">
+    <!-- HERO PHOTO 1 -->
+    <div class="hero-photo hero-photo--1 reveal">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%23651421' width='400' height='500'/%3E%3Ctext x='200' y='255' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EHERO IMG 1%3C/text%3E%3C/svg%3E" alt="IITM Annual Fest celebration" fetchpriority="high" loading="eager">
+    </div>
+    <!-- HERO PHOTO 2 -->
+    <div class="hero-photo hero-photo--2 reveal reveal-delay-1">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect fill='%237a1a28' width='400' height='267'/%3E%3Ctext x='200' y='139' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EHERO IMG 2%3C/text%3E%3C/svg%3E" alt="IITM campus celebration" loading="eager">
+    </div>
+    <!-- HERO PHOTO 3 -->
+    <div class="hero-photo hero-photo--3 reveal reveal-delay-2">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23651421' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EHERO IMG 3%3C/text%3E%3C/svg%3E" alt="Students at IITM fest" loading="eager">
+    </div>
+    <!-- HERO PHOTO 4 -->
+    <div class="hero-photo hero-photo--4 reveal reveal-delay-3">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect fill='%237a1a28' width='300' height='400'/%3E%3Ctext x='150' y='205' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EHERO IMG 4%3C/text%3E%3C/svg%3E" alt="IITM cultural event" loading="eager">
+    </div>
+    <!-- HERO PHOTO 5 -->
+    <div class="hero-photo hero-photo--5 reveal reveal-delay-4">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect fill='%23651421' width='400' height='267'/%3E%3Ctext x='200' y='139' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EHERO IMG 5%3C/text%3E%3C/svg%3E" alt="IITM campus life" loading="eager">
+    </div>
+    <!-- HERO PHOTO 6 -->
+    <div class="hero-photo hero-photo--6 reveal reveal-delay-5">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%237a1a28' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EHERO IMG 6%3C/text%3E%3C/svg%3E" alt="Festival celebration at IITM" loading="eager">
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-heading">
+      <span class="annual">ANNUAL</span>
+      <span class="fest">FEST</span>
+    </h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">Celebrating Talent, Culture, Sports &amp; Togetherness</p>
+    <p class="hero-sub2">Where campus life comes alive through creativity, competition and celebration.</p>
+  </div>
+</section>
+
+<!-- ============================================
+     INTRODUCTION
+     ============================================ -->
+<section class="intro reveal" id="intro">
+  <div class="intro-glow" aria-hidden="true"></div>
+  <div class="event-title">
+    <div class="flourish" aria-hidden="true">
+      <span class="flourish-line"></span>
+      <svg class="flourish-star" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.4 4.8L14.4 6 10 9.8l1 5.2-3-3.2-3 3.2 1-5.2L1.6 6l5-1.2z"/></svg>
+      <span class="flourish-line"></span>
+    </div>
+    <h2>Celebrating Life at IITM</h2>
+    <div class="line"></div>
+  </div>
+  <p>Beyond classrooms and laboratories, IITM's annual celebrations bring students together through creativity, competition, culture and shared experiences. From the vibrant spirit of Sarang to sporting excellence and festive traditions, these moments define campus life.</p>
+</section>
+
+<!-- ============================================
+     SARANG
+     ============================================ -->
+<section class="festival-section festival-section--sarang reveal" id="sarang">
+  <div class="fest-streams" aria-hidden="true">
+    <svg class="stream stream--1" style="top:5%;left:-3%;color:var(--pink);opacity:.16" viewBox="0 0 240 100"><path class="stream" d="M-20 60 Q60 20 120 50 Q180 80 260 30"/></svg>
+    <svg class="stream stream--2" style="bottom:8%;right:2%;color:var(--purple);opacity:.12" viewBox="0 0 200 80"><path class="stream" d="M-10 40 Q50 10 100 35 Q150 60 210 20"/></svg>
+  </div>
+  <div class="fest-shapes" aria-hidden="true">
+    <div class="shape shape-circle shape-circle--1" style="top:5%;right:10%;width:clamp(40px,5vw,80px);height:clamp(40px,5vw,80px);color:var(--pink)"></div>
+    <div class="shape shape-diamond" style="bottom:12%;left:6%;width:clamp(20px,2.5vw,38px);height:clamp(20px,2.5vw,38px);color:var(--purple)"></div>
+    <div class="shape shape-dot" style="top:30%;left:3%;width:clamp(6px,.7vw,10px);height:clamp(6px,.7vw,10px);color:var(--coral)"></div>
+    <svg class="shape" style="top:8%;left:5%;width:clamp(18px,2.2vw,32px);height:clamp(18px,2.2vw,32px);color:var(--pink);opacity:.08" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0l1.8 6.2L18 7.6l-4.6 4.2L14.6 18 10 14.6 5.4 18l1.2-6.2L2 7.6l6.2-1.4z"/></svg>
+  </div>
+
+  <div class="fest-inner">
+    <div class="fest-grid">
+      <div class="fest-copy">
+        <p class="eyebrow">The Signature Celebration</p>
+        <h2>Sarang</h2>
+        <div class="heading-line"></div>
+        <p>Sarang is the heart of IITM's cultural landscape — a vibrant celebration where students express themselves through music, dance, drama and every form of creative performance. The campus transforms into a stage for talent, bringing together artists, performers and audiences in an electric atmosphere of shared creativity.</p>
+        <p>From intimate acoustic sets to spectacular stage productions, Sarang showcases the depth of artistic expression that thrives within IITM's student community. It is a testament to the belief that engineering and creativity go hand in hand.</p>
+      </div>
+
+      <div class="festival-photo-stage">
+        <div class="fan-glow fan-glow--sarang reveal-photo"></div>
+        <!-- SARANG PHOTO 1 -->
+        <div class="photo-wrapper photo-wrapper--1 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%238b1e2d' width='400' height='500'/%3E%3Ctext x='200' y='255' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESARANG PHOTO 1%3C/text%3E%3C/svg%3E" alt="Sarang celebration at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SARANG PHOTO 2 -->
+        <div class="photo-wrapper photo-wrapper--2 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='333'%3E%3Crect fill='%23651421' width='500' height='333'/%3E%3Ctext x='250' y='171' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESARANG PHOTO 2%3C/text%3E%3C/svg%3E" alt="Cultural performance at IITM Sarang" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SARANG PHOTO 3 -->
+        <div class="photo-wrapper photo-wrapper--3 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%237a1a28' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ESARANG PHOTO 3%3C/text%3E%3C/svg%3E" alt="Sarang festival at IITM campus" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SARANG PHOTO 4 -->
+        <div class="photo-wrapper photo-wrapper--4 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='313'%3E%3Crect fill='%238b1e2d' width='500' height='313'/%3E%3Ctext x='250' y='161' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESARANG PHOTO 4%3C/text%3E%3C/svg%3E" alt="Sarang audience at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SARANG PHOTO 5 -->
+        <div class="photo-wrapper photo-wrapper--5 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='500'%3E%3Crect fill='%23651421' width='400' height='500'/%3E%3Ctext x='200' y='255' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESARANG PHOTO 5%3C/text%3E%3C/svg%3E" alt="Sarang dance performance at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SARANG PHOTO 6 -->
+        <div class="photo-wrapper photo-wrapper--6 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='333'%3E%3Crect fill='%237a1a28' width='500' height='333'/%3E%3Ctext x='250' y='171' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESARANG PHOTO 6%3C/text%3E%3C/svg%3E" alt="Sarang cultural showcase at IITM" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION: SARANG → SPORTS -->
+<div class="section-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style="color:var(--pink);opacity:.08">
+    <path d="M0 25 Q120 8 240 22 Q360 38 480 18 Q600 2 720 28 Q840 48 960 15 Q1080 4 1200 30 Q1320 46 1440 18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M0 30 Q120 14 240 28 Q360 44 480 24 Q600 8 720 34 Q840 52 960 20 Q1080 10 1200 36 Q1320 50 1440 24" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45" stroke-dasharray="3 7"/>
+  </svg>
+</div>
+
+<!-- ============================================
+     ANNUAL SPORTS MEET
+     ============================================ -->
+<section class="festival-section festival-section--sports reveal" id="sports">
+  <div class="fest-streams" aria-hidden="true">
+    <svg class="stream stream--1" style="bottom:5%;right:2%;color:var(--cyan);opacity:.14" viewBox="0 0 200 80"><path class="stream" d="M260 40 Q200 10 140 35 Q80 60 20 20"/></svg>
+    <svg class="stream stream--3" style="top:8%;left:5%;color:var(--blue);opacity:.1" viewBox="0 0 160 60"><path class="stream" d="M-10 30 Q40 8 80 25 Q120 42 170 12"/></svg>
+  </div>
+  <div class="fest-shapes" aria-hidden="true">
+    <div class="shape shape-ring shape-ring--1" style="top:8%;left:12%;width:clamp(50px,6vw,90px);height:clamp(50px,6vw,90px);color:var(--cyan)"></div>
+    <div class="shape shape-dot" style="bottom:15%;left:30%;width:clamp(5px,.6vw,8px);height:clamp(5px,.6vw,8px);color:var(--green)"></div>
+    <div class="shape shape-dot" style="top:40%;right:5%;width:clamp(4px,.5vw,7px);height:clamp(4px,.5vw,7px);color:var(--blue)"></div>
+    <svg class="shape" style="bottom:10%;right:12%;width:clamp(14px,1.6vw,24px);height:clamp(14px,1.6vw,24px);color:var(--green);opacity:.07" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.4 4.8L14.4 6 10 9.8l1 5.2-3-3.2-3 3.2 1-5.2L1.6 6l5-1.2z"/></svg>
+  </div>
+
+  <div class="fest-inner">
+    <div class="fest-grid">
+      <div class="festival-photo-stage">
+        <div class="fan-glow fan-glow--sports reveal-photo"></div>
+        <!-- SPORTS PHOTO 1 -->
+        <div class="photo-wrapper photo-wrapper--1 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='500'%3E%3Crect fill='%23651421' width='300' height='500'/%3E%3Ctext x='150' y='255' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ESPORTS PHOTO 1%3C/text%3E%3C/svg%3E" alt="Annual Sports Meet at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SPORTS PHOTO 2 -->
+        <div class="photo-wrapper photo-wrapper--2 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%237a1a28' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ESPORTS PHOTO 2%3C/text%3E%3C/svg%3E" alt="IITM sports competition" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SPORTS PHOTO 3 -->
+        <div class="photo-wrapper photo-wrapper--3 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%238b1e2d' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ESPORTS PHOTO 3%3C/text%3E%3C/svg%3E" alt="Students at IITM sports event" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SPORTS PHOTO 4 -->
+        <div class="photo-wrapper photo-wrapper--4 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='250'%3E%3Crect fill='%23651421' width='500' height='250'/%3E%3Ctext x='250' y='130' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESPORTS PHOTO 4%3C/text%3E%3C/svg%3E" alt="IITM Annual Sports Meet action" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SPORTS PHOTO 5 -->
+        <div class="photo-wrapper photo-wrapper--5 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect fill='%237a1a28' width='400' height='267'/%3E%3Ctext x='200' y='139' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESPORTS PHOTO 5%3C/text%3E%3C/svg%3E" alt="Athletics at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- SPORTS PHOTO 6 -->
+        <div class="photo-wrapper photo-wrapper--6 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect fill='%238b1e2d' width='400' height='267'/%3E%3Ctext x='200' y='139' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ESPORTS PHOTO 6%3C/text%3E%3C/svg%3E" alt="Team sports at IITM" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+
+      <div class="fest-copy">
+        <p class="eyebrow">Spirit &bull; Teamwork &bull; Excellence</p>
+        <h2>Annual Sports Meet</h2>
+        <div class="heading-line"></div>
+        <p>The Annual Sports Meet brings together IITM's finest athletes in a celebration of sportsmanship, determination and teamwork. The campus fields and courts come alive with competitive spirit as students push their limits across a wide range of sporting disciplines.</p>
+        <p>More than just competition, the Sports Meet embodies the values of discipline, perseverance and camaraderie that define the IITM community. Every event is a showcase of the energy and drive that extends beyond the classroom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION: SPORTS → NAVRATRI -->
+<div class="section-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style="color:var(--blue);opacity:.06">
+    <circle cx="160" cy="16" r="2.5" fill="currentColor"/><circle cx="200" cy="30" r="1.8" fill="currentColor"/><circle cx="240" cy="20" r="2" fill="currentColor"/>
+    <circle cx="360" cy="14" r="1.5" fill="currentColor" opacity=".4"/><circle cx="400" cy="35" r="2.5" fill="currentColor" opacity=".35"/><circle cx="460" cy="18" r="1.2" fill="currentColor"/>
+    <circle cx="560" cy="24" r="2" fill="currentColor" opacity=".25"/><circle cx="610" cy="12" r="1.5" fill="currentColor" opacity=".3"/><circle cx="660" cy="32" r="1.4" fill="currentColor" opacity=".2"/>
+    <circle cx="760" cy="16" r="1.5" fill="currentColor" opacity=".15"/><circle cx="820" cy="28" r="2.5" fill="currentColor" opacity=".12"/><circle cx="880" cy="20" r="1.2" fill="currentColor" opacity=".15"/>
+    <circle cx="1000" cy="14" r="2" fill="currentColor" opacity=".08"/><circle cx="1060" cy="36" r="1.5" fill="currentColor" opacity=".06"/><circle cx="1140" cy="22" r="1.2" fill="currentColor" opacity=".08"/>
+  </svg>
+</div>
+
+<!-- ============================================
+     NAVRATRI FEST
+     ============================================ -->
+<section class="festival-section festival-section--navratri reveal" id="navratri">
+  <div class="fest-streams" aria-hidden="true">
+    <svg class="stream stream--1" style="top:6%;right:2%;color:var(--orange);opacity:.14" viewBox="0 0 200 80"><path class="stream" d="M-10 40 Q50 10 100 35 Q150 60 210 20"/></svg>
+    <svg class="stream stream--2" style="bottom:10%;left:4%;color:var(--purple);opacity:.1" viewBox="0 0 180 70"><path class="stream" d="M220 35 Q160 8 110 30 Q60 52 10 15"/></svg>
+  </div>
+  <div class="fest-shapes" aria-hidden="true">
+    <div class="shape shape-ring shape-ring--1" style="top:6%;right:8%;width:clamp(45px,5.5vw,85px);height:clamp(45px,5.5vw,85px);color:var(--orange)"></div>
+    <div class="shape shape-diamond" style="bottom:10%;left:10%;width:clamp(18px,2.2vw,32px);height:clamp(18px,2.2vw,32px);color:var(--pink)"></div>
+    <div class="shape shape-dot" style="top:35%;left:4%;width:clamp(5px,.6vw,8px);height:clamp(5px,.6vw,8px);color:var(--purple)"></div>
+    <div class="shape shape-dot" style="bottom:20%;right:5%;width:clamp(4px,.5vw,6px);height:clamp(4px,.5vw,6px);color:var(--orange)"></div>
+    <svg class="shape" style="top:12%;left:6%;width:clamp(16px,1.8vw,26px);height:clamp(16px,1.8vw,26px);color:var(--purple);opacity:.07" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0l1.8 6.2L18 7.6l-4.6 4.2L14.6 18 10 14.6 5.4 18l1.2-6.2L2 7.6l6.2-1.4z"/></svg>
+  </div>
+
+  <div class="fest-inner">
+    <div class="fest-grid">
+      <div class="fest-copy">
+        <p class="eyebrow">Rhythm &bull; Culture &bull; Celebration</p>
+        <h2>Navratri Fest</h2>
+        <div class="heading-line"></div>
+        <p>Navratri at IITM transforms the campus into a vibrant celebration of tradition and togetherness. Students gather in a swirl of colour and rhythm, celebrating through traditional dance forms that echo across the grounds late into the night.</p>
+        <p>The festival is a beautiful expression of cultural heritage, where the entire campus community comes together to celebrate the spirit of Navratri through music, dance and festive energy that fills the air with joy and unity.</p>
+      </div>
+
+      <div class="festival-photo-stage">
+        <div class="fan-glow fan-glow--navratri reveal-photo"></div>
+        <!-- NAVRATRI PHOTO 1 -->
+        <div class="photo-wrapper photo-wrapper--1 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='333'%3E%3Crect fill='%238b1e2d' width='500' height='333'/%3E%3Ctext x='250' y='171' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ENAVRATRI PHOTO 1%3C/text%3E%3C/svg%3E" alt="Navratri celebration at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- NAVRATRI PHOTO 2 -->
+        <div class="photo-wrapper photo-wrapper--2 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23651421' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ENAVRATRI PHOTO 2%3C/text%3E%3C/svg%3E" alt="IITM Navratri dance celebration" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- NAVRATRI PHOTO 3 -->
+        <div class="photo-wrapper photo-wrapper--3 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='375'%3E%3Crect fill='%237a1a28' width='300' height='375'/%3E%3Ctext x='150' y='192' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ENAVRATRI PHOTO 3%3C/text%3E%3C/svg%3E" alt="Festive celebrations at IITM Navratri" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- NAVRATRI PHOTO 4 -->
+        <div class="photo-wrapper photo-wrapper--4 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='313'%3E%3Crect fill='%238b1e2d' width='500' height='313'/%3E%3Ctext x='250' y='161' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3ENAVRATRI PHOTO 4%3C/text%3E%3C/svg%3E" alt="Traditional dance at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- NAVRATRI PHOTO 5 -->
+        <div class="photo-wrapper photo-wrapper--5 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23651421' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ENAVRATRI PHOTO 5%3C/text%3E%3C/svg%3E" alt="Dance festivities at IITM Navratri" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- NAVRATRI PHOTO 6 -->
+        <div class="photo-wrapper photo-wrapper--6 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='375'%3E%3Crect fill='%237a1a28' width='300' height='375'/%3E%3Ctext x='150' y='192' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3ENAVRATRI PHOTO 6%3C/text%3E%3C/svg%3E" alt="Navratri cultural performances at IITM" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION: NAVRATRI → DIWALI -->
+<div class="section-divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style="opacity:.07">
+    <defs><linearGradient id="ndg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="50%" stop-color="#F97316"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient></defs>
+    <path d="M0 12 Q120 34 240 16 Q360 2 480 20 Q600 42 720 14 Q840 2 960 24 Q1080 46 1200 16 Q1320 4 1440 22" fill="none" stroke="url(#ndg)" stroke-width="1.2"/>
+    <path d="M0 17 Q120 38 240 20 Q360 6 480 24 Q600 46 720 18 Q840 6 960 28 Q1080 50 1200 20 Q1320 8 1440 26" fill="none" stroke="url(#ndg)" stroke-width=".6" opacity=".35" stroke-dasharray="2 8"/>
+  </svg>
+</div>
+
+<!-- ============================================
+     DIWALI FEST
+     ============================================ -->
+<section class="festival-section festival-section--diwali reveal" id="diwali">
+  <div class="fest-streams" aria-hidden="true">
+    <svg class="stream stream--1" style="bottom:8%;left:3%;color:var(--yellow);opacity:.13" viewBox="0 0 200 80"><path class="stream" d="M260 40 Q200 10 140 35 Q80 60 20 20"/></svg>
+    <svg class="stream stream--2" style="top:6%;right:4%;color:var(--orange);opacity:.1" viewBox="0 0 180 70"><path class="stream" d="M-10 35 Q40 8 90 30 Q140 52 190 14"/></svg>
+  </div>
+  <div class="fest-shapes" aria-hidden="true">
+    <div class="shape shape-circle shape-circle--1" style="top:5%;left:8%;width:clamp(40px,5vw,75px);height:clamp(40px,5vw,75px);color:var(--yellow)"></div>
+    <div class="shape shape-dot" style="bottom:12%;left:35%;width:clamp(6px,.7vw,10px);height:clamp(6px,.7vw,10px);color:var(--orange)"></div>
+    <div class="shape shape-dot" style="top:40%;right:4%;width:clamp(5px,.6vw,8px);height:clamp(5px,.6vw,8px);color:var(--coral)"></div>
+    <svg class="shape" style="bottom:15%;right:10%;width:clamp(14px,1.6vw,24px);height:clamp(14px,1.6vw,24px);color:var(--yellow);opacity:.08" viewBox="0 0 12 12" fill="currentColor"><path d="M6 0l1 3.5L11 4.5 8 7.4l.8 4.1L6 9.5 3.2 11.5l.8-4.1L1 4.5l4-1z"/></svg>
+  </div>
+
+  <div class="fest-inner">
+    <div class="fest-grid">
+      <div class="festival-photo-stage">
+        <div class="fan-glow fan-glow--diwali reveal-photo"></div>
+        <!-- DIWALI PHOTO 1 -->
+        <div class="photo-wrapper photo-wrapper--1 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23651421' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EDIWALI PHOTO 1%3C/text%3E%3C/svg%3E" alt="Diwali celebration at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- DIWALI PHOTO 2 -->
+        <div class="photo-wrapper photo-wrapper--2 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='281'%3E%3Crect fill='%237a1a28' width='500' height='281'/%3E%3Ctext x='250' y='146' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EDIWALI PHOTO 2%3C/text%3E%3C/svg%3E" alt="IITM Diwali festivities" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- DIWALI PHOTO 3 -->
+        <div class="photo-wrapper photo-wrapper--3 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='375'%3E%3Crect fill='%238b1e2d' width='300' height='375'/%3E%3Ctext x='150' y='192' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EDIWALI PHOTO 3%3C/text%3E%3C/svg%3E" alt="Festival of Lights at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- DIWALI PHOTO 4 -->
+        <div class="photo-wrapper photo-wrapper--4 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%23651421' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='14'%3EDIWALI PHOTO 4%3C/text%3E%3C/svg%3E" alt="Diwali celebration at IITM campus" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- DIWALI PHOTO 5 -->
+        <div class="photo-wrapper photo-wrapper--5 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='267'%3E%3Crect fill='%237a1a28' width='400' height='267'/%3E%3Ctext x='200' y='139' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EDIWALI PHOTO 5%3C/text%3E%3C/svg%3E" alt="Diwali night at IITM" loading="lazy" decoding="async"></div>
+        </div>
+        <!-- DIWALI PHOTO 6 -->
+        <div class="photo-wrapper photo-wrapper--6 reveal-photo">
+          <div class="photo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='333'%3E%3Crect fill='%238b1e2d' width='500' height='333'/%3E%3Ctext x='250' y='171' text-anchor='middle' fill='rgba(255,255,255,.3)' font-family='sans-serif' font-size='16'%3EDIWALI PHOTO 6%3C/text%3E%3C/svg%3E" alt="Festival celebrations at IITM" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+
+      <div class="fest-copy">
+        <p class="eyebrow">Light &bull; Joy &bull; Togetherness</p>
+        <h2>Diwali Fest</h2>
+        <div class="heading-line"></div>
+        <p>The Festival of Lights brings a warm glow to IITM as students come together to celebrate Diwali. The campus is illuminated with the spirit of togetherness, as the community gathers to share in the joy of one of India's most beloved festivals.</p>
+        <p>Diwali at IITM is a time when the bonds of campus life shine brightest — a celebration of light, happiness and the shared experiences that make this institution a home away from home for students from across the country.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CLOSING SECTION
+     ============================================ -->
+<section class="festival-section festival-section--closing reveal" id="closing">
+  <div class="closing-decor" aria-hidden="true">
+    <div class="closing-decor-blob closing-decor-blob--1"></div>
+    <div class="closing-decor-blob closing-decor-blob--2"></div>
+    <svg class="art-star" style="top:10%;left:8%;width:clamp(12px,1.4vw,22px);height:clamp(12px,1.4vw,22px);color:var(--gold);opacity:.06" viewBox="0 0 20 20" fill="currentColor"><path d="M10 0l1.8 6.2L18 7.6l-4.6 4.2L14.6 18 10 14.6 5.4 18l1.2-6.2L2 7.6l6.2-1.4z"/></svg>
+    <svg class="art-star" style="bottom:12%;right:10%;width:clamp(10px,1.2vw,18px);height:clamp(10px,1.2vw,18px);color:var(--pink);opacity:.05" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.4 4.8L14.4 6 10 9.8l1 5.2-3-3.2-3 3.2 1-5.2L1.6 6l5-1.2z"/></svg>
+  </div>
+
+  <div class="closing-photos">
+    <!-- CLOSING PHOTO 1 -->
+    <div class="closing-photo closing-photo--1"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='225'%3E%3Crect fill='%237a1a28' width='300' height='225'/%3E%3Ctext x='150' y='118' text-anchor='middle' fill='rgba(255,255,255,.2)' font-family='sans-serif' font-size='12'%3ECLOSING IMG 1%3C/text%3E%3C/svg%3E" alt="IITM campus celebration memories" loading="lazy" decoding="async"></div>
+    <!-- CLOSING PHOTO 2 -->
+    <div class="closing-photo closing-photo--2"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%238b1e2d' width='300' height='300'/%3E%3Ctext x='150' y='155' text-anchor='middle' fill='rgba(255,255,255,.2)' font-family='sans-serif' font-size='12'%3ECLOSING IMG 2%3C/text%3E%3C/svg%3E" alt="IITM Annual Fest memories" loading="lazy" decoding="async"></div>
+    <!-- CLOSING PHOTO 3 -->
+    <div class="closing-photo closing-photo--3"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='293'%3E%3Crect fill='%23651421' width='220' height='293'/%3E%3Ctext x='110' y='151' text-anchor='middle' fill='rgba(255,255,255,.2)' font-family='sans-serif' font-size='10'%3ECLOSING IMG 3%3C/text%3E%3C/svg%3E" alt="IITM student life celebration" loading="lazy" decoding="async"></div>
+    <!-- CLOSING PHOTO 4 -->
+    <div class="closing-photo closing-photo--4"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect fill='%237a1a28' width='300' height='200'/%3E%3Ctext x='150' y='105' text-anchor='middle' fill='rgba(255,255,255,.2)' font-family='sans-serif' font-size='12'%3ECLOSING IMG 4%3C/text%3E%3C/svg%3E" alt="Festival moments at IITM" loading="lazy" decoding="async"></div>
+    <!-- CLOSING PHOTO 5 -->
+    <div class="closing-photo closing-photo--5"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23651421' width='200' height='200'/%3E%3Ctext x='100' y='105' text-anchor='middle' fill='rgba(255,255,255,.2)' font-family='sans-serif' font-size='10'%3ECLOSING IMG 5%3C/text%3E%3C/svg%3E" alt="IITM campus celebration" loading="lazy" decoding="async"></div>
+  </div>
+
+  <div class="closing-inner">
+    <h2>Celebrating the IITM Spirit</h2>
+    <div class="heading-line"></div>
+    <p>Every celebration becomes a memory, bringing together creativity, culture, sportsmanship and the shared spirit of campus life.</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  if (!window.IntersectionObserver) {
+    var sel = '.reveal,.reveal-photo,.hero-photo,.hero-heading,.hero-sub,.hero-sub2,.hero-line,.heading-line,.eyebrow,.fan-glow';
+    document.querySelectorAll(sel).forEach(function(e){ e.classList.add('show'); });
+    return;
+  }
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.reveal,.reveal-photo,.hero-heading,.hero-line,.hero-sub,.hero-sub2,.heading-line,.eyebrow,.fan-glow').forEach(function(el){ obs.observe(el); });
+  document.querySelectorAll('.hero .hero-photo').forEach(function(el){ obs.observe(el); });
+
+  // stagger photo reveals per stage
+  var pObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        setTimeout(function(){ el.classList.add('show'); }, parseInt(el.getAttribute('data-delay')) || 0);
+        pObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.festival-photo-stage').forEach(function(stage){
+    var wrappers = stage.querySelectorAll('.photo-wrapper');
+    wrappers.forEach(function(w, i){
+      w.setAttribute('data-delay', i * 60);
+      pObs.observe(w);
+    });
+  });
+
+  // Festival section activation via IntersectionObserver
+  var festivalSections = Array.prototype.slice.call(document.querySelectorAll('#sarang,#sports,#navratri,#diwali'));
+  var activeFestival = null;
+
+  function activateFestival(section) {
+    if (section === activeFestival) return;
+    festivalSections.forEach(function(s){ s.classList.toggle('is-active', s === section); });
+    activeFestival = section;
+  }
+
+  var visibility = {};
+
+  var festivalObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      visibility[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0;
+    });
+
+    var best = null;
+    var bestScore = 0;
+    var vpCenter = window.innerHeight / 2;
+
+    festivalSections.forEach(function(section){
+      var rect = section.getBoundingClientRect();
+      var sectionCenter = rect.top + rect.height / 2;
+      var centerDist = Math.abs(sectionCenter - vpCenter);
+      var centerScore = Math.max(0, 1 - centerDist / (window.innerHeight * 0.9));
+      var ratio = visibility[section.id] || 0;
+      var score = ratio * 0.6 + centerScore * 0.4;
+
+      if (ratio > 0.1 && score > bestScore) {
+        bestScore = score;
+        best = section;
+      }
+    });
+
+    if (best) {
+      if (activeFestival && best !== activeFestival) {
+        var prevScore = activeFestival._lastScore || 0;
+        if (bestScore > prevScore + 0.06) {
+          activateFestival(best);
+        }
+      } else {
+        activateFestival(best);
+      }
+      best._lastScore = bestScore;
+    }
+  }, {
+    threshold: [0, 0.12, 0.2, 0.35, 0.5, 0.65, 0.8],
+    rootMargin: '-10% 0px -18% 0px'
+  });
+
+  festivalSections.forEach(function(s){ festivalObserver.observe(s); });
+
+  // Initial activation if section already visible on load
+  function checkInitialActivation() {
+    if (activeFestival) return;
+    var vpCenter = window.innerHeight / 2;
+    var best = null;
+    var bestScore = 0;
+    festivalSections.forEach(function(section){
+      var rect = section.getBoundingClientRect();
+      var sectionCenter = rect.top + rect.height / 2;
+      var centerDist = Math.abs(sectionCenter - vpCenter);
+      var centerScore = Math.max(0, 1 - centerDist / (window.innerHeight * 0.85));
+      if (centerScore > 0.15 && centerScore > bestScore) {
+        bestScore = centerScore;
+        best = section;
+      }
+    });
+    if (best) activateFestival(best);
+  }
+  setTimeout(checkInitialActivation, 120);
+  window.addEventListener('load', checkInitialActivation);
+
+  // Wix height reporting
+  if (window.parent && window.parent !== window) {
+    var report = function(){
+      try {
+        var el = document.querySelector('.page-shell');
+        var h = Math.ceil(Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight,
+          el ? el.getBoundingClientRect().bottom + 2 : 0
+        ));
+        window.parent.postMessage({ type: 'iitm-annual-fest-height', height: h }, '*');
+      } catch(e){}
+    };
+    if (window.ResizeObserver) { new ResizeObserver(function(){ report(); }).observe(document.documentElement); }
+    window.addEventListener('load', report);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(report); }
+    setTimeout(report, 700);
+  }
+})();
+</script>
+</body>
+</html>

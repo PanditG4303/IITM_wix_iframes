@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#ffffff;
+overflow:hidden;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.marquee{
+width:100%;
+overflow:hidden;
+padding:15px 0;
+}
+
+.track{
+display:flex;
+gap:28px;
+width:max-content;
+animation:scroll 45s linear infinite;
+}
+
+@keyframes scroll{
+0%{
+transform:translateX(0%);
+}
+100%{
+transform:translateX(-50%);
+}
+}
+
+.card{
+width:360px;
+height:360px;
+flex-shrink:0;
+
+display:flex;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+border:1px solid #e5e5e5;
+
+box-shadow:
+0 8px 18px rgba(0,0,0,.08),
+0 18px 40px rgba(0,0,0,.12);
+}
+
+.left{
+width:58%;
+background:#fafafa;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding:12px;
+
+border-right:1px solid #ececec;
+}
+
+.logoWrap{
+display:flex;
+align-items:flex-start;
+gap:8px;
+width:100%;
+}
+
+.logo{
+width:72px;
+height:auto;
+flex-shrink:0;
+}
+
+.collegeBlock{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+flex:1;
+min-width:0;
+}
+
+.iitm{
+font-size:34px;
+font-weight:900;
+line-height:1;
+color:#f34f1d;
+letter-spacing:.5px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.collegeSmall{
+font-size:10px;
+font-weight:600;
+color:#333;
+margin-top:3px;
+line-height:1.2;
+word-break:break-word;
+}
+
+.congrats{
+font-family:"Brush Script MT",cursive;
+font-size:26px;
+line-height:1.2;
+margin-top:12px;
+color:#222;
+text-align:center;
+}
+
+.text{
+font-size:13px;
+text-align:center;
+line-height:1.5;
+margin-top:10px;
+padding:0 6px;
+color:#444;
+}
+
+.companyLogo{
+max-width:120px;
+max-height:55px;
+margin-top:auto;
+margin-bottom:15px;
+object-fit:contain;
+}
+
+.right{
+width:42%;
+
+background:linear-gradient(
+180deg,
+#ff7248 0%,
+#f34f1d 100%
+);
+
+color:#fff;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.heading{
+font-size:16px;
+font-weight:700;
+margin-top:14px;
+}
+
+.photo{
+width:130px;
+height:170px;
+
+object-fit:cover;
+
+margin-top:18px;
+
+border-radius:16px;
+
+border:4px solid rgba(255,255,255,.18);
+
+box-shadow:
+0 10px 20px rgba(0,0,0,.25);
+}
+
+.name{
+font-size:19px;
+font-weight:700;
+text-align:center;
+margin-top:12px;
+padding:0 8px;
+}
+
+.course{
+font-size:16px;
+font-weight:600;
+margin-top:3px;
+}
+
+.batch{
+font-size:13px;
+margin-top:3px;
+opacity:.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+<div class="track" id="track"></div>
+</div>
+
+<script>
+
+/* =========================================
+   EDIT ONLY THIS SECTION
+========================================= */
+
+const IITM_LOGO =
+"https://static.wixstatic.com/media/ee3217_6f9a952bb201441d8f7ce1bf9559a012~mv2.png";
+
+const students = [
+
+{
+name:"Ankur Maurya",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_d444a4b44e894f22b59d569c82b67fea~mv2.png"
+},
+{
+name:"Rajat Beer",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_a36e72e18e7f4015a2254e2037a738d1~mv2.png"
+},
+{
+name:"Hardik Sharma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_568ebd38a15b41fcbd92565067540770~mv2.png"
+},
+{
+name:"Vanshika Makol",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_99c7f1dcbdcd4fd2961e17df370f6140~mv2.png"
+},
+
+{
+name:"P. Aniket",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://media.licdn.com/dms/image/v2/C4D16AQFbaO-eDrU8UA/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1657884932263?e=2147483647&v=beta&t=t30QjT-PW0HYprYflpGOIYjdqtj7_M1Wcx1peQ9oti8",
+photo:"https://static.wixstatic.com/media/ab471d_db9e6b2393df49d4b73d34a1e6957048~mv2.png"
+},
+{
+name:"Madhur gupta",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_37d160772c954e20be76f5c3bd52051c~mv2.png"
+},
+{
+name:"Rishav thakur",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_750a71b9389845d2abdb3dbaeb22a9b7~mv2.png"
+},
+{
+name:"Shashank Kumar",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_aa58d2a951ec459ea71d729a033b88ba~mv2.png"
+},
+{
+name:"Aman Sharma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_aaae5bd6ff2c4a6eac2e5bd7078e277b~mv2.png"
+},
+{
+name:"Yashwarndhan",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_92dabd30a0b841d1a06059e21a3987ca~mv2.png"
+},
+{
+name:"Ashutosh Kumar",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_6c69af64b909403b8fd85015d6da0757~mv2.png"
+},
+{
+name:"Sandeep",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_e94ec7959ae948cf9aac7e444a92472e~mv2.png"
+},
+{
+name:"Nilaya Nadini",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_c7e1d0b74d0c459aba85f40fe857df6b~mv2.png"
+},
+{
+name:"Shivam Upadhyay",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_5a320f82e6ee4111861ade05fa142182~mv2.png"
+},
+
+{
+name:"Kirtab",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_b09bfff097084ebf89a3424d717e9cda~mv2.png"
+},
+{
+name:"Chirag Gujral",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_9cb791803a4f4239beba385ae1b2d5f6~mv2.png"
+},
+{
+name:"Riya Sharma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_f4f11f93dcef477288410c01c8a09ec1~mv2.png"
+},
+{
+name:"Navya Jain",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRArNUMthoWo7LXBl29lyMPRz9_6GHkNIt8AQ&s",
+photo:"https://static.wixstatic.com/media/ab471d_5de95a7b2a5042eb944542d74f9d8b19~mv2.png"
+},
+{
+name:"Sahil Gupta",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://atithi.org/img/atithi-logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_62c3cda0a0db4ae1ade88b91fdf52137~mv2.png"
+},
+{
+name:"Kashish Jain",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://minditworks.com/wordpress/wp-content/uploads/2022/12/logo-black-new.png",
+photo:"https://static.wixstatic.com/media/ab471d_4b8bd3c35789420487112e1df0a24e8f~mv2.png"
+},
+{
+name:"Abhishek Vishwakarma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_085f2968c4d942528764cf2641b3e95a~mv2.png"
+},
+{
+name:"Ansh Jain",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_7069c8f80ddc419a98d7f2dbb26bf966~mv2.png"
+},
+{
+name:"Chhavi BHatia",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_78720d37ac9840219dd25e4cc848aec9~mv2.png"
+},
+{
+name:"Gurpreet maan",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_260d041d5d6348119f76c64409cb800e~mv2.png"
+},
+{
+name:"Dipanshu Bisht",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_131aede30a3d4535b664b41b20fd4080~mv2.png"
+},
+{
+name:"Tarun Yadav",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://vijaybhoomi.edu.in/wp-content/uploads/2024/01/TuringMinds_byline_BlueRed.png",
+photo:"https://static.wixstatic.com/media/ab471d_f355b72d1996495f8295040ec8be37a0~mv2.png"
+},
+{
+name:"Khushbu Jha",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_7539f1a6c3e249fba53dcf92da74b26d~mv2.png"
+},
+{
+name:"Mugdha",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://www.clipartmax.com/png/middle/434-4346858_home-msl-group.png",
+photo:"https://static.wixstatic.com/media/ab471d_c60bd17bf481432f8be9d3d9997aa048~mv2.png"
+},
+{
+name:"Jayant Sharma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://vijaybhoomi.edu.in/wp-content/uploads/2024/01/TuringMinds_byline_BlueRed.png",
+photo:"https://static.wixstatic.com/media/ab471d_44d6af9c33a842f091401764ff0444bc~mv2.png"
+},
+{
+name:"Urvi Sharma",
+course:"B.Tech",
+batch:"2021-2025",
+companyLogo:"https://vijaybhoomi.edu.in/wp-content/uploads/2024/01/TuringMinds_byline_BlueRed.png",
+photo:"https://static.wixstatic.com/media/ab471d_4a8c35e2edd7483b9a09e74d741b0800~mv2.png"
+}
+
+];
+
+/* =========================================
+   DO NOT EDIT BELOW
+========================================= */
+
+function createCard(student){
+
+return `
+<div class="card">
+
+<div class="left">
+
+<div class="logoWrap">
+
+<img
+class="logo"
+src="${IITM_LOGO}"
+alt="IITM Logo"
+>
+
+<div class="collegeBlock">
+
+<div class="iitm">
+IITM
+</div>
+
+<div class="collegeSmall">
+College of Engineering
+</div>
+
+</div>
+
+</div>
+
+<div class="congrats">
+Congratulations!
+</div>
+
+<div class="text">
+We are pleased to announce the successful placement of our student.
+</div>
+
+<img
+class="companyLogo"
+src="${student.companyLogo}"
+alt="Company Logo"
+>
+
+</div>
+
+<div class="right">
+
+<div class="heading">
+Placement Cell
+</div>
+
+<img
+class="photo"
+src="${student.photo}"
+alt="${student.name}"
+>
+
+<div class="name">
+${student.name}
+</div>
+
+<div class="course">
+${student.course}
+</div>
+
+<div class="batch">
+${student.batch}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+const track=document.getElementById("track");
+
+track.innerHTML=
+students.map(createCard).join("")
++
+students.map(createCard).join("");
+
+</script>
+
+</body>
+</html>

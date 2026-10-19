@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freshers 2K25 - IITM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{
+margin:0;padding:0;width:100%;height:auto;
+overflow-x:hidden;overflow-y:visible;
+font-family:'Poppins',sans-serif;
+background:#FFFDFB;
+color:#2D2D2D;
+-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ===== PAGE WRAPPER ===== */
+#page-wrapper{position:relative;overflow:hidden;width:100%}
+
+/* ===== BACKGROUND LAYER ===== */
+.bg-layer{
+position:absolute;inset:0;z-index:0;pointer-events:none;
+overflow:hidden;
+background:
+radial-gradient(ellipse 80% 60% at 10% 20%, rgba(112,200,248,.18) 0%,transparent 60%),
+radial-gradient(ellipse 70% 50% at 90% 30%, rgba(255,158,138,.15) 0%,transparent 55%),
+radial-gradient(ellipse 60% 70% at 50% 80%, rgba(201,184,255,.15) 0%,transparent 50%),
+radial-gradient(ellipse 50% 40% at 20% 70%, rgba(156,229,203,.12) 0%,transparent 50%),
+radial-gradient(ellipse 60% 50% at 80% 60%, rgba(255,214,90,.1) 0%,transparent 50%),
+repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(123,35,49,.02) 40px,rgba(123,35,49,.02) 41px)
+}
+.bg-layer::before{
+content:'';position:absolute;inset:0;
+background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237B2331' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+opacity:.4
+}
+
+/* ===== ANIMATED FLOATING ELEMENTS ===== */
+.floating-elements{position:absolute;inset:0;z-index:0;pointer-events:none}
+.float-item{
+position:absolute;
+animation:floatAnim var(--dur,20s) ease-in-out infinite;
+animation-delay:var(--delay,0s);
+opacity:.3
+}
+@keyframes floatAnim{
+0%,100%{transform:translateY(0) rotate(0deg) scale(1)}
+25%{transform:translateY(-20px) rotate(3deg) scale(1.02)}
+50%{transform:translateY(-8px) rotate(-2deg) scale(.98)}
+75%{transform:translateY(-25px) rotate(2deg) scale(1.01)}
+}
+.twinkle{
+animation:twinkleAnim var(--dur,4s) ease-in-out infinite
+}
+@keyframes twinkleAnim{
+0%,100%{opacity:.2;transform:scale(.8)}
+50%{opacity:.6;transform:scale(1.2)}
+}
+.drift{
+animation:driftAnim var(--dur,30s) linear infinite
+}
+@keyframes driftAnim{
+0%{transform:translateX(-100px) rotate(0deg);opacity:0}
+10%{opacity:.3}
+90%{opacity:.3}
+100%{transform:translateX(calc(100vw + 100px)) rotate(720deg);opacity:0}
+}
+.confetti-piece{
+position:absolute;width:8px;height:8px;border-radius:2px;
+animation:confettiFall var(--dur,12s) linear infinite;
+animation-delay:var(--delay,0s);
+opacity:.5
+}
+@keyframes confettiFall{
+0%{transform:translateY(-20px) rotate(0deg);opacity:0}
+10%{opacity:.5}
+90%{opacity:.5}
+100%{transform:translateY(100vh) rotate(1080deg);opacity:0}
+}
+
+/* ===== TAPE ===== */
+.tape{
+position:absolute;
+width:60px;height:18px;
+background:rgba(255,214,90,.35);
+border:1px solid rgba(255,214,90,.5);
+border-radius:2px;
+transform:rotate(var(--rot,-5deg));
+z-index:2;
+backdrop-filter:blur(2px)
+}
+.tape::after{
+content:'';position:absolute;top:50%;left:50%;
+transform:translate(-50%,-50%);
+width:80%;height:4px;
+background:rgba(255,214,90,.2);
+border-radius:99px
+}
+
+/* ===== PIN ===== */
+.pin{
+position:absolute;
+width:12px;height:12px;
+background:radial-gradient(circle at 35% 35%, #FF9E8A, #E06060);
+border-radius:50%;
+box-shadow:0 1px 3px rgba(0,0,0,.2);
+z-index:3;
+top:var(--pin-y,0);left:var(--pin-x,0)
+}
+.pin::after{
+content:'';position:absolute;top:-4px;left:50%;
+transform:translateX(-50%);
+width:2px;height:6px;
+background:#999;
+border-radius:1px
+}
+
+/* ===== STRING ===== */
+.string{
+position:absolute;
+height:2px;
+background:linear-gradient(90deg,transparent,rgba(180,180,180,.5),transparent);
+z-index:0;
+transform-origin:left center
+}
+
+/* ===== POLAROID ===== */
+.polaroid{
+background:#FFFDFB;
+padding:12px 12px 40px 12px;
+box-shadow:
+0 4px 16px rgba(0,0,0,.08),
+0 1px 4px rgba(0,0,0,.06);
+border-radius:2px;
+position:relative;
+transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease
+}
+.polaroid:hover{
+transform:translateY(-8px) rotate(var(--hover-rot,0deg)) scale(1.02);
+box-shadow:0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.08)
+}
+.polaroid .polaroid-img{
+width:100%;height:auto;display:block;
+border-radius:1px;
+background:#F5F0EB
+}
+.polaroid .polaroid-caption{
+position:absolute;bottom:8px;left:0;right:0;
+text-align:center;
+font-family:'Caveat',cursive;
+font-size:14px;color:#666;
+line-height:1.2
+}
+.polaroid-tape{position:absolute;z-index:3}
+
+/* ===== PAPER NOTE ===== */
+.paper-note{
+background:#FFFDFB;
+padding:20px;
+position:relative;
+box-shadow:
+0 2px 8px rgba(0,0,0,.06),
+inset 0 0 0 1px rgba(0,0,0,.04);
+border-radius:2px
+}
+.paper-note::before{
+content:'';position:absolute;top:0;left:0;right:0;
+height:4px;
+background:linear-gradient(90deg,#7B2331,#D4AF37,#70C8F8,#9CE5CB,#FF9E8A)
+}
+
+/* ===== CONTENT WRAPPER ===== */
+.content{position:relative;z-index:1}
+
+/* ===== SECTION ===== */
+section{padding:34px 24px;position:relative}
+.section-inner{max-width:1200px;margin:0 auto;position:relative}
+
+/* ===== TYPOGRAPHY ===== */
+.handwritten{font-family:'Caveat',cursive}
+.accent{font-family:'Playfair Display',serif}
+.heading-xl{
+font-family:'Poppins',sans-serif;
+font-weight:900;
+font-size:clamp(3rem,8vw,8rem);
+line-height:.9;
+letter-spacing:-.03em
+}
+.heading-lg{
+font-family:'Poppins',sans-serif;
+font-weight:800;
+font-size:clamp(2rem,5vw,4.5rem);
+line-height:1.05;
+letter-spacing:-.02em
+}
+.heading-md{
+font-family:'Poppins',sans-serif;
+font-weight:700;
+font-size:clamp(1.25rem,2.5vw,2rem);
+line-height:1.2
+}
+
+.gradient-text{
+background:linear-gradient(135deg,#7B2331 0%,#D4AF37 40%,#70C8F8 70%,#FF9E8A 100%);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text
+}
+
+/* ===== BUTTON ===== */
+.btn{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 36px;
+font-family:'Poppins',sans-serif;
+font-weight:700;font-size:15px;
+border:none;border-radius:99px;
+cursor:pointer;
+transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease;
+position:relative;overflow:hidden
+}
+.btn-primary{
+background:linear-gradient(135deg,#7B2331,#9B2D3F);
+color:#FFFDFB;
+box-shadow:0 4px 20px rgba(123,35,49,.3)
+}
+.btn-primary:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 8px 32px rgba(123,35,49,.4)
+}
+.btn-outline{
+background:transparent;
+color:#7B2331;
+border:2px solid #7B2331;
+box-shadow:0 2px 12px rgba(123,35,49,.08)
+}
+.btn-outline:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 8px 24px rgba(123,35,49,.12);
+background:rgba(123,35,49,.03)
+}
+
+/* ===== HERO ===== */
+#hero{
+min-height:clamp(620px,70vw,850px);
+display:flex;align-items:center;
+padding:100px 24px 44px;
+position:relative;
+overflow:hidden
+}
+.hero-inner{
+max-width:1400px;margin:0 auto;
+display:grid;grid-template-columns:1fr 1fr;
+gap:60px;align-items:center
+}
+.hero-left{position:relative}
+.hero-tag{
+display:inline-flex;align-items:center;gap:8px;
+background:rgba(255,214,90,.2);
+border:1px solid rgba(255,214,90,.4);
+padding:8px 18px;border-radius:99px;
+font-size:13px;font-weight:600;color:#7B2331;
+margin-bottom:24px;
+font-family:'Caveat',cursive;font-size:16px
+}
+.hero-subtitle{
+font-family:'Playfair Display',serif;
+font-style:italic;
+font-size:clamp(1.1rem,2vw,1.5rem);
+color:#666;margin-top:16px
+}
+.hero-details{
+display:flex;flex-wrap:wrap;gap:24px;
+margin-top:32px;
+font-size:14px;color:#555
+}
+.hero-detail-item{
+display:flex;align-items:center;gap:8px;
+background:rgba(255,253,251,.8);
+padding:8px 16px;border-radius:99px;
+border:1px solid rgba(0,0,0,.05);
+backdrop-filter:blur(8px)
+}
+.hero-detail-item svg{width:18px;height:18px;flex-shrink:0}
+.hero-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+
+/* Hero Right - Collage */
+.hero-right{
+position:relative;
+height:500px;
+display:flex;align-items:center;justify-content:center
+}
+.collage-circle{
+position:relative;
+width:420px;height:420px;
+border-radius:50%;
+display:flex;align-items:center;justify-content:center
+}
+.collage-item{
+position:absolute;
+width:180px;
+transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease;
+cursor:pointer;
+z-index:1
+}
+.collage-item:nth-child(1){
+top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);
+z-index:4
+}
+.collage-item:nth-child(2){
+bottom:20px;right:-10px;transform:rotate(4deg);
+z-index:3
+}
+.collage-item:nth-child(3){
+bottom:0;left:0;transform:rotate(-5deg);
+z-index:2
+}
+.collage-item:nth-child(4){
+top:50%;left:50%;transform:translate(-50%,-50%) rotate(2deg) scale(1.15);
+z-index:5;
+width:200px
+}
+.collage-item:hover{
+transform:var(--hover-t) scale(1.05);
+z-index:10
+}
+.collage-string{
+position:absolute;
+width:2px;
+background:linear-gradient(to bottom,rgba(180,180,180,.4),rgba(180,180,180,.1));
+z-index:0
+}
+.collage-pin{
+position:absolute;
+width:10px;height:10px;
+background:radial-gradient(circle at 35% 35%, #FF9E8A, #E06060);
+border-radius:50%;
+box-shadow:0 1px 3px rgba(0,0,0,.2);
+z-index:6
+}
+
+/* ===== GALLERY ===== */
+#gallery{
+background:linear-gradient(180deg,transparent,rgba(112,200,248,.05),rgba(156,229,203,.05),transparent);
+position:relative
+}
+.gallery-pinboard{
+position:relative;
+margin-top:20px;
+padding:36px 20px
+}
+.gallery-pinboard::before{
+content:'';position:absolute;inset:0;
+background:
+repeating-linear-gradient(0deg,transparent,transparent 30px,rgba(180,180,180,.05) 30px,rgba(180,180,180,.05) 31px),
+repeating-linear-gradient(90deg,transparent,transparent 30px,rgba(180,180,180,.05) 30px,rgba(180,180,180,.05) 31px);
+border-radius:4px;
+border:2px solid rgba(180,180,180,.08)
+}
+.gallery-masonry{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:28px;
+position:relative;
+grid-auto-flow:dense
+}
+.gallery-item{
+position:relative;
+break-inside:avoid;
+transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s ease
+}
+.gallery-item:hover{transform:translateY(-6px) scale(1.01);z-index:5}
+.gallery-item .polaroid{
+padding:8px 8px 32px 8px
+}
+.gallery-item .polaroid .polaroid-img{
+width:100%;height:auto;display:block;
+aspect-ratio:auto;
+object-fit:cover;
+border-radius:1px
+}
+.gallery-item.portrait .polaroid .polaroid-img{aspect-ratio:3/4}
+.gallery-item.landscape .polaroid .polaroid-img{aspect-ratio:4/3}
+.gallery-item.square .polaroid .polaroid-img{aspect-ratio:1/1}
+.gallery-string-line{
+position:absolute;
+top:10px;left:50%;
+width:2px;
+background:linear-gradient(to bottom,rgba(180,180,180,.4),transparent);
+z-index:0
+}
+.gallery-pin{
+position:absolute;
+top:-6px;left:50%;transform:translateX(-50%);
+width:10px;height:10px;
+background:radial-gradient(circle at 35% 35%, #FF9E8A, #E06060);
+border-radius:50%;
+box-shadow:0 1px 3px rgba(0,0,0,.2);
+z-index:3
+}
+
+/* ===== ABOUT ===== */
+#about{
+background:rgba(255,253,251,.6);
+text-align:center
+}
+.about-card{
+max-width:680px;margin:0 auto;
+background:#FFFDFB;
+padding:28px 32px;
+position:relative;
+box-shadow:
+0 2px 12px rgba(0,0,0,.05),
+inset 0 0 0 1px rgba(0,0,0,.03);
+border-radius:2px;
+text-align:left
+}
+.about-card::before{
+content:'';position:absolute;top:0;left:0;right:0;
+height:4px;
+background:linear-gradient(90deg,#7B2331,#D4AF37,#70C8F8,#9CE5CB,#FF9E8A)
+}
+.about-card .tape{top:-9px;left:30px;width:40px;height:12px;transform:rotate(-4deg)}
+.about-card .pin{top:-6px;right:30px;position:absolute}
+.about-scroll{
+max-height:200px;overflow-y:auto;padding-right:12px;
+font-size:14px;color:#555;line-height:1.8
+}
+.about-scroll p{margin-bottom:14px}
+.about-scroll p:last-child{margin-bottom:0}
+.about-scroll::-webkit-scrollbar{width:4px}
+.about-scroll::-webkit-scrollbar-track{background:rgba(255,214,90,.08);border-radius:99px}
+.about-scroll::-webkit-scrollbar-thumb{background:rgba(255,214,90,.35);border-radius:99px}
+.about-scroll::-webkit-scrollbar-thumb:hover{background:rgba(255,214,90,.5)}
+
+/* ===== MR & MS FRESHERS POLAROID ===== */
+#mr-ms-freshers{
+background:linear-gradient(180deg,transparent,rgba(255,214,90,.05),transparent);
+text-align:center
+}
+.winners-board{
+display:flex;flex-direction:row;justify-content:center;align-items:flex-start;
+gap:32px;margin-top:20px;
+position:relative;flex-wrap:wrap
+}
+.winner-polaroid{
+max-width:340px;width:100%;
+transform:rotate(-2deg);
+position:relative;
+z-index:2
+}
+.winner-polaroid .polaroid{
+padding:0;overflow:hidden
+}
+.winner-polaroid .polaroid-img{
+width:100%;aspect-ratio:3/4;
+background:linear-gradient(135deg,#F5F0EB,#E8E0D8);
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;
+border-radius:1px
+}
+.winner-polaroid .polaroid-img .ph-icon{font-size:64px;opacity:.3}
+.winner-polaroid .polaroid-foot{
+padding:14px 14px 18px;
+text-align:center;
+background:#FFFDFB
+}
+.winner-polaroid .polaroid-foot .polaroid-title{
+font-family:'Poppins',sans-serif;
+font-weight:800;
+font-size:16px;
+color:#2D2D2D;
+line-height:1.2
+}
+.winner-polaroid .polaroid-foot .polaroid-sub{
+font-family:'Caveat',cursive;
+font-size:13px;
+color:#7B2331;
+margin-top:2px
+}
+.winner-polaroid .tape{top:6px;left:50%;transform:translateX(-50%) rotate(-2deg)}
+.winner-polaroid .pin{top:-5px;left:50%;transform:translateX(-50%);position:absolute}
+
+/* Runner Up Polaroid */
+.runner-polaroid{
+max-width:340px;width:100%;
+transform:rotate(2deg);
+position:relative;
+z-index:1
+}
+.runner-polaroid .polaroid{
+padding:0;overflow:hidden
+}
+.runner-polaroid .polaroid-img{
+width:100%;aspect-ratio:4/3;
+background:linear-gradient(135deg,#F5F0EB,#E8E0D8);
+display:flex;align-items:center;justify-content:center;
+overflow:hidden;
+border-radius:1px
+}
+.runner-polaroid .polaroid-img .ph-icon{font-size:64px;opacity:.3}
+.runner-polaroid .polaroid-foot{
+padding:14px 14px 18px;
+text-align:center;
+background:#FFFDFB
+}
+.runner-polaroid .polaroid-foot .polaroid-title{
+font-family:'Poppins',sans-serif;
+font-weight:800;
+font-size:16px;
+color:#2D2D2D;
+line-height:1.2
+}
+.runner-polaroid .polaroid-foot .polaroid-sub{
+font-family:'Caveat',cursive;
+font-size:13px;
+color:#7B2331;
+margin-top:2px
+}
+.runner-polaroid .tape{top:6px;right:16px;transform:rotate(4deg);width:36px;height:10px}
+.runner-label-tag{
+display:inline-block;
+background:linear-gradient(135deg,#D4AF37,#F5D76E);
+color:#7B2331;
+font-size:10px;font-weight:700;
+padding:3px 12px;border-radius:99px;
+font-family:'Poppins',sans-serif
+}
+
+/* ===== QUOTE ===== */
+#quote-section{
+text-align:center;
+padding:72px 24px;
+position:relative;
+overflow:hidden
+}
+.quote-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.quote-mark{
+font-family:'Playfair Display',serif;
+font-size:80px;color:#7B2331;
+opacity:.15;line-height:.6;display:block
+}
+.quote-text{
+font-family:'Caveat',cursive;
+font-size:clamp(1.8rem,4vw,3rem);
+color:#2D2D2D;
+line-height:1.3;
+margin:12px 0
+}
+.quote-author{
+font-size:14px;color:#888;margin-top:16px
+}
+.quote-bg-elements{position:absolute;inset:0;pointer-events:none}
+.quote-bg-elements .float-item{opacity:.12}
+
+/* ===== END SECTION ===== */
+#end-section{
+display:flex;align-items:center;justify-content:center;
+text-align:center;
+position:relative;
+overflow:hidden;
+padding:72px 24px;
+background:linear-gradient(180deg,transparent,rgba(123,35,49,.03),rgba(212,175,55,.03))
+}
+.end-content{position:relative;z-index:1;max-width:600px}
+.end-content .heading-lg{font-size:clamp(2rem,5vw,5rem)}
+.end-subtitle{
+font-family:'Caveat',cursive;
+font-size:clamp(1.2rem,2.5vw,1.8rem);
+color:#666;margin-top:8px
+}
+.end-balloons{position:absolute;inset:0;pointer-events:none}
+.end-balloons .float-item{opacity:.25}
+
+/* ===== SECTION LABEL ===== */
+.section-label{
+display:inline-flex;align-items:center;gap:8px;
+font-family:'Caveat',cursive;
+font-size:18px;color:#7B2331;
+margin-bottom:6px
+}
+.section-label::before,.section-label::after{
+content:'';display:block;
+width:24px;height:1px;
+background:rgba(123,35,49,.2)
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+.collage-circle{width:360px;height:360px}
+.collage-item{width:150px}
+.collage-item:nth-child(4){width:170px}
+}
+@media(max-width:992px){
+#hero{min-height:auto;padding:120px 24px 44px}
+.hero-inner{grid-template-columns:1fr;gap:40px}
+.hero-right{height:380px}
+.collage-circle{width:320px;height:320px}
+.collage-item{width:140px}
+.collage-item:nth-child(4){width:160px}
+.gallery-masonry{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.winner-polaroid{max-width:300px}
+.runner-polaroid{max-width:300px}
+}
+@media(max-width:768px){
+section{padding:26px 16px}
+.collage-circle{width:280px;height:280px}
+.collage-item{width:120px}
+.collage-item:nth-child(4){width:140px}
+.gallery-masonry{grid-template-columns:repeat(2,1fr);gap:18px}
+#quote-section{padding:52px 16px}
+#end-section{padding:52px 16px}
+.winner-polaroid{max-width:260px}
+.runner-polaroid{max-width:260px}
+.about-card{padding:22px 20px}
+}
+@media(max-width:576px){
+section{padding:20px 16px}
+.collage-circle{width:220px;height:220px}
+.collage-item{width:100px}
+.collage-item:nth-child(4){width:120px}
+.gallery-masonry{grid-template-columns:1fr 1fr;gap:14px}
+.hero-details{gap:12px}
+.hero-actions{flex-direction:column}
+.btn{width:100%;justify-content:center}
+.winner-polaroid{max-width:280px}
+.runner-polaroid{max-width:280px}
+.winners-board{flex-direction:column;align-items:center}
+.about-scroll{max-height:160px}
+}
+@media(max-width:360px){
+.collage-circle{width:180px;height:180px}
+.collage-item{width:80px}
+.collage-item:nth-child(4){width:100px}
+.gallery-masonry{grid-template-columns:1fr;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<div id="page-wrapper">
+
+<!-- ===== BACKGROUND LAYER ===== -->
+<div class="bg-layer"></div>
+
+<!-- ===== FLOATING ELEMENTS ===== -->
+<div class="floating-elements" id="floatingElements"></div>
+
+<!-- ===== CONTENT ===== -->
+<div class="content">
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+<div class="hero-inner">
+<div class="hero-left">
+<div class="hero-tag">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7B2331" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+Freshers 2K25
+</div>
+<h1 class="heading-xl gradient-text">Welcome To<br>The IITM Family</h1>
+<p class="hero-subtitle">"Every friendship starts with a hello."</p>
+<div class="hero-details">
+<div class="hero-detail-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="#7B2331" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+August, 2025
+</div>
+<div class="hero-detail-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="#7B2331" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+Hyatt Centric Janakpuri
+</div>
+</div>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+Explore Memories
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+</button>
+<button class="btn btn-outline" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+About Freshers
+</button>
+</div>
+</div>
+<div class="hero-right" id="heroCollage"></div>
+</div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+<div class="section-inner">
+<div class="section-label">Gallery</div>
+<h2 class="heading-lg" style="margin-bottom:4px">Memory <span class="gradient-text">Pinboard</span></h2>
+<p class="handwritten" style="font-size:18px;color:#888;margin-bottom:4px">Polaroid moments from Freshers' 2K25</p>
+<div class="gallery-pinboard" id="galleryPinboard">
+<div class="gallery-masonry" id="galleryMasonry"></div>
+</div>
+</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+<div class="section-inner">
+<div class="section-label">About</div>
+<h2 class="heading-lg" style="margin-bottom:4px">About <span class="gradient-text">Freshers</span></h2>
+<p class="handwritten" style="font-size:18px;color:#888;margin-bottom:20px">"Every journey begins with a new beginning."</p>
+<div class="about-card paper-note" style="padding-top:32px;padding-bottom:24px">
+<div class="tape"></div>
+<div class="pin"></div>
+<div class="about-scroll">
+<p>The Freshers' Party 2025 marked the beginning of an exciting journey for the newest members of the IITM family. Hosted at Hyatt Centric, Janakpuri, the event brought together students, faculty, and distinguished guests to celebrate new friendships, confidence, and talent.</p>
+<p>Students enthusiastically participated in ramp walks, performances, music, dance, and interactive activities before concluding the celebration with DJ, lunch, and unforgettable memories that welcomed them into college life.</p>
+<p>With each smile and every handshake, Freshers' 2K25 set the stage for a vibrant journey ahead at IITM College of Engineering.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== MR & MS FRESHERS ===== -->
+<section id="mr-ms-freshers">
+<div class="section-inner">
+<div class="section-label">Winners</div>
+<h2 class="heading-lg" style="margin-bottom:4px">Mr & Ms <span class="gradient-text">Freshers</span></h2>
+<p class="handwritten" style="font-size:18px;color:#888;margin-bottom:4px">Crowned at Freshers' 2K25</p>
+<div class="winners-board" id="winnersBoard"></div>
+</div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section id="quote-section">
+<div class="quote-content">
+<span class="quote-mark">"</span>
+<div class="quote-text" id="quoteText">The first friends become the best memories.</div>
+<div class="quote-author handwritten" id="quoteAuthor">— Freshers' 2K25</div>
+</div>
+<div class="quote-bg-elements" id="quoteBg"></div>
+</section>
+
+<!-- ===== END ===== -->
+<section id="end-section">
+<div class="end-content">
+<h2 class="heading-lg gradient-text">Welcome To<br>IITM Family</h2>
+<p class="end-subtitle">See You On Campus</p>
+</div>
+<div class="end-balloons" id="endBalloons"></div>
+</section>
+
+</div>
+
+</div>
+
+<script>
+/* ===================================================================
+   JSON DATA — Edit everything here
+   =================================================================== */
+
+// Freshers description text
+const aboutText = [
+"The Freshers' Party 2025 marked the beginning of an exciting journey for the newest members of the IITM family. Hosted at Hyatt Centric, Janakpuri, the event brought together students, faculty, and distinguished guests to celebrate new friendships, confidence, and talent.",
+"Students enthusiastically participated in ramp walks, performances, music, dance, and interactive activities before concluding the celebration with DJ, lunch, and unforgettable memories that welcomed them into college life.",
+"With each smile and every handshake, Freshers' 2K25 set the stage for a vibrant journey ahead at IITM College of Engineering."
+]
+
+// Mr & Ms Freshers
+const mrMsFreshers = {
+image:"https://static.wixstatic.com/media/ab471d_5b65de43fb92407da4f3ab910d2c79e0~mv2.jpg",
+caption:"MR & MS FRESHERS 2025",
+subtitle:"Winners",
+names:"Arjun Mehta & Ananya Sharma",
+course:"B.Tech Computer Science & B.Tech Information Technology",
+quote:"This is just the beginning of an incredible journey."
+}
+
+// Runner Ups
+const runnerUps = {
+image:"https://static.wixstatic.com/media/ab471d_a6a753c17f224db584f618511e2c51d1~mv2.jpg",
+caption:"RUNNER UPS",
+subtitle:"Finalists",
+names:"Rohit Verma & Neha Gupta",
+course:"B.Tech Computer Science & B.Tech Electronics"
+}
+
+// Gallery
+const galleryData = [
+{ image:"https://static.wixstatic.com/media/ab471d_8c0f1dbd1bf74e54ad1a7c56fc46c31b~mv2.jpg", caption:"Ramp Walk Glamour", orientation:"portrait" },
+{ image:"https://static.wixstatic.com/media/ab471d_5d5d64bb9fa948cf9dc87c8834acf4d9~mv2.jpg", caption:"DJ Night Energy", orientation:"landscape" },
+{ image:"https://static.wixstatic.com/media/ab471d_f8abf9f2a4194ac18d4c0f6394cf22b6~mv2.jpg", caption:"Freshers' Group Photo", orientation:"square" },
+{ image:"https://static.wixstatic.com/media/ab471d_8c0f1dbd1bf74e54ad1a7c56fc46c31b~mv2.jpg", caption:"Talent Showcase", orientation:"portrait" },
+{ image:"https://static.wixstatic.com/media/ab471d_02667d4a5cc8438e8e43d9787b3e514e~mv2.jpg", caption:"Dance Floor Moments", orientation:"landscape" },
+{ image:"https://static.wixstatic.com/media/ab471d_ab00f340ef974ddc9bcb63474b36ab91~mv2.jpg", caption:"Campus First Day", orientation:"square" },
+{ image:"https://static.wixstatic.com/media/ab471d_16d05944f0834516808f6ed4050039b5~mv2.jpg", caption:"Friendly Conversations", orientation:"portrait" },
+{ image:"https://static.wixstatic.com/media/ab471d_22b50739d0324833a6156d4cda0d1003~mv2.jpg", caption:"Stage Performance", orientation:"landscape" },
+{ image:"https://static.wixstatic.com/media/ab471d_9dafe7d32200462da0335366975b2ca5~mv2.jpg", caption:"Celebration Time", orientation:"square" },
+{ image:"https://static.wixstatic.com/media/ab471d_fc47e8fe0c2b4cf695b0526cd96d91fa~mv2.jpg", caption:"New Friends", orientation:"portrait" },
+{ image:"https://static.wixstatic.com/media/ab471d_2c20ee78aac748afa3e56000df9f55a8~mv2.jpg", caption:"Music & Vibes", orientation:"landscape" },
+{ image:"https://static.wixstatic.com/media/ab471d_69196ba437ed4aa9aabcf091f85ff236~mv2.jpg", caption:"Freshers' Mascot", orientation:"square" }
+]
+
+// Quote
+const quoteData = {
+text:"The first friends become the best memories.",
+author:"— Freshers' 2K25"
+}
+
+/* ===================================================================
+   END JSON — Do not edit below unless necessary
+   =================================================================== */
+
+// ===== BUILD HERO COLLAGE =====
+function buildHeroCollage(){
+const el=document.getElementById('heroCollage');
+if(!el)return;
+const items=[
+{img:'https://static.wixstatic.com/media/ab471d_a2735ac3dae949c4a26fc25ff6a391dd~mv2.jpg',rot:-3,label:'Capture'},
+{img:'https://static.wixstatic.com/media/ab471d_5b65de43fb92407da4f3ab910d2c79e0~mv2.jpg',rot:4,label:'Music'},
+{img:'https://static.wixstatic.com/media/ab471d_0408e5de6a544e8784dfc2d75c5d32d3~mv2.jpg',rot:-5,label:'Coffee'},
+{img:'https://static.wixstatic.com/media/ab471d_bfdb03a2020a4ca089fd05543519d3f5~mv2.jpg',rot:2,label:'Notebook'}
+];
+let html='<div class="collage-circle">';
+items.forEach((item,i)=>{
+html+='<div class="collage-item polaroid" style="transform:rotate('+item.rot+'deg);--hover-rot:'+(item.rot*0.5)+'deg">';
+html+='<div class="polaroid-img" style="width:100%;aspect-ratio:1;background:linear-gradient(135deg,#F5F0EB,#E8E0D8);display:flex;align-items:center;justify-content:center;border-radius:1px;overflow:hidden">';
+if(item.img){
+html+='<img src="'+item.img+'" alt="" style="width:100%;height:100%;object-fit:cover">';
+}else{
+html+='<span style="font-size:48px;opacity:.3">📸</span>';
+}
+html+='</div>';
+html+='<div class="polaroid-caption handwritten" style="bottom:6px;font-size:13px">'+item.label+'</div>';
+html+='</div>';
+});
+html+='</div>';
+el.innerHTML=html;
+}
+
+// ===== BUILD ABOUT =====
+function buildAbout(){
+const el=document.querySelector('.about-scroll');
+if(!el)return;
+el.innerHTML=aboutText.map(p=>`<p>${p}</p>`).join('');
+}
+
+// ===== BUILD WINNERS BOARD =====
+function buildWinnersBoard(){
+const board=document.getElementById('winnersBoard');
+if(!board)return;
+board.innerHTML=`
+<div class="winner-polaroid">
+<div class="polaroid">
+<div class="tape"></div>
+<div class="pin"></div>
+<div class="polaroid-img">
+${mrMsFreshers.image ? `<img src="${mrMsFreshers.image}" alt="${mrMsFreshers.caption}" style="width:100%;height:100%;object-fit:cover">` : `<span class="ph-icon">👑</span>`}
+</div>
+<div class="polaroid-foot">
+<div class="polaroid-title">${mrMsFreshers.caption}</div>
+<div class="polaroid-sub">${mrMsFreshers.subtitle}</div>
+</div>
+</div>
+</div>
+<div class="runner-polaroid">
+<div class="polaroid">
+<div class="tape"></div>
+<div class="polaroid-img">
+${runnerUps.image ? `<img src="${runnerUps.image}" alt="${runnerUps.caption}" style="width:100%;height:100%;object-fit:cover">` : `<span class="ph-icon">🏆</span>`}
+</div>
+<div class="polaroid-foot">
+<div class="polaroid-title">${runnerUps.caption}</div>
+<div class="polaroid-sub"><span class="runner-label-tag">${runnerUps.subtitle}</span></div>
+</div>
+</div>
+</div>
+`;
+}
+
+// ===== BUILD GALLERY =====
+function buildGallery(){
+const grid=document.getElementById('galleryMasonry');
+if(!grid)return;
+grid.innerHTML=galleryData.map((item,i)=>{
+const rots=[-2,3,-1,4,-3,2,-4,1,-2,3,-1,2];
+const rot=rots[i%rots.length];
+const phIcons=['📸','🎵','🎭','🎤','💃','🎪','📷','🎶','🕺','🎉','🎊','🎀'];
+return `
+<div class="gallery-item ${item.orientation||'square'}" style="transform:rotate(${rot}deg);--hover-rot:${rot*0.3}deg">
+<div class="polaroid" style="padding:8px 8px 28px 8px">
+<div class="gallery-pin"></div>
+<div class="polaroid-img" style="background:linear-gradient(135deg,#F5F0EB,#E8E0D8);display:flex;align-items:center;justify-content:center;overflow:hidden">
+${item.image ? `<img src="${item.image}" alt="${item.caption}" class="polaroid-img">` : `<span style="font-size:32px;opacity:.3">${phIcons[i%phIcons.length]}</span>`}
+</div>
+<div class="polaroid-caption handwritten" style="bottom:4px;font-size:12px">${item.caption}</div>
+</div>
+</div>
+`;
+}).join('');
+}
+
+// ===== BUILD QUOTE =====
+function buildQuote(){
+const t=document.getElementById('quoteText');
+const a=document.getElementById('quoteAuthor');
+if(t)t.textContent=quoteData.text;
+if(a)a.textContent=quoteData.author;
+}
+
+// ===== FLOATING BACKGROUND ELEMENTS =====
+function buildFloatingElements(){
+const container=document.getElementById('floatingElements');
+if(!container)return;
+const shapes=[
+{icon:'⭐',count:8},{icon:'✨',count:6},{icon:'🌸',count:4},{icon:'📚',count:3},
+{icon:'🎒',count:2},{icon:'☕',count:3},{icon:'🎧',count:2},{icon:'💬',count:4},
+{icon:'✂️',count:2},{icon:'📎',count:3},{icon:'✈️',count:2},{icon:'🎈',count:5}
+];
+let html='';
+shapes.forEach(s=>{
+for(let i=0;i<s.count;i++){
+const x=Math.random()*100;
+const y=Math.random()*100;
+const dur=15+Math.random()*25;
+const delay=Math.random()*20;
+html+=`<span class="float-item" style="left:${x}%;top:${y}%;font-size:${16+Math.random()*24}px;--dur:${dur}s;--delay:${delay}s">${s.icon}</span>`;
+}
+});
+container.innerHTML=html;
+
+// Confetti
+const confetti=document.getElementById('floatingElements');
+for(let i=0;i<30;i++){
+const el=document.createElement('div');
+el.className='confetti-piece';
+const colors=['#70C8F8','#FF9E8A','#FFD65A','#C9B8FF','#9CE5CB','#FFC98F','#FFD8E8','#D4AF37'];
+el.style.left=Math.random()*100+'%';
+el.style.background=colors[i%colors.length];
+el.style.width=(5+Math.random()*6)+'px';
+el.style.height=(5+Math.random()*6)+'px';
+el.style.borderRadius=Math.random()>.5?'50%':'2px';
+el.style.setProperty('--dur',(8+Math.random()*12)+'s');
+el.style.setProperty('--delay',(Math.random()*15)+'s');
+confetti.appendChild(el);
+}
+}
+
+// ===== QUOTE BG =====
+function buildQuoteBg(){
+const el=document.getElementById('quoteBg');
+if(!el)return;
+const items=['🌸','⭐','✨','📎','🎈','✿','☕','📖','🎵'];
+el.innerHTML=items.map((icon,i)=>{
+const x=10+Math.random()*80;
+const y=10+Math.random()*80;
+const dur=12+Math.random()*20;
+const delay=Math.random()*15;
+return `<span class="float-item" style="left:${x}%;top:${y}%;font-size:${20+Math.random()*30}px;--dur:${dur}s;--delay:${delay}s;opacity:.15">${icon}</span>`;
+}).join('');
+}
+
+// ===== END BALLOONS =====
+function buildEndBalloons(){
+const el=document.getElementById('endBalloons');
+if(!el)return;
+const icons=['🎈','🎈','🎈','🎈','🎈','⭐','✨','🌸','🎉','🎊'];
+el.innerHTML=icons.map((icon,i)=>{
+const x=5+Math.random()*90;
+const dur=10+Math.random()*20;
+const delay=Math.random()*15;
+const size=24+Math.random()*40;
+return `<span class="float-item" style="left:${x}%;bottom:-40px;font-size:${size}px;--dur:${dur}s;--delay:${delay}s">${icon}</span>`;
+}).join('');
+}
+
+// ===== WIX IFRAME AUTO HEIGHT =====
+(function(){
+'use strict';
+function getDocHeight(){
+var b=document.body,d=document.documentElement;
+return Math.max(b.scrollHeight,b.offsetHeight,d.scrollHeight,d.offsetHeight,d.clientHeight);
+}
+var sending=null;
+function sendHeight(){
+if(sending)return;
+sending=requestAnimationFrame(function(){
+var h=getDocHeight();
+if(window.parent!==window)window.parent.postMessage({type:"iframe-height",height:h},"*");
+sending=null;
+});
+}
+sendHeight();
+document.addEventListener('DOMContentLoaded',sendHeight);
+window.addEventListener('load',sendHeight);
+window.addEventListener('resize',sendHeight);
+if(window.ResizeObserver){var ro=new ResizeObserver(sendHeight);ro.observe(document.body);}
+if(window.MutationObserver){var mo=new MutationObserver(sendHeight);mo.observe(document.body,{childList:true,subtree:true,attributes:true});}
+document.addEventListener('load',function(e){if(e.target.tagName==='IMG')sendHeight();},true);
+if(document.fonts)document.fonts.ready.then(sendHeight);
+setTimeout(sendHeight,1000);
+setTimeout(sendHeight,2000);
+})();
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded',()=>{
+buildHeroCollage();
+buildGallery();
+buildAbout();
+buildWinnersBoard();
+buildQuote();
+buildFloatingElements();
+buildQuoteBg();
+buildEndBalloons();
+});
+</script>
+
+</body>
+</html>

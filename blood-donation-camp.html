@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donation Camp | IITM College of Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:auto;overflow-x:hidden}
+    body{font-family:'Poppins',sans-serif;background:#faf7f7;color:#2d2d2d;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+
+    :root{--maroon:#7b2d35;--dark:#651421;--gold:#d4a94f;--bg:#faf7f7;--white:#ffffff;--shadow:0 4px 24px rgba(0,0,0,0.07);--radius:14px;--transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94)}
+
+    .container{width:100%;margin:0 auto;padding:0 24px}
+    @media(max-width:768px){.container{padding:0 16px}}
+    @media(max-width:390px){.container{padding:0 12px}}
+    @media(max-width:320px){.container{padding:0 8px}}
+
+    .section{padding:28px 0}
+    @media(max-width:768px){.section{padding:22px 0}}
+    @media(max-width:480px){.section{padding:18px 0}}
+
+    .section-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;position:relative}
+    .section-tag::after{content:'';display:block;width:32px;height:2px;background:var(--gold);margin-top:4px}
+    .section-title{font-size:24px;font-weight:700;color:var(--dark);line-height:1.2;margin-bottom:8px}
+    @media(max-width:768px){.section-title{font-size:20px}}
+    @media(max-width:480px){.section-title{font-size:18px}}
+    @media(max-width:360px){.section-title{font-size:16px}}
+    .section-subtitle{font-size:13px;color:#666;max-width:560px;font-weight:400;line-height:1.6}
+    @media(max-width:768px){.section-subtitle{font-size:12px}}
+    .section-header{margin-bottom:22px}
+    @media(max-width:768px){.section-header{margin-bottom:16px}}
+    .section-header.centered{text-align:center}
+    .section-header.centered .section-tag::after{margin:4px auto 0}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:0.08s}
+    .reveal-delay-2{transition-delay:0.16s}
+    .reveal-delay-3{transition-delay:0.24s}
+    .reveal-delay-4{transition-delay:0.32s}
+
+    /* Year Selector */
+    .year-selector-wrap{background:linear-gradient(135deg,var(--dark),var(--maroon));padding:10px 0;position:relative;z-index:10;box-shadow:0 3px 16px rgba(101,20,33,0.25)}
+    .year-selector{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+    .year-selector-label{color:rgba(255,255,255,0.65);font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-right:8px}
+    .year-btn{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);padding:5px 14px;border-radius:6px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;transition:var(--transition)}
+    .year-btn:hover{background:rgba(255,255,255,0.2);color:#fff}
+    .year-btn.active{background:var(--gold);border-color:var(--gold);color:var(--dark)}
+    @media(max-width:480px){.year-selector-label{display:none}.year-btn{padding:4px 12px;font-size:12px}}
+
+    /* Hero */
+    .hero{position:relative;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,var(--dark) 0%,var(--maroon) 50%,#5a1a24 100%);padding:28px 0 24px}
+    @media(max-width:768px){.hero{padding:22px 0 18px}}
+    @media(max-width:480px){.hero{padding:18px 0 14px}}
+    .hero-bg{position:absolute;inset:0;opacity:0.1;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:1}
+    .hero-overlay{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,169,79,0.06) 0%,transparent 60%);z-index:2}
+    .hero-particles{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}
+    .hero-particle{position:absolute;width:3px;height:3px;background:rgba(212,169,79,0.2);border-radius:50%;animation:floatParticle 7s infinite}
+    @keyframes floatParticle{0%,100%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}50%{transform:translateY(-60px) scale(1.4);opacity:0.25}90%{opacity:0}}
+    .hero .container{position:relative;z-index:3;width:100%}
+    .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+    @media(max-width:992px){.hero-content{grid-template-columns:1fr;gap:16px;text-align:center}}
+    .hero-text{max-width:500px}
+    @media(max-width:992px){.hero-text{margin:0 auto}}
+    .hero-year-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(212,169,79,0.12);border:1px solid rgba(212,169,79,0.25);padding:4px 14px;border-radius:50px;font-size:11px;font-weight:600;color:var(--gold);margin-bottom:12px}
+    .hero-year-badge svg{width:12px;height:12px}
+    .hero-title{font-size:26px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:8px;letter-spacing:-0.3px}
+    @media(max-width:992px){.hero-title{font-size:22px}}
+    @media(max-width:480px){.hero-title{font-size:19px}}
+    @media(max-width:360px){.hero-title{font-size:17px}}
+    .hero-title span{color:var(--gold)}
+    .hero-desc{font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:16px;line-height:1.6;max-width:440px}
+    @media(max-width:992px){.hero-desc{margin:0 auto 16px}}
+    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+    @media(max-width:992px){.hero-actions{justify-content:center}}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 22px;border-radius:50px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:var(--transition);border:none}
+    .btn-primary{background:var(--gold);color:var(--dark);box-shadow:0 5px 18px rgba(212,169,79,0.3)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,169,79,0.4)}
+    .btn-outline{background:transparent;border:2px solid rgba(255,255,255,0.25);color:#fff}
+    .btn-outline:hover{background:rgba(255,255,255,0.08);border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+    .hero-visual{display:flex;justify-content:center;align-items:center}
+    .hero-illustration{width:100%;max-width:240px;height:auto}
+    @media(max-width:992px){.hero-illustration{max-width:160px}}
+    @media(max-width:480px){.hero-illustration{max-width:140px}}
+    .hero-illustration svg{width:100%;height:auto}
+
+    /* About */
+    .about-section{background:var(--bg)}
+    .about-card{background:var(--white);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid rgba(123,45,53,0.05)}
+    @media(max-width:768px){.about-card{padding:18px}}
+    .about-content{font-size:13px;color:#555;line-height:1.8;max-width:900px}
+    .about-content p{margin-bottom:10px}
+    .about-content p:last-child{margin-bottom:0}
+    .about-highlight{color:var(--maroon);font-weight:600}
+
+    /* Event Info */
+    .event-section{background:var(--white)}
+    .event-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    @media(max-width:992px){.event-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.event-grid{grid-template-columns:1fr}}
+    .event-card{background:linear-gradient(135deg,var(--bg),#fff);border-radius:var(--radius);padding:18px 16px;border:1px solid rgba(123,45,53,0.05);transition:var(--transition);display:flex;flex-direction:column;min-height:110px}
+    .event-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .event-icon{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--maroon),var(--dark));border-radius:7px;margin-bottom:10px;flex-shrink:0}
+    .event-icon svg{width:16px;height:16px;color:#fff}
+    .event-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:3px}
+    .event-value{font-size:13px;font-weight:600;color:var(--dark);line-height:1.35}
+    @media(max-width:480px){.event-value{font-size:12px}}
+
+    /* Gallery */
+    .gallery-section{background:var(--bg)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    @media(max-width:992px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
+    .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow);aspect-ratio:4/3}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+    .gallery-item:hover img{transform:scale(1.05)}
+    .gallery-item .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(101,20,33,0.75),transparent 50%);opacity:0;transition:opacity 0.35s ease;display:flex;align-items:flex-end;padding:14px}
+    .gallery-item:hover .gallery-overlay{opacity:1}
+    .gallery-item .gallery-caption{color:#fff;font-size:12px;font-weight:500;transform:translateY(8px);transition:transform 0.35s ease}
+    .gallery-item:hover .gallery-caption{transform:translateY(0)}
+    .gallery-empty{grid-column:1/-1;text-align:center;padding:32px 20px;color:#aaa;font-size:13px}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.92);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:all 0.35s ease;padding:20px}
+    .lightbox.active{opacity:1;visibility:visible}
+    .lightbox img{max-width:90%;max-height:82%;border-radius:6px;box-shadow:0 16px 48px rgba(0,0,0,0.5);transform:scale(0.92);transition:transform 0.35s ease}
+    .lightbox.active img{transform:scale(1)}
+    .lightbox-close{position:absolute;top:14px;right:18px;width:34px;height:34px;background:rgba(255,255,255,0.08);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+    .lightbox-close:hover{background:rgba(255,255,255,0.18)}
+    .lightbox-counter{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-size:12px;font-weight:500}
+    .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(255,255,255,0.08);border:none;border-radius:50%;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+    .lightbox-nav:hover{background:rgba(255,255,255,0.18)}
+    .lightbox-prev{left:12px}
+    .lightbox-next{right:12px}
+    @media(max-width:768px){.lightbox{padding:10px}.lightbox-nav{width:30px;height:30px;font-size:13px}.lightbox-prev{left:4px}.lightbox-next{right:4px}}
+
+    /* No data */
+    .no-data{text-align:center;padding:32px 20px;color:#aaa;font-size:13px}
+
+    /* ===== WIX IFRAME COMPAT ===== */
+    #yearSelectorWrap,#heroSection,#aboutSection,#eventSection,#gallerySection{width:100%}
+
+    /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media(max-width:1920px){.container{max-width:1320px}}
+    @media(max-width:1600px){.container{max-width:1200px}}
+    @media(max-width:1440px){.container{max-width:1140px}}
+    @media(max-width:1366px){.container{max-width:1100px}}
+    @media(max-width:1280px){.container{max-width:1040px}}
+    @media(max-width:1024px){.container{max-width:960px;padding:0 20px}}
+    @media(max-width:992px){.container{max-width:100%;padding:0 18px}.section-title{font-size:21px}.hero-title{font-size:22px}}
+    @media(max-width:768px){.container{padding:0 16px}.section-title{font-size:20px}.hero-title{font-size:20px}.hero{padding:22px 0 18px}}
+    @media(max-width:576px){.container{padding:0 14px}.section-title{font-size:19px}}
+    @media(max-width:480px){.container{padding:0 12px}.section-title{font-size:18px}.hero-title{font-size:19px}.hero{padding:18px 0 14px}}
+    @media(max-width:390px){.container{padding:0 10px}.section-title{font-size:17px}.hero-title{font-size:17px}}
+    @media(max-width:360px){.container{padding:0 8px}.section-title{font-size:16px}.hero-title{font-size:16px}}
+    @media(max-width:320px){.container{padding:0 6px}.section-title{font-size:15px}.hero-title{font-size:15px}.btn{padding:7px 14px;font-size:11px}}
+  </style>
+</head>
+<body>
+
+  <div id="yearSelectorWrap" class="year-selector-wrap"></div>
+  <section id="heroSection" class="hero"></section>
+  <section id="aboutSection" class="section about-section"></section>
+  <section id="eventSection" class="section event-section"></section>
+  <section id="gallerySection" class="section gallery-section"></section>
+
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <script>
+    const bloodDonationData = {
+      "2025": {
+        hero: {
+          // HERO BACKGROUND IMAGE URL — TO CHANGE: Replace URL below (1920x1080px recommended)
+          bgImage: "https://images.unsplash.com/photo-1615461066841-6116e61060f4?w=1920&q=80",
+          title: "Annual Blood Donation Camp",
+          subtitle: "Donate Blood \u2022 Save Lives",
+          description: "Join us in our mission to save lives. Every drop counts. Be a hero.",
+          year: "2025"
+        },
+        overview: {
+          // TO EDIT: Change the about text below
+          content: "<p>The <span class='about-highlight'>Annual Blood Donation Camp</span> is organised by the National Service Scheme (NSS) unit of IITM College of Engineering in association with the <span class='about-highlight'>Indian Red Cross Society</span> and <span class='about-highlight'>Government General Hospital</span>. This camp aims to create awareness about the importance of blood donation and to collect blood for patients in need.</p><p>Over the years, our camp has witnessed tremendous participation from students, faculty, and staff. Each unit of blood donated can save up to <span class='about-highlight'>three lives</span>. Join us in this noble cause and be a part of something bigger than yourself.</p>"
+        },
+        statistics: {
+          // STATISTICS — preserved for future use
+          unitsCollected: { value: 284, suffix: "+" },
+          registeredDonors: { value: 412, suffix: "+" },
+          firstTimeDonors: { value: 156, suffix: "+" },
+          volunteers: { value: 85, suffix: "" },
+          partnerHospital: { value: 3, suffix: "" },
+          yearsRunning: { value: 12, suffix: "" }
+        },
+        eventInfo: {
+          date: "15th March 2025",
+          time: "08:00 AM \u2014 04:30 PM",
+          venue: "Main Auditorium, IITM College of Engineering",
+          organizer: "NSS Unit, IITM College of Engineering",
+          partnerHospital: "Government General Hospital, Chennai",
+          chiefGuest: "Dr. S. Sundararajan",
+          theme: "Be a Hero \u2014 Donate Blood"
+        },
+        timeline: [
+          // TIMELINE — preserved for future use
+          { time: "08:00 AM", title: "Registration", description: "Check-in at the registration desk and complete the medical screening form." },
+          { time: "08:30 AM", title: "Inauguration", description: "Welcome address by the Principal and Chief Guest." },
+          { time: "09:00 AM", title: "Medical Screening", description: "Basic health check-up including haemoglobin test, blood pressure, and weight." },
+          { time: "09:30 AM", title: "Blood Donation", description: "Donation process begins. Refreshments served post-donation." },
+          { time: "01:00 PM", title: "Lunch Break", description: "Lunch provided for all donors and volunteers." },
+          { time: "02:00 PM", title: "Session 2", description: "Afternoon donation session continues." },
+          { time: "04:00 PM", title: "Certificate Distribution", description: "Distribution of certificates and refreshments." },
+          { time: "04:30 PM", title: "Valedictory", description: "Vote of thanks and closing remarks." }
+        ],
+        // ============================================================
+        // GALLERY — TO ADD: Paste URL + caption  |  TO REMOVE: Delete object  |  TO CHANGE: Replace URL
+        // ============================================================
+        gallery: [
+          { url: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80", caption: "Inauguration Ceremony", width: 800, height: 600 },
+          { url: "https://images.unsplash.com/photo-1615461066841-6116e61060f4?w=800&q=80", caption: "Donors Registering", width: 800, height: 600 },
+          { url: "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80", caption: "Blood Donation in Progress", width: 800, height: 600 },
+          { url: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80", caption: "Medical Screening", width: 800, height: 900 }
+        ],
+        committee: [
+          // COMMITTEE — preserved for future use
+          { name: "Dr. R. Karthikeyan", designation: "NSS Programme Officer", department: "Department of Mechanical Engineering", phone: "+91 98765 43210", email: "rkarthik@iitm.ac.in", photo: "" },
+          { name: "Dr. M. Lakshmi", designation: "Associate Professor", department: "Department of Computer Science", phone: "+91 98765 43211", email: "mlakshmi@iitm.ac.in", photo: "" },
+          { name: "Prof. S. Venkatesh", designation: "Assistant Professor", department: "Department of Electrical Engineering", phone: "+91 98765 43212", email: "venkatesh@iitm.ac.in", photo: "" },
+          { name: "Dr. P. Anandhi", designation: "Medical Officer", department: "Health Centre", phone: "+91 98765 43213", email: "anandhi@iitm.ac.in", photo: "" }
+        ],
+        chiefGuests: [
+          // CHIEF GUESTS — preserved for future use
+          { name: "Dr. S. Sundararajan", designation: "Chief Medical Officer, Government General Hospital", speech: "", photo: "" },
+          { name: "Prof. V. Nandakumar", designation: "Principal, IITM College of Engineering", speech: "", photo: "" }
+        ],
+        certificates: [
+          // CERTIFICATES — preserved for future use
+          { title: "Certificate of Appreciation - Donors", preview: "", downloadUrl: "#" },
+          { title: "Certificate of Appreciation - Volunteers", preview: "", downloadUrl: "#" },
+          { title: "Certificate of Recognition - Staff", preview: "", downloadUrl: "#" },
+          { title: "Participation Certificate", preview: "", downloadUrl: "#" }
+        ],
+        mediaCoverage: [
+          // MEDIA COVERAGE — preserved for future use
+          { type: "Newspaper", title: "The Hindu", description: "", image: "", url: "#" },
+          { type: "Website", title: "IITM News", description: "", image: "", url: "#" },
+          { type: "Newspaper", title: "Times of India", description: "", image: "", url: "#" }
+        ],
+        downloads: [
+          // DOWNLOADS — preserved for future use
+          { title: "Annual Report 2025", url: "#" },
+          { title: "Event Brochure", url: "#" },
+          { title: "Permission Letter", url: "#" },
+          { title: "Donor Certificate List", url: "#" }
+        ],
+        faq: [
+          // FAQ — preserved for future use
+          { question: "Who can donate blood?", answer: "Anyone between 18 and 65 years of age, weighing at least 50 kg, and in good health can donate blood." },
+          { question: "Is blood donation safe?", answer: "Yes, blood donation is completely safe." },
+          { question: "How much blood is taken?", answer: "Approximately 350-450 ml." },
+          { question: "How long does the process take?", answer: "The entire process takes about 45 minutes." },
+          { question: "What should I eat before donating?", answer: "Have a light meal and drink plenty of water." },
+          { question: "Can I donate if I have a tattoo?", answer: "Yes, you can donate blood 6 months after getting a tattoo." }
+        ],
+        contact: {
+          // TO EDIT: Change contact details below
+          facultyCoordinator: { name: "Dr. R. Karthikeyan", phone: "+91 98765 43210", email: "rkarthik@iitm.ac.in" },
+          studentCoordinator: { name: "Ms. Priya Sharma", phone: "+91 98765 43220", email: "priya.sharma@iitm.ac.in" }
+        }
+      }
+    };
+
+    const icons = {
+      blood: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 7 8 7 13a5 5 0 0010 0c0-5-5-11-5-11z"/><circle cx="5" cy="19" r="1"/><circle cx="19" cy="19" r="1"/><path d="M8 19h8"/></svg>',
+      calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+      clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+      mapPin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+      building: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><line x1="9" y1="18" x2="9" y2="18.01"/><line x1="15" y1="18" x2="15" y2="18.01"/></svg>',
+      phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>',
+      mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+      image: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'
+    };
+
+    let currentYear = "2025";
+    let galleryData = [];
+    let lightboxIndex = 0;
+
+    function buildPage(year) {
+      const data = bloodDonationData[year];
+      if (!data) return;
+      currentYear = year;
+      galleryData = (data.gallery || []).slice(0, 4);
+      buildYearSelector();
+      buildHero(data);
+      buildAbout(data);
+      buildEventInfo(data);
+      buildGallery(data);
+      setTimeout(initReveal, 100);
+    }
+
+    function buildYearSelector() {
+      const wrap = document.getElementById('yearSelectorWrap');
+      const years = Object.keys(bloodDonationData);
+      if (years.length <= 1) { wrap.innerHTML = ''; return; }
+      let html = '<div class="container"><div class="year-selector"><span class="year-selector-label">Select Year</span>';
+      years.forEach(y => {
+        html += `<button class="year-btn${y === currentYear ? ' active' : ''}" data-year="${y}">${y}</button>`;
+      });
+      html += '</div></div>';
+      wrap.innerHTML = html;
+      wrap.querySelectorAll('.year-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (this.dataset.year === currentYear) return;
+          buildPage(this.dataset.year);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    }
+
+    // ============================================================
+    // HERO — TO CHANGE: Edit bgImage, title, subtitle, description in JSON
+    // ============================================================
+
+    function buildHero(data) {
+      const section = document.getElementById('heroSection');
+      const h = data.hero;
+      if (!h) { section.innerHTML = ''; return; }
+      const bgStyle = h.bgImage ? `background-image:url("${h.bgImage}")` : '';
+
+      let particles = '';
+      for (let i = 0; i < 6; i++) {
+        const x = Math.random() * 100, y = Math.random() * 100;
+        particles += `<div class="hero-particle" style="left:${x}%;top:${y}%;animation-delay:${(Math.random()*7).toFixed(1)}s;width:${(2+Math.random()*2).toFixed(1)}px;height:${(2+Math.random()*2).toFixed(1)}px"></div>`;
+      }
+
+      section.innerHTML = `
+        <div class="hero-bg" style="${bgStyle}"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles">${particles}</div>
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <div class="hero-year-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 7 8 7 13a5 5 0 0010 0c0-5-5-11-5-11z"/><circle cx="5" cy="19" r="1"/><circle cx="19" cy="19" r="1"/><path d="M8 19h8"/></svg>
+                ${h.year}
+              </div>
+              <h1 class="hero-title">${h.title}<br><span>${(h.subtitle||'').split('\u2022').join('</span> <span>\u2022</span> <span>')}</span></h1>
+              <p class="hero-desc">${h.description||''}</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="document.getElementById('gallerySection').scrollIntoView({behavior:'smooth'})">${icons.image} View Gallery</button>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="hero-illustration">
+                <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="500" height="400" rx="20" fill="url(#heroGrad)"/>
+                  <defs><linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="rgba(212,169,79,0.12)"/><stop offset="100%" stop-color="rgba(212,169,79,0.02)"/></linearGradient></defs>
+                  <path d="M250 60c-30 0-55 25-55 55 0 40 55 100 55 100s55-60 55-100c0-30-25-55-55-55z" fill="rgba(212,169,79,0.15)" stroke="rgba(212,169,79,0.3)" stroke-width="2"/>
+                  <path d="M230 115a20 20 0 1140 0 20 20 0 01-40 0z" fill="rgba(212,169,79,0.1)" stroke="rgba(212,169,79,0.2)" stroke-width="1.5"/>
+                  <circle cx="250" cy="115" r="8" fill="rgba(212,169,79,0.2)"/>
+                  <rect x="140" y="200" width="220" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
+                  <rect x="160" y="220" width="180" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
+                  <circle cx="250" cy="310" r="80" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4 4"/>
+                  <circle cx="250" cy="310" r="30" fill="rgba(212,169,79,0.05)"/>
+                  <path d="M240 305l10-10 10 10-10 10z" fill="rgba(212,169,79,0.15)"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ============================================================
+    // ABOUT — TO EDIT: Change overview.content in JSON
+    // ============================================================
+
+    function buildAbout(data) {
+      const section = document.getElementById('aboutSection');
+      const content = data.overview?.content;
+      if (!content) { section.style.display = 'none'; return; }
+      section.style.display = '';
+      section.innerHTML = `
+        <div class="container">
+          <div class="section-header centered reveal">
+            <span class="section-tag">About the Camp</span>
+            <h2 class="section-title">Overview</h2>
+            <p class="section-subtitle">Learn more about our blood donation initiative and its impact.</p>
+          </div>
+          <div class="about-card reveal">
+            <div class="about-content">${content}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ============================================================
+    // EVENT INFO — TO EDIT: Change eventInfo in JSON
+    // ============================================================
+
+    function buildEventInfo(data) {
+      const section = document.getElementById('eventSection');
+      const e = data.eventInfo;
+      if (!e) { section.style.display = 'none'; return; }
+      section.style.display = '';
+
+      const items = [
+        { label: 'Date', value: e.date, icon: icons.calendar },
+        { label: 'Time', value: e.time, icon: icons.clock },
+        { label: 'Venue', value: e.venue, icon: icons.mapPin },
+        { label: 'Organizer', value: e.organizer, icon: icons.building }
+      ];
+      const hasData = items.some(i => i.value);
+      if (!hasData) { section.style.display = 'none'; return; }
+
+      let html = '<div class="container"><div class="section-header centered reveal"><span class="section-tag">Event Details</span><h2 class="section-title">Event Information</h2></div><div class="event-grid">';
+      items.forEach((item, i) => {
+        if (!item.value) return;
+        html += `<div class="event-card reveal reveal-delay-${(i%4)+1}">
+          <div class="event-icon">${item.icon}</div>
+          <div class="event-label">${item.label}</div>
+          <div class="event-value">${item.value}</div>
+        </div>`;
+      });
+      html += '</div></div>';
+      section.innerHTML = html;
+    }
+
+    // ============================================================
+    // GALLERY — TO ADD/REMOVE/CHANGE images in JSON gallery array
+    // ============================================================
+
+    function buildGallery(data) {
+      const section = document.getElementById('gallerySection');
+      const images = (data.gallery || []).slice(0, 4);
+      galleryData = images;
+      if (images.length === 0) { section.style.display = 'none'; return; }
+      section.style.display = '';
+
+      let html = '<div class="container"><div class="section-header centered reveal"><span class="section-tag">Gallery</span><h2 class="section-title">Image Gallery</h2></div><div class="gallery-grid">';
+      images.forEach((img, i) => {
+        html += `<div class="gallery-item reveal reveal-delay-${(i%4)+1}" data-index="${i}">
+          <img src="${img.url}" alt="${img.caption||''}" loading="lazy">
+          <div class="gallery-overlay"><span class="gallery-caption">${img.caption||''}</span></div>
+        </div>`;
+      });
+      html += '</div></div>';
+      section.innerHTML = html;
+
+      section.querySelectorAll('.gallery-item').forEach(el => {
+        el.addEventListener('click', function() {
+          openLightbox(parseInt(this.dataset.index));
+        });
+      });
+    }
+
+    // ============================================================
+    // LIGHTBOX
+    // ============================================================
+
+    function openLightbox(index) {
+      if (!galleryData || !galleryData.length) return;
+      lightboxIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function updateLightbox() {
+      const img = galleryData[lightboxIndex];
+      if (!img) return;
+      document.getElementById('lightboxImg').src = img.url;
+      document.getElementById('lightboxImg').alt = img.caption || '';
+      document.getElementById('lightboxCounter').textContent = `${lightboxIndex+1} / ${galleryData.length}`;
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', () => document.getElementById('lightbox').classList.remove('active'));
+    document.getElementById('lightboxPrev').addEventListener('click', () => { if (galleryData.length) { lightboxIndex = (lightboxIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); } });
+    document.getElementById('lightboxNext').addEventListener('click', () => { if (galleryData.length) { lightboxIndex = (lightboxIndex + 1) % galleryData.length; updateLightbox(); } });
+    document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) this.classList.remove('active'); });
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+      if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+      if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+    });
+
+    // ============================================================
+    // SCROLL REVEAL
+    // ============================================================
+
+    function initReveal() {
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => observer.observe(el));
+    }
+
+    buildPage("2025");
+  </script>
+</body>
+</html>

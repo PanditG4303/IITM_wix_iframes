@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7b1e2d;
+  --maroon-dark:#5b1723;
+  --gold:#d4af37;
+  --bg:#faf7f7;
+  --white:#ffffff;
+  --text:#333;
+  --muted:#777;
+  --border:#ece8e8;
+  --radius:28px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --shadow-lg:0 20px 50px rgba(0,0,0,.12);
+  --transition:0.4s cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.8;-webkit-font-smoothing:antialiased;padding-bottom:50px}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--maroon);color:var(--white)}
+
+.container{max-width:1380px;margin:0 auto;padding:0 24px}
+
+/* ===== CARD ===== */
+.card{background:var(--white);border-radius:var(--radius);padding:36px;border:1px solid var(--border);box-shadow:var(--shadow);transition:var(--transition)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+
+/* ===== SECTION ===== */
+.section{margin:0 0 50px;padding:0;height:auto;min-height:auto;overflow:visible}
+.section-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;position:relative}
+.section-tag::before{content:'';display:inline-block;width:24px;height:2px;background:var(--gold);vertical-align:middle;margin-right:10px}
+.section-title{font-size:clamp(30px,4vw,38px);color:var(--maroon);font-weight:800;line-height:1.12;margin-bottom:16px}
+.section-desc{font-size:16px;color:var(--muted);max-width:620px;line-height:1.7}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;
+  height:500px;
+  min-height:500px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border-radius:24px;
+  margin:0 auto 50px;
+  background:
+    radial-gradient(circle at top right,#9a2135 0%,transparent 40%),
+    radial-gradient(circle at bottom left,#651421 0%,transparent 45%),
+    linear-gradient(135deg,#7b1e2d,#5b1723);
+}
+
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+}
+
+.hero-bg .blur-circle{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:.12;
+}
+.hero-bg .blur-circle:nth-child(1){width:350px;height:350px;background:var(--gold);top:-100px;right:-60px}
+.hero-bg .blur-circle:nth-child(2){width:250px;height:250px;background:#fff;bottom:-80px;left:-60px}
+
+.hero-bg .grid-lines{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
+.hero-bg .dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+
+.hero-pattern{
+  position:absolute;inset:0;z-index:0;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23d4af37'%3E%3Cpath d='M40 12L12 30l28 16 28-16-28-18z'/%3E%3Cpath d='M40 34L18 20v14l22 12 22-12V20l-22 14z' opacity='.4'/%3E%3Cpath d='M36 42v8l4 2 4-2v-8'/%3E%3Ccircle cx='20' cy='54' r='4'/%3E%3Ccircle cx='60' cy='54' r='4'/%3E%3Ccircle cx='40' cy='60' r='3.5'/%3E%3Cpath d='M10 66c0-6 10-8 20-8s20 2 20 8' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Cpath d='M38 66c0-6 10-8 20-8s20 2 20 8' fill='none' stroke='%23d4af37' stroke-width='1.5'/%3E%3Crect x='8' y='40' width='6' height='10' rx='1'/%3E%3Crect x='66' y='40' width='6' height='10' rx='1'/%3E%3Ccircle cx='8' cy='10' r='1.5'/%3E%3Ccircle cx='72' cy='10' r='1.5'/%3E%3Ccircle cx='4' cy='32' r='1'/%3E%3Ccircle cx='76' cy='32' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:80px 80px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:50px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding:40px 50px;
+}
+
+.hero-subtitle{
+  font-size:13px;
+  letter-spacing:3px;
+  font-weight:600;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:12px;
+  display:block;
+}
+
+.hero-left h1{
+  font-size:clamp(34px,5vw,56px);
+  font-weight:800;
+  color:#ffffff;
+  line-height:1.08;
+  margin-bottom:8px;
+  letter-spacing:-.5px;
+}
+
+.hero-left .hero-lead{
+  font-size:17px;
+  font-weight:600;
+  color:#f3c85a;
+  margin-bottom:12px;
+}
+
+.hero-left p{
+  font-size:17px;
+  line-height:1.8;
+  color:#ffffff;
+  font-weight:400;
+  max-width:520px;
+  margin-bottom:24px;
+}
+
+.hero-badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+
+.hero-badges span{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.15);
+  padding:8px 18px;
+  border-radius:50px;
+  font-size:12px;
+  font-weight:500;
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.hero-quick-process{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:14px 20px;
+  background:rgba(0,0,0,.15);
+  border-radius:50px;
+  width:fit-content;
+}
+
+.hero-quick-process .qp-label{
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-weight:600;
+  color:var(--gold);
+  margin-right:8px;
+}
+
+.hero-quick-process .qp-step{
+  font-size:11px;
+  color:rgba(255,255,255,.7);
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.hero-quick-process .qp-step .qp-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:18px;height:18px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  font-size:9px;font-weight:700;
+  color:var(--gold);
+}
+
+.hero-quick-process .qp-sep{
+  color:rgba(255,255,255,.25);
+  font-size:10px;
+}
+
+.hero-right{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero-glass-card{
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  padding:36px 28px;
+  width:100%;
+  max-width:340px;
+  text-align:center;
+}
+
+.hero-glass-card .shield{
+  width:80px;height:80px;
+  margin:0 auto 16px;
+  background:rgba(255,255,255,.1);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+}
+
+.hero-glass-card h3{
+  font-size:14px;
+  font-weight:600;
+  color:var(--white);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:4px;
+}
+
+.hero-glass-card .gc-sub{
+  font-size:12px;
+  color:rgba(255,255,255,.75);
+  margin-bottom:20px;
+}
+
+.hero-glass-card .gc-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.hero-glass-card .gc-item:last-child{
+  border-bottom:none;
+}
+
+.hero-glass-card .gc-item .gc-label{
+  font-size:12px;
+  color:rgba(255,255,255,.75);
+}
+
+.hero-glass-card .gc-item .gc-value{
+  font-size:12px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+/* ===== ABOUT ===== */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:stretch;
+}
+
+.about-card h3{font-size:22px;color:var(--maroon);margin-bottom:12px}
+.about-card p{color:#555;line-height:1.9;font-size:15px}
+
+.poster-card{
+  overflow:hidden;padding:18px;
+  border-radius:24px;
+  background:var(--white);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+  max-width:520px;
+  margin:0 auto;
+  width:100%;
+}
+.poster-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(0,0,0,.15)}
+.poster-card .img-wrap{overflow:hidden;border-radius:12px}
+.poster-card .img-wrap img{width:100%;height:auto;object-fit:contain;display:block;transition:transform .6s ease}
+.poster-card:hover .img-wrap img{transform:scale(1.06)}
+.poster-card .caption{padding:14px 12px 4px;text-align:center;font-size:13px;color:#888;font-weight:500}
+
+/* =======================================================
+   Poster Placeholder
+   Automatically disappears when a valid Wix URL is added.
+======================================================= */
+
+.poster-placeholder{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:420px;
+  border:2px dashed #d9d9d9;
+  border-radius:18px;
+  background:#fafafa;
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
+
+.placeholder-icon{
+  font-size:64px;
+  margin-bottom:20px;
+}
+
+#committeePoster[src=""]{
+  display:none;
+}
+
+/* ===== STATS ===== */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+.stat-card{
+  text-align:center;padding:28px 16px;cursor:default
+}
+.stat-card .icon{font-size:32px;margin-bottom:10px;display:block}
+.stat-card .number{font-size:34px;font-weight:800;color:var(--maroon)}
+.stat-card .label{font-size:13px;color:#888;margin-top:4px;font-weight:500}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  display:flex;
+  position:relative;
+  padding:0;
+  margin-top:20px;
+}
+
+.timeline::before{
+  content:'';
+  position:absolute;
+  top:32px;
+  left:30px;
+  right:30px;
+  height:3px;
+  background:var(--maroon);
+  border-radius:2px;
+}
+
+.timeline-step{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+
+.step-circle{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--maroon);color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:16px;
+  box-shadow:0 4px 15px rgba(123,30,45,.3);
+  margin-bottom:10px;position:relative;z-index:2;
+}
+
+.step-card{
+  background:var(--white);border-radius:14px;
+  padding:12px 12px;text-align:center;
+  box-shadow:var(--shadow);width:100%;max-width:180px;
+  transition:var(--transition);border:1px solid var(--border);
+}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.step-card h4{font-size:12px;color:var(--maroon);margin-bottom:2px}
+.step-card p{font-size:11px;color:#888;line-height:1.4}
+
+/* ===== MEMBERS ===== */
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  height:auto;
+  min-height:auto;
+  overflow:visible;
+  visibility:visible;
+  opacity:1;
+  align-items:stretch;
+}
+
+.member-card{
+  text-align:center;padding:32px 20px;
+  display:flex;flex-direction:column;align-items:center;
+  visibility:visible;
+  opacity:1;
+  transform:none;
+}
+
+.member-card .avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));
+  color:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:700;margin-bottom:16px;
+  flex-shrink:0;
+}
+
+.member-card h4{font-size:17px;font-weight:600;color:#222;margin-bottom:3px}
+.member-card .dept{font-size:13px;color:#888;margin-bottom:6px}
+.member-card .designation{
+  display:inline-block;
+  background:#fbe9eb;color:var(--maroon);
+  font-size:11px;font-weight:600;
+  padding:4px 14px;border-radius:50px;
+  margin-bottom:14px;
+}
+
+.member-card .contact-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:transparent;border:1.5px solid var(--maroon);
+  color:var(--maroon);padding:7px 18px;
+  border-radius:50px;font-size:13px;font-weight:500;
+  cursor:pointer;transition:var(--transition);
+  text-decoration:none;
+}
+.member-card .contact-btn:hover{background:var(--maroon);color:var(--white)}
+
+/* ===== CONTACT ===== */
+.contact{
+  background:var(--maroon);color:var(--white);
+  padding:36px 32px;border-radius:var(--radius);
+  text-align:center;line-height:2;
+}
+.contact h2{color:var(--white);margin-bottom:6px;font-size:26px}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:1;transform:none;transition:all .6s cubic-bezier(0.22,1,0.36,1)}
+.stagger > *{opacity:1;transform:none;transition:all .5s cubic-bezier(0.22,1,0.36,1)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+  .member-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .timeline{flex-direction:column;padding:10px 0 10px 50px;gap:0}
+  .timeline::before{top:20px;bottom:20px;left:24px;width:3px;height:auto;transform:none}
+  .timeline-step{flex-direction:row;align-items:flex-start;gap:16px;padding:10px 0}
+  .step-circle{width:36px;height:36px;font-size:14px;margin-bottom:0;flex-shrink:0}
+  .step-card{max-width:none;text-align:left;flex:1}
+}
+
+@media(max-width:1024px){
+  .hero{height:auto;min-height:auto;padding:50px 0}
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding:30px}
+  .hero-left{text-align:center}
+  .hero-left p{margin:0 auto 24px}
+  .hero-badges{justify-content:center}
+  .hero-quick-process{margin:0 auto}
+  .hero-right{order:-1}
+  .hero-glass-card{max-width:320px}
+}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:30px}
+  .member-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-grid{padding:30px}
+  .poster-card{max-width:100%}
+}
+
+@media(max-width:600px){
+  .container{padding:0 18px}
+  .hero{height:auto;min-height:auto;padding:50px 25px}
+  .hero-grid{padding:0;gap:30px}
+  .hero-left h1{font-size:28px}
+  .hero-left .hero-lead{font-size:15px}
+  .hero-left p{font-size:14px}
+  .hero-quick-process{flex-wrap:wrap;border-radius:16px;padding:12px 16px;width:100%;justify-content:center}
+  .hero-badges span{padding:6px 14px;font-size:11px}
+  .hero-glass-card{padding:24px 20px}
+  .member-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .section{margin:0 0 40px;padding:0}
+  .about-card{padding:24px}
+  .contact{padding:28px 20px}
+  .section-title{font-size:26px}
+  .timeline{padding-left:44px}
+  .timeline::before{left:22px}
+  .step-circle{width:34px;height:34px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-bg">
+    <div class="blur-circle"></div>
+    <div class="blur-circle"></div>
+    <div class="grid-lines"></div>
+    <div class="dots"></div>
+    <div class="hero-pattern"></div>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <span class="hero-subtitle">EQUALITY • INCLUSION • STUDENT SUPPORT</span>
+      <h1>SC / ST Cell</h1>
+      <div class="hero-lead">Equal Opportunity • Inclusive Campus • Student Welfare</div>
+      <p>The SC/ST Cell at IITM College of Engineering has been constituted to promote an inclusive academic environment and safeguard the interests of Scheduled Caste and Scheduled Tribe students. The Cell facilitates equal opportunities, addresses concerns related to student welfare, and supports the implementation of institutional policies in accordance with applicable guidelines.</p>
+      <div class="hero-badges">
+        <span>✓ Equal Opportunity</span>
+        <span>✓ Student Welfare</span>
+        <span>✓ Inclusive Campus</span>
+      </div>
+      <div class="hero-quick-process">
+        <span class="qp-label">Process</span>
+        <span class="qp-step"><span class="qp-num">1</span> Support</span>
+        <span class="qp-sep">→</span>
+        <span class="qp-step"><span class="qp-num">2</span> Review</span>
+        <span class="qp-sep">→</span>
+        <span class="qp-step"><span class="qp-num">3</span> Guidance</span>
+        <span class="qp-sep">→</span>
+        <span class="qp-step"><span class="qp-num">4</span> Resolution</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-glass-card">
+        <div class="shield">🎓</div>
+        <h3>Cell Overview</h3>
+        <p class="gc-sub">SC / ST Cell</p>
+        <div class="gc-item"><span class="gc-label">Members</span><span class="gc-value">06</span></div>
+        <div class="gc-item"><span class="gc-label">Convener</span><span class="gc-value">Mr. Kiran Kumar</span></div>
+        <div class="gc-item"><span class="gc-label">Student Support</span><span class="gc-value">✓ Available</span></div>
+        <div class="gc-item"><span class="gc-label">Equal Opportunity</span><span class="gc-value">✓ Promoted</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<div class="section">
+  <div class="about-grid">
+    <div class="about-card card reveal">
+      <h3>About the SC/ST Cell</h3>
+      <p>The SC/ST Cell of IITM College of Engineering is dedicated to promoting equality, inclusion and academic support for students belonging to the Scheduled Caste and Scheduled Tribe communities. The Cell works to ensure equal opportunities, encourages a discrimination-free learning environment, facilitates awareness programmes and provides guidance regarding student welfare and institutional support.</p>
+    </div>
+    <!-- =========================================================
+    IITM WEBSITE COMPONENT
+    SECTION : COMMITTEE POSTER
+
+    To update this poster:
+    1. Upload the new poster to Wix Media Manager.
+    2. Copy the generated Wix image URL.
+    3. Replace ONLY the src="" value below.
+    4. Do NOT change CSS classes.
+    5. Do NOT remove this comment.
+    6. Do NOT rename the image ID.
+    7. Keep the image dimensions responsive.
+
+    Example:
+    https://static.wixstatic.com/media/xxxxxxxxxxxxxxxx~mv2.jpg
+    ========================================================= -->
+    <div class="poster-card reveal">
+      <div class="img-wrap">
+        <img
+          id="committeePoster"
+          src="https://static.wixstatic.com/media/ab471d_c72656b6b5f0491499b71c07344bbc3e~mv2.jpg"
+          alt="SC/ST Cell Poster"
+          loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="section">
+  <div class="stats-grid stagger">
+    <div class="stat-card card"><span class="icon">👥</span><div class="number">06</div><div class="label">Committee Members</div></div>
+    <div class="stat-card card"><span class="icon">🎓</span><div class="number">100%</div><div class="label">Student Welfare</div></div>
+    <div class="stat-card card"><span class="icon">🤝</span><div class="number">✓</div><div class="label">Equal Opportunity</div></div>
+    <div class="stat-card card"><span class="icon">🌱</span><div class="number">✓</div><div class="label">Inclusive Campus</div></div>
+  </div>
+</div>
+
+<!-- ===== TIMELINE ===== -->
+<div class="section timeline-section">
+  <div class="reveal" style="text-align:center;margin-bottom:20px">
+    <span class="section-tag">How It Works</span>
+    <h2 class="section-title">SC/ST Cell Support Process</h2>
+    <p class="section-desc" style="margin:0 auto">A structured approach to student guidance, support and grievance assistance.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-step">
+      <div class="step-circle">1</div>
+      <div class="step-card"><h4>Student Support</h4><p>Guidance and assistance for student concerns.</p></div>
+    </div>
+    <div class="timeline-step">
+      <div class="step-circle">2</div>
+      <div class="step-card"><h4>Review</h4><p>Concerns reviewed by the cell members.</p></div>
+    </div>
+    <div class="timeline-step">
+      <div class="step-circle">3</div>
+      <div class="step-card"><h4>Guidance</h4><p>Appropriate guidance provided to students.</p></div>
+    </div>
+    <div class="timeline-step">
+      <div class="step-circle">4</div>
+      <div class="step-card"><h4>Committee Action</h4><p>Necessary steps taken for resolution.</p></div>
+    </div>
+    <div class="timeline-step">
+      <div class="step-circle">5</div>
+      <div class="step-card"><h4>Follow-up</h4><p>Continuous support and follow-up assistance.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MEMBERS ===== -->
+<div class="section">
+  <div class="reveal" style="text-align:center;margin-bottom:36px">
+    <span class="section-tag">Team</span>
+    <h2 class="section-title">Committee Members</h2>
+    <p class="section-desc" style="margin:0 auto">Dedicated faculty committed to student welfare</p>
+  </div>
+  <div class="member-grid stagger">
+    <div class="member-card card"><div class="avatar">KK</div><h4>Mr. Kiran Kumar</h4><div class="dept">IT/CSE</div><div class="designation">Convener</div><a href="tel:9416291544" class="contact-btn">📞 9416291544</a></div>
+    <div class="member-card card"><div class="avatar">AK</div><h4>Mr. Amit Kumar</h4><div class="dept">IT/CSE</div><div class="designation">Co-Convener</div><a href="tel:9813767956" class="contact-btn">📞 9813767956</a></div>
+    <div class="member-card card"><div class="avatar">MV</div><h4>Mr. Madhur Raj Verma</h4><div class="dept">IT/CSE</div><div class="designation">Member</div><a href="tel:6397885641" class="contact-btn">📞 6397885641</a></div>
+    <div class="member-card card"><div class="avatar">AK</div><h4>Dr. Aditi Kalash</h4><div class="dept">IT/CSE</div><div class="designation">Member</div><a href="tel:8284037133" class="contact-btn">📞 8284037133</a></div>
+    <div class="member-card card"><div class="avatar">VD</div><h4>Ms. Vandana Dabbas</h4><div class="dept">IT/CSE</div><div class="designation">Member</div><a href="tel:8810453282" class="contact-btn">📞 8810453282</a></div>
+    <div class="member-card card"><div class="avatar">SR</div><h4>Ms. Seema Rani</h4><div class="dept">IT/CSE</div><div class="designation">Member</div><a href="tel:8950758661" class="contact-btn">📞 8950758661</a></div>
+  </div>
+</div>
+
+<!-- ===== CONTACT ===== -->
+<div class="contact reveal">
+  <h2>SC / ST Cell</h2>
+  <b>IITM College of Engineering</b><br>
+  Village – Lowa Khurd<br>
+  Bahadurgarh–Jhajjar Road<br>
+  Bahadurgarh –124507
+</div>
+
+</div>
+
+<script>
+function updateIframeHeight(){
+  try{
+    var h=document.documentElement.scrollHeight;
+    window.parent.postMessage({type:"iframeHeight",height:h},"*");
+  }catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  /* Make all reveal elements visible immediately (visibility first) */
+  document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible')});
+  document.querySelectorAll('.stagger').forEach(function(el){
+    el.querySelectorAll('>*').forEach(function(child){child.classList.add('visible')});
+  });
+
+  /* Also animate via observer when possible */
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        if(entry.target.classList.contains('stagger')){
+          var children=entry.target.querySelectorAll('>*');
+          children.forEach(function(el,i){
+            setTimeout(function(){el.classList.add('visible')},i*100);
+          });
+        }else{
+          entry.target.classList.add('visible');
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.15});
+
+  document.querySelectorAll('.reveal,.stagger').forEach(function(el){observer.observe(el)});
+
+  /* Iframe height */
+  updateIframeHeight();
+  window.addEventListener('load',function(){setTimeout(updateIframeHeight,500)});
+  window.addEventListener('resize',updateIframeHeight);
+  if(window.ResizeObserver){
+    try{new ResizeObserver(updateIframeHeight).observe(document.body)}catch(e){}
+  }
+  setTimeout(updateIframeHeight,1000);
+});
+</script>
+</body>
+</html>

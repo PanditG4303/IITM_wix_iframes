@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IITM Clubs & Societies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+/* ==============================
+   RESET & BASE
+   ============================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;height:auto;min-height:0}
+body{font-family:'Poppins',sans-serif;background:#fdf8f6;color:#1a1a2e;overflow-x:hidden;line-height:1.6;width:100%;height:auto;min-height:0}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::selection{background:#7B2331;color:#fff}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:#7B2331;border-radius:4px}
+
+/* ==============================
+   BACKGROUND — RICH GRADIENT MESH
+   ============================== */
+.bg-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bg-overlay .blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 20s ease-in-out infinite}
+.bg-overlay .blob:nth-child(1){width:clamp(300px,40vw,600px);height:clamp(300px,40vw,600px);background:linear-gradient(135deg,#7B2331,#e74c3c);top:-10%;left:-5%;opacity:0.12;animation-delay:0s}
+.bg-overlay .blob:nth-child(2){width:clamp(250px,35vw,500px);height:clamp(250px,35vw,500px);background:linear-gradient(135deg,#8e44ad,#3498db);top:40%;right:-8%;opacity:0.1;animation-delay:-5s}
+.bg-overlay .blob:nth-child(3){width:clamp(200px,28vw,400px);height:clamp(200px,28vw,400px);background:linear-gradient(135deg,#f39c12,#e74c3c);bottom:10%;left:20%;opacity:0.1;animation-delay:-10s}
+.bg-overlay .blob:nth-child(4){width:clamp(180px,24vw,350px);height:clamp(180px,24vw,350px);background:linear-gradient(135deg,#2ecc71,#3498db);top:60%;left:-5%;opacity:0.08;animation-delay:-15s}
+.bg-overlay .blob:nth-child(5){width:clamp(200px,25vw,400px);height:clamp(200px,25vw,400px);background:linear-gradient(135deg,#ff6b9d,#c084fc);bottom:30%;right:10%;opacity:0.08;animation-delay:-7s}
+.bg-overlay .blob:nth-child(6){width:clamp(150px,20vw,300px);height:clamp(150px,20vw,300px);background:linear-gradient(135deg,#fbbf24,#fb923c);top:15%;left:60%;opacity:0.07;animation-delay:-12s}
+.bg-overlay .blob:nth-child(7){width:clamp(180px,22vw,350px);height:clamp(180px,22vw,350px);background:linear-gradient(135deg,#67e8f9,#a78bfa);bottom:50%;left:40%;opacity:0.06;animation-delay:-3s}
+.bg-overlay .blob:nth-child(8){width:clamp(120px,16vw,250px);height:clamp(120px,16vw,250px);background:linear-gradient(135deg,#f472b6,#fb923c);top:70%;right:25%;opacity:0.07;animation-delay:-9s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-30px) scale(1.05)}50%{transform:translate(-20px,40px) scale(0.95)}75%{transform:translate(30px,20px) scale(1.02)}}
+
+/* ==============================
+   FLOATING PARTICLES
+   ============================== */
+.particles-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:particleFloat linear infinite}
+.particle:nth-child(1){width:6px;height:6px;background:#7B2331;left:5%;opacity:0.15;animation-duration:18s;animation-delay:0s}
+.particle:nth-child(2){width:4px;height:4px;background:#c084fc;left:15%;opacity:0.12;animation-duration:22s;animation-delay:-2s}
+.particle:nth-child(3){width:8px;height:8px;background:#fbbf24;left:28%;opacity:0.1;animation-duration:20s;animation-delay:-5s}
+.particle:nth-child(4){width:5px;height:5px;background:#fb923c;left:42%;opacity:0.14;animation-duration:25s;animation-delay:-8s}
+.particle:nth-child(5){width:3px;height:3px;background:#67e8f9;left:58%;opacity:0.15;animation-duration:19s;animation-delay:-3s}
+.particle:nth-child(6){width:7px;height:7px;background:#f472b6;left:72%;opacity:0.1;animation-duration:23s;animation-delay:-6s}
+.particle:nth-child(7){width:4px;height:4px;background:#a78bfa;left:85%;opacity:0.13;animation-duration:21s;animation-delay:-10s}
+.particle:nth-child(8){width:6px;height:6px;background:#e74c3c;left:50%;opacity:0.11;animation-duration:17s;animation-delay:-12s}
+.particle:nth-child(9){width:5px;height:5px;background:#8e44ad;left:65%;opacity:0.12;animation-duration:24s;animation-delay:-7s}
+.particle:nth-child(10){width:3px;height:3px;background:#7B2331;left:90%;opacity:0.14;animation-duration:20s;animation-delay:-9s}
+.particle:nth-child(11){width:7px;height:7px;background:#f39c12;left:10%;opacity:0.1;animation-duration:26s;animation-delay:-4s}
+.particle:nth-child(12){width:4px;height:4px;background:#3498db;left:75%;opacity:0.13;animation-duration:18s;animation-delay:-11s}
+.particle:nth-child(13){width:5px;height:5px;background:#2ecc71;left:35%;opacity:0.11;animation-duration:22s;animation-delay:-1s}
+.particle:nth-child(14){width:6px;height:6px;background:#7B2331;left:48%;opacity:0.15;animation-duration:19s;animation-delay:-13s}
+.particle:nth-child(15){width:3px;height:3px;background:#ff6b9d;left:80%;opacity:0.12;animation-duration:21s;animation-delay:-14s}
+.particle:nth-child(16){width:8px;height:8px;background:#8e44ad;left:45%;opacity:0.1;animation-duration:23s;animation-delay:-15s}
+.particle:nth-child(17){width:5px;height:5px;background:#fb923c;left:22%;opacity:0.12;animation-duration:20s;animation-delay:-16s}
+.particle:nth-child(18){width:6px;height:6px;background:#67e8f9;left:60%;opacity:0.11;animation-duration:24s;animation-delay:-17s}
+.particle:nth-child(19){width:4px;height:4px;background:#c084fc;left:38%;opacity:0.13;animation-duration:19s;animation-delay:-18s}
+.particle:nth-child(20){width:7px;height:7px;background:#f472b6;left:68%;opacity:0.1;animation-duration:22s;animation-delay:-19s}
+@keyframes particleFloat{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+
+/* ==============================
+   REVEAL ANIMATIONS
+   ============================== */
+.reveal{opacity:0;transform:translateY(25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ==============================
+   FLUID CONTAINER SYSTEM
+   ============================== */
+.section{padding:clamp(24px,3vw,48px) 0;position:relative;z-index:2}
+.section:first-of-type{padding-top:clamp(60px,7vw,100px)}
+.section-inner{width:100%;margin:0 auto;padding:0 clamp(16px,3vw,48px);max-width:1500px}
+.section-label{font-size:clamp(10px,0.8vw,13px);font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#7B2331;margin-bottom:clamp(4px,0.6vw,10px)}
+.section-title{font-size:clamp(20px,3vw,44px);font-weight:700;color:#1a1a2e;margin-bottom:clamp(6px,0.8vw,14px);line-height:1.15}
+.section-sub{font-size:clamp(12px,0.9vw,15px);color:#666;max-width:clamp(320px,35vw,550px);line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+.section-header{margin-bottom:clamp(16px,2vw,32px)}
+
+/* ==============================
+   DECORATIVE ELEMENTS
+   ============================== */
+.deco-planet{position:absolute;pointer-events:none;z-index:0;border-radius:50%;animation:planetFloat 6s ease-in-out infinite}
+@keyframes planetFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.deco-ring{position:absolute;pointer-events:none;z-index:0;border-radius:50%;border:2px solid;animation:ringSpin 15s linear infinite}
+@keyframes ringSpin{0%{transform:rotate(0deg) scaleX(1)}50%{transform:rotate(180deg) scaleX(0.7)}100%{transform:rotate(360deg) scaleX(1)}}
+.deco-sphere{position:absolute;pointer-events:none;z-index:0;border-radius:50%;animation:sphereBob 5s ease-in-out infinite}
+@keyframes sphereBob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.05)}}
+.deco-sparkle{position:absolute;pointer-events:none;z-index:0;animation:sparklePulse 3s ease-in-out infinite}
+@keyframes sparklePulse{0%,100%{opacity:0;transform:scale(0) rotate(0deg)}50%{opacity:0.5;transform:scale(1) rotate(180deg)}}
+.deco-star{position:absolute;pointer-events:none;z-index:0;color:#fbbf24;animation:starTwinkle 3s ease-in-out infinite;opacity:0}
+@keyframes starTwinkle{0%,100%{opacity:0.06;transform:scale(0.8) rotate(0deg)}50%{opacity:0.2;transform:scale(1.15) rotate(180deg)}}
+.deco-shape{position:absolute;pointer-events:none;z-index:0;opacity:0.08;animation:shapeFloat 8s ease-in-out infinite}
+@keyframes shapeFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-8px) rotate(120deg)}66%{transform:translateY(4px) rotate(60deg)}}
+.deco-float-circle{position:absolute;pointer-events:none;z-index:0;border-radius:50%;opacity:0.06;animation:floatCircle 10s ease-in-out infinite}
+@keyframes floatCircle{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(8px,-8px) scale(0.95)}75%{transform:translate(-6px,6px) scale(1.05)}}
+.deco-note{position:absolute;pointer-events:none;z-index:0;animation:noteDrift 5s ease-in-out infinite;font-size:20px;opacity:0.1}
+@keyframes noteDrift{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(-8deg)}75%{transform:translateY(8px) rotate(8deg)}}
+
+/* ==============================
+   DECORATIVE SVG ILLUSTRATIONS
+   ============================== */
+.deco-svg{position:absolute;pointer-events:none;z-index:0;opacity:0.08;animation:svgFloat 8s ease-in-out infinite}
+@keyframes svgFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-10px) rotate(5deg)}66%{transform:translateY(5px) rotate(-3deg)}}
+.deco-svg-saturn{position:absolute;pointer-events:none;z-index:0;opacity:0.06;animation:saturnDrift 12s ease-in-out infinite}
+@keyframes saturnDrift{0%,100%{transform:translateY(0) rotate(0deg) scale(1)}50%{transform:translateY(-8px) rotate(10deg) scale(1.03)}}
+.deco-svg-comet{position:absolute;pointer-events:none;z-index:0;opacity:0.05;animation:cometSwoop 15s ease-in-out infinite}
+@keyframes cometSwoop{0%,100%{transform:translate(0,0) rotate(-20deg)}50%{transform:translate(15px,-10px) rotate(-10deg)}}
+.deco-svg-confetti{position:absolute;pointer-events:none;z-index:0;opacity:0.07;animation:confettiDrift 10s ease-in-out infinite}
+@keyframes confettiDrift{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-6px) rotate(90deg)}75%{transform:translateY(4px) rotate(45deg)}}
+.deco-svg-blob{position:absolute;pointer-events:none;z-index:0;opacity:0.04;animation:blobShape 14s ease-in-out infinite}
+@keyframes blobShape{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.08) rotate(180deg)}}
+.deco-svg-rocket{position:absolute;pointer-events:none;z-index:0;opacity:0.06;animation:rocketFloat 6s ease-in-out infinite}
+@keyframes rocketFloat{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-14px) rotate(5deg)}}
+
+/* ==============================
+   NOISE TEXTURE
+   ============================== */
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+
+/* ==============================
+   HERO SECTION — CIRCULAR IMAGE FRAME
+   ============================== */
+.hero{position:relative;z-index:2;display:flex;align-items:center;padding:clamp(60px,7vw,100px) 0 clamp(28px,3.5vw,48px);overflow:hidden;min-height:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(123,35,49,0.1);color:#7B2331;padding:clamp(4px,0.45vw,7px) clamp(10px,1vw,18px);border-radius:50px;font-size:clamp(10px,0.75vw,12px);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:clamp(12px,1.5vw,20px);border:1px solid rgba(123,35,49,0.2)}
+.hero-badge .dot{width:5px;height:5px;background:#7B2331;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-size:clamp(28px,4.5vw,72px);font-weight:800;line-height:1.05;margin-bottom:clamp(6px,0.7vw,12px);background:linear-gradient(135deg,#1a1a2e 0%,#7B2331 50%,#8e44ad 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title .highlight{background:linear-gradient(135deg,#7B2331,#e74c3c,#8e44ad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(13px,1.3vw,18px);color:#555;font-weight:400;margin-bottom:clamp(4px,0.4vw,6px);letter-spacing:1px}
+.hero-desc{font-size:clamp(12px,0.95vw,15px);color:#666;max-width:clamp(300px,35vw,550px);line-height:1.7;margin:clamp(12px,1.5vw,20px) 0}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7B2331,#a8324a);color:#fff;padding:clamp(8px,0.9vw,14px) clamp(20px,2.5vw,36px);border-radius:50px;font-size:clamp(12px,0.95vw,15px);font-weight:600;border:none;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 30px rgba(123,35,49,0.3);position:relative;z-index:2}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(123,35,49,0.4)}
+.hero-cta svg{width:16px;height:16px;transition:transform 0.3s}
+.hero-cta:hover svg{transform:translateX(4px)}
+
+/* ==============================
+   HERO IMAGE — APPLE WWDC STYLE CIRCLE
+   ============================== */
+.hero-visual{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
+.hero-visual-inner{position:relative;width:clamp(240px,28vw,500px);height:clamp(240px,28vw,500px)}
+.hero-image-frame{position:absolute;width:clamp(180px,22vw,380px);height:clamp(180px,22vw,380px);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);overflow:hidden;z-index:3;box-shadow:0 0 0 3px rgba(123,35,49,0.15),0 20px 60px rgba(0,0,0,0.12),inset 0 0 80px rgba(0,0,0,0.1)}
+.hero-image-frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);transition:transform 8s cubic-bezier(0.16,1,0.3,1)}
+.hero-image-frame:hover img{transform:scale(1)}
+.hero-image-glass{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(180px,22vw,380px);height:clamp(180px,22vw,380px);border-radius:50%;z-index:4;background:linear-gradient(135deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 40%,transparent 60%,rgba(123,35,49,0.04) 100%);pointer-events:none}
+.hero-image-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(190px,23vw,400px);height:clamp(190px,23vw,400px);border-radius:50%;z-index:2;background:linear-gradient(135deg,rgba(123,35,49,0.2),rgba(142,68,173,0.15),rgba(255,107,157,0.1));filter:blur(20px);animation:heroGlowPulse 4s ease-in-out infinite}
+@keyframes heroGlowPulse{0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+.hero-orbit{position:absolute;border-radius:50%;border:1px solid rgba(123,35,49,0.1);animation:heroOrbitSpin linear infinite;z-index:2;pointer-events:none}
+@keyframes heroOrbitSpin{0%{transform:translate(-50%,-50%) rotate(0deg)}100%{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-orbit-1{width:clamp(200px,24vw,420px);height:clamp(200px,24vw,420px);top:50%;left:50%;animation-duration:25s}
+.hero-orbit-2{width:clamp(230px,27vw,470px);height:clamp(230px,27vw,470px);top:50%;left:50%;animation-duration:35s;animation-direction:reverse;border-color:rgba(142,68,173,0.08);border-style:dashed}
+.hero-orbit-3{width:clamp(260px,30vw,520px);height:clamp(260px,30vw,520px);top:50%;left:50%;animation-duration:45s;border-color:rgba(255,107,157,0.06);border-width:1px}
+.hero-orbit-dot{position:absolute;width:6px;height:6px;border-radius:50%;top:-3px;left:50%;transform:translateX(-50%)}
+.hero-orbit-dot-1{background:#7B2331;box-shadow:0 0 12px rgba(123,35,49,0.4)}
+.hero-orbit-dot-2{width:4px;height:4px;top:50%;left:auto;right:-2px;transform:translateY(-50%);background:#8e44ad;box-shadow:0 0 10px rgba(142,68,173,0.4)}
+.hero-orbit-dot-3{width:8px;height:8px;top:auto;bottom:-4px;left:50%;transform:translateX(-50%);background:#ff6b9d;box-shadow:0 0 14px rgba(255,107,157,0.4)}
+.hero-floating-planet{position:absolute;border-radius:50%;z-index:2;pointer-events:none;animation:planetOrbit 20s ease-in-out infinite}
+@keyframes planetOrbit{0%,100%{transform:translate(0,0)}25%{transform:translate(8px,-12px)}75%{transform:translate(-6px,8px)}}
+.hero-floating-planet-1{width:clamp(14px,1.2vw,22px);height:clamp(14px,1.2vw,22px);background:linear-gradient(135deg,#fbbf24,#f59e0b);top:8%;right:2%;box-shadow:0 0 20px rgba(251,191,36,0.3);animation-delay:-3s}
+.hero-floating-planet-2{width:clamp(10px,0.8vw,16px);height:clamp(10px,0.8vw,16px);background:linear-gradient(135deg,#c084fc,#a78bfa);bottom:12%;left:4%;box-shadow:0 0 16px rgba(192,132,252,0.3);animation-delay:-7s}
+.hero-floating-planet-3{width:clamp(8px,0.6vw,12px);height:clamp(8px,0.6vw,12px);background:linear-gradient(135deg,#67e8f9,#22d3ee);top:45%;left:2%;box-shadow:0 0 12px rgba(103,232,249,0.3);animation-delay:-5s}
+.hero-floating-star{position:absolute;z-index:2;pointer-events:none;color:#fbbf24;animation:heroStarTwinkle 3s ease-in-out infinite;opacity:0}
+@keyframes heroStarTwinkle{0%,100%{opacity:0;transform:scale(0.5) rotate(0deg)}50%{opacity:0.3;transform:scale(1.2) rotate(180deg)}}
+.hero-floating-star-1{font-size:clamp(10px,0.8vw,16px);top:18%;right:8%;animation-delay:-1s}
+.hero-floating-star-2{font-size:clamp(8px,0.6vw,12px);bottom:25%;left:8%;animation-delay:-3s}
+.hero-floating-star-3{font-size:clamp(12px,1vw,18px);top:55%;right:3%;animation-delay:-5s}
+
+/* ==============================
+   SECTION DIVIDER
+   ============================== */
+.section-divider{text-align:center;padding:clamp(30px,4vw,60px) 0;position:relative;z-index:2}
+.section-divider-inner{display:flex;align-items:center;justify-content:center;gap:16px}
+.section-divider-line{flex:1;max-width:clamp(40px,6vw,100px);height:1px;background:linear-gradient(90deg,transparent,#7B2331)}
+.section-divider-line:last-child{background:linear-gradient(90deg,#7B2331,transparent)}
+.section-divider-icon{width:clamp(32px,3vw,50px);height:clamp(32px,3vw,50px);border-radius:50%;background:rgba(123,35,49,0.08);display:flex;align-items:center;justify-content:center;color:#7B2331}
+
+/* ==============================
+   SNAKE & LADDER ROADMAP
+   ============================== */
+.roadmap-container{position:relative;z-index:2;min-height:50vh;overflow-x:hidden}
+.roadmap-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+
+/* ==============================
+   CLUB CARD
+   ============================== */
+.club-section{position:relative;z-index:2;padding:clamp(32px,5vw,80px) 0}
+.club-section-inner{width:100%;margin:0 auto;padding:0 clamp(16px,3vw,48px);max-width:1500px}
+.club-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px);align-items:center}
+.club-grid.right{direction:rtl}
+.club-grid.right>*{direction:ltr}
+.club-visual{position:relative}
+
+/* ==============================
+   MAGAZINE OVERLAP COLLAGE
+   ============================== */
+.club-collage{position:relative;width:100%;border-radius:clamp(16px,1.8vw,28px);overflow:visible}
+.club-collage-inner{position:relative;width:100%;aspect-ratio:4/3}
+.club-collage-img-large{position:absolute;top:0;left:0;width:75%;height:80%;border-radius:clamp(12px,1.2vw,20px);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);z-index:1}
+.club-collage-img-large img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.club-collage-img-large:hover img{transform:scale(1.05)}
+.club-collage-img-small{position:absolute;bottom:0;right:0;width:55%;height:55%;border-radius:clamp(12px,1.2vw,20px);overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.1);z-index:2}
+.club-collage-img-small img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1)}
+.club-collage-img-small:hover img{transform:scale(1.05)}
+.club-collage-logo{position:absolute;top:55%;left:55%;width:38%;height:38%;border-radius:clamp(14px,1.4vw,22px);overflow:hidden;z-index:3;background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:clamp(10px,1.2vw,20px);box-shadow:0 8px 32px rgba(0,0,0,0.1),0 0 0 1px rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.6);transform:translate(-50%,-50%)}
+.club-collage-logo img{width:100%;height:100%;object-fit:contain;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)}
+.club-collage-logo:hover img{transform:scale(1.08)}
+.club-collage-logo::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:clamp(14px,1.4vw,22px);background:linear-gradient(135deg,rgba(255,255,255,0.4) 0%,transparent 50%,rgba(255,255,255,0.1) 100%);pointer-events:none}
+
+/* Layout B — mirrored */
+.club-grid.right .club-collage-img-large{left:auto;right:0}
+.club-grid.right .club-collage-img-small{right:auto;left:0}
+.club-grid.right .club-collage-logo{left:45%;top:55%}
+
+.club-content{position:relative}
+.club-number{font-size:clamp(40px,5vw,80px);font-weight:900;color:rgba(123,35,49,0.06);line-height:1;position:absolute;top:clamp(-16px,-2vw,-24px);right:clamp(-8px,-1vw,-12px);pointer-events:none}
+
+/* ==============================
+   PREMIUM GLASS CARD
+   ============================== */
+.club-card{background:rgba(255,255,255,0.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:clamp(16px,1.8vw,28px);padding:clamp(20px,2.5vw,40px);border:1px solid rgba(255,255,255,0.4);box-shadow:0 8px 32px rgba(0,0,0,0.05),0 1px 0 rgba(255,255,255,0.6) inset;position:relative;overflow:hidden;transition:all 0.5s cubic-bezier(0.16,1,0.3,1)}
+.club-card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:3px;background:linear-gradient(90deg,#7B2331,#8e44ad,#ff6b9d,#fbbf24,#7B2331);background-size:200% 100%;animation:borderLight 4s linear infinite;opacity:0;transition:opacity 0.4s}
+.club-card:hover::before{opacity:1}
+@keyframes borderLight{0%{left:-100%}100%{left:100%}}
+.club-card::after{content:'';position:absolute;top:0;left:0;right:0;height:60%;background:linear-gradient(180deg,rgba(255,255,255,0.25) 0%,transparent 100%);pointer-events:none;border-radius:clamp(16px,1.8vw,28px) clamp(16px,1.8vw,28px) 0 0}
+.club-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,0.1),0 1px 0 rgba(255,255,255,0.6) inset}
+.club-card-glow{position:absolute;top:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(123,35,49,0.04),transparent 70%);pointer-events:none;border-radius:50%}
+.club-card-border{position:absolute;inset:0;border-radius:clamp(16px,1.8vw,28px);padding:1px;background:linear-gradient(135deg,rgba(123,35,49,0.08),rgba(142,68,173,0.05),transparent 50%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.club-name{font-size:clamp(18px,2vw,30px);font-weight:700;color:#1a1a2e;margin-bottom:clamp(4px,0.4vw,8px);line-height:1.2}
+.club-name .hash{color:#7B2331;margin-right:4px;opacity:0.6}
+.club-tagline{font-size:clamp(11px,0.75vw,13px);color:#7B2331;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:clamp(10px,1.2vw,18px);opacity:0.7}
+.club-desc{font-size:clamp(12px,0.85vw,14px);color:#555;line-height:1.8;margin-bottom:clamp(14px,1.5vw,24px)}
+.club-actions{display:flex;flex-wrap:wrap;gap:clamp(8px,0.8vw,14px)}
+.club-btn{display:inline-flex;align-items:center;gap:clamp(4px,0.4vw,8px);padding:clamp(6px,0.55vw,10px) clamp(14px,1.2vw,22px);border-radius:50px;font-size:clamp(10px,0.75vw,13px);font-weight:600;border:none;cursor:pointer;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.club-btn svg{width:clamp(11px,0.85vw,14px);height:clamp(11px,0.85vw,14px);flex-shrink:0}
+.club-btn-instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#f77737);color:#fff;box-shadow:0 4px 15px rgba(131,58,180,0.25)}
+.club-btn-instagram:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(131,58,180,0.35)}
+.club-btn-view{background:linear-gradient(135deg,#7B2331,#a8324a);color:#fff;box-shadow:0 4px 15px rgba(123,35,49,0.25)}
+.club-btn-view:hover{transform:translateY(-2px);box-shadow:0 6px 25px rgba(123,35,49,0.35)}
+
+/* ==============================
+   CTA / FINAL SECTION
+   ============================== */
+.cta-section{position:relative;z-index:2;padding:clamp(48px,7vw,120px) 0;overflow:hidden}
+.cta-card{background:linear-gradient(135deg,rgba(123,35,49,0.03),rgba(142,68,173,0.03));border-radius:clamp(20px,2.5vw,40px);padding:clamp(32px,5vw,80px) clamp(24px,4vw,60px);border:1px solid rgba(123,35,49,0.08);text-align:center;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at center,rgba(123,35,49,0.04),transparent 70%);pointer-events:none}
+.cta-title{font-size:clamp(24px,3.5vw,56px);font-weight:800;color:#1a1a2e;margin-bottom:clamp(8px,1vw,16px);line-height:1.1}
+.cta-title span{background:linear-gradient(135deg,#7B2331,#8e44ad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cta-desc{font-size:clamp(13px,1vw,16px);color:#666;max-width:clamp(300px,35vw,600px);margin:0 auto clamp(20px,2.5vw,36px);line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#7B2331,#a8324a);color:#fff;padding:clamp(10px,1vw,16px) clamp(24px,3vw,48px);border-radius:50px;font-size:clamp(13px,1vw,16px);font-weight:600;border:none;cursor:pointer;transition:all 0.3s cubic-bezier(0.16,1,0.3,1);box-shadow:0 8px 30px rgba(123,35,49,0.3)}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 45px rgba(123,35,49,0.4)}
+.cta-btn svg{transition:transform 0.3s}
+.cta-btn:hover svg{transform:translateX(5px)}
+.cta-deco{position:absolute;pointer-events:none}
+.cta-deco:nth-child(2){top:-30px;right:-30px;width:clamp(100px,12vw,200px);height:clamp(100px,12vw,200px);border-radius:50%;border:1px dashed rgba(123,35,49,0.1);animation:ctaOrbit 20s linear infinite}
+@keyframes ctaOrbit{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.cta-deco:nth-child(3){bottom:-40px;left:-40px;width:clamp(120px,14vw,240px);height:clamp(120px,14vw,240px);border-radius:50%;background:radial-gradient(circle,rgba(123,35,49,0.04),transparent 70%);animation:ctaPulse 6s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.1);opacity:0.3}}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media(max-width:1200px){
+  .hero-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:clamp(16px,2.5vw,28px)}
+  .hero-visual{order:-1}
+  .hero-visual-inner{width:clamp(160px,30vw,260px);height:clamp(160px,30vw,260px);margin:0 auto}
+  .hero-desc{max-width:100%}
+  .club-grid{grid-template-columns:1fr;gap:clamp(16px,2vw,28px)}
+  .club-grid.right{direction:ltr}
+  .club-card::before{opacity:1;height:2px}
+  .roadmap-svg{display:none}
+  .club-collage-inner{aspect-ratio:auto;min-height:clamp(200px,40vw,320px)}
+  .club-collage-img-large{width:70%;height:75%}
+  .club-collage-img-small{width:50%;height:50%}
+  .club-collage-logo{width:35%;height:35%}
+}
+
+@media(max-width:768px){
+  .hero{padding:clamp(40px,6vw,60px) 0 clamp(20px,3vw,32px)}
+  .hero-title{font-size:clamp(22px,6vw,36px)}
+  .club-section{padding:clamp(20px,4vw,40px) 0}
+  .club-name{font-size:clamp(16px,3.5vw,22px)}
+  .club-desc{font-size:clamp(11px,2vw,13px)}
+  .club-number{font-size:clamp(32px,8vw,50px)}
+  .club-actions{gap:6px}
+  .club-btn{padding:clamp(5px,1vw,8px) clamp(10px,2vw,16px);font-size:clamp(9px,1.6vw,11px)}
+}
+
+@media(max-width:576px){
+  .hero-visual-inner{width:160px;height:160px}
+  .hero-image-frame{width:clamp(120px,40vw,160px);height:clamp(120px,40vw,160px)}
+  .hero-image-glass{width:clamp(120px,40vw,160px);height:clamp(120px,40vw,160px)}
+  .hero-image-glow{width:clamp(130px,42vw,170px);height:clamp(130px,42vw,170px)}
+  .hero-orbit-1{width:clamp(140px,46vw,180px);height:clamp(140px,46vw,180px)}
+  .hero-orbit-2{width:clamp(160px,50vw,200px);height:clamp(160px,50vw,200px)}
+  .hero-orbit-3{width:clamp(180px,54vw,220px);height:clamp(180px,54vw,220px)}
+  .hero-floating-planet-1,.hero-floating-planet-2,.hero-floating-planet-3{display:none}
+  .hero-floating-star-1,.hero-floating-star-2,.hero-floating-star-3{display:none}
+  .section{padding:clamp(16px,3vw,24px) 0}
+  .cta-title{font-size:clamp(20px,6vw,30px)}
+  .club-collage-inner{min-height:180px}
+  .club-collage-img-large{width:65%;height:70%}
+  .club-collage-img-small{width:45%;height:45%}
+  .club-collage-logo{width:32%;height:32%}
+}
+
+@media(max-width:375px){
+  .club-actions{flex-direction:column;align-items:flex-start}
+  .club-btn{width:100%;justify-content:center}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     BACKGROUND BLOBS
+     ============================== -->
+<div class="bg-overlay">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
+<div class="noise"></div>
+
+<!-- ==============================
+     FLOATING PARTICLES
+     ============================== -->
+<div class="particles-container">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<!-- ==============================
+     FLOATING DECORATIVE ELEMENTS
+     ============================== -->
+<div class="deco-planet" style="width:clamp(50px,4vw,80px);height:clamp(50px,4vw,80px);background:linear-gradient(135deg,#7B2331,#e74c3c);top:8%;left:3%;opacity:0.06;animation-delay:-1s"></div>
+<div class="deco-planet" style="width:clamp(30px,2.5vw,50px);height:clamp(30px,2.5vw,50px);background:linear-gradient(135deg,#8e44ad,#3498db);top:55%;right:2%;opacity:0.05;animation-delay:-3s"></div>
+<div class="deco-ring" style="width:clamp(80px,6vw,120px);height:clamp(80px,6vw,120px);border-color:rgba(123,35,49,0.08);top:25%;left:5%;opacity:0.4;animation-delay:-5s"></div>
+<div class="deco-ring" style="width:clamp(60px,4vw,90px);height:clamp(60px,4vw,90px);border-color:rgba(142,68,173,0.08);bottom:30%;right:4%;opacity:0.3;animation-delay:-8s"></div>
+<div class="deco-sphere" style="width:clamp(40px,3vw,60px);height:clamp(40px,3vw,60px);background:linear-gradient(135deg,rgba(251,191,36,0.1),rgba(251,191,36,0.05));top:40%;left:8%;opacity:0.5;animation-delay:-2s;border:1px solid rgba(251,191,36,0.1)"></div>
+<div class="deco-sphere" style="width:clamp(35px,2.5vw,50px);height:clamp(35px,2.5vw,50px);background:linear-gradient(135deg,rgba(255,107,157,0.1),rgba(255,107,157,0.05));bottom:55%;right:8%;opacity:0.4;animation-delay:-6s;border:1px solid rgba(255,107,157,0.1)"></div>
+<div class="deco-sparkle" style="top:12%;left:12%;font-size:clamp(16px,1.8vw,28px);color:#fbbf24">✦</div>
+<div class="deco-sparkle" style="top:48%;right:14%;font-size:clamp(12px,1.2vw,20px);color:#ff6b9d;animation-delay:-1s">✦</div>
+<div class="deco-sparkle" style="bottom:22%;left:16%;font-size:clamp(14px,1.5vw,24px);color:#a78bfa;animation-delay:-2s">✦</div>
+<div class="deco-star" style="top:18%;right:25%;font-size:clamp(20px,2.5vw,40px)">★</div>
+<div class="deco-star" style="bottom:15%;left:30%;font-size:clamp(16px,2vw,32px);animation-delay:-1.5s">★</div>
+<div class="deco-shape" style="width:clamp(30px,2.5vw,45px);height:clamp(30px,2.5vw,45px);top:65%;left:5%;background:#7B2331;clip-path:polygon(50% 0%,100% 100%,0% 100%);animation-delay:-3s"></div>
+<div class="deco-shape" style="width:clamp(20px,1.8vw,35px);height:clamp(20px,1.8vw,35px);bottom:40%;right:12%;background:#8e44ad;clip-path:polygon(50% 0%,100% 100%,0% 100%);animation-delay:-5s"></div>
+<div class="deco-float-circle" style="width:clamp(80px,6vw,120px);height:clamp(80px,6vw,120px);top:20%;right:6%;background:rgba(123,35,49,0.03);border:1px solid rgba(123,35,49,0.06);animation-delay:-4s"></div>
+<div class="deco-float-circle" style="width:clamp(60px,4vw,100px);height:clamp(60px,4vw,100px);bottom:12%;left:8%;background:rgba(142,68,173,0.03);border:1px solid rgba(142,68,173,0.06);animation-delay:-7s"></div>
+<div class="deco-note" style="top:5%;right:clamp(20px,5vw,80px);animation-delay:-2s">♪</div>
+<div class="deco-note" style="bottom:20%;left:clamp(15px,4vw,60px);animation-delay:-4s">♫</div>
+<div class="deco-note" style="top:35%;right:clamp(30px,6vw,100px);animation-delay:-6s;font-size:16px">♩</div>
+
+<!-- ==============================
+     DECORATIVE SVG ILLUSTRATIONS
+     ============================== -->
+<div class="deco-svg" style="top:15%;left:8%;width:clamp(24px,2vw,36px);height:clamp(24px,2vw,36px);color:#7B2331;animation-delay:-2s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16l-6.4 4.8L8 14l-6-4.8h7.6z"/></svg>
+</div>
+<div class="deco-svg" style="top:45%;right:3%;width:clamp(20px,1.6vw,30px);height:clamp(20px,1.6vw,30px);color:#8e44ad;animation-delay:-4s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16l-6.4 4.8L8 14l-6-4.8h7.6z"/></svg>
+</div>
+<div class="deco-svg" style="bottom:18%;right:8%;width:clamp(18px,1.4vw,26px);height:clamp(18px,1.4vw,26px);color:#fbbf24;animation-delay:-6s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2l2.4 7.2H22l-6 4.8 2.4 7.2L12 16l-6.4 4.8L8 14l-6-4.8h7.6z"/></svg>
+</div>
+<div class="deco-svg-saturn" style="top:28%;right:10%;width:clamp(32px,2.8vw,50px);height:clamp(32px,2.8vw,50px);color:#ff6b9d;animation-delay:-3s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="10" ry="3" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(-20,12,12)"/></svg>
+</div>
+<div class="deco-svg-comet" style="bottom:35%;left:6%;width:clamp(28px,2.4vw,44px);height:clamp(28px,2.4vw,44px);color:#c084fc;animation-delay:-7s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><circle cx="16" cy="8" r="3"/><path d="M2 22L14 10l-2-2L0 20z" opacity="0.5"/></svg>
+</div>
+<div class="deco-svg-confetti" style="top:60%;left:4%;width:clamp(22px,1.8vw,34px);height:clamp(22px,1.8vw,34px);color:#f39c12;animation-delay:-5s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="4" r="1.5"/><circle cx="10" cy="18" r="2"/><circle cx="20" cy="16" r="1.5"/><rect x="3" y="14" width="3" height="6" rx="0.5" transform="rotate(30,4.5,17)"/><rect x="16" y="8" width="2.5" height="5" rx="0.5" transform="rotate(-20,17.25,10.5)"/></svg>
+</div>
+<div class="deco-svg-blob" style="top:40%;left:10%;width:clamp(50px,4vw,80px);height:clamp(50px,4vw,80px);color:#7B2331;animation-delay:-8s">
+  <svg viewBox="0 0 100 100" fill="currentColor" width="100%" height="100%"><path d="M50 5C72 5 85 22 88 40c3 18-5 38-22 48s-36 8-50-2C2 76-5 56 5 38 15 20 28 5 50 5z"/></svg>
+</div>
+<div class="deco-svg-rocket" style="bottom:8%;right:15%;width:clamp(24px,2vw,38px);height:clamp(24px,2vw,38px);color:#e74c3c;animation-delay:-2s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2s-4.5 3.5-4.5 9c0 2.5 1.5 5.5 4.5 8 3-2.5 4.5-5.5 4.5-8 0-5.5-4.5-9-4.5-9zm0 11c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-6 7c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1H6v1z"/></svg>
+</div>
+<div class="deco-svg" style="top:5%;left:20%;width:clamp(16px,1.2vw,22px);height:clamp(16px,1.2vw,22px);color:#67e8f9;animation-delay:-1s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="8" ry="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+</div>
+<div class="deco-svg" style="bottom:45%;right:6%;width:clamp(14px,1vw,20px);height:clamp(14px,1vw,20px);color:#f472b6;animation-delay:-9s">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="8" ry="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+</div>
+
+<!-- ==============================
+     HERO SECTION — CIRCULAR IMAGE
+     ============================== -->
+<section class="section hero" id="hero">
+  <div class="section-inner">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          IITM College of Engineering
+        </div>
+        <h1 class="hero-title">
+          Clubs &<br>
+          <span class="highlight">Societies</span>
+        </h1>
+        <p class="hero-subtitle">Where Passion Meets Purpose</p>
+        <p class="hero-desc">Discover a vibrant ecosystem of 8 student communities spanning technology, media, arts, culture, literature, management, environment, and career development. Find your tribe and make your mark.</p>
+        <button class="hero-cta" onclick="document.getElementById('clubs-start').scrollIntoView({behavior:'smooth'})">
+          Explore Student Communities
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <div class="hero-image-glow"></div>
+          <div class="hero-orbit hero-orbit-1"><span class="hero-orbit-dot hero-orbit-dot-1"></span></div>
+          <div class="hero-orbit hero-orbit-2"><span class="hero-orbit-dot hero-orbit-dot-2"></span></div>
+          <div class="hero-orbit hero-orbit-3"><span class="hero-orbit-dot hero-orbit-dot-3"></span></div>
+          <div class="hero-floating-planet hero-floating-planet-1"></div>
+          <div class="hero-floating-planet hero-floating-planet-2"></div>
+          <div class="hero-floating-planet hero-floating-planet-3"></div>
+          <div class="hero-floating-star hero-floating-star-1">★</div>
+          <div class="hero-floating-star hero-floating-star-2">★</div>
+          <div class="hero-floating-star hero-floating-star-3">★</div>
+          <div class="hero-image-frame" id="heroImageFrame">
+            <img id="heroImage" src="" alt="IITM Student Community">
+          </div>
+          <div class="hero-image-glass"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     SECTION DIVIDER
+     ============================== -->
+<div class="section-divider">
+  <div class="section-inner">
+    <div class="section-divider-inner">
+      <span class="section-divider-line"></span>
+      <span class="section-divider-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg>
+      </span>
+      <span class="section-divider-line"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================
+     CLUBS CONTAINER
+     ============================== -->
+<div class="roadmap-container" id="clubs-start">
+  <svg class="roadmap-svg" id="roadmapSvg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="pathGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7B2331"/>
+        <stop offset="50%" stop-color="#8e44ad"/>
+        <stop offset="100%" stop-color="#ff6b9d"/>
+      </linearGradient>
+      <linearGradient id="pathGrad2" x1="100%" y1="0%" x2="0%" y2="0%">
+        <stop offset="0%" stop-color="#8e44ad"/>
+        <stop offset="50%" stop-color="#7B2331"/>
+        <stop offset="100%" stop-color="#fbbf24"/>
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="glowStrong">
+        <feGaussianBlur stdDeviation="6" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+  </svg>
+  <div id="clubsContainer"></div>
+</div>
+
+<!-- ==============================
+     FINAL CTA SECTION
+     ============================== -->
+<section class="section cta-section" id="ctaSection">
+  <div class="section-inner">
+    <div class="cta-card reveal">
+      <div class="cta-deco"></div>
+      <div class="cta-deco"></div>
+      <h2 class="cta-title">Find Your <span>Community</span></h2>
+      <p class="cta-desc">Whether you're into coding, design, music, debate, or sustainability — there's a place for you at IITM. Join a society, make friends, and build skills that last a lifetime.</p>
+      <button class="cta-btn" id="ctaMemberBtn">
+        Become a Member
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     JAVASCRIPT
+     ============================== -->
+<script>
+
+////////////////////////////////////////////////////
+// UPDATE SOCIETY DETAILS HERE
+// ONLY EDIT VALUES IN THIS JSON BLOCK
+// DO NOT MODIFY HTML OR CSS
+////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////
+// UPDATE HERO IMAGE HERE
+////////////////////////////////////////////////////
+const HERO_IMAGE = "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80";
+
+////////////////////////////////////////////////////
+// UPDATE CLUB DETAILS BELOW
+// For each club: logo, gallery images, instagram, viewMore
+////////////////////////////////////////////////////
+const CLUBS = [
+  {
+    name: "SNKC",
+    fullName: "Social Networking & Knowledge Club",
+    //////////////////////////////////////////////////
+    // UPDATE CLUB LOGO HERE
+    //////////////////////////////////////////////////
+    logo: "https://static.wixstatic.com/media/ab471d_af1363a093ce489e83a85563384d9016~mv2.png",
+    description: "SNKC is IITM's premier creative media and communications society, responsible for shaping the college's digital identity across all platforms. From high-energy event coverage and professional photography to cinematic reels, graphic design, and strategic social media campaigns — SNKC transforms campus moments into compelling visual stories. Members gain hands-on experience in content creation, branding, digital storytelling, and event promotion while building portfolios that stand out. The club has successfully elevated IITM's online presence, reaching thousands through curated content that captures the spirit of college life. SNKC is where creativity meets strategy, and every member finds their voice behind the lens.",
+    //////////////////////////////////////////////////
+    // UPDATE EVENT PHOTOS HERE
+    // Two images: first is large feature, second is accent
+    //////////////////////////////////////////////////
+    gallery: [
+      "https://dummyimage.com/800x600/7B2331/ffffff?text=SNKC+Coverage",
+      "https://dummyimage.com/500x700/7B2331/ffffff?text=SNKC+Event"
+    ],
+    //////////////////////////////////////////////////
+    // UPDATE INSTAGRAM LINK HERE
+    //////////////////////////////////////////////////
+    instagram: "https://www.instagram.com/snkc.ice/",
+    //////////////////////////////////////////////////
+    // UPDATE VIEW MORE PAGE URL HERE
+    //////////////////////////////////////////////////
+    viewMore: "#"
+  },
+  {
+    name: "TechGiants",
+    fullName: "Technology Society",
+    logo: "https://static.wixstatic.com/media/ab471d_8345e3c9447b42e49e6c546874a78adb~mv2.avif",
+    description: "TechGiants is the official technology and innovation hub of IITM College of Engineering, driving a culture of building, breaking, and problem-solving. The society organizes large-scale hackathons, inter-college coding battles, AI and machine learning workshops, web development sprints, and placement readiness bootcamps that prepare students for top-tier tech careers. With mentorship from industry professionals and alumni, members work on real-world projects, contribute to open-source, and participate in national-level tech competitions. TechGiants has produced several winning teams at regional hackathons and continues to foster an ecosystem where engineering excellence meets creative problem-solving. Every session is designed to push boundaries.",
+    gallery: [
+      "https://dummyimage.com/800x600/8e44ad/ffffff?text=TechGiants+Hackathon",
+      "https://dummyimage.com/500x700/8e44ad/ffffff?text=TechGiants+Workshop"
+    ],
+    instagram: "https://www.instagram.com/nexturn.iitm/",
+    viewMore: "#"
+  },
+  {
+    name: "ShreeJourn",
+    fullName: "Literature & Communication Society",
+    logo: "https://static.wixstatic.com/media/ab471d_16daf717a5494e14941379cf7fc757c6~mv2.avif",
+    description: "ShreeJourn is IITM's distinguished literature, debate, and public speaking society, nurturing articulate thinkers and confident communicators. The society hosts inter-college debate championships, poetry slams, creative writing workshops, open mic nights, stage anchoring training, and psychology awareness initiatives that explore the human experience through dialogue. Members develop critical thinking, persuasive communication, and leadership skills while building lifelong friendships. ShreeJourn's annual literary fest attracts participants from colleges across the region, and its members have consistently won accolades at state-level debating and elocution competitions. Beyond words, the society fosters empathy, curiosity, and the courage to express — every voice finds its stage here.",
+    gallery: [
+      "https://dummyimage.com/800x600/e74c3c/ffffff?text=ShreeJourn+Debate",
+      "https://dummyimage.com/500x700/e74c3c/ffffff?text=ShreeJourn+Poetry"
+    ],
+    instagram: "https://www.instagram.com/shreejourn/",
+    viewMore: "#"
+  },
+  {
+    name: "PlayBeat",
+    fullName: "Cultural & Performing Arts Society",
+    logo: "https://static.wixstatic.com/media/ab471d_21163094d148483b980252ad37b90573~mv2.avif",
+    description: "PlayBeat is the cultural soul of IITM College of Engineering, celebrating the arts through dance, music, theatre, and live performance. The society organizes electrifying cultural festivals, inter-collegiate dance battles, musical nights, theatrical productions, flash mobs, and choreography workshops that bring the campus to life. Members collaborate across disciplines to produce stage shows that rival professional productions, from lighting design to costume coordination. PlayBeat has won top honours at multiple university cultural fests and continues to raise the bar with each performance. Whether you're a trained classical dancer, a rock band vocalist, or someone discovering their stage presence for the first time — PlayBeat is where passion takes the spotlight.",
+    gallery: [
+      "https://dummyimage.com/800x600/ff6b9d/ffffff?text=PlayBeat+Fest",
+      "https://dummyimage.com/500x700/ff6b9d/ffffff?text=PlayBeat+Dance"
+    ],
+    instagram: "https://www.instagram.com/playbeat___official/",
+    viewMore: "#"
+  },
+  {
+    name: "Finvicts",
+    fullName: "Management & Commerce Society",
+    logo: "https://static.wixstatic.com/media/ab471d_d9a18daf236f4223943c56ee24735a00~mv2.avif",
+    description: "Finvicts is IITM's management and commerce society, shaping the next generation of business leaders and entrepreneurs. The society runs flagship events including business plan competitions, financial literacy workshops, mock stock trading sessions, entrepreneurship summits, and corporate networking meets that connect students with industry leaders. Members develop expertise in strategic planning, budgeting, sponsorship acquisition, and event management while building professional networks. Finvicts has successfully facilitated internships and mentorship opportunities with leading firms, and its alumni have gone on to launch successful startups and join top management roles. The society instills a business mindset, teaching students to think critically, negotiate effectively, and lead with confidence.",
+    gallery: [
+      "https://dummyimage.com/800x600/f39c12/ffffff?text=Finvicts+Summit",
+      "https://dummyimage.com/500x700/f39c12/ffffff?text=Finvicts+Biz+Meet"
+    ],
+    instagram: "https://www.instagram.com/finvicts_official/",
+    viewMore: "#"
+  },
+  {
+    name: "Rangat",
+    fullName: "Art & Design Society",
+    logo: "https://static.wixstatic.com/media/ab471d_eff6df7b6bae4825bb34bd205272e471~mv2.avif",
+    description: "Rangat is the creative heart of IITM — an art and design collective where imagination takes physical form. From large-scale campus murals and poster exhibitions to digital illustration, calligraphy, sculpture, and interactive art installations — Rangat transforms blank spaces into visual stories. The society designs every creative asset for college events, ensuring original, student-made artwork defines IITM's visual identity. Members explore diverse mediums under peer mentorship, participate in inter-college art competitions, and showcase their work at annual exhibitions. Rangat's artists have won national recognition for design and painting, and the collective continues to push creative boundaries. Every brushstroke, pixel, and sketch here is a step toward artistic mastery.",
+    gallery: [
+      "https://dummyimage.com/800x600/2ecc71/ffffff?text=Rangat+Exhibition",
+      "https://dummyimage.com/500x700/2ecc71/ffffff?text=Rangat+Art+Show"
+    ],
+    instagram: "https://www.instagram.com/rangat_.official/",
+    viewMore: "#"
+  },
+  {
+    name: "NexTurn",
+    fullName: "Internship & Career Development Cell",
+    logo: "https://static.wixstatic.com/media/ab471d_66649db8ac174975bba7cddd6dec89c3~mv2.avif",
+    description: "NexTurn is IITM's dedicated career development and internship cell, bridging the gap between academic learning and professional success. The society organizes placement preparation workshops, mock interviews, resume building sessions, industry guest lectures, and corporate networking events that give students a competitive edge. Members gain early exposure to recruitment processes, career planning strategies, and skill development roadmaps tailored to their goals. NexTurn has helped hundreds of students secure internships at leading companies and guided them toward fulfilling career paths. The society also maintains a strong alumni mentorship network, offering one-on-one guidance, industry insights, and professional referrals. Your career journey starts with the right turn — NexTurn shows you the way.",
+    gallery: [
+      "https://dummyimage.com/800x600/3498db/ffffff?text=NexTurn+Placement",
+      "https://dummyimage.com/500x700/3498db/ffffff?text=NexTurn+Mentorship"
+    ],
+    instagram: "https://www.instagram.com/nexturn.iitm/",
+    viewMore: "#"
+  },
+  {
+    name: "Prakriti",
+    fullName: "Environment & Sustainability Society",
+    logo: "https://static.wixstatic.com/media/ab471d_27782a754b2245f8a640c65fe7e71ff1~mv2.avif",
+    description: "Prakriti is IITM's environment and sustainability society, driven by a mission to create a greener, more responsible campus. From tree plantation drives and cleanliness campaigns to biodiversity documentation, waste management initiatives, and eco-awareness festivals — Prakriti leads meaningful action toward environmental stewardship. Members work on real sustainability projects, partner with NGOs, organize Earth Day celebrations, and advocate for eco-friendly campus policies. The society has planted over a thousand trees on campus, launched recycling programs, and inspired students to adopt sustainable lifestyles. Prakriti believes that small actions create big change, and every member becomes a champion for the planet. Join the movement toward a future where nature and progress thrive together.",
+    gallery: [
+      "https://dummyimage.com/800x600/27ae60/ffffff?text=Prakriti+Drive",
+      "https://dummyimage.com/500x700/27ae60/ffffff?text=Prakriti+Plantation"
+    ],
+    instagram: "https://www.instagram.com/prakriti_society_iitm/",
+    viewMore: "#"
+  }
+];
+
+////////////////////////////////////////////////////
+// UPDATE CTA BUTTON URL HERE
+////////////////////////////////////////////////////
+const CTA_URL = "#";
+
+////////////////////////////////////////////////////
+// RENDER CLUBS
+// DO NOT EDIT BELOW THIS LINE
+////////////////////////////////////////////////////
+
+const container = document.getElementById('clubsContainer');
+const roadmapSvg = document.getElementById('roadmapSvg');
+
+// Set hero image from JSON
+document.getElementById('heroImage').src = HERO_IMAGE;
+
+function getDirection(index) {
+  return (index % 2 === 0) ? '' : 'right';
+}
+
+function renderClub(club, index) {
+  const dir = getDirection(index);
+  const num = String(index + 1).padStart(2, '0');
+  const logoImg = club.logo;
+  const event1Img = club.gallery[0] || 'https://dummyimage.com/800x600/ccc/999?text=Event';
+  const event2Img = club.gallery[1] || 'https://dummyimage.com/500x700/ccc/999?text=Event';
+
+  return `
+    <section class="club-section" data-club-index="${index}">
+      <div class="club-section-inner">
+        <div class="club-grid ${dir}">
+          <div class="club-visual reveal-scale">
+            <div class="club-collage">
+              <div class="club-collage-inner">
+                <div class="club-collage-img-large">
+                  <img src="${event1Img}" alt="${club.name} feature" loading="lazy">
+                </div>
+                <div class="club-collage-img-small">
+                  <img src="${event2Img}" alt="${club.name} accent" loading="lazy">
+                </div>
+                <div class="club-collage-logo">
+                  <img src="${logoImg}" alt="${club.name} logo" loading="lazy">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="club-content">
+            <div class="club-card reveal-${dir || 'left'}">
+              <div class="club-card-glow"></div>
+              <div class="club-card-border"></div>
+              <div class="club-number">${num}</div>
+              <h3 class="club-name"><span class="hash">#</span>${club.name}</h3>
+              <div class="club-tagline">${club.fullName}</div>
+              <p class="club-desc">${club.description}</p>
+              <div class="club-actions">
+                <a href="${club.instagram}" target="_blank" rel="noopener noreferrer" class="club-btn club-btn-instagram">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  Instagram
+                </a>
+                <a href="${club.viewMore}" target="_blank" rel="noopener noreferrer" class="club-btn club-btn-view">
+                  View More
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderAllClubs() {
+  container.innerHTML = CLUBS.map((club, i) => renderClub(club, i)).join('');
+}
+
+renderAllClubs();
+
+////////////////////////////////////////////////////
+// ROADMAP SVG — SNAKE & LADDER INSPIRED
+////////////////////////////////////////////////////
+
+function buildRoadmap() {
+  const sections = document.querySelectorAll('.club-section');
+  const container = document.getElementById('clubs-start');
+  if (sections.length < 2 || !container) return;
+
+  const containerRect = container.getBoundingClientRect();
+  const svgWidth = containerRect.width;
+  const svgHeight = container.scrollHeight || (
+    sections[sections.length - 1].getBoundingClientRect().bottom -
+    containerRect.top + window.scrollY + 200
+  );
+  roadmapSvg.setAttribute('viewBox', `0 0 ${svgWidth} ${svgHeight}`);
+  roadmapSvg.style.width = svgWidth + 'px';
+  roadmapSvg.style.height = svgHeight + 'px';
+
+  const isMobile = window.innerWidth <= 1024;
+  if (isMobile) { roadmapSvg.innerHTML = ''; return; }
+
+  const containerTop = containerRect.top + window.scrollY;
+  const waypoints = [];
+
+  sections.forEach((sec, i) => {
+    const rect = sec.getBoundingClientRect();
+    const top = rect.top + window.scrollY - containerTop;
+    const bottom = rect.bottom + window.scrollY - containerTop;
+    const isEven = i % 2 === 0;
+    const x = isEven ? svgWidth * 0.22 : svgWidth * 0.78;
+    const y = (top + bottom) / 2;
+    waypoints.push({ x, y, index: i, isEven });
+  });
+
+  // Build smooth bezier snake path
+  let mainD = '';
+  for (let i = 0; i < waypoints.length; i++) {
+    const p = waypoints[i];
+    if (i === 0) {
+      mainD += `M ${p.x} ${p.y}`;
+    } else {
+      const prev = waypoints[i - 1];
+      const midX = (prev.x + p.x) / 2;
+      const cp1x = midX;
+      const cp1y = prev.y + (p.y - prev.y) * 0.12;
+      const cp2x = midX;
+      const cp2y = p.y - (p.y - prev.y) * 0.12;
+      mainD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p.x} ${p.y}`;
+    }
+  }
+
+  let svgContent = '';
+
+  // Background dashed guide
+  svgContent += `<path d="${mainD}" stroke="rgba(123,35,49,0.06)" stroke-width="2" fill="none" stroke-dasharray="6,10" stroke-linecap="round"/>`;
+
+  // Multiple layered glow paths
+  svgContent += `<path d="${mainD}" stroke="url(#pathGrad1)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.15" filter="url(#glowStrong)"/>`;
+  svgContent += `<path d="${mainD}" stroke="url(#pathGrad1)" stroke-width="3" fill="none" stroke-linecap="round" class="roadmap-main-path" filter="url(#glow)" style="stroke-dasharray:0;stroke-dashoffset:0"/>`;
+
+  // Waypoint checkpoints
+  waypoints.forEach((wp, i) => {
+    const hue = wp.isEven ? '#7B2331' : '#8e44ad';
+    const glowColor = wp.isEven ? 'rgba(123,35,49,0.4)' : 'rgba(142,68,173,0.4)';
+
+    // Outer glow ring
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="14" fill="none" stroke="${hue}" stroke-width="1" opacity="0.15" stroke-dasharray="3,3">
+      <animate attributeName="r" values="12;18;12" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.15;0.05;0.15" dur="3s" repeatCount="indefinite"/>
+    </circle>`;
+
+    // Pulse ring
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="8" fill="none" stroke="${hue}" stroke-width="1.5" opacity="0.2">
+      <animate attributeName="r" values="8;14;8" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite"/>
+    </circle>`;
+
+    // Core dot
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="5" fill="${hue}" opacity="0.3" filter="url(#glow)"/>`;
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="3" fill="${hue}"/>`;
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="1.2" fill="#fff"/>`;
+
+    // Checkpoint glow
+    svgContent += `<circle cx="${wp.x}" cy="${wp.y}" r="6" fill="${hue}" opacity="0.08">
+      <animate attributeName="r" values="6;20;6" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.08;0;0.08" dur="3s" repeatCount="indefinite"/>
+    </circle>`;
+
+    // Number label
+    const offsetX = wp.isEven ? -22 : 22;
+    svgContent += `<text x="${wp.x + offsetX}" y="${wp.y + 3.5}" text-anchor="${wp.isEven ? 'end' : 'start'}" font-size="9" font-weight="700" fill="#7B2331" font-family="Poppins,sans-serif" opacity="0.3">${String(i + 1).padStart(2, '0')}</text>`;
+  });
+
+  // Direction arrows at segment midpoints
+  for (let i = 0; i < waypoints.length - 1; i++) {
+    const p1 = waypoints[i];
+    const p2 = waypoints[i + 1];
+    const t = 0.5;
+    const ax = p1.x + (p2.x - p1.x) * t;
+    const ay = p1.y + (p2.y - p1.y) * t;
+    const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+    svgContent += `<g transform="translate(${ax},${ay}) rotate(${angle})" opacity="0.15">
+      <polygon points="-4,-3 4,0 -4,3" fill="${i % 2 === 0 ? '#7B2331' : '#8e44ad'}"/>
+    </g>`;
+
+    // Ladder rung at 30% and 70%
+    [0.3, 0.7].forEach(rt => {
+      const rx = p1.x + (p2.x - p1.x) * rt;
+      const ry = p1.y + (p2.y - p1.y) * rt;
+      const halfSpan = 15 + (i % 2) * 5;
+      const rungX1 = rx - halfSpan;
+      const rungX2 = rx + halfSpan;
+      svgContent += `<line x1="${rungX1}" y1="${ry}" x2="${rungX2}" y2="${ry}" stroke="rgba(123,35,49,0.06)" stroke-width="1.5" stroke-dasharray="2,3" stroke-linecap="round"/>`;
+    });
+  }
+
+  // Segment connectors — colored path segments between waypoints
+  for (let i = 0; i < waypoints.length - 1; i++) {
+    const p1 = waypoints[i];
+    const p2 = waypoints[i + 1];
+    const midX = (p1.x + p2.x) / 2;
+    const cp1x = midX;
+    const cp1y = p1.y + (p2.y - p1.y) * 0.12;
+    const cp2x = midX;
+    const cp2y = p2.y - (p2.y - p1.y) * 0.12;
+    const segD = `M ${p1.x} ${p1.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
+    const segColor = i % 2 === 0 ? '#7B2331' : '#8e44ad';
+    svgContent += `<path d="${segD}" stroke="${segColor}" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.08" stroke-dasharray="3,5">
+      <animate attributeName="stroke-dashoffset" from="0" to="16" dur="2s" repeatCount="indefinite"/>
+    </path>`;
+  }
+
+  roadmapSvg.innerHTML = svgContent;
+
+  // Scroll-based path drawing
+  const mainPath = roadmapSvg.querySelector('.roadmap-main-path');
+  if (mainPath) {
+    const length = mainPath.getTotalLength();
+    mainPath.style.strokeDasharray = length;
+    mainPath.style.strokeDashoffset = length;
+
+    const handleScroll = () => {
+      const cr = container.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const visibleStart = Math.max(0, -cr.top);
+      const progress = Math.min(visibleStart / (cr.height + vh), 1);
+      mainPath.style.strokeDashoffset = length - (length * progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  }
+}
+
+// Build roadmap on load and resize
+let resizeTimer;
+window.addEventListener('load', () => { setTimeout(buildRoadmap, 200); });
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(buildRoadmap, 300);
+});
+
+////////////////////////////////////////////////////
+// INTERSECTION OBSERVER — REVEAL ANIMATIONS
+////////////////////////////////////////////////////
+
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+////////////////////////////////////////////////////
+// CTA BUTTON HANDLER
+////////////////////////////////////////////////////
+
+document.getElementById('ctaMemberBtn').addEventListener('click', () => {
+  if (CTA_URL && CTA_URL !== '#') {
+    window.open(CTA_URL, '_blank');
+  } else {
+    alert('Member registration form coming soon! Stay tuned.');
+  }
+});
+
+console.log('IITM Clubs & Societies loaded successfully.');
+console.log('Total clubs:', CLUBS.length);
+console.log('To edit content, update the CLUBS array at the top of this file.');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops | IITM College of Engineering</title>
+<style>
+  :root{
+    --maroon:#7B1E2B;
+    --maroon-dark:#5B1622;
+    --maroon-deep:#3E0E17;
+    --gold:#CFA54B;
+    --gold-deep:#B8892F;
+    --gold-light:#E3C98B;
+    --bg:#FAF8F7;
+    --card:#FFFFFF;
+    --ink:#2A2224;
+    --ink-soft:#6E6366;
+    --line:rgba(123,30,43,0.10);
+    --shadow-sm:0 2px 12px rgba(59,22,34,0.05);
+    --shadow-md:0 12px 32px rgba(59,22,34,0.10);
+    --shadow-lg:0 24px 56px rgba(59,22,34,0.16);
+    --radius:20px;
+    --radius-sm:14px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    background:
+      radial-gradient(1100px 520px at 88% -6%,rgba(207,165,75,0.12),transparent 62%),
+      radial-gradient(900px 640px at 6% 12%,rgba(123,30,43,0.07),transparent 55%),
+      radial-gradient(1200px 800px at 96% 68%,rgba(123,30,43,0.05),transparent 60%),
+      radial-gradient(820px 520px at 8% 92%,rgba(207,165,75,0.08),transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      radial-gradient(rgba(123,30,43,0.045) 1px,transparent 1.4px);
+    background-size:30px 30px;
+  }
+  img{display:block;max-width:100%}
+  img{user-select:none}
+
+  .page{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+    padding:clamp(52px,8vw,96px) 0 clamp(36px,5.5vw,56px);
+    background:
+      radial-gradient(760px 420px at 10% -22%,rgba(207,165,75,0.20),transparent 62%),
+      radial-gradient(950px 560px at 93% -28%,rgba(123,30,43,0.20),transparent 58%),
+      radial-gradient(560px 340px at 72% -10%,rgba(207,165,75,0.10),transparent 65%),
+      linear-gradient(180deg,#FDFBFA 0%,#F6F2F0 55%,var(--bg) 100%);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(rgba(123,30,43,0.11) 1px,transparent 1.4px),
+      linear-gradient(rgba(123,30,43,0.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(123,30,43,0.025) 1px,transparent 1px);
+    background-size:26px 26px,26px 26px,26px 26px;
+    -webkit-mask-image:radial-gradient(62% 92% at 50% 0%,#000 18%,transparent 80%);
+    mask-image:radial-gradient(62% 92% at 50% 0%,#000 18%,transparent 80%);
+    pointer-events:none;
+  }
+  .circle{
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(1px);
+    animation:float 12s var(--ease) infinite alternate;
+  }
+  .circle-1{width:180px;height:180px;top:-60px;right:8%;
+    background:radial-gradient(circle at 30% 30%,rgba(207,165,75,0.24),rgba(207,165,75,0.02) 70%);}
+  .circle-2{width:120px;height:120px;bottom:10px;left:4%;
+    background:radial-gradient(circle at 30% 30%,rgba(123,30,43,0.18),rgba(123,30,43,0.02) 70%);animation-delay:-4s;}
+  .circle-3{width:70px;height:70px;top:30%;right:30%;
+    background:radial-gradient(circle at 30% 30%,rgba(207,165,75,0.28),rgba(207,165,75,0.03) 70%);animation-delay:-8s;}
+  @keyframes float{
+    0%{transform:translateY(0) translateX(0)}
+    100%{transform:translateY(-18px) translateX(10px)}
+  }
+  .hero-inner{position:relative;z-index:1;text-align:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:clamp(11px,1.6vw,13px);
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--maroon);
+    padding:9px 20px;
+    border:1px solid rgba(123,30,43,0.20);
+    border-radius:999px;
+    background:rgba(255,255,255,0.65);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    box-shadow:0 4px 18px rgba(123,30,43,0.06);
+  }
+  .eyebrow::before,.eyebrow::after{
+    content:"";width:18px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));
+  }
+  .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .hero h1{
+    margin:clamp(18px,3vw,26px) 0 0;
+    font-size:clamp(36px,6.6vw,62px);
+    font-weight:800;
+    letter-spacing:-0.025em;
+    line-height:1.08;
+    color:var(--maroon-dark);
+    text-shadow:0 2px 0 rgba(255,255,255,0.45);
+  }
+  .hero-rule{
+    width:clamp(64px,10vw,92px);height:3px;
+    margin:clamp(18px,2.6vw,26px) auto;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--maroon),var(--gold),var(--gold-light));
+    box-shadow:0 1px 10px rgba(207,165,75,0.45);
+  }
+  .hero p{
+    max-width:660px;margin:0 auto;
+    font-size:clamp(14.5px,2.1vw,16.5px);
+    color:#5D4F53;
+    font-weight:400;
+  }
+
+  /* ============ WORKSHOPS ============ */
+  .workshops{padding:clamp(12px,2vw,20px) 0 clamp(48px,6vw,72px)}
+  .workshop{
+    position:relative;
+    background:linear-gradient(160deg,rgba(255,255,255,0.94),rgba(255,252,250,0.97));
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(123,30,43,0.10);
+    border-radius:var(--radius);
+    box-shadow:0 2px 12px rgba(59,22,34,0.05),0 14px 34px rgba(59,22,34,0.08);
+    padding:clamp(22px,3.4vw,34px);
+    overflow:hidden;
+    transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
+  }
+  .workshop::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--maroon) 0%,var(--gold) 50%,var(--maroon-dark) 100%);
+    opacity:.95;
+  }
+  .workshop::after{
+    content:"";
+    position:absolute;top:-90px;right:-70px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(207,165,75,0.10),transparent 65%);
+    pointer-events:none;
+  }
+  .workshop:hover{
+    transform:translateY(-6px);
+    box-shadow:0 4px 16px rgba(59,22,34,0.08),0 26px 60px rgba(59,22,34,0.16);
+    border-color:rgba(207,165,75,0.40);
+  }
+  .sep{
+    height:1px;
+    width:min(560px,100%);
+    margin:clamp(22px,3.4vw,34px) auto;
+    background:linear-gradient(90deg,transparent,rgba(123,30,43,0.18),rgba(207,165,75,0.45),rgba(123,30,43,0.18),transparent);
+  }
+  .w-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+  .w-title{
+    font-size:clamp(19px,2.9vw,24px);
+    font-weight:700;
+    letter-spacing:-0.015em;
+    color:var(--maroon-dark);
+    line-height:1.25;
+    padding-bottom:10px;
+    position:relative;
+  }
+  .w-title::after{
+    content:"";
+    position:absolute;left:0;bottom:0;
+    width:44px;height:3px;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--maroon),var(--gold));
+  }
+  .w-badge{
+    flex:none;
+    margin-top:4px;
+    font-size:clamp(10.5px,1.6vw,12px);
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    background:linear-gradient(120deg,rgba(207,165,75,0.14),rgba(123,30,43,0.06));
+    border:1px solid rgba(207,165,75,0.40);
+    padding:6px 14px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .w-sub{
+    font-size:clamp(12.5px,2vw,14px);
+    font-weight:600;
+    color:var(--maroon);
+    letter-spacing:.03em;
+    margin-bottom:8px;
+  }
+  .w-desc{
+    font-size:clamp(13.5px,2.1vw,15px);
+    color:var(--ink-soft);
+    max-width:760px;
+    margin-bottom:clamp(16px,2.8vw,22px);
+  }
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:clamp(10px,1.6vw,16px);
+  }
+  .gallery figure{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:var(--radius-sm);
+    overflow:hidden;
+    background:#EFE9E6;
+    border:1px solid rgba(123,30,43,0.09);
+    box-shadow:0 4px 14px rgba(59,22,34,0.06);
+    transition:box-shadow .4s var(--ease),border-color .4s var(--ease);
+  }
+  .gallery img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .65s var(--ease);
+  }
+  .gallery figure:hover{
+    box-shadow:0 10px 26px rgba(59,22,34,0.14);
+    border-color:rgba(207,165,75,0.45);
+  }
+  .gallery figure:hover img{transform:scale(1.08)}
+
+  /* ============ FADE UP ============ */
+  .reveal{opacity:0;transform:translateY(26px)}
+  .reveal.visible{opacity:1;transform:none;transition:opacity .8s ease,transform .8s var(--ease)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:640px){
+    .gallery{grid-template-columns:repeat(2,1fr);gap:9px}
+    .workshops{padding-top:10px}
+    .w-desc{margin-bottom:14px}
+    .workshop{padding:20px 18px}
+  }
+  @media (max-width:400px){.gallery{grid-template-columns:repeat(2,1fr);gap:8px}}
+  @media (prefers-reduced-motion:reduce){
+    .circle,.workshop,.gallery figure,.gallery img{animation:none;transition:none}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero" id="hero">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+    <div class="page hero-inner">
+      <span class="eyebrow">IITM College of Engineering</span>
+      <h1>Workshops</h1>
+      <div class="hero-rule"></div>
+      <p>Hands-on learning experiences designed to enhance technical skills, creativity, innovation, and professional growth through expert-led workshops conducted at IITM College of Engineering.</p>
+    </div>
+  </header>
+
+  <main class="page workshops" id="workshops"></main>
+
+<script>
+(function(){
+  "use strict";
+
+  var workshops = [
+    {
+      title:"IoT Workshop 2K26",
+      tag:"Internet of Things",
+      subtitle:"Hands-on with connected devices",
+      description:"The IoT Workshop introduced students to connected devices, embedded systems, and real-world automation applications. Participants explored practical implementations while gaining valuable hands-on experience with modern IoT technologies.",
+      images:[
+        "https://static.wixstatic.com/media/ab471d_db8ed3870c2b4b409ff1c348481e6ec7~mv2.jpeg",
+        "https://static.wixstatic.com/media/ab471d_6a0ffb0001e245cda41b73cf87e1d94e~mv2.png",
+        "https://static.wixstatic.com/media/ab471d_9c16943eddf64c0f9804408d0bb67339~mv2.jpeg",
+        "https://static.wixstatic.com/media/ab471d_64dc81248c5c4aa0ad068ff291efb1a3~mv2.png"
+      ]
+    },
+    {
+      title:"UXI Photography Workshop",
+      tag:"Photography & Design",
+      subtitle:"Through the lens",
+      description:"The UXI Photography Workshop guided students through composition, lighting, and visual storytelling. Participants refined their eye for detail and developed practical camera skills while capturing the campus through a fresh, creative perspective.",
+      images:[
+        "https://static.wixstatic.com/media/ab471d_843eb87d5b8946fdbf54672b029ff4f6~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_843633812312402f9bca7c02b106dca6~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_092d18d90d254dad8d3d2bb37709fd52~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_5324b30a5cfe49eca8cda7176ff15b7c~mv2.jpg"
+      ]
+    },
+    {
+      title:"Master MS Office Workshop",
+      tag:"Productivity Suite",
+      subtitle:"Work smarter, every day",
+      description:"The Master MS Office Workshop equipped students with advanced Word, Excel, and PowerPoint skills. Through structured tasks and practical exercises, participants built lasting productivity habits that support academic and professional work.",
+      images:[
+        "https://static.wixstatic.com/media/ab471d_d3c64e0dc08141078fdd65a6147bfb7b~mv2.jpeg",
+        "https://static.wixstatic.com/media/ab471d_80ab50a16c1c4b78b075451843c30103~mv2.jpeg",
+        "https://static.wixstatic.com/media/ab471d_fc7aaca0d3ab4efebafd1abd61514121~mv2.jpeg",
+        "https://static.wixstatic.com/media/ab471d_e8fc264ccb0244dba11d5335c811767e~mv2.jpg"
+      ]
+    },
+    {
+      title:"Life Workshop 2K26",
+      tag:"Life Skills",
+      subtitle:"Skills beyond the classroom",
+      description:"The Life Workshop 2K26 focused on communication, teamwork, and personal growth through interactive sessions. Students discovered practical life skills that strengthen confidence, collaboration, and resilience beyond the classroom.",
+      images:[
+        "https://static.wixstatic.com/media/ab471d_4c632f83f5514e74aa8952a8b2cc6845~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_a7506c87d62840ba8c6ec59d29c69d57~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_25c89b9cd0c44e0f8ead5386443b5184~mv2.jpg",
+        "https://static.wixstatic.com/media/ab471d_805f87c16eb248db91dcdc1a37a8acfb~mv2.jpg"
+      ]
+    }
+  ];
+
+  var host = document.getElementById("workshops");
+
+  workshops.forEach(function(w, i){
+    var card = document.createElement("article");
+    card.className = "workshop reveal";
+    card.style.transitionDelay = (i * 60) + "ms";
+
+    var figures = w.images.map(function(src, j){
+      return '<figure><img src="' + src + '" alt="' + w.title.replace(/"/g,"") + ' workshop image ' + (j+1) + '" loading="lazy"></figure>';
+    }).join("");
+
+    card.innerHTML =
+      '<div class="w-head">' +
+        '<h2 class="w-title">' + w.title + '</h2>' +
+        '<span class="w-badge">' + w.tag + '</span>' +
+      '</div>' +
+      '<p class="w-sub">' + w.subtitle + '</p>' +
+      '<p class="w-desc">' + w.description + '</p>' +
+      '<div class="gallery">' + figures + '</div>';
+
+    host.appendChild(card);
+
+    if (i < workshops.length - 1) {
+      var sep = document.createElement("div");
+      sep.className = "sep";
+      sep.setAttribute("aria-hidden", "true");
+      host.appendChild(sep);
+    }
+  });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.08, rootMargin:"0px 0px -40px 0px"});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("visible"); });
+  }
+})();
+</script>
+</body>
+</html>

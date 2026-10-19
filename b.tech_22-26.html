@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#ffffff;
+overflow:hidden;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.marquee{
+width:100%;
+overflow:hidden;
+padding:15px 0;
+}
+
+.track{
+display:flex;
+gap:28px;
+width:max-content;
+animation:scroll 45s linear infinite;
+}
+
+@keyframes scroll{
+0%{
+transform:translateX(-50%);
+}
+100%{
+transform:translateX(0%);
+}
+}
+
+.card{
+width:360px;
+height:360px;
+flex-shrink:0;
+
+display:flex;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+border:1px solid #e5e5e5;
+
+box-shadow:
+0 8px 18px rgba(0,0,0,.08),
+0 18px 40px rgba(0,0,0,.12);
+}
+
+.left{
+width:58%;
+background:#fafafa;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding:12px;
+
+border-right:1px solid #ececec;
+}
+
+.logoWrap{
+display:flex;
+align-items:flex-start;
+gap:8px;
+width:100%;
+}
+
+.logo{
+width:72px;
+height:auto;
+flex-shrink:0;
+}
+
+.collegeBlock{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+flex:1;
+min-width:0;
+}
+
+.iitm{
+font-size:34px;
+font-weight:900;
+line-height:1;
+color:#f34f1d;
+letter-spacing:.5px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.collegeSmall{
+font-size:10px;
+font-weight:600;
+color:#333;
+margin-top:3px;
+line-height:1.2;
+word-break:break-word;
+}
+
+.congrats{
+font-family:"Brush Script MT",cursive;
+font-size:26px;
+line-height:1.2;
+margin-top:12px;
+color:#222;
+text-align:center;
+}
+
+.text{
+font-size:13px;
+text-align:center;
+line-height:1.5;
+margin-top:10px;
+padding:0 6px;
+color:#444;
+}
+
+.companyLogo{
+max-width:120px;
+max-height:55px;
+margin-top:auto;
+margin-bottom:15px;
+object-fit:contain;
+}
+
+.right{
+width:42%;
+
+background:linear-gradient(
+180deg,
+#ff7248 0%,
+#f34f1d 100%
+);
+
+color:#fff;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.heading{
+font-size:16px;
+font-weight:700;
+margin-top:14px;
+}
+
+.photo{
+width:130px;
+height:170px;
+
+object-fit:cover;
+
+margin-top:18px;
+
+border-radius:16px;
+
+border:4px solid rgba(255,255,255,.18);
+
+box-shadow:
+0 10px 20px rgba(0,0,0,.25);
+}
+
+.name{
+font-size:19px;
+font-weight:700;
+text-align:center;
+margin-top:12px;
+padding:0 8px;
+}
+
+.course{
+font-size:16px;
+font-weight:600;
+margin-top:3px;
+}
+
+.batch{
+font-size:13px;
+margin-top:3px;
+opacity:.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+<div class="track" id="track"></div>
+</div>
+
+<script>
+
+/* =========================================
+   EDIT ONLY THIS SECTION
+========================================= */
+
+const IITM_LOGO =
+"https://static.wixstatic.com/media/ee3217_6f9a952bb201441d8f7ce1bf9559a012~mv2.png";
+
+const students = [
+
+{
+name:"Ayushi Mittal",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/e/e8/Infosys_Technologies_logo.svg",
+photo:"https://static.wixstatic.com/media/ab471d_41231016dacd42f0a09c93ce8f1f9896~mv2.png"
+},
+
+{
+name:"Minhajuddin Ayubin",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_3145383fae944709a2e5d09bfa76744c~mv2.png"
+},
+
+
+{
+name:"Parth Sharma",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://www.mindforceresearch.com/images/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_865460d4f8c2409aa47bc5f18d2f9943~mv2.png"
+},
+
+{
+name:"Khushi Jha",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://careers-uat.chetu.com/assets/img/chetu-new-logo.webp",
+photo:"https://static.wixstatic.com/media/ab471d_82f408deddbc4957b5df18f55ecfaabe~mv2.png"
+},
+
+{
+name:"Muskan Verma",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://media.collegedekho.com/media/img/institute/logo/Logo_6BF2mJe.png",
+photo:"https://static.wixstatic.com/media/ab471d_a342a616dfff4186af6a88c13d9a489c~mv2.png"
+},
+{
+name:"Vanshika Sharma",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2PPhMWtAR-WrLrUCFBgwFAgKq58QgLCzopQ&s",
+photo:"https://static.wixstatic.com/media/ab471d_e3e775ebd3264645aa600a84fd46ee1b~mv2.png"
+},
+{
+name:"Kanak Kaushik",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpR7JsTPMAsmxw_c_pczulMiz0Y0KSlHhZLA&s",
+photo:"https://static.wixstatic.com/media/ab471d_f87aa696de404f5a9880eac3ef61f52c~mv2.png"
+},
+{
+name:"Diya Maheshwari",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKFiLKwoGCdH5OoeFALMcTyus4nhLn97Iviw&s",
+photo:"https://static.wixstatic.com/media/ab471d_c73d7d85fb1d457fac367eab9a8e8908~mv2.png"
+},
+{
+name:"Isha Gupta",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVecyuVNO52hxzxkthVG0rbjtx1GBLWhollw&s",
+photo:"https://static.wixstatic.com/media/ab471d_98955f1ff86e479b8766f82345a1b908~mv2.png"
+},
+
+{
+name:"Nitin Kumar",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUOSbN4mPMB5a6ErZrM6vRszX9iUIC1_lI2g&s",
+photo:"https://static.wixstatic.com/media/ab471d_dcede306174e4daa8bca1c1b929f66bc~mv2.png"
+},
+
+{
+name:"Shubham Sharma",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUOSbN4mPMB5a6ErZrM6vRszX9iUIC1_lI2g&s",
+photo:"https://static.wixstatic.com/media/ab471d_0bb60b63e25d440a8c2ef5235f39b9fb~mv2.png"
+},
+
+{
+name:"Chitanya Anand",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://careers-uat.chetu.com/assets/img/chetu-new-logo.webp",
+photo:"https://static.wixstatic.com/media/ab471d_aec55aa89ec64e8295eb5b976308d47b~mv2.png"
+},
+
+{
+name:"Bhagwati",
+course:"B.Tech",
+batch:"2022-2026",
+companyLogo:"https://careers-uat.chetu.com/assets/img/chetu-new-logo.webp",
+photo:"https://static.wixstatic.com/media/ab471d_f86456e68d0a4f27bfd5d2c05e7655fa~mv2.png"
+}
+
+];
+
+/* =========================================
+   DO NOT EDIT BELOW
+========================================= */
+
+function createCard(student){
+
+return `
+<div class="card">
+
+<div class="left">
+
+<div class="logoWrap">
+
+<img
+class="logo"
+src="${IITM_LOGO}"
+alt="IITM Logo"
+>
+
+<div class="collegeBlock">
+
+<div class="iitm">
+IITM
+</div>
+
+<div class="collegeSmall">
+College of Engineering
+</div>
+
+</div>
+
+</div>
+
+<div class="congrats">
+Congratulations!
+</div>
+
+<div class="text">
+We are pleased to announce the successful placement of our student.
+</div>
+
+<img
+class="companyLogo"
+src="${student.companyLogo}"
+alt="Company Logo"
+>
+
+</div>
+
+<div class="right">
+
+<div class="heading">
+Placement Cell
+</div>
+
+<img
+class="photo"
+src="${student.photo}"
+alt="${student.name}"
+>
+
+<div class="name">
+${student.name}
+</div>
+
+<div class="course">
+${student.course}
+</div>
+
+<div class="batch">
+${student.batch}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+const track=document.getElementById("track");
+
+track.innerHTML=
+students.map(createCard).join("")
++
+students.map(createCard).join("");
+
+</script>
+
+</body>
+</html>

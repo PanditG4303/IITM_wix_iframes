@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>MDU Affiliation | IITM College</title>
+
+<style>
+
+:root{
+--maroon:#8b1e2d;
+--dark:#651421;
+--gold:#d4a94f;
+--light:#faf7f7;
+--white:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Segoe UI,sans-serif;
+background:var(--light);
+color:#333;
+}
+
+.hero{
+background:linear-gradient(135deg,#651421,#8b1e2d);
+padding:80px 20px;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:clamp(2rem,4vw,3.5rem);
+margin-bottom:10px;
+}
+
+.hero-inner{position:relative;z-index:2}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  opacity:.9;
+}
+
+.container{
+max-width:1300px;
+margin:auto;
+padding:40px 20px;
+}
+
+.section-title{
+font-size:2rem;
+font-weight:700;
+color:var(--dark);
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:25px;
+}
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+  background:white;
+  border-radius:14px;
+  padding:20px;
+  cursor:pointer;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  border-left:5px solid transparent;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  position:relative;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-left:5px solid var(--gold);
+  box-shadow:0 12px 36px rgba(0,0,0,.12);
+}
+
+.card.active{
+  border-left:5px solid var(--maroon);
+  background:#fff8f8;
+  box-shadow:0 0 0 2px var(--maroon),0 8px 30px rgba(139,30,45,.15);
+}
+
+.card.active::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--maroon);
+  margin:10px;
+  animation:pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(139,30,45,.4)}
+  50%{box-shadow:0 0 0 8px rgba(139,30,45,0)}
+}
+
+.card h3{
+color:var(--maroon);
+font-size:1.1rem;
+margin-bottom:5px;
+}
+
+.card p{
+font-size:.9rem;
+color:#666;
+}
+
+.viewer{
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.viewer-header{
+padding:20px;
+background:var(--maroon);
+color:white;
+font-weight:600;
+}
+
+iframe{
+width:100%;
+height:1000px;
+border:none;
+}
+
+.footer{
+padding:30px;
+text-align:center;
+background:#651421;
+color:white;
+margin-top:40px;
+}
+
+/* ===== HERO PATTERN ===== */
+.hero-pattern{
+  position:absolute;inset:0;z-index:0;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23d4a94f'%3E%3Cpath d='M30 5L35 20H50L38 30l4 15-12-8-12 8 4-15L10 20h15z'/%3E%3Ccircle cx='30' cy='55' r='2'/%3E%3Ccircle cx='10' cy='10' r='1.5'/%3E%3Ccircle cx='50' cy='10' r='1.5'/%3E%3Ccircle cx='55' cy='30' r='1'/%3E%3Ccircle cx='5' cy='30' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:60px 60px;
+}
+
+.blur-circle{
+  position:absolute;z-index:0;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.12;
+  pointer-events:none;
+}
+.blur-circle-1{width:300px;height:300px;background:var(--gold);top:-120px;right:-100px}
+.blur-circle-2{width:200px;height:200px;background:#fff;bottom:-60px;left:-60px}
+
+/* ===== STATS CARDS ===== */
+.stats-row{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:-36px;
+  position:relative;
+  z-index:10;
+  padding:0 20px 24px;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.stat-card{
+  background:white;
+  border-radius:12px;
+  padding:14px 20px;
+  box-shadow:0 8px 30px rgba(0,0,0,.1);
+  text-align:center;
+  flex:1;
+  min-width:140px;
+  max-width:210px;
+  border-top:3px solid var(--gold);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.14)}
+.stat-card h4{font-size:1rem;color:var(--maroon);margin-bottom:1px;font-weight:800}
+.stat-card p{font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.6px;font-weight:500}
+
+/* ===== VIEWER ENHANCEMENTS ===== */
+.viewer{
+  position:relative;
+}
+.viewer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+  background:var(--maroon);
+  color:white;
+  font-weight:600;
+}
+.viewer-header-left{font-size:.9rem;line-height:1.3}
+.viewer-header-right{display:flex;gap:8px;flex-shrink:0}
+.btn-pdf-open{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:6px 14px;
+  border-radius:6px;
+  font-size:.72rem;
+  font-weight:600;
+  background:rgba(255,255,255,.15);
+  color:white;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.25);
+  cursor:pointer;
+  transition:background .25s,transform .25s;
+  white-space:nowrap;
+}
+.btn-pdf-open:hover{background:rgba(255,255,255,.28);transform:translateY(-1px)}
+.btn-pdf-open svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== LOADER ===== */
+.viewer-loader{
+  display:none;
+  position:absolute;
+  inset:0;z-index:5;
+  background:#f8f8f8;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+}
+.viewer-loader.show{display:flex}
+.loader-spinner{
+  width:36px;height:36px;
+  border:3px solid #e0e0e0;
+  border-top-color:var(--maroon);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+.loader-text{margin-top:8px;font-size:.78rem;color:#999}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== FADE TRANSITION ===== */
+iframe{
+  transition:opacity .35s ease;
+}
+iframe.fading{opacity:0}
+
+/* ===== SCROLL REVEAL ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== AFFILIATION CARDS ===== */
+.affiliation-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-bottom:30px;
+}
+.affil-card{
+  background:white;
+  border-radius:24px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  border-left:5px solid transparent;
+  position:relative;
+}
+.affil-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 36px rgba(0,0,0,.12);
+}
+.affil-card.active{
+  border-left:5px solid var(--maroon);
+  background:#fff8f8;
+  box-shadow:0 0 0 2px var(--maroon),0 8px 30px rgba(139,30,45,.15);
+}
+.affil-card.active::after{
+  content:'';
+  position:absolute;
+  top:0;right:0;
+  width:6px;height:6px;
+  border-radius:50%;
+  background:var(--maroon);
+  margin:10px;
+  animation:pulse-glow 2s ease-in-out infinite;
+}
+.affil-icon{
+  width:64px;height:64px;
+  border-radius:50%;
+  background:var(--maroon);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 12px;
+}
+.affil-divider{
+  width:40px;height:3px;
+  background:var(--gold);
+  margin:0 auto 12px;
+  border-radius:2px;
+}
+.affil-card h3{
+  color:var(--maroon);
+  font-size:1.3rem;
+  margin-bottom:4px;
+}
+.affil-subtitle{
+  font-size:.85rem;
+  color:#888;
+  margin-bottom:6px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.affil-desc{
+  font-size:.9rem;
+  color:#666;
+  line-height:1.5;
+  margin-bottom:14px;
+}
+.affil-badge{
+  display:inline-block;
+  padding:3px 14px;
+  border-radius:20px;
+  font-size:.7rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  background:var(--gold);
+  color:white;
+  margin-bottom:16px;
+}
+.affil-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:10px 28px;
+  border-radius:8px;
+  font-size:.82rem;
+  font-weight:600;
+  background:var(--maroon);
+  color:white;
+  border:none;
+  cursor:pointer;
+  transition:background .25s,transform .25s;
+}
+.affil-btn:hover{background:var(--dark);transform:translateY(-2px)}
+
+/* ===== TYPOGRAPHY ===== */
+.viewer-header-left small{opacity:.7;font-weight:400;font-size:.75rem;display:block;margin-top:1px}
+
+@media(max-width:900px){
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.timeline{order:1}
+.viewer{order:2}
+
+iframe{
+height:700px;
+}
+
+.stats-row{gap:10px;margin-top:-24px;padding:0 14px 18px}
+.stat-card{min-width:110px;padding:12px 14px}
+.stat-card h4{font-size:.9rem}
+
+}
+
+@media(max-width:768px){
+.affiliation-grid{grid-template-columns:1fr}
+.affil-btn{width:100%;justify-content:center}
+}
+
+@media(max-width:600px){
+.stat-card{min-width:calc(50% - 10px);max-width:none}
+.viewer-header{flex-direction:column;gap:8px;align-items:flex-start}
+.btn-pdf-open{align-self:flex-start}
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="hero-pattern"></div>
+<div class="blur-circle blur-circle-1"></div>
+<div class="blur-circle blur-circle-2"></div>
+<div class="hero-inner">
+<h1>MDU Affiliation</h1>
+<p>Official Affiliation Letters issued by Maharshi Dayanand University (MDU), Rohtak for IITM College of Engineering.</p>
+</div>
+</section>
+
+<div class="stats-row fade-up">
+<div class="stat-card"><h4>2</h4><p>Affiliation Letters</p></div>
+<div class="stat-card"><h4>MDU</h4><p>Rohtak</p></div>
+<div class="stat-card"><h4>UG Programmes</h4><p>Affiliated</p></div>
+<div class="stat-card"><h4>Current</h4><p>Valid Records</p></div>
+</div>
+
+<div class="container">
+
+<h2 class="section-title fade-up">
+MDU Affiliation Letters
+</h2>
+
+<div class="card fade-up" style="margin-bottom:20px;border-left:5px solid var(--gold);cursor:default">
+<h3 style="color:var(--gold)">About MDU Affiliation</h3>
+<p>IITM College of Engineering is affiliated with Maharshi Dayanand University, Rohtak for various undergraduate programmes. The affiliation letters authorize the institution to conduct approved academic programmes under the university regulations.</p>
+</div>
+
+<div class="affiliation-grid fade-up" id="affiliationGrid"></div>
+
+<div class="viewer fade-up">
+
+<div class="viewer-header">
+<div class="viewer-header-left" id="viewerTitle">
+Viewing: B.Tech & BCA Affiliation
+<small id="viewerSubtitle">MDU Affiliation Letter</small>
+</div>
+<div class="viewer-header-right">
+<a class="btn-pdf-open" id="openPdfBtn" href="https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_26215b6e5aef4a908254ea24ddbff303.pdf" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24"><line x1="18" y1="13" x2="18" y2="19"/><line x1="15" y1="16" x2="21" y2="16"/><path d="M5 21h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/><path d="M9 7h6"/><path d="M9 11h6"/></svg>
+Open Certificate
+</a>
+</div>
+</div>
+
+<div class="viewer-loader" id="pdfLoader">
+<div class="loader-spinner"></div>
+<div class="loader-text">Loading PDF…</div>
+</div>
+
+<iframe
+id="pdfViewer"
+src="https://docs.google.com/viewer?url=https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_26215b6e5aef4a908254ea24ddbff303.pdf&amp;embedded=true">
+</iframe>
+
+</div>
+
+</div>
+
+<footer class="footer">
+MDU Affiliation • IITM College of Engineering
+</footer>
+
+<script>
+
+(function(){
+
+var affiliations=[
+{
+title:"B.Tech & BCA",
+subtitle:"MDU Affiliation",
+description:"Affiliation Letter for B.Tech and Bachelor of Computer Applications.",
+pdf:"https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_26215b6e5aef4a908254ea24ddbff303.pdf"
+},
+{
+title:"BBA",
+subtitle:"MDU Affiliation",
+description:"Affiliation Letter for Bachelor of Business Administration.",
+pdf:"https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_f367a92289c74a89bedc85a33ed3607e.pdf"
+}
+];
+
+var viewer=document.getElementById("pdfViewer");
+var loader=document.getElementById("pdfLoader");
+var titleEl=document.getElementById("viewerTitle");
+var subtitleEl=document.getElementById("viewerSubtitle");
+var openBtn=document.getElementById("openPdfBtn");
+var currentUrl=affiliations[0].pdf;
+
+function showLoader(){
+loader.classList.add("show");
+viewer.classList.add("fading");
+}
+
+function hideLoader(){
+loader.classList.remove("show");
+viewer.classList.remove("fading");
+}
+
+function loadPdf(card,url,prog){
+if(url===currentUrl)return;
+currentUrl=url;
+
+document.querySelectorAll(".affil-card").forEach(function(c){c.classList.remove("active");});
+card.classList.add("active");
+
+showLoader();
+
+titleEl.innerHTML="Viewing: "+prog+' Affiliation<small id="viewerSubtitle">MDU Affiliation Letter</small>';
+
+openBtn.href=url;
+
+setTimeout(function(){
+var cbUrl='https://docs.google.com/viewer?url='+encodeURIComponent(url)+'&embedded=true&_cb='+Date.now();
+viewer.src='';
+setTimeout(function(){viewer.src=cbUrl;},50);
+},200);
+}
+
+viewer.addEventListener("load",function(){
+setTimeout(hideLoader,250);
+});
+
+viewer.addEventListener("error",function(){
+hideLoader();
+});
+
+openBtn.addEventListener("click",function(e){
+e.stopPropagation();
+});
+
+/* generate affiliation cards dynamically */
+var grid=document.getElementById("affiliationGrid");
+affiliations.forEach(function(item,index){
+var card=document.createElement("div");
+card.className="affil-card fade-up"+(index===0?" active":"");
+card.style.transitionDelay=(index*0.05)+"s";
+
+var iconSvg=index===0
+?'<svg viewBox="0 0 64 64" fill="white" width="32" height="32"><path d="M32 8L4 24l6 3.3v12.4C10 46 20 52 32 52s22-6 22-12.3V27.3l2-1.1V34h4V24l-28-16zM20 36.1V26.6l12-6.6 12 6.6v9.5c-3.5 2.6-7.5 3.9-12 3.9s-8.5-1.3-12-3.9z"/><circle cx="32" cy="44" r="3"/></svg>'
+:'<svg viewBox="0 0 64 64" fill="white" width="32" height="32"><path d="M8 56V28L32 8l24 20v28H8zm8-8h8V32h-8v16zm12-24h8v24h-8V24zm12 8h8v16h-8V32z"/><rect x="4" y="52" width="56" height="4"/></svg>';
+
+card.innerHTML=
+'<div class="affil-icon">'+iconSvg+'</div>'+
+'<div class="affil-divider"></div>'+
+'<h3>'+item.title+'</h3>'+
+'<p class="affil-subtitle">'+item.subtitle+'</p>'+
+'<p class="affil-desc">'+item.description+'</p>'+
+'<span class="affil-badge">MDU Approved</span>'+
+'<button class="affil-btn">View Affiliation</button>';
+
+grid.appendChild(card);
+
+var btn=card.querySelector(".affil-btn");
+(function(card,item){
+btn.addEventListener("click",function(e){
+e.stopPropagation();
+loadPdf(card,item.pdf,item.title);
+});
+})(card,item);
+});
+
+/* scroll reveal */
+var revealEls=document.querySelectorAll('.fade-up');
+function checkReveal(){
+var h=window.innerHeight;
+for(var i=0;i<revealEls.length;i++){
+var rect=revealEls[i].getBoundingClientRect();
+if(rect.top<h-60){
+revealEls[i].classList.add('visible');
+}
+}
+}
+window.addEventListener('scroll',checkReveal);
+window.addEventListener('resize',checkReveal);
+checkReveal();
+
+/* Wix auto-height */
+function sendHeight(){
+try{
+var h=Math.max(
+document.documentElement.scrollHeight,
+document.body.scrollHeight,
+document.documentElement.offsetHeight,
+document.body.offsetHeight
+);
+parent.postMessage({type:'setHeight',height:h},'*');
+}catch(e){}
+}
+window.addEventListener('load',function(){setTimeout(sendHeight,500);});
+window.addEventListener('resize',sendHeight);
+setTimeout(sendHeight,1000);
+
+window.loadPdf=loadPdf;
+window.affiliations=affiliations;
+
+})();
+
+</script>
+
+</body>
+</html>

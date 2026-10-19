@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#ffffff;
+overflow:hidden;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.marquee{
+width:100%;
+overflow:hidden;
+padding:15px 0;
+}
+
+.track{
+display:flex;
+gap:28px;
+width:max-content;
+animation:scroll 45s linear infinite;
+}
+
+@keyframes scroll{
+0%{
+transform:translateX(-50%);
+}
+100%{
+transform:translateX(0%);
+}
+}
+
+.card{
+width:360px;
+height:360px;
+flex-shrink:0;
+
+display:flex;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+border:1px solid #e5e5e5;
+
+box-shadow:
+0 8px 18px rgba(0,0,0,.08),
+0 18px 40px rgba(0,0,0,.12);
+}
+
+.left{
+width:58%;
+background:#fafafa;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding:12px;
+
+border-right:1px solid #ececec;
+}
+
+.logoWrap{
+display:flex;
+align-items:flex-start;
+gap:8px;
+width:100%;
+}
+
+.logo{
+width:72px;
+height:auto;
+flex-shrink:0;
+}
+
+.collegeBlock{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+flex:1;
+min-width:0;
+}
+
+.iitm{
+font-size:34px;
+font-weight:900;
+line-height:1;
+color:#f34f1d;
+letter-spacing:.5px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.collegeSmall{
+font-size:10px;
+font-weight:600;
+color:#333;
+margin-top:3px;
+line-height:1.2;
+word-break:break-word;
+}
+
+.congrats{
+font-family:"Brush Script MT",cursive;
+font-size:26px;
+line-height:1.2;
+margin-top:12px;
+color:#222;
+text-align:center;
+}
+
+.text{
+font-size:13px;
+text-align:center;
+line-height:1.5;
+margin-top:10px;
+padding:0 6px;
+color:#444;
+}
+
+.companyLogo{
+max-width:120px;
+max-height:55px;
+margin-top:auto;
+margin-bottom:15px;
+object-fit:contain;
+}
+
+.right{
+width:42%;
+
+background:linear-gradient(
+180deg,
+#ff7248 0%,
+#f34f1d 100%
+);
+
+color:#fff;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.heading{
+font-size:16px;
+font-weight:700;
+margin-top:14px;
+}
+
+.photo{
+width:130px;
+height:170px;
+
+object-fit:cover;
+
+margin-top:18px;
+
+border-radius:16px;
+
+border:4px solid rgba(255,255,255,.18);
+
+box-shadow:
+0 10px 20px rgba(0,0,0,.25);
+}
+
+.name{
+font-size:19px;
+font-weight:700;
+text-align:center;
+margin-top:12px;
+padding:0 8px;
+}
+
+.course{
+font-size:16px;
+font-weight:600;
+margin-top:3px;
+}
+
+.batch{
+font-size:13px;
+margin-top:3px;
+opacity:.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+<div class="track" id="track"></div>
+</div>
+
+<script>
+
+/* =========================================
+   EDIT ONLY THIS SECTION
+========================================= */
+
+const IITM_LOGO =
+"https://static.wixstatic.com/media/ee3217_6f9a952bb201441d8f7ce1bf9559a012~mv2.png";
+
+const students = [
+
+{
+name:"Navjeet",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Wipro_new_logo.svg/3840px-Wipro_new_logo.svg.png",
+photo:"https://static.wixstatic.com/media/ab471d_d76760dfb32d413ca1d8e7f0871a3c04~mv2.png"
+},
+
+{
+name:"R. Divya",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Wipro_new_logo.svg/3840px-Wipro_new_logo.svg.png",
+photo:"https://static.wixstatic.com/media/ab471d_f2bc62a92dc146deb0036c67b5bf53d3~mv2.png"
+},
+
+{
+name:"Karandeep Singh",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://dme2wmiz2suov.cloudfront.net/Institution(7727)/Logo/4422796-logoedmingle.png",
+photo:"https://static.wixstatic.com/media/ab471d_22af052317d540c0a83d93871273a66a~mv2.png"
+},
+
+{
+name:"Manisha Sharma",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://dme2wmiz2suov.cloudfront.net/Institution(7727)/Logo/4422796-logoedmingle.png",
+photo:"https://static.wixstatic.com/media/ab471d_21a96198fb8748b2bd8be21188ec02a5~mv2.png"
+},
+{
+name:"Aishwarya",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLMUpc4QU8j-PTshnFQHeM_VwjG3BfpEooSA&s",
+photo:"https://static.wixstatic.com/media/ab471d_97a181050a434949a81651d1f3ecb8fc~mv2.png"
+},
+
+{
+name:"Saniya Naaz",
+course:"BBA",
+batch:"2021-2024",
+companyLogo:"https://dme2wmiz2suov.cloudfront.net/Institution(7727)/Logo/4422796-logoedmingle.png",
+photo:"https://static.wixstatic.com/media/ab471d_e9f90ff147d24b099e608113b1b07220~mv2.png"
+}
+
+];
+
+/* =========================================
+   DO NOT EDIT BELOW
+========================================= */
+
+function createCard(student){
+
+return `
+<div class="card">
+
+<div class="left">
+
+<div class="logoWrap">
+
+<img
+class="logo"
+src="${IITM_LOGO}"
+alt="IITM Logo"
+>
+
+<div class="collegeBlock">
+
+<div class="iitm">
+IITM
+</div>
+
+<div class="collegeSmall">
+College of Engineering
+</div>
+
+</div>
+
+</div>
+
+<div class="congrats">
+Congratulations!
+</div>
+
+<div class="text">
+We are pleased to announce the successful placement of our student.
+</div>
+
+<img
+class="companyLogo"
+src="${student.companyLogo}"
+alt="Company Logo"
+>
+
+</div>
+
+<div class="right">
+
+<div class="heading">
+Placement Cell
+</div>
+
+<img
+class="photo"
+src="${student.photo}"
+alt="${student.name}"
+>
+
+<div class="name">
+${student.name}
+</div>
+
+<div class="course">
+${student.course}
+</div>
+
+<div class="batch">
+${student.batch}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+const track=document.getElementById("track");
+
+track.innerHTML=
+students.map(createCard).join("")
++
+students.map(createCard).join("");
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IITM Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==============================
+   RESET & BASE
+   ============================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Poppins',sans-serif;background:#fdf8f6;color:#1a1a2e;overflow-x:hidden;line-height:1.6;width:100%}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::selection{background:#7B2331;color:#fff}
+
+/* ==============================
+   SCROLLBAR
+   ============================== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f1f1f1}
+::-webkit-scrollbar-thumb{background:#7B2331;border-radius:4px}
+
+/* ==============================
+   BACKGROUND — RICH GRADIENT MESH
+   ============================== */
+.bg-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bg-overlay .blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 20s ease-in-out infinite}
+.bg-overlay .blob:nth-child(1){width:clamp(300px,40vw,600px);height:clamp(300px,40vw,600px);background:linear-gradient(135deg,#7B2331,#e74c3c);top:-10%;left:-5%;opacity:0.12;animation-delay:0s}
+.bg-overlay .blob:nth-child(2){width:clamp(250px,35vw,500px);height:clamp(250px,35vw,500px);background:linear-gradient(135deg,#8e44ad,#3498db);top:40%;right:-8%;opacity:0.1;animation-delay:-5s}
+.bg-overlay .blob:nth-child(3){width:clamp(200px,28vw,400px);height:clamp(200px,28vw,400px);background:linear-gradient(135deg,#f39c12,#e74c3c);bottom:10%;left:20%;opacity:0.1;animation-delay:-10s}
+.bg-overlay .blob:nth-child(4){width:clamp(180px,24vw,350px);height:clamp(180px,24vw,350px);background:linear-gradient(135deg,#2ecc71,#3498db);top:60%;left:-5%;opacity:0.08;animation-delay:-15s}
+.bg-overlay .blob:nth-child(5){width:clamp(200px,25vw,400px);height:clamp(200px,25vw,400px);background:linear-gradient(135deg,#ff6b9d,#c084fc);bottom:30%;right:10%;opacity:0.08;animation-delay:-7s}
+.bg-overlay .blob:nth-child(6){width:clamp(150px,20vw,300px);height:clamp(150px,20vw,300px);background:linear-gradient(135deg,#fbbf24,#fb923c);top:15%;left:60%;opacity:0.07;animation-delay:-12s}
+.bg-overlay .blob:nth-child(7){width:clamp(180px,22vw,350px);height:clamp(180px,22vw,350px);background:linear-gradient(135deg,#67e8f9,#a78bfa);bottom:50%;left:40%;opacity:0.06;animation-delay:-3s}
+.bg-overlay .blob:nth-child(8){width:clamp(120px,16vw,250px);height:clamp(120px,16vw,250px);background:linear-gradient(135deg,#f472b6,#fb923c);top:70%;right:25%;opacity:0.07;animation-delay:-9s}
+.bg-overlay .blob:nth-child(9){width:clamp(160px,22vw,380px);height:clamp(160px,22vw,380px);background:linear-gradient(135deg,#c084fc,#a78bfa);top:25%;left:35%;opacity:0.05;animation-delay:-6s}
+.bg-overlay .blob:nth-child(10){width:clamp(140px,18vw,320px);height:clamp(140px,18vw,320px);background:linear-gradient(135deg,#ff6b9d,#f472b6);bottom:40%;right:30%;opacity:0.05;animation-delay:-14s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-30px) scale(1.05)}50%{transform:translate(-20px,40px) scale(0.95)}75%{transform:translate(30px,20px) scale(1.02)}}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+
+/* ==============================
+   FLOATING PARTICLES
+   ============================== */
+.particles-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:particleFloat linear infinite}
+.particle:nth-child(1){width:6px;height:6px;background:#7B2331;left:5%;opacity:0.15;animation-duration:18s;animation-delay:0s}
+.particle:nth-child(2){width:4px;height:4px;background:#c084fc;left:15%;opacity:0.12;animation-duration:22s;animation-delay:-2s}
+.particle:nth-child(3){width:8px;height:8px;background:#fbbf24;left:28%;opacity:0.1;animation-duration:20s;animation-delay:-5s}
+.particle:nth-child(4){width:5px;height:5px;background:#fb923c;left:42%;opacity:0.14;animation-duration:25s;animation-delay:-8s}
+.particle:nth-child(5){width:3px;height:3px;background:#67e8f9;left:58%;opacity:0.15;animation-duration:19s;animation-delay:-3s}
+.particle:nth-child(6){width:7px;height:7px;background:#f472b6;left:72%;opacity:0.1;animation-duration:23s;animation-delay:-6s}
+.particle:nth-child(7){width:4px;height:4px;background:#a78bfa;left:85%;opacity:0.13;animation-duration:21s;animation-delay:-10s}
+.particle:nth-child(8){width:6px;height:6px;background:#e74c3c;left:50%;opacity:0.11;animation-duration:17s;animation-delay:-12s}
+.particle:nth-child(9){width:5px;height:5px;background:#8e44ad;left:65%;opacity:0.12;animation-duration:24s;animation-delay:-7s}
+.particle:nth-child(10){width:3px;height:3px;background:#7B2331;left:90%;opacity:0.14;animation-duration:20s;animation-delay:-9s}
+.particle:nth-child(11){width:7px;height:7px;background:#f39c12;left:10%;opacity:0.1;animation-duration:26s;animation-delay:-4s}
+.particle:nth-child(12){width:4px;height:4px;background:#3498db;left:75%;opacity:0.13;animation-duration:18s;animation-delay:-11s}
+.particle:nth-child(13){width:5px;height:5px;background:#2ecc71;left:35%;opacity:0.11;animation-duration:22s;animation-delay:-1s}
+.particle:nth-child(14){width:6px;height:6px;background:#7B2331;left:48%;opacity:0.15;animation-duration:19s;animation-delay:-13s}
+.particle:nth-child(15){width:3px;height:3px;background:#ff6b9d;left:80%;opacity:0.12;animation-duration:21s;animation-delay:-14s}
+.particle:nth-child(16){width:8px;height:8px;background:#8e44ad;left:45%;opacity:0.1;animation-duration:23s;animation-delay:-15s}
+.particle:nth-child(17){width:5px;height:5px;background:#fb923c;left:22%;opacity:0.12;animation-duration:20s;animation-delay:-16s}
+.particle:nth-child(18){width:6px;height:6px;background:#67e8f9;left:60%;opacity:0.11;animation-duration:24s;animation-delay:-17s}
+.particle:nth-child(19){width:4px;height:4px;background:#c084fc;left:38%;opacity:0.13;animation-duration:19s;animation-delay:-18s}
+.particle:nth-child(20){width:7px;height:7px;background:#f472b6;left:68%;opacity:0.1;animation-duration:22s;animation-delay:-19s}
+@keyframes particleFloat{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+.particle:nth-child(21){width:5px;height:5px;background:#ff6b9d;left:8%;opacity:0.1;animation-duration:20s;animation-delay:-1s}
+.particle:nth-child(22){width:3px;height:3px;background:#a78bfa;left:18%;opacity:0.12;animation-duration:23s;animation-delay:-4s}
+.particle:nth-child(23){width:6px;height:6px;background:#fbbf24;left:32%;opacity:0.09;animation-duration:19s;animation-delay:-7s}
+.particle:nth-child(24){width:4px;height:4px;background:#67e8f9;left:48%;opacity:0.11;animation-duration:25s;animation-delay:-9s}
+.particle:nth-child(25){width:7px;height:7px;background:#c084fc;left:62%;opacity:0.08;animation-duration:21s;animation-delay:-12s}
+.particle:nth-child(26){width:3px;height:3px;background:#fb923c;left:76%;opacity:0.12;animation-duration:18s;animation-delay:-3s}
+.particle:nth-child(27){width:5px;height:5px;background:#f472b6;left:88%;opacity:0.1;animation-duration:24s;animation-delay:-6s}
+.particle:nth-child(28){width:4px;height:4px;background:#7B2331;left:55%;opacity:0.11;animation-duration:22s;animation-delay:-10s}
+.particle:nth-child(29){width:6px;height:6px;background:#8e44ad;left:25%;opacity:0.09;animation-duration:20s;animation-delay:-14s}
+.particle:nth-child(30){width:3px;height:3px;background:#fbbf24;left:70%;opacity:0.13;animation-duration:23s;animation-delay:-8s}
+
+/* ==============================
+   WIX IFRAME — DISABLE INTERNAL SCROLL
+   Parent page handles all scrolling.
+   ============================== */
+html{height:auto;min-height:0;overflow-y:hidden}
+body{height:auto;min-height:0;overflow-y:hidden}
+
+/* ==============================
+   FLUID CONTAINER SYSTEM
+   ============================== */
+.section{padding:clamp(24px,3vw,48px) 0;position:relative;z-index:2}
+.section:first-of-type{padding-top:clamp(60px,7vw,100px)}
+.section-inner{width:100%;margin:0 auto;padding:0 clamp(16px,3vw,48px)}
+.section-hero .section-inner{max-width:1700px}
+.section-content .section-inner{max-width:1500px}
+.section-gallery .section-inner{max-width:1800px}
+.section-poster .section-inner{max-width:1500px}
+.section-quote .section-inner{max-width:1200px}
+.section-full .section-inner{max-width:100%}
+.section-label{font-size:clamp(10px,0.8vw,13px);font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#7B2331;margin-bottom:clamp(4px,0.6vw,10px)}
+.section-title{font-size:clamp(20px,3vw,44px);font-weight:700;color:#1a1a2e;margin-bottom:clamp(6px,0.8vw,14px);line-height:1.15}
+.section-sub{font-size:clamp(12px,0.9vw,15px);color:#666;max-width:clamp(320px,35vw,550px);line-height:1.7}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+.section-header{margin-bottom:clamp(16px,2vw,32px)}
+
+/* ==============================
+   FESTIVAL DECORATIONS — COLORFUL
+   ============================== */
+.deco-orbit{position:absolute;pointer-events:none;z-index:0;border-radius:50%;border:1px solid rgba(255,255,255,0.15);animation:orbitSpin 20s linear infinite}
+@keyframes orbitSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.deco-orbit-dot{position:absolute;width:8px;height:8px;border-radius:50%;top:-4px;left:50%;margin-left:-4px}
+.deco-planet{position:absolute;pointer-events:none;z-index:0;border-radius:50%;animation:planetFloat 6s ease-in-out infinite}
+@keyframes planetFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.deco-ring{position:absolute;pointer-events:none;z-index:0;border-radius:50%;border:2px solid;animation:ringSpin 15s linear infinite}
+@keyframes ringSpin{0%{transform:rotate(0deg) scaleX(1)}50%{transform:rotate(180deg) scaleX(0.7)}100%{transform:rotate(360deg) scaleX(1)}}
+.deco-moon{position:absolute;pointer-events:none;z-index:0;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f59e0b);animation:moonGlow 4s ease-in-out infinite}
+@keyframes moonGlow{0%,100%{box-shadow:0 0 20px rgba(251,191,36,0.3)}50%{box-shadow:0 0 40px rgba(251,191,36,0.5)}}
+.deco-sphere{position:absolute;pointer-events:none;z-index:0;border-radius:50%;animation:sphereBob 5s ease-in-out infinite}
+@keyframes sphereBob{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.05)}}
+.deco-curve{position:absolute;pointer-events:none;z-index:0;opacity:0.08}
+.deco-confetti{position:absolute;pointer-events:none;z-index:0;opacity:0.12;animation:confettiFall 8s linear infinite}
+@keyframes confettiFall{0%{transform:translateY(-20vh) rotate(0deg);opacity:0}10%{opacity:0.12}90%{opacity:0.12}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+.deco-sparkle{position:absolute;pointer-events:none;z-index:0;animation:sparklePulse 3s ease-in-out infinite}
+@keyframes sparklePulse{0%,100%{opacity:0;transform:scale(0) rotate(0deg)}50%{opacity:0.5;transform:scale(1) rotate(180deg)}}
+.deco-note{position:absolute;pointer-events:none;z-index:0;animation:noteDrift 5s ease-in-out infinite;font-size:20px;opacity:0.1}
+@keyframes noteDrift{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(-8deg)}75%{transform:translateY(8px) rotate(8deg)}}
+.deco-ribbon{position:absolute;pointer-events:none;z-index:0;opacity:0.1;border-radius:50px;animation:ribbonWave 7s ease-in-out infinite}
+@keyframes ribbonWave{0%,100%{transform:rotate(var(--r,15deg)) scale(1)}50%{transform:rotate(var(--r2,25deg)) scale(1.05)}}
+.deco-dot-grid{position:absolute;pointer-events:none;z-index:0;opacity:0.05;background-image:radial-gradient(circle,#7B2331 1px,transparent 1px);background-size:20px 20px}
+.deco-star{position:absolute;pointer-events:none;z-index:0;color:#fbbf24;animation:starTwinkle 3s ease-in-out infinite;opacity:0}
+@keyframes starTwinkle{0%,100%{opacity:0.06;transform:scale(0.8) rotate(0deg)}50%{opacity:0.2;transform:scale(1.15) rotate(180deg)}}
+.deco-meteor{position:absolute;pointer-events:none;z-index:0;animation:meteorStreak 8s linear infinite}
+@keyframes meteorStreak{0%{transform:translateX(-30vw) translateY(-5vh);opacity:0}3%{opacity:0.18}12%{opacity:0}100%{transform:translateX(30vw) translateY(15vh);opacity:0}}
+.deco-galaxy{position:absolute;pointer-events:none;z-index:0;animation:galaxySpin 40s linear infinite}
+@keyframes galaxySpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.05)}100%{transform:rotate(360deg) scale(1)}}
+.deco-burst{position:absolute;pointer-events:none;z-index:0;animation:burstPulse 5s ease-in-out infinite}
+@keyframes burstPulse{0%,100%{opacity:0;transform:scale(0.6)}35%{opacity:0.12;transform:scale(1)}65%{opacity:0.12;transform:scale(1)}}
+.deco-shape{position:absolute;pointer-events:none;z-index:0;opacity:0.08;animation:shapeFloat 8s ease-in-out infinite}
+@keyframes shapeFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-8px) rotate(120deg)}66%{transform:translateY(4px) rotate(60deg)}}
+.deco-soft-dot{position:absolute;pointer-events:none;z-index:0;border-radius:50%;opacity:0.07;animation:softDotPulse 6s ease-in-out infinite}
+@keyframes softDotPulse{0%,100%{opacity:0.05;transform:scale(1)}50%{opacity:0.15;transform:scale(1.3)}}
+.deco-wave-line{position:absolute;pointer-events:none;z-index:0;opacity:0.04;animation:waveSway 15s ease-in-out infinite}
+@keyframes waveSway{0%,100%{transform:translateX(0) skewX(0deg)}50%{transform:translateX(10px) skewX(2deg)}}
+.deco-doodle{position:absolute;pointer-events:none;z-index:0;opacity:0.06;animation:doodleBob 7s ease-in-out infinite}
+@keyframes doodleBob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(4deg)}}
+.deco-ring-planet{position:absolute;pointer-events:none;z-index:0;animation:planetDrift 12s ease-in-out infinite}
+@keyframes planetDrift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(8deg)}}
+.deco-festive{position:absolute;pointer-events:none;z-index:0;opacity:0.06;animation:festiveDrift 6s ease-in-out infinite}
+@keyframes festiveDrift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.08)}}
+.deco-float-circle{position:absolute;pointer-events:none;z-index:0;border-radius:50%;opacity:0.06;animation:floatCircle 10s ease-in-out infinite}
+@keyframes floatCircle{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(8px,-8px) scale(0.95)}75%{transform:translate(-6px,6px) scale(1.05)}}
+
+/* ==============================
+   REVEAL ANIMATIONS
+   ============================== */
+.reveal{opacity:0;transform:translateY(25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(25px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.reveal-stagger .reveal-item{opacity:0;transform:translateY(15px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+.reveal-stagger .reveal-item.visible{opacity:1;transform:translateY(0)}
+
+/* ==============================
+   HERO — ENRICHED
+   ============================== */
+.hero{position:relative;z-index:2;display:flex;align-items:center;padding:clamp(60px,7vw,100px) 0 clamp(28px,3.5vw,48px);overflow:hidden;min-height:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,35fr) minmax(0,65fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(123,35,49,0.1);color:#7B2331;padding:clamp(4px,0.45vw,7px) clamp(10px,1vw,18px);border-radius:50px;font-size:clamp(10px,0.75vw,12px);font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:clamp(12px,1.5vw,20px);border:1px solid rgba(123,35,49,0.2)}
+.hero-badge .dot{width:5px;height:5px;background:#7B2331;border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-size:clamp(28px,4.5vw,72px);font-weight:800;line-height:1.05;margin-bottom:clamp(6px,0.7vw,12px);background:linear-gradient(135deg,#1a1a2e 0%,#7B2331 50%,#8e44ad 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-size:clamp(13px,1.3vw,18px);color:#555;font-weight:400;margin-bottom:clamp(4px,0.4vw,6px);letter-spacing:1px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(8px,1vw,16px);margin:clamp(12px,1.5vw,20px) 0 clamp(14px,1.8vw,24px)}
+.hero-meta-item{display:flex;align-items:center;gap:clamp(4px,0.5vw,8px);font-size:clamp(10px,0.85vw,13px);color:#666}
+.hero-meta-item svg{width:clamp(12px,1vw,16px);height:clamp(12px,1vw,16px);fill:#7B2331;flex-shrink:0}
+.hero-meta-item strong{color:#1a1a2e;font-weight:600}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7B2331,#a8324a);color:#fff;padding:clamp(8px,0.9vw,14px) clamp(20px,2.5vw,36px);border-radius:50px;font-size:clamp(12px,0.95vw,15px);font-weight:600;border:none;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 30px rgba(123,35,49,0.3);position:relative;z-index:2}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(123,35,49,0.4)}
+.hero-cta svg{width:15px;height:15px;fill:#fff;transition:transform 0.3s}
+.hero-cta:hover svg{transform:translateX(4px)}
+.hero-poster{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;padding:clamp(8px,1.2vw,24px) 0}
+.hero-poster-frame{position:relative;width:clamp(220px,26vw,480px);height:clamp(310px,38vw,680px);border-radius:clamp(10px,1.1vw,20px);overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,0.12),0 0 50px rgba(123,35,49,0.08);transform:perspective(1200px) rotateY(-4deg) rotateX(2deg);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.hero-poster-frame::before{content:'';position:absolute;inset:3px;border-radius:clamp(8px,0.9vw,17px);border:2px solid rgba(255,255,255,0.15);z-index:2;pointer-events:none}
+.hero-poster-frame::after{content:'';position:absolute;inset:-2px;border-radius:clamp(12px,1.3vw,22px);background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent 50%,rgba(123,35,49,0.05));z-index:0;pointer-events:none}
+.hero-poster-frame:hover{transform:perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.02);box-shadow:0 35px 90px rgba(0,0,0,0.15),0 0 70px rgba(123,35,49,0.12)}
+.hero-poster-frame img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.hero-poster-glow{position:absolute;width:100%;height:100%;top:0;left:0;background:linear-gradient(135deg,transparent 35%,rgba(123,35,49,0.08));border-radius:clamp(10px,1.1vw,20px);pointer-events:none;z-index:3}
+.hero-floating-badge{position:absolute;bottom:clamp(4px,0.7vw,12px);right:clamp(0px,0.7vw,14px);background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);padding:clamp(5px,0.6vw,10px) clamp(8px,0.9vw,16px);border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,0.12);font-size:clamp(9px,0.75vw,12px);font-weight:600;color:#7B2331;display:flex;align-items:center;gap:5px;animation:floatBadge 3s ease-in-out infinite;z-index:4;white-space:nowrap}
+@keyframes floatBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:clamp(16px,2.5vw,28px)}
+  .hero-content{text-align:center}
+  .hero-meta{justify-content:center}
+  .hero-poster-frame{transform:none;width:clamp(180px,38vw,280px);height:clamp(260px,55vw,400px)}
+  .hero-poster-frame:hover{transform:none}
+  .hero-poster-frame::before,.hero-poster-frame::after{display:none}
+  .hero-floating-badge{position:relative;bottom:auto;right:auto;margin-top:10px;display:inline-flex}
+  .hero-poster{flex-direction:column}
+}
+@media(max-width:576px){
+  .hero{padding:clamp(48px,9vw,60px) 0 clamp(20px,3.5vw,28px)}
+  .hero-title{font-size:clamp(24px,8vw,28px)}
+  .hero-poster-frame{width:clamp(150px,50vw,210px);height:clamp(200px,72vw,300px)}
+  .hero-cta{padding:8px 20px;font-size:12px}
+}
+
+/* ==============================
+   QUICK INFO
+   ============================== */
+.quick-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(110px,9vw,160px),1fr));gap:clamp(6px,0.7vw,12px)}
+.quick-info-card{background:rgba(255,255,255,0.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.3);border-radius:clamp(10px,0.8vw,14px);padding:clamp(10px,1.2vw,18px) clamp(8px,1vw,14px);text-align:center;transition:all 0.3s ease;cursor:default}
+.quick-info-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.05)}
+.quick-info-card .icon{width:clamp(28px,2.2vw,40px);height:clamp(28px,2.2vw,40px);border-radius:clamp(7px,0.6vw,10px);display:flex;align-items:center;justify-content:center;margin:0 auto clamp(4px,0.6vw,8px);font-size:clamp(12px,1.1vw,18px)}
+.quick-info-card .icon.maroon{background:rgba(123,35,49,0.1);color:#7B2331}
+.quick-info-card .icon.purple{background:rgba(142,68,173,0.1);color:#8e44ad}
+.quick-info-card .icon.orange{background:rgba(243,156,18,0.1);color:#f39c12}
+.quick-info-card .icon.blue{background:rgba(52,152,219,0.1);color:#3498db}
+.quick-info-card .icon.green{background:rgba(46,204,113,0.1);color:#2ecc71}
+.quick-info-card .value{font-size:clamp(12px,1vw,16px);font-weight:700;color:#1a1a2e;margin-bottom:2px}
+.quick-info-card .label{font-size:clamp(9px,0.7vw,11px);color:#888}
+
+/* ==============================
+   POSTER + TIMELINE
+   ============================== */
+.poster-timeline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3.5vw,56px);align-items:start}
+.poster-left{position:relative}
+.poster-left .poster-frame{max-width:clamp(180px,22vw,380px);margin:0 auto;border-radius:clamp(12px,1.2vw,20px);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.1),0 0 40px rgba(123,35,49,0.06);position:relative;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);padding:clamp(4px,0.4vw,6px);background:linear-gradient(135deg,rgba(255,255,255,0.5),rgba(123,35,49,0.05))}
+.poster-left .poster-frame:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 30px 80px rgba(0,0,0,0.12),0 0 60px rgba(123,35,49,0.1)}
+.poster-left .poster-frame img{width:100%;display:block;border-radius:clamp(8px,0.9vw,14px)}
+.poster-left .poster-frame .poster-border{position:absolute;inset:clamp(6px,0.6vw,10px);border:2px solid rgba(255,255,255,0.15);border-radius:clamp(6px,0.7vw,12px);pointer-events:none}
+.timeline-right .section-label{margin-bottom:clamp(4px,0.4vw,6px)}
+.timeline-right .section-title{font-size:clamp(16px,2vw,28px);margin-bottom:clamp(10px,1vw,16px)}
+.timeline-compact{position:relative;padding-left:clamp(20px,2vw,28px)}
+.timeline-compact::before{content:'';position:absolute;left:clamp(5px,0.5vw,8px);top:4px;bottom:4px;width:2px;background:linear-gradient(180deg,#7B2331,#8e44ad,#f39c12);opacity:0.25;border-radius:2px}
+.tl-item{position:relative;margin-bottom:clamp(8px,0.8vw,14px)}
+.tl-item:last-child{margin-bottom:0}
+.tl-item .dot{position:absolute;left:clamp(-15px,-1.5vw,-21px);top:clamp(5px,0.4vw,6px);width:clamp(6px,0.6vw,10px);height:clamp(6px,0.6vw,10px);border-radius:50%;background:#7B2331;border:2px solid #fff;box-shadow:0 0 0 2.5px rgba(123,35,49,0.12);z-index:2}
+.tl-item .content{background:rgba(255,255,255,0.65);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.3);border-radius:clamp(6px,0.6vw,12px);padding:clamp(8px,0.7vw,12px) clamp(10px,0.8vw,14px);transition:all 0.3s ease}
+.tl-item .content:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(0,0,0,0.03)}
+.tl-item .content .time{font-size:clamp(9px,0.65vw,11px);font-weight:600;color:#7B2331;letter-spacing:0.5px;margin-bottom:1px}
+.tl-item .content h4{font-size:clamp(12px,0.9vw,14px);font-weight:600;color:#1a1a2e;margin-bottom:1px}
+.tl-item .content p{font-size:clamp(10px,0.7vw,12px);color:#666;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tl-item .content .icon{font-size:clamp(12px,1vw,16px);margin-bottom:1px}
+@media(max-width:900px){.poster-timeline{grid-template-columns:1fr;gap:clamp(20px,2.5vw,28px)}}
+
+/* ==============================
+   GALLERY MASONRY
+   ============================== */
+.gallery-masonry{column-gap:clamp(6px,0.8vw,14px);position:relative}
+.gallery-masonry .g-item{break-inside:avoid;margin-bottom:clamp(6px,0.8vw,14px);position:relative;border-radius:clamp(8px,0.8vw,14px);overflow:hidden;cursor:pointer;transition:all 0.4s ease;background:#f0f0f0}
+.gallery-masonry .g-item img{width:100%;display:block;transition:transform 0.6s ease,opacity 0.5s ease;opacity:0}
+.gallery-masonry .g-item img.loaded{opacity:1}
+.gallery-masonry .g-item:hover img{transform:scale(1.06)}
+.gallery-masonry .g-item .g-caption{position:absolute;bottom:0;left:0;width:100%;padding:clamp(10px,1vw,16px);background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;font-size:clamp(10px,0.75vw,13px);font-weight:500;transform:translateY(100%);transition:transform 0.4s ease}
+.gallery-masonry .g-item:hover .g-caption{transform:translateY(0)}
+.gallery-masonry .g-item .g-skeleton{position:absolute;inset:0;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeletonPulse 1.5s ease-in-out infinite}
+@keyframes skeletonPulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media(min-width:1800px){.gallery-masonry{columns:6}}
+@media(min-width:1400px) and (max-width:1799px){.gallery-masonry{columns:5}}
+@media(min-width:1024px) and (max-width:1399px){.gallery-masonry{columns:4}}
+@media(min-width:768px) and (max-width:1023px){.gallery-masonry{columns:3}}
+@media(min-width:480px) and (max-width:767px){.gallery-masonry{columns:2}}
+@media(max-width:479px){.gallery-masonry{columns:1}}
+
+/* ==============================
+   LIGHTBOX
+   ============================== */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:clamp(16px,3vw,40px)}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 80px rgba(0,0,0,0.5);animation:lightboxIn 0.3s ease}
+@keyframes lightboxIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox .lb-close{position:absolute;top:clamp(12px,2vw,24px);right:clamp(16px,3vw,32px);width:clamp(40px,3vw,48px);height:clamp(40px,3vw,48px);border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:clamp(22px,2vw,28px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.lightbox .lb-close:hover{background:rgba(255,255,255,0.2);transform:rotate(90deg)}
+.lightbox .lb-caption{position:absolute;bottom:clamp(12px,2vw,24px);left:50%;transform:translateX(-50%);color:#fff;font-size:clamp(13px,1vw,16px);font-weight:500;background:rgba(0,0,0,0.5);padding:clamp(8px,0.8vw,12px) clamp(16px,1.5vw,24px);border-radius:50px;white-space:nowrap}
+.lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:clamp(40px,3vw,48px);height:clamp(40px,3vw,48px);border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:clamp(20px,1.8vw,24px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.lightbox .lb-nav:hover{background:rgba(255,255,255,0.2)}
+.lightbox .lb-prev{left:clamp(8px,2vw,24px)}
+.lightbox .lb-next{right:clamp(8px,2vw,24px)}
+
+/* ==============================
+   VIDEOS — 4 COLUMN
+   ============================== */
+.videos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.2vw,18px)}
+.video-card{background:#fff;border-radius:clamp(10px,1vw,16px);overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.04);transition:all 0.4s ease;cursor:pointer}
+.video-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(0,0,0,0.07)}
+.video-card .thumb-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background:#1a1a2e}
+.video-card .thumb-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;opacity:0.7}
+.video-card:hover .thumb-wrap img{transform:scale(1.06)}
+.video-card .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(38px,3vw,50px);height:clamp(38px,3vw,50px);border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.video-card .play-btn svg{width:clamp(16px,1.2vw,20px);height:clamp(16px,1.2vw,20px);fill:#7B2331;margin-left:3px}
+.video-card:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:#fff}
+.video-card .v-body{padding:clamp(8px,0.8vw,14px)}
+.video-card .v-body h4{font-size:clamp(12px,0.9vw,14px);font-weight:600;color:#1a1a2e}
+.video-card .thumb-wrap .v-skeleton{position:absolute;inset:0;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeletonPulse 1.5s ease-in-out infinite}
+.video-popup{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:clamp(16px,3vw,40px)}
+.video-popup.active{display:flex}
+.video-popup .vp-close{position:absolute;top:clamp(12px,2vw,24px);right:clamp(16px,3vw,32px);width:clamp(40px,3vw,48px);height:clamp(40px,3vw,48px);border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:clamp(22px,2vw,28px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.video-popup .vp-close:hover{background:rgba(255,255,255,0.2);transform:rotate(90deg)}
+.video-popup iframe{width:clamp(320px,80vw,1000px);height:clamp(180px,45vw,562px);border-radius:12px;border:none;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
+@media(max-width:900px){.videos-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.videos-grid{grid-template-columns:1fr}}
+
+/* ==============================
+   ABOUT
+   ============================== */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3.5vw,48px);align-items:center}
+.about-content p{font-size:clamp(12px,0.9vw,15px);color:#555;line-height:1.8;margin-bottom:clamp(8px,1vw,14px)}
+.about-visual .about-grid-vis{display:grid;grid-template-columns:1fr 1fr;gap:clamp(5px,0.6vw,10px)}
+.about-visual .about-grid-vis img{width:100%;border-radius:clamp(8px,0.8vw,14px);height:clamp(100px,12vw,200px);object-fit:cover;box-shadow:0 6px 20px rgba(0,0,0,0.04);transition:transform 0.4s ease}
+.about-visual .about-grid-vis img:hover{transform:scale(1.03)}
+.about-visual .about-grid-vis img:first-child{grid-column:span 2;height:clamp(130px,16vw,250px)}
+.about-tag{display:inline-flex;gap:4px;flex-wrap:wrap}
+.about-tag span{background:rgba(123,35,49,0.08);color:#7B2331;padding:2px 10px;border-radius:50px;font-size:clamp(9px,0.65vw,11px);font-weight:500}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:clamp(16px,2.5vw,24px)}}
+
+/* ==============================
+   MARQUEE
+   ============================== */
+.marquee-wrap{overflow:hidden;position:relative;padding:clamp(6px,0.8vw,12px) 0}
+.marquee-track{display:flex;gap:clamp(10px,1.2vw,20px);width:max-content;animation:marqueeScroll 45s linear infinite}
+
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.marquee-card{width:clamp(110px,10vw,180px);flex-shrink:0;border-radius:clamp(8px,0.8vw,14px);overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.05);transition:all 0.4s ease;background:#fff}
+.marquee-card:hover{transform:scale(1.06);box-shadow:0 10px 32px rgba(0,0,0,0.1)}
+.marquee-card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.marquee-card .m-body{padding:clamp(5px,0.5vw,8px) clamp(6px,0.6vw,10px)}
+.marquee-card .m-title{font-size:clamp(10px,0.75vw,12px);font-weight:600;color:#1a1a2e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marquee-card .m-sub{font-size:clamp(8px,0.6vw,10px);color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.marquee-card .m-sub span{color:#7B2331;font-weight:500}
+
+/* ==============================
+   ORGANIZERS
+   ============================== */
+.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(120px,10vw,180px),1fr));gap:clamp(6px,0.7vw,12px)}
+.org-card{background:rgba(255,255,255,0.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.3);border-radius:clamp(8px,0.8vw,14px);padding:clamp(10px,1vw,16px);text-align:center;transition:all 0.3s ease}
+.org-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.04)}
+.org-card .avatar{width:clamp(32px,2.5vw,44px);height:clamp(32px,2.5vw,44px);border-radius:50%;background:linear-gradient(135deg,#7B2331,#8e44ad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:clamp(12px,1vw,16px);font-weight:700;margin:0 auto clamp(4px,0.5vw,8px)}
+.org-card h4{font-size:clamp(12px,0.9vw,14px);font-weight:600;color:#1a1a2e;margin-bottom:1px}
+.org-card span{font-size:clamp(9px,0.7vw,11px);color:#888}
+.org-section-title{font-size:clamp(14px,1.1vw,18px);font-weight:700;color:#1a1a2e;margin-bottom:clamp(8px,0.8vw,14px);display:flex;align-items:center;gap:8px}
+.org-section-title .line{flex:1;height:1px;background:linear-gradient(90deg,#7B2331,transparent)}
+.org-section-title .badge{font-size:clamp(9px,0.6vw,10px);font-weight:600;background:rgba(123,35,49,0.1);color:#7B2331;padding:2px 8px;border-radius:50px}
+
+/* ==============================
+   FEATURED MOMENTS — COMPACT MASONRY
+   ============================== */
+.mem-masonry{columns:4;column-gap:clamp(4px,0.6vw,10px);position:relative}
+.mem-masonry .mem-item{break-inside:avoid;margin-bottom:clamp(4px,0.6vw,10px);position:relative;border-radius:clamp(6px,0.7vw,12px);overflow:hidden;cursor:pointer;background:#f0f0f0;transition:all 0.3s ease}
+.mem-masonry .mem-item img{width:100%;display:block;transition:transform 0.5s ease,opacity 0.5s ease;opacity:0}
+.mem-masonry .mem-item img.loaded{opacity:1}
+.mem-masonry .mem-item:hover img{transform:scale(1.06)}
+.mem-masonry .mem-item .mem-overlay{position:absolute;bottom:0;left:0;width:100%;padding:clamp(6px,0.6vw,12px);background:linear-gradient(transparent,rgba(0,0,0,0.6));color:#fff;font-size:clamp(9px,0.65vw,12px);font-weight:500;opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+.mem-masonry .mem-item:hover .mem-overlay{opacity:1}
+.mem-masonry .mem-item .mem-skeleton{position:absolute;inset:0;background:linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%);background-size:200% 100%;animation:skeletonPulse 1.5s ease-in-out infinite}
+@media(min-width:1400px){.mem-masonry{columns:4}}
+@media(min-width:900px) and (max-width:1399px){.mem-masonry{columns:3}}
+@media(min-width:576px) and (max-width:899px){.mem-masonry{columns:2}}
+@media(max-width:575px){.mem-masonry{columns:1}}
+
+/* ==============================
+   QUOTE
+   ============================== */
+.quote-section{text-align:center;padding:clamp(24px,3vw,40px) 0;position:relative}
+.quote-section .quote-mark{font-size:clamp(40px,4.5vw,64px);line-height:1;color:#7B2331;opacity:0.1;font-family:Georgia,serif}
+.quote-section blockquote{font-size:clamp(15px,1.8vw,28px);font-weight:500;color:#1a1a2e;line-height:1.5;max-width:clamp(300px,45vw,700px);margin:0 auto clamp(8px,0.8vw,14px);font-style:italic}
+.quote-section .quote-author{font-size:clamp(12px,0.8vw,14px);color:#888}
+.quote-section .quote-author strong{color:#7B2331;font-weight:600}
+
+/* ==============================
+   IMAGE LOAD
+   ============================== */
+img{transition:opacity 0.5s ease}
+img[data-src]{opacity:0}
+img.loaded{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="bg-overlay" aria-hidden="true">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
+<div class="noise" aria-hidden="true"></div>
+
+<div class="particles-container" aria-hidden="true">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<!-- ==============================
+     SECTION 1: HERO (no nav — starts immediately)
+     ============================== -->
+<section class="hero section-hero" id="hero">
+  <div class="section-inner">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> IITM College of Engineering</div>
+        <h1 class="hero-title" id="hero-title">Fiesta 2K25</h1>
+        <p class="hero-subtitle" id="hero-subtitle">Annual Cultural Festival</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+            <span><strong id="hero-date">15 March 2025</strong></span>
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span><strong id="hero-venue">IITM College of Engineering</strong></span>
+          </div>
+        </div>
+        <button class="hero-cta">Explore Events <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></button>
+      </div>
+      <div class="hero-poster">
+        <div class="hero-poster-frame" id="hero-poster-wrap">
+          <img id="hero-poster-img" src="https://static.wixstatic.com/media/ab471d_9ed9469815a146a29de951a967026fc7~mv2.jpg" alt="Event Poster" loading="lazy">
+          <div class="hero-poster-glow"></div>
+        </div>
+        <div class="hero-floating-badge">✦ Featured Event</div>
+      </div>
+    </div>
+  </div>
+  <!-- Hero decorations -->
+  <div class="deco-ribbon" style="--r:25deg;--r2:35deg;top:6%;right:-3%;width:clamp(60px,8vw,140px);height:clamp(120px,16vw,280px);background:linear-gradient(135deg,#7B2331,#8e44ad)"></div>
+  <div class="deco-ribbon" style="--r:-15deg;--r2:-25deg;bottom:8%;left:-4%;width:clamp(50px,6vw,110px);height:clamp(100px,14vw,240px);background:linear-gradient(135deg,#f39c12,#fb923c)"></div>
+  <div class="deco-planet" style="width:clamp(40px,4vw,70px);height:clamp(40px,4vw,70px);background:linear-gradient(135deg,#c084fc,#a78bfa);top:12%;left:58%;box-shadow:0 0 30px rgba(192,132,252,0.2);animation-delay:0s"></div>
+  <div class="deco-planet" style="width:clamp(24px,2.5vw,44px);height:clamp(24px,2.5vw,44px);background:linear-gradient(135deg,#67e8f9,#22d3ee);bottom:25%;left:52%;box-shadow:0 0 20px rgba(103,232,249,0.2);animation-delay:-2s"></div>
+  <div class="deco-planet" style="width:clamp(16px,1.8vw,32px);height:clamp(16px,1.8vw,32px);background:linear-gradient(135deg,#f472b6,#fb923c);top:55%;left:50%;box-shadow:0 0 15px rgba(244,114,182,0.2);animation-delay:-4s"></div>
+  <div class="deco-orbit" style="width:clamp(100px,12vw,200px);height:clamp(100px,12vw,200px);top:5%;left:55%;animation-duration:25s"><div class="deco-orbit-dot" style="background:#c084fc"></div></div>
+  <div class="deco-orbit" style="width:clamp(70px,8vw,140px);height:clamp(70px,8vw,140px);bottom:15%;left:58%;animation-duration:20s;animation-direction:reverse"><div class="deco-orbit-dot" style="background:#fbbf24"></div></div>
+  <div class="deco-moon" style="width:clamp(20px,2.2vw,38px);height:clamp(20px,2.2vw,38px);top:30%;right:8%"></div>
+  <div class="deco-sparkle" style="width:clamp(16px,1.8vw,30px);height:clamp(16px,1.8vw,30px);top:22%;left:63%;animation-delay:0.3s"><svg viewBox="0 0 24 24" fill="#c084fc" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-sparkle" style="width:clamp(10px,1.2vw,20px);height:clamp(10px,1.2vw,20px);bottom:35%;left:65%;animation-delay:1.2s"><svg viewBox="0 0 24 24" fill="#fbbf24" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-sparkle" style="width:clamp(12px,1.4vw,24px);height:clamp(12px,1.4vw,24px);top:60%;left:56%;animation-delay:2.5s"><svg viewBox="0 0 24 24" fill="#67e8f9" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-confetti" style="width:8px;height:8px;background:#f472b6;border-radius:2px;left:8%;animation-delay:0s"></div>
+  <div class="deco-confetti" style="width:6px;height:10px;background:#67e8f9;border-radius:2px;left:22%;animation-delay:-2s"></div>
+  <div class="deco-confetti" style="width:7px;height:7px;background:#fbbf24;border-radius:50%;left:75%;animation-delay:-4s"></div>
+  <div class="deco-confetti" style="width:10px;height:6px;background:#c084fc;border-radius:2px;left:88%;animation-delay:-6s"></div>
+  <div class="deco-confetti" style="width:6px;height:6px;background:#fb923c;border-radius:50%;left:42%;animation-delay:-3s"></div>
+  <div class="deco-confetti" style="width:8px;height:8px;background:#7B2331;border-radius:2px;left:62%;animation-delay:-5s"></div>
+  <div class="deco-sphere" style="width:clamp(30px,3.5vw,60px);height:clamp(30px,3.5vw,60px);background:linear-gradient(135deg,rgba(123,35,49,0.08),rgba(192,132,252,0.08));border:1px solid rgba(255,255,255,0.1);top:40%;left:8%"></div>
+  <div class="deco-sphere" style="width:clamp(20px,2.5vw,44px);height:clamp(20px,2.5vw,44px);background:linear-gradient(135deg,rgba(251,191,36,0.08),rgba(251,146,60,0.08));border:1px solid rgba(255,255,255,0.1);bottom:30%;right:6%;animation-delay:-3s"></div>
+  <div class="deco-note" style="left:6%;top:35%">♪</div>
+  <div class="deco-note" style="right:4%;top:50%;animation-delay:-2s">♫</div>
+  <div class="deco-note" style="left:55%;top:15%;animation-delay:-4s">♪</div>
+  <div class="deco-curve" style="width:clamp(80px,10vw,180px);height:clamp(40px,5vw,90px);top:60%;left:3%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 0 50 25 T100 25" fill="none" stroke="#c084fc" stroke-width="2" opacity="0.4"/></svg></div>
+  <div class="deco-curve" style="width:clamp(60px,8vw,140px);height:clamp(30px,4vw,70px);top:20%;right:2%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 50 50 25 T100 25" fill="none" stroke="#f472b6" stroke-width="2" opacity="0.3"/></svg></div>
+  <div class="deco-ring-planet" style="color:#c084fc;bottom:5%;left:3%;width:clamp(30px,3.5vw,55px);height:clamp(30px,3.5vw,55px);animation-delay:-2s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="16" ry="5" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-25,20,20)" opacity="0.6"/><circle cx="20" cy="20" r="7" fill="currentColor" opacity="0.5"/><circle cx="20" cy="20" r="5" fill="currentColor" opacity="0.7"/></svg></div>
+  <div class="deco-star" style="color:#fbbf24;top:38%;left:52%;width:clamp(12px,1.2vw,22px);height:clamp(12px,1.2vw,22px);animation-delay:0.8s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-galaxy" style="color:#67e8f9;top:45%;right:2%;width:clamp(20px,2.5vw,40px);height:clamp(20px,2.5vw,40px);animation-delay:-3s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="14" ry="4" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><ellipse cx="20" cy="20" rx="4" ry="14" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/></svg></div>
+  <div class="deco-meteor" style="color:#ff6b9d;top:8%;left:2%;width:clamp(14px,1.2vw,22px);height:clamp(14px,1.2vw,22px);animation-delay:-1s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2L2 22l10-8 10 8L12 2z"/></svg></div>
+  <div class="deco-burst" style="color:#a78bfa;top:8%;right:6%;width:clamp(16px,1.8vw,30px);height:clamp(16px,1.8vw,30px);animation-delay:-4s"><svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.4"/></svg></div>
+  <div class="deco-wave-line" style="color:#f472b6;bottom:2%;right:15%;width:clamp(40px,5vw,80px);height:clamp(8px,1vw,16px)"><svg viewBox="0 0 60 12" width="100%" height="100%"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.4"/></svg></div>
+</section>
+
+<!-- ==============================
+     SECTION 2: QUICK INFO
+     ============================== -->
+<section class="section section-content" style="padding-top:0;padding-bottom:clamp(16px,2vw,32px)" id="quick-info">
+  <div class="section-inner">
+    <div class="quick-info-grid" id="quick-info-grid"></div>
+  </div>
+  <div class="deco-star" style="color:#fbbf24;top:15%;left:4%;width:clamp(10px,1vw,18px);height:clamp(10px,1vw,18px);animation-delay:0.5s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-sparkle" style="width:clamp(8px,0.9vw,16px);height:clamp(8px,0.9vw,16px);top:20%;right:5%;animation-delay:1.2s;color:#c084fc"><svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-planet" style="width:clamp(14px,1.5vw,24px);height:clamp(14px,1.5vw,24px);background:linear-gradient(135deg,#f472b6,#ff6b9d);bottom:15%;right:10%;box-shadow:0 0 12px rgba(244,114,182,0.12);animation-delay:-2s"></div>
+  <div class="deco-confetti" style="width:6px;height:8px;background:#fb923c;border-radius:2px;left:12%;top:30%;animation-delay:-1s"></div>
+  <div class="deco-note" style="right:8%;top:45%;animation-delay:-3s;font-size:16px">♪</div>
+  <div class="deco-soft-dot" style="width:clamp(30px,3vw,50px);height:clamp(30px,3vw,50px);background:radial-gradient(circle,rgba(142,68,173,0.08),transparent);top:50%;left:8%"></div>
+</section>
+
+<!-- ==============================
+     SECTION 3: OFFICIAL POSTER + TIMELINE
+     ============================== -->
+<section class="section section-poster" id="poster-timeline">
+  <div class="deco-dot-grid" style="width:clamp(150px,20vw,350px);height:clamp(150px,20vw,350px);top:10%;right:5%"></div>
+  <div class="deco-sphere" style="width:clamp(24px,2.5vw,44px);height:clamp(24px,2.5vw,44px);background:linear-gradient(135deg,rgba(251,191,36,0.1),rgba(251,146,60,0.1));border:1px solid rgba(255,255,255,0.1);bottom:10%;left:25%"></div>
+  <div class="deco-star" style="color:#fbbf24;top:12%;left:6%;width:clamp(10px,1vw,16px);height:clamp(10px,1vw,16px);animation-delay:0.3s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-ring-planet" style="color:#c084fc;top:50%;left:3%;width:clamp(24px,2.5vw,40px);height:clamp(24px,2.5vw,40px);animation-delay:-1s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="16" ry="5" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-25,20,20)" opacity="0.6"/><circle cx="20" cy="20" r="7" fill="currentColor" opacity="0.5"/><circle cx="20" cy="20" r="5" fill="currentColor" opacity="0.7"/></svg></div>
+  <div class="deco-confetti" style="width:7px;height:7px;background:#67e8f9;border-radius:50%;left:85%;top:20%;animation-delay:-2s"></div>
+  <div class="deco-confetti" style="width:5px;height:9px;background:#fb923c;border-radius:2px;right:10%;bottom:30%;animation-delay:-4s"></div>
+  <div class="deco-burst" style="color:#f472b6;top:35%;right:4%;width:clamp(12px,1.4vw,22px);height:clamp(12px,1.4vw,22px);animation-delay:-3s"><svg viewBox="0 0 24 24" width="100%" height="100%"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.4"/></svg></div>
+  <div class="section-inner">
+    <div class="poster-timeline">
+      <div class="poster-left text-center">
+        <div class="section-label">Official Poster</div>
+        <h2 class="section-title" style="font-size:clamp(16px,1.8vw,26px)">Event Poster</h2>
+        <div style="margin-top:clamp(8px,1vw,16px)">
+          <div class="poster-frame" id="poster-frame">
+            <img id="poster-img" src="" alt="Official Poster" loading="lazy">
+            <div class="poster-border"></div>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-right">
+        <div class="section-label">Schedule</div>
+        <h2 class="section-title">Event Timeline</h2>
+        <div class="timeline-compact" id="timeline-wrap"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     SECTION 4: GALLERY
+     ============================== -->
+<section class="section section-gallery" id="gallery">
+  <div class="deco-curve" style="width:clamp(60px,8vw,140px);height:clamp(30px,4vw,70px);top:10%;left:3%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 0 50 25 T100 25" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.15"/></svg></div>
+  <div class="deco-curve" style="width:clamp(80px,10vw,180px);height:clamp(40px,5vw,90px);bottom:10%;right:2%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 50 50 25 T100 25" fill="none" stroke="#f472b6" stroke-width="2" opacity="0.12"/></svg></div>
+  <div class="deco-sphere" style="width:clamp(20px,2vw,36px);height:clamp(20px,2vw,36px);background:linear-gradient(135deg,rgba(103,232,249,0.1),rgba(52,152,219,0.1));border:1px solid rgba(255,255,255,0.1);top:20%;right:8%"></div>
+  <div class="deco-star" style="color:#fbbf24;top:8%;left:5%;width:clamp(10px,1vw,18px);height:clamp(10px,1vw,18px);animation-delay:0.7s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-galaxy" style="color:#67e8f9;top:25%;left:6%;width:clamp(16px,1.8vw,28px);height:clamp(16px,1.8vw,28px);animation-delay:-2s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="14" ry="4" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><ellipse cx="20" cy="20" rx="4" ry="14" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/></svg></div>
+  <div class="deco-confetti" style="width:8px;height:6px;background:#ff6b9d;border-radius:2px;left:88%;top:12%;animation-delay:-1s"></div>
+  <div class="deco-confetti" style="width:6px;height:6px;background:#67e8f9;border-radius:50%;right:15%;bottom:25%;animation-delay:-5s"></div>
+  <div class="deco-meteor" style="color:#fb923c;top:5%;right:8%;width:clamp(12px,1.2vw,20px);height:clamp(12px,1.2vw,20px);animation-delay:-3s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2L2 22l10-8 10 8L12 2z"/></svg></div>
+  <div class="deco-shape" style="color:#c084fc;bottom:15%;left:4%;width:clamp(10px,1vw,18px);height:clamp(10px,1vw,18px);animation-delay:-4s"><svg viewBox="0 0 20 20" width="100%" height="100%"><polygon points="10,2 18,18 2,18" fill="currentColor"/></svg></div>
+  <div class="section-inner">
+    <div class="text-center section-header reveal">
+      <div class="section-label">Gallery</div>
+      <h2 class="section-title">Event Highlights</h2>
+      <p class="section-sub">Moments captured from our events</p>
+    </div>
+    <div class="gallery-masonry" id="gallery-masonry"></div>
+  </div>
+</section>
+
+
+<!-- ==============================
+     SECTION 6: ABOUT
+     ============================== -->
+<section class="section section-content" id="about">
+  <div class="deco-dot-grid" style="width:clamp(100px,14vw,250px);height:clamp(100px,14vw,250px);bottom:10%;right:3%"></div>
+  <div class="deco-sparkle" style="width:clamp(10px,1.2vw,20px);height:clamp(10px,1.2vw,20px);top:20%;right:10%;animation-delay:0.8s"><svg viewBox="0 0 24 24" fill="#fbbf24" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-star" style="color:#fbbf24;top:8%;right:5%;width:clamp(8px,0.9vw,14px);height:clamp(8px,0.9vw,14px);animation-delay:1.1s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-planet" style="width:clamp(12px,1.2vw,20px);height:clamp(12px,1.2vw,20px);background:linear-gradient(135deg,#67e8f9,#22d3ee);bottom:15%;left:6%;box-shadow:0 0 10px rgba(103,232,249,0.12);animation-delay:-3s"></div>
+  <div class="deco-confetti" style="width:7px;height:5px;background:#fb923c;border-radius:2px;right:8%;top:40%;animation-delay:-2s"></div>
+  <div class="deco-shape" style="color:#c084fc;top:15%;left:5%;width:clamp(8px,0.8vw,14px);height:clamp(8px,0.8vw,14px);animation-delay:-1s"><svg viewBox="0 0 20 20" width="100%" height="100%"><polygon points="10,2 18,18 2,18" fill="currentColor"/></svg></div>
+  <div class="deco-wave-line" style="color:#f472b6;bottom:5%;right:8%;width:clamp(30px,3vw,50px);height:clamp(6px,0.6vw,10px)"><svg viewBox="0 0 60 12" width="100%" height="100%"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-content reveal-left">
+        <div class="section-label">About</div>
+        <h2 class="section-title" id="about-title">Ignite Creativity</h2>
+        <p id="about-desc">Dummy text describing the event.</p>
+        <div class="about-tag">
+          <span>🎭 Cultural</span>
+          <span>🏆 Competitions</span>
+          <span>🎵 Music</span>
+          <span>💃 Dance</span>
+        </div>
+      </div>
+      <div class="about-visual reveal-right">
+        <div class="about-grid-vis">
+          <img src="" data-src="https://static.wixstatic.com/media/ab471d_431d71edb13042cebc324f77961927e2~mv2.png" alt="Event" loading="lazy">
+          <img src="" data-src="https://static.wixstatic.com/media/ab471d_2a9cd5ad955740f9afb7df35a814da41~mv2.png" alt="Crowd" loading="lazy">
+          <img src="" data-src="https://static.wixstatic.com/media/ab471d_441bd880510f48cd881fe313f8403d5e~mv2.png" alt="Performance" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     SECTION 7: MARQUEE
+     ============================== -->
+<section class="section section-full" style="padding:clamp(12px,1.5vw,20px) 0" id="marquee">
+  <div class="deco-star" style="color:#fbbf24;top:10%;left:3%;width:clamp(8px,0.8vw,14px);height:clamp(8px,0.8vw,14px);animation-delay:0.6s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-sparkle" style="width:clamp(7px,0.7vw,12px);height:clamp(7px,0.7vw,12px);top:5%;right:4%;animation-delay:1.3s;color:#c084fc"><svg viewBox="0 0 24 24" fill="currentColor" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-note" style="left:5%;bottom:10%;animation-delay:-1s;font-size:14px">♪</div>
+  <div class="deco-planet" style="width:clamp(10px,1vw,18px);height:clamp(10px,1vw,18px);background:linear-gradient(135deg,#f472b6,#ff6b9d);right:3%;bottom:15%;box-shadow:0 0 10px rgba(244,114,182,0.1);animation-delay:-2s"></div>
+  <div class="deco-soft-dot" style="width:clamp(20px,2vw,32px);height:clamp(20px,2vw,32px);background:radial-gradient(circle,rgba(142,68,173,0.06),transparent);left:2%;top:40%"></div>
+  <div class="section-inner" style="padding:0">
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marquee-track"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ==============================
+     SECTION 9: FEATURED MEMORIES — COMPACT
+     ============================== -->
+<section class="section section-content" id="memories">
+  <div class="deco-curve" style="width:clamp(50px,6vw,100px);height:clamp(25px,3vw,50px);top:10%;left:4%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 0 50 25 T100 25" fill="none" stroke="#f472b6" stroke-width="2" opacity="0.12"/></svg></div>
+  <div class="deco-curve" style="width:clamp(70px,8vw,140px);height:clamp(35px,4vw,70px);bottom:10%;right:2%"><svg viewBox="0 0 100 50" width="100%" height="100%"><path d="M0 25 Q25 50 50 25 T100 25" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.1"/></svg></div>
+  <div class="deco-star" style="color:#fbbf24;top:8%;left:4%;width:clamp(10px,1vw,16px);height:clamp(10px,1vw,16px);animation-delay:0.2s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-star" style="color:#7B2331;top:35%;right:3%;width:clamp(8px,0.8vw,13px);height:clamp(8px,0.8vw,13px);animation-delay:1.5s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-ring-planet" style="color:#c084fc;top:60%;left:3%;width:clamp(20px,2.2vw,34px);height:clamp(20px,2.2vw,34px);animation-delay:-2s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="16" ry="5" fill="none" stroke="currentColor" stroke-width="1.2" transform="rotate(-25,20,20)" opacity="0.6"/><circle cx="20" cy="20" r="7" fill="currentColor" opacity="0.5"/><circle cx="20" cy="20" r="5" fill="currentColor" opacity="0.7"/></svg></div>
+  <div class="deco-galaxy" style="color:#67e8f9;bottom:8%;right:5%;width:clamp(14px,1.5vw,24px);height:clamp(14px,1.5vw,24px);animation-delay:-3s"><svg viewBox="0 0 40 40" width="100%" height="100%"><ellipse cx="20" cy="20" rx="14" ry="4" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><ellipse cx="20" cy="20" rx="4" ry="14" fill="none" stroke="currentColor" stroke-width="0.8" transform="rotate(-35,20,20)" opacity="0.4"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.4"/></svg></div>
+  <div class="deco-wave-line" style="color:#f472b6;bottom:3%;left:8%;width:clamp(35px,4vw,60px);height:clamp(6px,0.6vw,10px)"><svg viewBox="0 0 60 12" width="100%" height="100%"><path d="M0 6 Q15 0 30 6 T60 6" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"/></svg></div>
+  <div class="deco-orbit" style="width:clamp(40px,5vw,80px);height:clamp(40px,5vw,80px);top:40%;right:4%;animation-duration:30s"><div class="deco-orbit-dot" style="background:#a78bfa"></div></div>
+  <div class="section-inner">
+    <div class="text-center section-header reveal">
+      <div class="section-label">Memories</div>
+      <h2 class="section-title">Featured Moments</h2>
+      <p class="section-sub">Our favorite memories from the event</p>
+    </div>
+    <div class="mem-masonry" id="mem-masonry"></div>
+  </div>
+</section>
+
+<!-- ==============================
+     SECTION 10: MEMORY QUOTE (PAGE END)
+     ============================== -->
+<section class="section section-quote" style="padding:clamp(20px,2.5vw,36px) 0" id="quote-section">
+  <div class="deco-moon" style="width:clamp(16px,1.5vw,28px);height:clamp(16px,1.5vw,28px);top:20%;left:10%"></div>
+  <div class="deco-sparkle" style="width:clamp(10px,1vw,18px);height:clamp(10px,1vw,18px);top:25%;right:12%;animation-delay:1.5s"><svg viewBox="0 0 24 24" fill="#c084fc" width="100%" height="100%"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="deco-star" style="color:#fbbf24;top:10%;left:15%;width:clamp(8px,0.8vw,14px);height:clamp(8px,0.8vw,14px);animation-delay:0.9s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="deco-meteor" style="color:#fb923c;top:5%;left:40%;width:clamp(10px,1vw,16px);height:clamp(10px,1vw,16px);animation-delay:-4s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2L2 22l10-8 10 8L12 2z"/></svg></div>
+  <div class="deco-planet" style="width:clamp(10px,1vw,16px);height:clamp(10px,1vw,16px);background:linear-gradient(135deg,#f472b6,#ff6b9d);bottom:20%;left:8%;box-shadow:0 0 8px rgba(244,114,182,0.1);animation-delay:-2s"></div>
+  <div class="deco-soft-dot" style="width:clamp(20px,2vw,30px);height:clamp(20px,2vw,30px);background:radial-gradient(circle,rgba(142,68,173,0.06),transparent);bottom:15%;right:10%"></div>
+  <div class="section-inner">
+    <div class="quote-section reveal">
+      <div class="quote-mark">"</div>
+      <blockquote>Every great dream begins with a dreamer.</blockquote>
+      <p class="quote-author">— <strong>IITM College of Engineering</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     LIGHTBOX
+     ============================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lb-close">×</button>
+  <button class="lb-nav lb-prev" id="lb-prev">‹</button>
+  <button class="lb-nav lb-next" id="lb-next">›</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+<!-- ==============================
+     JAVASCRIPT
+     ============================== -->
+<script>
+// ==================================
+//  EVENT DATA — UPDATE HERE ONLY
+// ==================================
+const EVENT = {
+  title: 'Fiesta 2K25',
+  subtitle: 'Annual Cultural Festival',
+  year: '2025',
+  date: '15 March 2025',
+  venue: 'IITM College of Engineering',
+  theme: 'Ignite Creativity',
+  heroPoster: 'https://static.wixstatic.com/media/ab471d_9ed9469815a146a29de951a967026fc7~mv2.jpg',
+  officialPoster: 'https://static.wixstatic.com/media/ee3217_bb4058da95e44d718c784aea81751cd3~mv2.jpg',
+  description: 'Fiesta 2K25 is the annual cultural festival of IITM College of Engineering, bringing together students from all departments for a celebration of creativity, talent, and community. With 25+ events spanning music, dance, art, literature, and technology, this is the most anticipated event on campus.',
+  chiefGuest: 'Dr. A. P. Sharma',
+  participants: '350+',
+  clubs: '12'
+};
+
+// ==================================
+//  EVENT CARDS — UPDATE HERE
+// ==================================
+const EVENT_CARDS = [
+  {
+    title: 'Battle of Bands',
+    poster: 'https://static.wixstatic.com/media/ab471d_9a5c19c435c545919fcaf6c0d54aed54~mv2.png',
+    venue: 'Main Auditorium',
+    time: 'Day 1 · 10:00 AM',
+    description: 'Live music competition featuring student bands across genres'
+  },
+  {
+    title: 'Dance Fusion',
+    poster: 'https://static.wixstatic.com/media/ab471d_d2e996e1f4e944b39fae7db2a4879f34~mv2.jpg',
+    venue: 'Open Air Theater',
+    time: 'Day 1 · 2:00 PM',
+    description: 'Solo and group dance performances from classical to contemporary'
+  },
+  {
+    title: 'Art Expo',
+    poster: 'https://static.wixstatic.com/media/ab471d_906a5d62305b4db1b53c561b46bf33f1~mv2.jpg',
+    venue: 'Art Gallery',
+    time: 'Day 2 · 9:00 AM',
+    description: 'Student art exhibitions, photography, and installations'
+  },
+  {
+    title: 'Tech Hackathon',
+    poster: 'https://static.wixstatic.com/media/ab471d_b0b6a30cdbe147568ace2f666be108c3~mv2.jpg',
+    venue: 'CS Lab',
+    time: 'Day 2 · 10:00 AM',
+    description: '24-hour coding challenge to solve real-world problems'
+  },
+  {
+    title: 'Fashion Show',
+    poster: 'https://static.wixstatic.com/media/ab471d_d7bbab31f8b94e00878ef00bddda1e62~mv2.jpg',
+    venue: 'Main Stage',
+    time: 'Day 2 · 6:00 PM',
+    description: 'Themed fashion showcase by our talented student designers'
+  },
+  {
+    title: 'Quiz Olympiad',
+    poster: 'https://static.wixstatic.com/media/ab471d_3b5494589ed3481e948c7e6c704540b5~mv2.jpg',
+    venue: 'Seminar Hall',
+    time: 'Day 1 · 11:00 AM',
+    description: 'Inter-departmental quiz competition with exciting prizes'
+  }
+];
+
+// ==================================
+//  GALLERY — UPDATE HERE
+// ==================================
+const GALLERY = [
+  { url: 'https://static.wixstatic.com/media/ab471d_27b7171fac184b178e7111fe1edb1ce1~mv2.png', caption: 'Opening Ceremony' },
+  { url: 'https://static.wixstatic.com/media/ab471d_83e8cce1b7874a0383ba31ef4a98a703~mv2.png', caption: 'Dance Performance' },
+  { url: 'https://static.wixstatic.com/media/ab471d_e3e4bb311e744cc1907f10af6f0c8e5b~mv2.png', caption: 'Audience' },
+  { url: 'https://static.wixstatic.com/media/ab471d_431d71edb13042cebc324f77961927e2~mv2.png', caption: 'Stage Setup' },
+  { url: 'https://static.wixstatic.com/media/ab471d_2a9cd5ad955740f9afb7df35a814da41~mv2.png', caption: 'Art Exhibition' },
+  { url: 'https://static.wixstatic.com/media/ab471d_441bd880510f48cd881fe313f8403d5e~mv2.png', caption: 'Music Performance' },
+  { url: 'https://static.wixstatic.com/media/ab471d_1f33959c403d4b368f18bebd4a199e94~mv2.png', caption: 'Group Photo' },
+  { url: 'https://static.wixstatic.com/media/ab471d_f2313e324f1249358359ca77a898c4d8~mv2.png', caption: 'Decorations' },
+  { url: 'https://static.wixstatic.com/media/ab471d_3f20e9f46bc347ddaa96eadf0a4bd40d~mv2.png', caption: 'Poster Design' },
+  { url: 'https://static.wixstatic.com/media/ab471d_9cf78a6ef16d48fab73e2891418ab7dd~mv2.png', caption: 'Food Festival' },
+  { url: 'https://static.wixstatic.com/media/ab471d_59d14b0038cf41c0a54d7d9af9f41de2~mv2.png', caption: 'Backstage' },
+  { url: 'https://static.wixstatic.com/media/ab471d_829b548cd3de4c25bf93610d9835ab0d~mv2.png', caption: 'Award Ceremony' }
+];
+
+
+
+// ==================================
+//  STATS — UPDATE HERE
+// ==================================
+const STATS = {
+  participants: 350,
+  events: 25,
+  clubs: 12,
+  volunteers: 75
+};
+
+// ==================================
+//  TIMELINE DATA
+// ==================================
+const TIMELINE_DATA = [
+  { icon: '🎉', time: 'DAY 1 · 9:00 AM', title: 'Inauguration Ceremony', desc: 'Grand opening with chief guests and cultural performances' },
+  { icon: '🎤', time: 'DAY 1 · 11:00 AM', title: 'Music & Dance Competitions', desc: 'Solo and group performances across multiple genres' },
+  { icon: '🎨', time: 'DAY 2 · 10:00 AM', title: 'Art & Creativity Expo', desc: 'Student art exhibitions, photography, and creative displays' },
+  { icon: '🏆', time: 'DAY 2 · 6:00 PM', title: 'Prize Distribution & Closing', desc: 'Award ceremony and closing performances' }
+];
+
+// ==================================
+//  MEMORY QUOTE
+// ==================================
+const MEMORY_QUOTE = {
+  text: 'Every great dream begins with a dreamer. Always remember, you have within you the strength, the patience, and the passion to reach for the stars to change the world.',
+  author: 'IITM College of Engineering'
+};
+
+// ==================================
+//  APP — RENDER
+// ==================================
+document.addEventListener('DOMContentLoaded', () => {
+
+  document.getElementById('hero-title').textContent = EVENT.title;
+  document.getElementById('hero-subtitle').textContent = EVENT.subtitle;
+  document.getElementById('hero-date').textContent = EVENT.date;
+  document.getElementById('hero-venue').textContent = EVENT.venue;
+  document.getElementById('hero-poster-img').src = EVENT.heroPoster;
+
+  // Quick Info
+  const quickInfoGrid = document.getElementById('quick-info-grid');
+  const quickData = [
+    { icon: '📅', label: 'Date', value: EVENT.date, cls: 'maroon' },
+    { icon: '📍', label: 'Venue', value: EVENT.venue, cls: 'blue' },
+    { icon: '👥', label: 'Participants', value: EVENT.participants, cls: 'purple' },
+    { icon: '🎯', label: 'Theme', value: EVENT.theme, cls: 'orange' },
+    { icon: '⭐', label: 'Chief Guest', value: EVENT.chiefGuest || 'TBA', cls: 'green' }
+  ];
+  quickInfoGrid.innerHTML = quickData.map(d => `
+    <div class="quick-info-card reveal">
+      <div class="icon ${d.cls}">${d.icon}</div>
+      <div class="value">${d.value}</div>
+      <div class="label">${d.label}</div>
+    </div>
+  `).join('');
+
+  // Poster
+  document.getElementById('poster-img').src = EVENT.officialPoster;
+
+  // Timeline (compact)
+  const timelineWrap = document.getElementById('timeline-wrap');
+  timelineWrap.innerHTML = TIMELINE_DATA.map(t => `
+    <div class="tl-item reveal">
+      <div class="dot"></div>
+      <div class="content">
+        <div class="icon">${t.icon}</div>
+        <div class="time">${t.time}</div>
+        <h4>${t.title}</h4>
+        <p>${t.desc}</p>
+      </div>
+    </div>
+  `).join('');
+
+  // Gallery
+  const gallery = document.getElementById('gallery-masonry');
+  gallery.innerHTML = GALLERY.map((g, i) => `
+    <div class="g-item" data-index="${i}">
+      <div class="g-skeleton"></div>
+      <img data-src="${g.url}" alt="${g.caption}" loading="lazy">
+      <div class="g-caption">${g.caption}</div>
+    </div>
+  `).join('');
+
+  const galleryImgs = gallery.querySelectorAll('img[data-src]');
+  const imgObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = () => { img.classList.add('loaded'); const s = img.parentElement.querySelector('.g-skeleton'); if(s) s.remove(); };
+        img.onerror = () => { img.classList.add('loaded'); const s = img.parentElement.querySelector('.g-skeleton'); if(s) s.remove(); };
+        imgObserver.unobserve(img);
+      }
+    });
+  }, { rootMargin: '200px' });
+  galleryImgs.forEach(img => imgObserver.observe(img));
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  let currentIndex = 0;
+  function openLightbox(index) {
+    currentIndex = index;
+    const item = GALLERY[index];
+    lbImg.src = item.url;
+    lbCaption.textContent = item.caption;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  gallery.addEventListener('click', (e) => {
+    const item = e.target.closest('.g-item');
+    if (item) openLightbox(parseInt(item.dataset.index));
+  });
+  document.getElementById('lb-close').addEventListener('click', () => { lightbox.classList.remove('active'); document.body.style.overflow = ''; });
+  document.getElementById('lb-prev').addEventListener('click', () => { currentIndex = (currentIndex - 1 + GALLERY.length) % GALLERY.length; openLightbox(currentIndex); });
+  document.getElementById('lb-next').addEventListener('click', () => { currentIndex = (currentIndex + 1) % GALLERY.length; openLightbox(currentIndex); });
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) { lightbox.classList.remove('active'); document.body.style.overflow = ''; } });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+    if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+  });
+
+  // About
+  document.getElementById('about-title').textContent = EVENT.theme;
+  document.getElementById('about-desc').textContent = EVENT.description;
+
+  // Marquee
+  const marqueeTrack = document.getElementById('marquee-track');
+  const marqueeCards = EVENT_CARDS.map(ev => `
+    <div class="marquee-card">
+      <img src="${ev.poster}" alt="${ev.title}" loading="lazy">
+    </div>
+  `).join('');
+  marqueeTrack.innerHTML = marqueeCards + marqueeCards;
+
+
+
+  // Featured Memories — compact masonry
+  const memMasonry = document.getElementById('mem-masonry');
+  const memItems = GALLERY.slice(0, 10);
+  while (memItems.length < 10) memItems.push({ url: 'https://static.wixstatic.com/media/ab471d_1f33959c403d4b368f18bebd4a199e94~mv2.png', caption: 'Memory' });
+  memMasonry.innerHTML = memItems.map((m, i) => `
+    <div class="mem-item">
+      <div class="mem-skeleton"></div>
+      <img data-src="${m.url}" alt="${m.caption}" loading="lazy">
+      <div class="mem-overlay">${m.caption}</div>
+    </div>
+  `).join('');
+
+  const memImgs = memMasonry.querySelectorAll('img[data-src]');
+  const memObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = () => { img.classList.add('loaded'); const s = img.parentElement.querySelector('.mem-skeleton'); if(s) s.remove(); };
+        img.onerror = () => { img.classList.add('loaded'); const s = img.parentElement.querySelector('.mem-skeleton'); if(s) s.remove(); };
+        memObserver.unobserve(img);
+      }
+    });
+  }, { rootMargin: '200px' });
+  memImgs.forEach(img => memObserver.observe(img));
+
+  // Quote
+  document.querySelector('.quote-section blockquote').textContent = MEMORY_QUOTE.text;
+  document.querySelector('.quote-section .quote-author').innerHTML = `— <strong>${MEMORY_QUOTE.author}</strong>`;
+
+  // Reveal animations
+  function setupReveal() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+  }
+  function setupStagger() {
+    document.querySelectorAll('.reveal-stagger').forEach(container => {
+      const items = container.querySelectorAll('.reveal-item');
+      const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            items.forEach((item, i) => setTimeout(() => item.classList.add('visible'), i * 60));
+            staggerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      staggerObserver.observe(container);
+    });
+  }
+  setupReveal();
+  setupStagger();
+
+  // CTA smooth scroll
+  document.querySelector('.hero-cta').addEventListener('click', () => {
+    const target = document.getElementById('gallery');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Lazy load about images
+  document.querySelectorAll('.about-visual img[data-src]').forEach(img => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { img.src = img.dataset.src; img.classList.add('loaded'); obs.unobserve(img); }
+      });
+    }, { rootMargin: '200px' });
+    obs.observe(img);
+  });
+
+  // Poster load
+  const posterImg = document.getElementById('poster-img');
+  if (posterImg.src === '' || posterImg.src === window.location.href) posterImg.src = EVENT.officialPoster;
+
+  console.log('✅ IITM Events — Fiesta loaded');
+});
+
+// ================================================================
+//  WIX IFRAME — AUTO HEIGHT
+// ================================================================
+(function() {
+  'use strict';
+  var sending = null;
+  function getDocHeight() {
+    var b = document.body, d = document.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      d.scrollHeight, d.offsetHeight, d.clientHeight
+    );
+  }
+  function sendHeight() {
+    if (sending) return;
+    sending = requestAnimationFrame(function() {
+      var h = getDocHeight();
+      if (window.parent !== window) {
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+      }
+      sending = null;
+    });
+  }
+  sendHeight();
+  document.addEventListener('DOMContentLoaded', sendHeight);
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(sendHeight);
+    ro.observe(document.body);
+  }
+  if (window.MutationObserver) {
+    var mo = new MutationObserver(sendHeight);
+    mo.observe(document.body, { childList: true, subtree: true, attributes: true, characterData: true });
+  }
+  document.addEventListener('load', function(e) { if (e.target.tagName === 'IMG') sendHeight(); }, true);
+  if (document.fonts) document.fonts.ready.then(sendHeight);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 2000);
+})();
+</script>
+</body>
+</html>

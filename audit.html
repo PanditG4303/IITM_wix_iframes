@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Mandatory Disclosure | IITM College of Engineering</title>
+
+<style>
+
+:root{
+--maroon:#8b1e2d;
+--dark:#651421;
+--gold:#d4a94f;
+--light:#faf7f7;
+--white:#ffffff;
+}
+
+html,body{
+overflow-x:hidden;
+width:100%;
+max-width:100%;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Segoe UI,sans-serif;
+background:var(--light);
+color:#333;
+}
+
+.hero{
+background:linear-gradient(135deg,#651421,#8b1e2d);
+padding:80px 20px;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:clamp(2rem,4vw,3.5rem);
+margin-bottom:10px;
+}
+
+.hero-inner{position:relative;z-index:2}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  opacity:.9;
+}
+
+.container{
+max-width:1480px;
+width:96%;
+margin:auto;
+padding:40px 20px;
+}
+
+.section-title{
+font-size:2rem;
+font-weight:700;
+color:var(--dark);
+margin-bottom:25px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.card{
+  background:white;
+  border-radius:14px;
+  padding:20px;
+  cursor:pointer;
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+  border-left:5px solid transparent;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  position:relative;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  border-left:5px solid var(--gold);
+  box-shadow:0 12px 36px rgba(0,0,0,.12);
+}
+
+@keyframes pulse-glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(139,30,45,.4)}
+  50%{box-shadow:0 0 0 8px rgba(139,30,45,0)}
+}
+
+.card h3{
+color:var(--maroon);
+font-size:1.1rem;
+margin-bottom:5px;
+}
+
+.card p{
+font-size:.9rem;
+color:#666;
+}
+
+.viewer{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 8px 28px rgba(0,0,0,.08);
+}.viewer > *{max-width:100%}
+
+.viewer-header{
+padding:20px;
+background:var(--maroon);
+color:white;
+font-weight:600;
+}
+
+iframe{
+width:100%;
+height:1180px;
+border:none;
+display:block;
+background:white;
+}
+
+.footer{
+padding:30px;
+text-align:center;
+background:#651421;
+color:white;
+margin-top:40px;
+}
+
+/* ===== HERO PATTERN ===== */
+.hero-pattern{
+  position:absolute;inset:0;z-index:0;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='%23d4a94f'%3E%3Cpath d='M30 5L35 20H50L38 30l4 15-12-8-12 8 4-15L10 20h15z'/%3E%3Ccircle cx='30' cy='55' r='2'/%3E%3Ccircle cx='10' cy='10' r='1.5'/%3E%3Ccircle cx='50' cy='10' r='1.5'/%3E%3Ccircle cx='55' cy='30' r='1'/%3E%3Ccircle cx='5' cy='30' r='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:60px 60px;
+}
+
+.blur-circle{
+  position:absolute;z-index:0;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.12;
+  pointer-events:none;
+}
+.blur-circle-1{width:300px;height:300px;background:var(--gold);top:-120px;right:-100px}
+.blur-circle-2{width:200px;height:200px;background:#fff;bottom:-60px;left:-60px}
+
+/* ===== STATS CARDS ===== */
+.stats-row{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:-36px;
+  position:relative;
+  z-index:10;
+  padding:0 20px 24px;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.stat-card{
+  background:white;
+  border-radius:12px;
+  padding:14px 20px;
+  box-shadow:0 8px 30px rgba(0,0,0,.1);
+  text-align:center;
+  flex:1;
+  min-width:140px;
+  max-width:210px;
+  border-top:3px solid var(--gold);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.stat-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.14)}
+.stat-card h4{font-size:1rem;color:var(--maroon);margin-bottom:1px;font-weight:800}
+.stat-card p{font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.6px;font-weight:500}
+
+/* ===== VIEWER ENHANCEMENTS ===== */
+.viewer{
+  position:relative;
+}
+.viewer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+  background:var(--maroon);
+  color:white;
+  font-weight:600;
+}
+.viewer-header-left{font-size:.9rem;line-height:1.3}
+.viewer-header-right{display:flex;gap:8px;flex-shrink:0}
+.btn-pdf-open{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:6px 14px;
+  border-radius:6px;
+  font-size:.72rem;
+  font-weight:600;
+  background:rgba(255,255,255,.15);
+  color:white;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.25);
+  cursor:pointer;
+  transition:background .25s,transform .25s;
+  white-space:nowrap;
+}
+.btn-pdf-open:hover{background:rgba(255,255,255,.28);transform:translateY(-1px)}
+.btn-pdf-open svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== LOADER ===== */
+.viewer-loader{
+  display:none;
+  position:absolute;
+  inset:0;z-index:5;
+  background:#f8f8f8;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+}
+.viewer-loader.show{display:flex}
+.loader-spinner{
+  width:36px;height:36px;
+  border:3px solid #e0e0e0;
+  border-top-color:var(--maroon);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+}
+.loader-text{margin-top:8px;font-size:.78rem;color:#999}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== FADE TRANSITION ===== */
+iframe{
+  transition:opacity .35s ease;
+}
+iframe.fading{opacity:0}
+
+/* ===== SCROLL REVEAL ===== */
+.fade-up{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.fade-up.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== TYPOGRAPHY ===== */
+.viewer-header-left small{opacity:.7;font-weight:400;font-size:.75rem;display:block;margin-top:1px}
+
+@media(max-width:1024px){
+iframe{height:980px}
+}
+
+@media(max-width:900px){
+.stats-row{gap:10px;margin-top:-24px;padding:0 14px 18px}
+.stat-card{min-width:110px;padding:12px 14px}
+.stat-card h4{font-size:.9rem}
+}
+
+@media(max-width:768px){
+iframe{height:760px}
+}
+
+@media(max-width:600px){
+.stat-card{min-width:calc(50% - 10px);max-width:none}
+.viewer-header{flex-direction:column;gap:8px;align-items:flex-start}
+.btn-pdf-open{align-self:flex-start}
+}
+
+@media(max-width:480px){
+iframe{height:600px}
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="hero-pattern"></div>
+<div class="blur-circle blur-circle-1"></div>
+<div class="blur-circle blur-circle-2"></div>
+<div class="hero-inner">
+<h1>Mandatory Disclosure</h1>
+<p>The Mandatory Disclosure document provides official information regarding IITM College of Engineering including governance, programmes, faculty, admissions, infrastructure, institutional facilities and regulatory compliance as prescribed by AICTE.</p>
+</div>
+</section>
+
+<div class="stats-row fade-up">
+<div class="stat-card"><h4>Mandatory</h4><p>Disclosure</p></div>
+<div class="stat-card"><h4>Institutional</h4><p>Information</p></div>
+<div class="stat-card"><h4>Regulatory</h4><p>Compliance</p></div>
+<div class="stat-card"><h4>AICTE</h4><p>Prescribed</p></div>
+</div>
+
+<div class="container">
+
+<h2 class="section-title fade-up">
+Mandatory Disclosure Document
+</h2>
+
+<div class="card fade-up" style="margin-bottom:20px;border-left:5px solid var(--gold);cursor:default">
+<h3 style="color:var(--gold)">About Mandatory Disclosure</h3>
+<p>The Mandatory Disclosure document provides official information regarding IITM College of Engineering including governance, programmes, faculty, admissions, infrastructure, institutional facilities and regulatory compliance as prescribed by AICTE.</p>
+</div>
+
+<div class="grid">
+
+<div class="viewer fade-up">
+
+<div class="viewer-header">
+<div class="viewer-header-left" id="viewerTitle">
+Mandatory Disclosure Document
+<small id="viewerSubtitle">Official AICTE Mandatory Disclosure Document</small>
+</div>
+<div class="viewer-header-right">
+<a class="btn-pdf-open" id="openPdfBtn" href="https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_1590122025d9447f89ce30abdf1335a2.pdf" target="_blank" rel="noopener noreferrer">
+<svg viewBox="0 0 24 24"><line x1="18" y1="13" x2="18" y2="19"/><line x1="15" y1="16" x2="21" y2="16"/><path d="M5 21h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z"/><path d="M9 7h6"/><path d="M9 11h6"/></svg>
+Open PDF
+</a>
+</div>
+</div>
+
+<div class="viewer-loader" id="pdfLoader">
+<div class="loader-spinner"></div>
+<div class="loader-text">Loading PDF…</div>
+</div>
+
+<iframe
+id="pdfViewer"
+src="https://docs.google.com/gview?embedded=true&url=https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_1590122025d9447f89ce30abdf1335a2.pdf">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+<footer class="footer">
+Mandatory Disclosure • IITM College of Engineering
+</footer>
+
+<script>
+
+(function(){
+
+var viewer=document.getElementById("pdfViewer");
+var loader=document.getElementById("pdfLoader");
+var openBtn=document.getElementById("openPdfBtn");
+
+function showLoader(){
+loader.classList.add("show");
+viewer.classList.add("fading");
+}
+
+function hideLoader(){
+loader.classList.remove("show");
+viewer.classList.remove("fading");
+}
+
+showLoader();
+
+viewer.addEventListener("load",function(){
+setTimeout(hideLoader,250);
+});
+
+viewer.addEventListener("error",function(){
+hideLoader();
+});
+
+openBtn.addEventListener("click",function(e){
+e.stopPropagation();
+});
+
+/* scroll reveal */
+var revealEls=document.querySelectorAll('.fade-up');
+function checkReveal(){
+var h=window.innerHeight;
+for(var i=0;i<revealEls.length;i++){
+var rect=revealEls[i].getBoundingClientRect();
+if(rect.top<h-60){
+revealEls[i].classList.add('visible');
+}
+}
+}
+window.addEventListener('scroll',checkReveal);
+window.addEventListener('resize',checkReveal);
+checkReveal();
+
+/* Wix auto-height */
+function sendHeight(){
+try{
+var h=Math.max(
+document.documentElement.scrollHeight,
+document.body.scrollHeight,
+document.documentElement.offsetHeight,
+document.body.offsetHeight
+);
+parent.postMessage({type:'setHeight',height:h},'*');
+}catch(e){}
+}
+window.addEventListener('load',function(){setTimeout(sendHeight,500);});
+window.addEventListener('resize',sendHeight);
+setTimeout(sendHeight,1000);
+
+})();
+
+</script>
+
+</body>
+</html>

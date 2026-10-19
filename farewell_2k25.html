@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farewell 2K25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cedarville+Cursive&display=swap" rel="stylesheet">
+<style>
+/* ==============================
+   RESET & BASE
+   ============================== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;overflow-y:visible;height:auto}
+body{font-family:'Inter',sans-serif;background:#f8f3ec;color:#2c2420;overflow-x:hidden;overflow-y:visible;line-height:1.7;width:100%;height:auto}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+::selection{background:#D4AF37;color:#fff}
+
+/* ==============================
+   SCROLLBAR
+   ============================== */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#f5f0e8}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#D4AF37,#b8860b);border-radius:4px}
+
+/* ==============================
+   BACKGROUND — LUXURY PAPER, RICH BLOBS
+   ============================== */
+.bg-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bg-overlay .blob{position:absolute;border-radius:50%;filter:blur(100px);animation:blobFloat 25s ease-in-out infinite}
+.bg-overlay .blob:nth-child(1){width:clamp(400px,50vw,800px);height:clamp(400px,50vw,800px);background:linear-gradient(135deg,#D4AF37,#F5E6C8);top:-15%;left:-10%;opacity:0.1;animation-delay:0s}
+.bg-overlay .blob:nth-child(2){width:clamp(350px,40vw,650px);height:clamp(350px,40vw,650px);background:linear-gradient(135deg,#E6C4C4,#f8edeb);top:35%;right:-10%;opacity:0.12;animation-delay:-6s}
+.bg-overlay .blob:nth-child(3){width:clamp(300px,35vw,550px);height:clamp(300px,35vw,550px);background:linear-gradient(135deg,#F2D3C2,#F5E6C8);bottom:5%;left:15%;opacity:0.1;animation-delay:-12s}
+.bg-overlay .blob:nth-child(4){width:clamp(250px,30vw,450px);height:clamp(250px,30vw,450px);background:linear-gradient(135deg,#E6C4C4,#F2D3C2);top:55%;left:-8%;opacity:0.08;animation-delay:-18s}
+.bg-overlay .blob:nth-child(5){width:clamp(300px,35vw,500px);height:clamp(300px,35vw,500px);background:linear-gradient(135deg,#D4AF37,#F5E6C8);bottom:25%;right:5%;opacity:0.07;animation-delay:-8s}
+.bg-overlay .blob:nth-child(6){width:clamp(200px,25vw,400px);height:clamp(200px,25vw,400px);background:radial-gradient(circle,#7B2331,transparent);top:70%;left:40%;opacity:0.03;animation-delay:-14s}
+.bg-overlay .blob:nth-child(7){width:clamp(180px,22vw,350px);height:clamp(180px,22vw,350px);background:radial-gradient(circle,#5A3A2E,transparent);bottom:60%;right:30%;opacity:0.04;animation-delay:-10s}
+.bg-overlay .blob:nth-child(8){width:clamp(150px,18vw,280px);height:clamp(150px,18vw,280px);background:linear-gradient(135deg,#F6E0D7,#EBC8B4);top:25%;left:55%;opacity:0.06;animation-delay:-4s}
+.bg-overlay .blob:nth-child(9){width:clamp(200px,22vw,350px);height:clamp(200px,22vw,350px);background:linear-gradient(135deg,#CFA574,#F5E6C8);bottom:45%;right:15%;opacity:0.05;animation-delay:-16s}
+.bg-overlay .blob:nth-child(10){width:clamp(160px,20vw,300px);height:clamp(160px,20vw,300px);background:radial-gradient(circle,#E6C4C4,transparent);top:15%;left:30%;opacity:0.05;animation-delay:-22s}
+.bg-overlay .blob:nth-child(11){width:clamp(140px,16vw,250px);height:clamp(140px,16vw,250px);background:radial-gradient(circle,#F2D3C2,transparent);bottom:10%;left:50%;opacity:0.04;animation-delay:-9s}
+.bg-overlay .blob:nth-child(12){width:clamp(120px,14vw,220px);height:clamp(120px,14vw,220px);background:linear-gradient(135deg,#D4AF37,#F5E6C8);top:50%;left:25%;opacity:0.03;animation-delay:-20s}
+.bg-overlay .blob:nth-child(13){width:clamp(180px,20vw,320px);height:clamp(180px,20vw,320px);background:radial-gradient(circle,#F6E0D7,transparent);top:80%;left:10%;opacity:0.04;animation-delay:-7s}
+.bg-overlay .blob:nth-child(14){width:clamp(100px,12vw,200px);height:clamp(100px,12vw,200px);background:radial-gradient(circle,#CFA574,transparent);bottom:5%;right:35%;opacity:0.04;animation-delay:-25s}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-30px) scale(1.04)}50%{transform:translate(-20px,40px) scale(0.96)}75%{transform:translate(30px,20px) scale(1.02)}}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px}
+.paper-texture{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.035;background-image:url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.5'/%3E%3C/svg%3E");background-repeat:repeat;background-size:300px 300px}
+
+/* ==============================
+   DECORATIVE SECTION BLOBS
+   Each section gets its own floating background blobs for depth
+   ============================== */
+.section-blob{position:absolute;pointer-events:none;z-index:0;border-radius:50%;filter:blur(60px);animation:sectionBlob 15s ease-in-out infinite}
+@keyframes sectionBlob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(15px,-10px) scale(1.05)}66%{transform:translate(-10px,15px) scale(0.95)}}
+
+/* ==============================
+   FLOATING DECORATIONS — ENRICHED
+   ============================== */
+.floating-container{position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden}
+.float-item{position:absolute;animation:floatDrift linear infinite;opacity:0}
+@keyframes floatDrift{0%{transform:translateY(110vh) rotate(0deg);opacity:0}8%{opacity:var(--fo,0.18)}92%{opacity:var(--fo,0.18)}100%{transform:translateY(-10vh) rotate(720deg);opacity:0}}
+
+.float-cap{width:clamp(22px,2.4vw,40px);height:auto;color:#D4AF37;animation-duration:30s;animation-delay:var(--d,0s);left:var(--l,5%);--fo:0.13}
+.float-star{width:clamp(14px,1.6vw,24px);height:auto;color:#D4AF37;animation-duration:26s;animation-delay:var(--d,0s);left:var(--l,10%);--fo:0.12}
+.float-flower{width:clamp(18px,2vw,30px);height:auto;color:#E6C4C4;animation-duration:32s;animation-delay:var(--d,0s);left:var(--l,15%);--fo:0.1}
+.float-ribbon{width:clamp(32px,3.8vw,60px);height:auto;color:#F2D3C2;animation-duration:34s;animation-delay:var(--d,0s);left:var(--l,20%);--fo:0.07}
+.float-sparkle{width:clamp(12px,1.4vw,20px);height:auto;color:#D4AF37;animation-duration:24s;animation-delay:var(--d,0s);left:var(--l,25%);--fo:0.15}
+.float-polaroid{width:clamp(30px,3.2vw,50px);height:auto;color:#E6C4C4;animation-duration:36s;animation-delay:var(--d,0s);left:var(--l,30%);--fo:0.06}
+.float-filmstrip{width:clamp(34px,3.8vw,55px);height:auto;color:#F2D3C2;animation-duration:28s;animation-delay:var(--d,0s);left:var(--l,35%);--fo:0.07}
+.float-paperclip{width:clamp(16px,1.6vw,26px);height:auto;color:#D4AF37;animation-duration:31s;animation-delay:var(--d,0s);left:var(--l,40%);--fo:0.08}
+.float-doodle{width:clamp(20px,2.2vw,32px);height:auto;color:#E6C4C4;animation-duration:29s;animation-delay:var(--d,0s);left:var(--l,45%);--fo:0.07}
+.float-diploma{width:clamp(24px,2.6vw,42px);height:auto;color:#D4AF37;animation-duration:33s;animation-delay:var(--d,0s);left:var(--l,50%);--fo:0.09}
+.float-plane{width:clamp(20px,2.2vw,36px);height:auto;color:#F2D3C2;animation-duration:27s;animation-delay:var(--d,0s);left:var(--l,55%);--fo:0.08}
+.float-bookmark{width:clamp(12px,1.4vw,22px);height:auto;color:#7B2331;animation-duration:30s;animation-delay:var(--d,0s);left:var(--l,60%);--fo:0.06}
+.float-leaf{width:clamp(16px,1.8vw,28px);height:auto;color:#cc9c7b;animation-duration:28s;animation-delay:var(--d,0s);left:var(--l,65%);--fo:0.09}
+.float-circle-ring{width:clamp(20px,2.2vw,36px);height:auto;color:#D4AF37;animation-duration:25s;animation-delay:var(--d,0s);left:var(--l,70%);--fo:0.06}
+.float-confetti{width:clamp(8px,0.9vw,14px);height:auto;color:#E6C4C4;animation-duration:22s;animation-delay:var(--d,0s);left:var(--l,75%);--fo:0.1}
+.float-balloon{width:clamp(18px,2vw,32px);height:auto;color:#E6C4C4;animation-duration:35s;animation-delay:var(--d,0s);left:var(--l,5%);--fo:0.1}
+.float-heart{width:clamp(14px,1.5vw,24px);height:auto;color:#EBC8B4;animation-duration:28s;animation-delay:var(--d,0s);left:var(--l,10%);--fo:0.08}
+.float-firework{width:clamp(20px,2.2vw,34px);height:auto;color:#D4AF37;animation-duration:32s;animation-delay:var(--d,0s);left:var(--l,15%);--fo:0.07}
+.float-camera{width:clamp(18px,2vw,30px);height:auto;color:#CFA574;animation-duration:30s;animation-delay:var(--d,0s);left:var(--l,20%);--fo:0.07}
+.float-photo{width:clamp(20px,2.2vw,34px);height:auto;color:#F2D3C2;animation-duration:33s;animation-delay:var(--d,0s);left:var(--l,25%);--fo:0.06}
+.float-gift{width:clamp(18px,2vw,30px);height:auto;color:#E6C4C4;animation-duration:34s;animation-delay:var(--d,0s);left:var(--l,30%);--fo:0.07}
+.float-book{width:clamp(20px,2.2vw,34px);height:auto;color:#D4AF37;animation-duration:29s;animation-delay:var(--d,0s);left:var(--l,35%);--fo:0.06}
+.float-streamer{width:clamp(22px,2.4vw,38px);height:auto;color:#F6E0D7;animation-duration:26s;animation-delay:var(--d,0s);left:var(--l,40%);--fo:0.08}
+.float-pin{width:clamp(10px,1.2vw,18px);height:auto;color:#7B2331;animation-duration:27s;animation-delay:var(--d,0s);left:var(--l,45%);--fo:0.06}
+.float-corner{width:clamp(14px,1.5vw,22px);height:auto;color:#CFA574;animation-duration:31s;animation-delay:var(--d,0s);left:var(--l,50%);--fo:0.05}
+.float-music{width:clamp(14px,1.5vw,22px);height:auto;color:#D4AF37;animation-duration:25s;animation-delay:var(--d,0s);left:var(--l,55%);--fo:0.07}
+.float-bow{width:clamp(16px,1.8vw,26px);height:auto;color:#E6C4C4;animation-duration:32s;animation-delay:var(--d,0s);left:var(--l,60%);--fo:0.06}
+.float-pocket{width:clamp(18px,2vw,30px);height:auto;color:#CFA574;animation-duration:34s;animation-delay:var(--d,0s);left:var(--l,65%);--fo:0.07}
+.float-trophy{width:clamp(20px,2.2vw,34px);height:auto;color:#D4AF37;animation-duration:28s;animation-delay:var(--d,0s);left:var(--l,70%);--fo:0.06}
+.float-swag{width:clamp(18px,2vw,30px);height:auto;color:#F6E0D7;animation-duration:31s;animation-delay:var(--d,0s);left:var(--l,75%);--fo:0.07}
+
+/* Hero ring animation */
+.hero-ring{position:absolute;pointer-events:none;z-index:0;border-radius:50%;border:1.5px solid rgba(212,175,55,0.2);animation:ringSpin 25s linear infinite}
+@keyframes ringSpin{0%{transform:rotate(0deg) scaleX(1)}50%{transform:rotate(180deg) scaleX(0.7)}100%{transform:rotate(360deg) scaleX(1)}}
+.hero-ring-dot{position:absolute;width:7px;height:7px;border-radius:50%;top:-3.5px;left:50%;margin-left:-3.5px;background:#D4AF37;opacity:0.5;box-shadow:0 0 8px rgba(212,175,55,0.3)}
+
+/* ==============================
+   RIBBON PATHS — vertical flowing ribbons
+   ============================== */
+.ribbon-path{position:fixed;pointer-events:none;z-index:0;opacity:0.04}
+.ribbon-path svg{width:100%;height:100%;overflow:visible}
+.ribbon-path-1{top:0;left:3%;width:clamp(20px,2.5vw,40px);height:100%;animation:ribbonSway 20s ease-in-out infinite}
+.ribbon-path-2{top:0;right:6%;width:clamp(16px,2vw,32px);height:100%;animation:ribbonSway 25s ease-in-out infinite reverse}
+.ribbon-path-3{top:0;left:50%;width:clamp(12px,1.5vw,24px);height:100%;animation:ribbonSway 30s ease-in-out infinite 2s;opacity:0.025}
+@keyframes ribbonSway{0%,100%{transform:translateX(0)}25%{transform:translateX(8px)}50%{transform:translateX(-5px)}75%{transform:translateX(10px)}}
+
+/* ==============================
+   SECTION TRANSITION DECORATIONS
+   ============================== */
+.transition-deco{position:absolute;pointer-events:none;z-index:0;overflow:hidden}
+.transition-deco .td-wave{position:absolute;width:100%;height:clamp(20px,3vw,50px);opacity:0.04;animation:waveFlow 12s ease-in-out infinite}
+@keyframes waveFlow{0%,100%{transform:translateX(0) scaleY(1)}50%{transform:translateX(15px) scaleY(0.85)}}
+.transition-deco .td-dots{display:flex;gap:clamp(4px,0.5vw,8px);justify-content:center;position:absolute;width:100%}
+.transition-deco .td-dots span{width:clamp(3px,0.3vw,5px);height:clamp(3px,0.3vw,5px);border-radius:50%;background:#D4AF37;opacity:0.06;animation:dotFade 4s ease-in-out infinite}
+.transition-deco .td-dots span:nth-child(2){animation-delay:0.5s}
+.transition-deco .td-dots span:nth-child(3){animation-delay:1s}
+.transition-deco .td-dots span:nth-child(4){animation-delay:1.5s}
+.transition-deco .td-dots span:nth-child(5){animation-delay:2s}
+@keyframes dotFade{0%,100%{opacity:0.06;transform:scale(1)}50%{opacity:0.2;transform:scale(1.3)}}
+
+/* ==============================
+   GOLD PHOTO CORNERS
+   ============================== */
+.photo-corner{position:absolute;width:clamp(14px,1.2vw,22px);height:clamp(14px,1.2vw,22px);border-color:#D4AF37;border-style:solid;z-index:3;pointer-events:none;opacity:0.25;transition:opacity 0.4s ease}
+.photo-corner-tl{top:clamp(4px,0.4vw,7px);left:clamp(4px,0.4vw,7px);border-width:2px 0 0 2px;border-radius:2px 0 0 0}
+.photo-corner-tr{top:clamp(4px,0.4vw,7px);right:clamp(4px,0.4vw,7px);border-width:2px 2px 0 0;border-radius:0 2px 0 0}
+.photo-corner-bl{bottom:clamp(4px,0.4vw,7px);left:clamp(4px,0.4vw,7px);border-width:0 0 2px 2px;border-radius:0 0 0 2px}
+.photo-corner-br{bottom:clamp(4px,0.4vw,7px);right:clamp(4px,0.4vw,7px);border-width:0 2px 2px 0;border-radius:0 0 2px 0}
+.g-item:hover .photo-corner{opacity:0.5}
+.highlight-card:hover .photo-corner{opacity:0.5}
+
+/* ==============================
+   SPARKLE DOTS AROUND FRAMES
+   ============================== */
+.frame-sparkle{position:absolute;width:clamp(3px,0.3vw,5px);height:clamp(3px,0.3vw,5px);border-radius:50%;background:#D4AF37;z-index:3;pointer-events:none;opacity:0;animation:sparkleDot 4s ease-in-out infinite}
+.frame-sparkle:nth-child(1){top:0;left:20%;animation-delay:0s}
+.frame-sparkle:nth-child(2){top:10%;right:0;animation-delay:-1s}
+.frame-sparkle:nth-child(3){bottom:0;left:40%;animation-delay:-2s}
+.frame-sparkle:nth-child(4){bottom:20%;right:5%;animation-delay:-3s}
+@keyframes sparkleDot{0%,100%{opacity:0;transform:scale(0)}50%{opacity:0.3;transform:scale(1)}}
+
+/* ==============================
+   PREMIUM PHOTO FRAMES
+   ============================== */
+.img-frame{position:relative;overflow:hidden;border-radius:clamp(4px,0.5vw,10px);background:#f5efe7}
+.img-frame::before{content:'';position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(212,175,55,0.15);z-index:2;pointer-events:none;transition:border-color 0.4s ease}
+.img-frame::after{content:'';position:absolute;inset:3px;border-radius:inherit;border:1px solid rgba(255,255,255,0.2);z-index:2;pointer-events:none}
+.img-frame:hover::before{border-color:rgba(212,175,55,0.35)}
+.img-frame .frame-glow{position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,0.03),transparent 50%,rgba(245,230,200,0.05));z-index:1;pointer-events:none;border-radius:inherit}
+.img-frame .frame-shadow{position:absolute;inset:0;box-shadow:inset 0 0 20px rgba(0,0,0,0.03);z-index:1;pointer-events:none;border-radius:inherit}
+.g-item .img-frame{border-radius:clamp(4px,0.5vw,8px)}
+
+/* ==============================
+   CONTAINER SYSTEM
+   ============================== */
+.section{padding:clamp(24px,3vw,50px) 0;position:relative;z-index:2}
+.section:first-of-type{padding-top:clamp(50px,6vw,90px)}
+.section:last-of-type{padding-bottom:clamp(32px,4vw,64px)}
+.section-inner{width:100%;margin:0 auto;padding:0 clamp(16px,3vw,48px);position:relative;z-index:2}
+.section-hero .section-inner{max-width:1400px}
+.section-content .section-inner{max-width:1200px}
+.section-gallery .section-inner{max-width:1600px}
+.section-quote .section-inner{max-width:900px}
+.section-full .section-inner{max-width:100%}
+.section-label{font-family:'Playfair Display',serif;font-size:clamp(11px,0.8vw,14px);font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#D4AF37;margin-bottom:clamp(6px,0.6vw,10px)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3.2vw,48px);font-weight:700;color:#2c2420;margin-bottom:clamp(8px,0.8vw,14px);line-height:1.15}
+.section-sub{font-size:clamp(13px,0.9vw,16px);color:#7a6b5d;max-width:clamp(320px,38vw,580px);line-height:1.8;font-weight:300}
+.text-center{text-align:center}
+.text-center .section-sub{margin-left:auto;margin-right:auto}
+.section-header{margin-bottom:clamp(16px,2vw,28px)}
+
+/* ==============================
+   DECORATIVE DIVIDERS
+   ============================== */
+.section-divider-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin:clamp(12px,1.5vw,22px) auto;width:clamp(120px,15vw,240px)}
+.section-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,#D4AF37,transparent)}
+.section-divider-dot{width:5px;height:5px;border-radius:50%;background:#D4AF37;opacity:0.5}
+.section-divider-star{width:clamp(14px,1.2vw,20px);height:auto;color:#D4AF37;opacity:0.3;animation:dividerTwinkle 3s ease-in-out infinite}
+@keyframes dividerTwinkle{0%,100%{opacity:0.2;transform:scale(1) rotate(0deg)}50%{opacity:0.5;transform:scale(1.1) rotate(180deg)}}
+
+/* ==============================
+   REVEAL ANIMATIONS
+   ============================== */
+.reveal{opacity:0;transform:translateY(25px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-25px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(25px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.reveal-stagger .reveal-item{opacity:0;transform:translateY(18px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.reveal-stagger .reveal-item.visible{opacity:1;transform:translateY(0)}
+
+/* ==============================
+   HERO — PREMIUM TYPOGRAPHY, ENHANCED CIRCLE
+   ============================== */
+.hero{position:relative;z-index:2;display:flex;align-items:center;padding:clamp(50px,5.5vw,90px) 0 clamp(24px,2.5vw,40px);overflow:hidden;min-height:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,0.1);color:#D4AF37;padding:clamp(5px,0.45vw,8px) clamp(12px,1vw,20px);border-radius:50px;font-size:clamp(10px,0.75vw,13px);font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:clamp(14px,1.5vw,22px);border:1px solid rgba(212,175,55,0.15);font-family:'Inter',sans-serif}
+.hero-badge .dot{width:5px;height:5px;background:#D4AF37;border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,6.5vw,96px);font-weight:700;line-height:1.05;margin-bottom:clamp(14px,1.4vw,22px);color:#2c2420;letter-spacing:-0.5px}
+.hero-title .gold{background:linear-gradient(135deg,#D4AF37,#b8860b,#D4AF37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-subtitle{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(15px,1.5vw,24px);color:#8a7a6a;font-weight:400;margin-bottom:clamp(18px,2vw,30px);letter-spacing:0.5px;line-height:1.5}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(12px,1.2vw,20px);margin:0 0 clamp(12px,1.2vw,20px)}
+.hero-meta-item{display:flex;align-items:center;gap:clamp(5px,0.5vw,8px);font-size:clamp(11px,0.85vw,14px);color:#7a6b5d}
+.hero-meta-item svg{width:clamp(14px,1vw,18px);height:clamp(14px,1vw,18px);fill:#D4AF37;flex-shrink:0}
+.hero-meta-item strong{color:#2c2420;font-weight:500}
+.hero-image-wrap{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;padding:clamp(8px,1.2vw,24px) 0}
+.hero-image-frame{position:relative;width:clamp(180px,20vw,380px);height:clamp(180px,20vw,380px);border-radius:50%;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,0.06),0 0 0 3px rgba(212,175,55,0.12),0 0 0 7px rgba(212,175,55,0.06),0 0 0 12px rgba(212,175,55,0.03);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}
+.hero-image-frame::before{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,0.08),transparent 50%,rgba(245,230,200,0.08));z-index:2;pointer-events:none}
+.hero-image-frame::after{content:'';position:absolute;inset:4px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.15);z-index:2;pointer-events:none}
+.hero-image-frame img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.hero-image-frame:hover{transform:scale(1.02);box-shadow:0 35px 90px rgba(0,0,0,0.08),0 0 0 3px rgba(212,175,55,0.18),0 0 0 7px rgba(212,175,55,0.1),0 0 0 14px rgba(212,175,55,0.05)}
+/* Hero floating cap */
+.hero-cap{position:absolute;top:-10%;right:-3%;z-index:3;width:clamp(45px,5vw,80px);height:auto;animation:heroCapFloat 4s ease-in-out infinite;color:#D4AF37;opacity:0.25}
+@keyframes heroCapFloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-12px) rotate(8deg)}}
+/* Hero rings */
+.hero-ring-outer{position:absolute;width:clamp(240px,26vw,480px);height:clamp(240px,26vw,480px);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(212,175,55,0.08);animation:ringPulse 6s ease-in-out infinite;pointer-events:none}
+@keyframes ringPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.4}50%{transform:translate(-50%,-50%) scale(1.08);opacity:0.1}}
+.hero-ring-outer-2{position:absolute;width:clamp(300px,32vw,580px);height:clamp(300px,32vw,580px);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(212,175,55,0.04);animation:ringPulse 8s ease-in-out infinite 1s;pointer-events:none}
+.hero-gold-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#D4AF37;pointer-events:none;animation:particleOrbit 12s linear infinite}
+.hero-gold-particle:nth-child(1){top:10%;left:50%;animation-delay:0s;opacity:0.3}
+.hero-gold-particle:nth-child(2){top:50%;right:8%;animation-delay:-4s;opacity:0.2}
+.hero-gold-particle:nth-child(3){bottom:15%;left:55%;animation-delay:-8s;opacity:0.25}
+@keyframes particleOrbit{0%{transform:translate(0,0);opacity:0}20%{opacity:var(--po,0.3)}80%{opacity:var(--po,0.3)}100%{transform:translate(calc(var(--dx,30px)*1),calc(var(--dy,-20px)*1));opacity:0}}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:clamp(20px,2.5vw,28px)}
+  .hero-content{text-align:center}
+  .hero-meta{justify-content:center}
+  .hero-image-frame{width:clamp(140px,34vw,220px);height:clamp(140px,34vw,220px)}
+  .hero-cap{right:12%}
+  .hero-ring-outer{width:clamp(180px,44vw,280px);height:clamp(180px,44vw,280px)}
+  .hero-ring-outer-2{width:clamp(220px,54vw,340px);height:clamp(220px,54vw,340px)}
+}
+@media(max-width:576px){
+  .hero{padding:30px 0 16px}
+  .hero-title{font-size:clamp(32px,9vw,38px)}
+  .hero-image-frame{width:110px;height:110px}
+  .hero-image-frame:hover{transform:scale(1.02)}
+  .hero-ring-outer{width:140px;height:140px}
+  .hero-ring-outer-2{width:170px;height:170px}
+  .hero-ring{width:100px!important;height:100px!important;top:calc(50% - 50px)!important;left:calc(50% - 50px)!important}
+  .hero-ring:nth-child(2){width:130px!important;height:130px!important;top:calc(50% - 65px)!important;left:calc(50% - 65px)!important}
+  .hero-cap{width:32px;right:6%}
+  .hero-gold-particle{width:3px;height:3px}
+  .hero-meta{gap:8px;margin-bottom:8px}
+  .hero-meta-item{font-size:11px}
+  .hero-image-wrap{padding:0}
+  .hero-badge{margin-bottom:10px;font-size:9px;padding:4px 10px}
+  .hero-subtitle{font-size:14px;margin-bottom:14px}
+  .section{padding:20px 0}
+  .section:first-of-type{padding-top:30px}
+  .section:last-of-type{padding-bottom:20px}
+  .section-header{margin-bottom:12px}
+  .section-inner{padding:0 14px}
+  .section-label{font-size:10px;margin-bottom:4px}
+  .section-title{font-size:clamp(20px,7vw,24px);margin-bottom:6px}
+  .section-sub{font-size:12px;max-width:100%}
+  .about-collage .ac-item:nth-child(1){height:130px}
+  .about-collage .ac-item:nth-child(2){height:80px}
+  .about-collage .ac-item:nth-child(3){height:90px}
+  .about-collage{gap:3px;padding:5px}
+  .about-content p{font-size:13px;margin-bottom:8px}
+  .about-tags{margin-top:10px}
+  .about-tags span{font-size:9px;padding:3px 10px}
+  .gallery-masonry .g-item img{max-height:260px;object-fit:cover;width:100%}
+  .gallery-masonry{gap:6px}
+  .quote-section{padding:12px 0}
+  .quote-glass{padding:24px 16px;border-radius:16px}
+  .quote-glass blockquote{font-size:clamp(16px,5vw,20px);margin-bottom:8px}
+  .quote-bg-blur{width:200px;height:200px}
+  .ending{padding:20px 0}
+  .ending .ending-quote{font-size:clamp(18px,6vw,22px);margin-bottom:8px}
+  .ending .ending-sub{font-size:13px;margin-bottom:12px}
+  .ending-divider{margin:12px auto}
+  .section-divider-wrap{margin:8px auto}
+  .float-item{animation-duration:40s!important}
+  .float-cap,.float-star,.float-sparkle,.float-confetti{width:12px!important}
+  .float-flower,.float-leaf,.float-heart,.float-firework{width:14px!important}
+}
+
+/* ==============================
+   ABOUT — EDITORIAL COLLAGE
+   ============================== */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:clamp(24px,4vw,56px);align-items:center}
+.about-content p{font-size:clamp(13px,0.95vw,16px);color:#5c4f43;line-height:2;margin-bottom:clamp(10px,1vw,16px);font-weight:300}
+.about-collage{display:grid;grid-template-columns:1fr 1fr;gap:clamp(4px,0.5vw,10px);position:relative;padding:clamp(6px,0.6vw,12px);background:rgba(255,255,255,0.2);border-radius:clamp(8px,0.8vw,14px);border:1px solid rgba(212,175,55,0.06)}
+.about-collage::before{content:'';position:absolute;inset:3px;border-radius:clamp(5px,0.6vw,11px);border:1px solid rgba(212,175,55,0.08);pointer-events:none;z-index:2}
+.about-collage .ac-item{position:relative;overflow:hidden;border-radius:clamp(4px,0.4vw,8px);background:#f5efe7}
+.about-collage .ac-item::after{content:'';position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(212,175,55,0.08);z-index:2;pointer-events:none;transition:border-color 0.4s ease}
+.about-collage .ac-item:hover::after{border-color:rgba(212,175,55,0.2)}
+.about-collage .ac-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;filter:sepia(0.06);border-radius:inherit}
+.about-collage .ac-item:hover img{transform:scale(1.05)}
+.about-collage .ac-item:nth-child(1){grid-column:span 2;height:clamp(140px,18vw,280px);margin-bottom:clamp(-8px,-0.8vw,-4px);z-index:1}
+.about-collage .ac-item:nth-child(2){margin-right:clamp(-6px,-0.6vw,-3px);z-index:2;height:clamp(90px,11vw,170px)}
+.about-collage .ac-item:nth-child(3){margin-left:clamp(-6px,-0.6vw,-3px);margin-top:clamp(-8px,-0.8vw,-4px);z-index:3;height:clamp(100px,12vw,190px)}
+.about-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:clamp(12px,1.2vw,20px)}
+.about-tags span{background:rgba(212,175,55,0.08);color:#D4AF37;padding:4px 14px;border-radius:50px;font-size:clamp(10px,0.7vw,12px);font-weight:400;border:1px solid rgba(212,175,55,0.08)}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:clamp(20px,2.5vw,28px)}}
+
+/* ==============================
+   GALLERY — PINTEREST MASONRY WITH PREMIUM FRAMES
+   ============================== */
+.gallery-masonry{column-gap:clamp(8px,1vw,16px);position:relative;padding:clamp(4px,0.3vw,6px)}
+.gallery-masonry .g-item{break-inside:avoid;margin-bottom:clamp(10px,1.1vw,18px);position:relative;border-radius:clamp(6px,0.6vw,12px);overflow:hidden;cursor:pointer;background:#f5efe7;transition:all 0.5s ease;padding:clamp(4px,0.4vw,7px);background:linear-gradient(135deg,rgba(212,175,55,0.05),rgba(245,230,200,0.08),rgba(212,175,55,0.03))}
+.gallery-masonry .g-item::before{content:'';position:absolute;inset:3px;border-radius:clamp(3px,0.3vw,7px);border:1.5px solid rgba(212,175,55,0.08);z-index:2;pointer-events:none;transition:border-color 0.4s ease}
+.gallery-masonry .g-item::after{content:'';position:absolute;inset:0;border-radius:clamp(6px,0.6vw,12px);background:linear-gradient(135deg,rgba(255,255,255,0.05),transparent 60%);z-index:1;pointer-events:none}
+.gallery-masonry .g-item:hover::before{border-color:rgba(212,175,55,0.2)}
+.gallery-masonry .g-item img{width:100%;display:block;transition:transform 0.7s ease,opacity 0.5s ease;opacity:0;border-radius:clamp(3px,0.3vw,7px)}
+.gallery-masonry .g-item img.loaded{opacity:1}
+.gallery-masonry .g-item:hover{box-shadow:0 12px 40px rgba(0,0,0,0.04)}.gallery-masonry .g-item:hover img{transform:scale(1.04)}
+.gallery-masonry .g-item .g-overlay{position:absolute;bottom:clamp(4px,0.4vw,7px);left:clamp(4px,0.4vw,7px);right:clamp(4px,0.4vw,7px);padding:clamp(12px,1.2vw,20px);background:linear-gradient(transparent 20%,rgba(44,36,32,0.65));color:#faf6f0;font-size:clamp(11px,0.8vw,14px);font-weight:400;font-style:italic;transform:translateY(100%);transition:transform 0.5s ease;font-family:'Playfair Display',serif;border-radius:0 0 clamp(3px,0.3vw,7px) clamp(3px,0.3vw,7px)}
+.gallery-masonry .g-item:hover .g-overlay{transform:translateY(0)}
+.gallery-masonry .g-item .g-skeleton{position:absolute;inset:clamp(4px,0.4vw,7px);background:linear-gradient(90deg,#f5efe7 25%,#ede4d8 50%,#f5efe7 75%);background-size:200% 100%;animation:skeletonPulse 1.5s ease-in-out infinite;border-radius:clamp(3px,0.3vw,7px)}
+@keyframes skeletonPulse{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media(min-width:1600px){.gallery-masonry{columns:5}}
+@media(min-width:1200px) and (max-width:1599px){.gallery-masonry{columns:4}}
+@media(min-width:900px) and (max-width:1199px){.gallery-masonry{columns:3}}
+@media(min-width:576px) and (max-width:899px){.gallery-masonry{columns:2}}
+@media(max-width:575px){.gallery-masonry{columns:1}}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(44,36,32,0.92);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:clamp(16px,3vw,40px)}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:6px;box-shadow:0 30px 100px rgba(0,0,0,0.4);animation:lbIn 0.35s ease}
+@keyframes lbIn{from{transform:scale(0.92);opacity:0}to{transform:scale(1);opacity:1}}
+.lightbox .lb-close{position:absolute;top:clamp(12px,2vw,24px);right:clamp(16px,3vw,32px);width:clamp(40px,3vw,48px);height:clamp(40px,3vw,48px);border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:#faf6f0;font-size:clamp(22px,2vw,28px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-family:'Inter',sans-serif}
+.lightbox .lb-close:hover{background:rgba(255,255,255,0.12);transform:rotate(90deg)}
+.lightbox .lb-caption{position:absolute;bottom:clamp(14px,2vw,28px);left:50%;transform:translateX(-50%);color:#faf6f0;font-size:clamp(13px,1vw,16px);font-weight:400;background:rgba(44,36,32,0.5);padding:clamp(8px,0.8vw,12px) clamp(16px,1.5vw,24px);border-radius:50px;font-family:'Playfair Display',serif;font-style:italic}
+.lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:clamp(40px,3vw,48px);height:clamp(40px,3vw,48px);border-radius:50%;background:rgba(255,255,255,0.06);border:none;color:#faf6f0;font-size:clamp(20px,1.8vw,24px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.lightbox .lb-nav:hover{background:rgba(255,255,255,0.12)}
+.lightbox .lb-prev{left:clamp(10px,2vw,28px)}
+.lightbox .lb-next{right:clamp(10px,2vw,28px)}
+
+/* ==============================
+   HIGHLIGHTS CARDS — PREMIUM
+   ============================== */
+.highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.2vw,20px)}
+.highlight-card{background:rgba(255,255,255,0.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,0.08);border-radius:clamp(10px,0.9vw,16px);overflow:hidden;transition:all 0.5s ease;box-shadow:0 4px 20px rgba(0,0,0,0.02);position:relative}
+.highlight-card::before{content:'';position:absolute;inset:2px;border-radius:clamp(8px,0.7vw,14px);border:1px solid rgba(212,175,55,0.04);pointer-events:none;z-index:1}
+.highlight-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.04);border-color:rgba(212,175,55,0.15)}
+.highlight-card .h-img-wrap{position:relative;overflow:hidden;aspect-ratio:4/3;background:#f5efe7}
+.highlight-card .h-img-wrap::after{content:'';position:absolute;inset:0;border-radius:inherit;border:2px solid rgba(212,175,55,0.06);z-index:2;pointer-events:none;transition:border-color 0.4s ease}
+.highlight-card:hover .h-img-wrap::after{border-color:rgba(212,175,55,0.15)}
+.highlight-card .h-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;opacity:0}
+.highlight-card .h-img-wrap img.loaded{opacity:1}
+.highlight-card:hover .h-img-wrap img{transform:scale(1.06)}
+.highlight-card .h-img-wrap .h-skeleton{position:absolute;inset:0;background:linear-gradient(90deg,#f5efe7 25%,#ede4d8 50%,#f5efe7 75%);background-size:200% 100%;animation:skeletonPulse 1.5s ease-in-out infinite}
+.highlight-card .h-body{padding:clamp(14px,1.3vw,22px);position:relative;z-index:1}
+.highlight-card .h-body h3{font-family:'Playfair Display',serif;font-size:clamp(15px,1.15vw,20px);font-weight:600;color:#2c2420;margin-bottom:clamp(4px,0.4vw,6px)}
+.highlight-card .h-body p{font-size:clamp(11px,0.75vw,13px);color:#7a6b5d;line-height:1.7;font-weight:300}
+.highlight-card .h-body .h-icon{font-size:clamp(22px,2vw,34px);margin-bottom:clamp(6px,0.5vw,10px);display:block}
+@media(max-width:900px){.highlights-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:576px){.highlights-grid{grid-template-columns:1fr}}
+
+/* ==============================
+   QUOTE SECTION — GLASS ENHANCED
+   ============================== */
+.quote-section{text-align:center;padding:clamp(24px,3vw,40px) 0;position:relative}
+.quote-glass{background:rgba(255,255,255,0.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.2);border-radius:clamp(18px,2vw,32px);padding:clamp(36px,4.5vw,72px) clamp(24px,3vw,48px);max-width:clamp(320px,50vw,750px);margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,0.02),inset 0 1px 0 rgba(255,255,255,0.3);position:relative}
+.quote-glass::before{content:'';position:absolute;inset:4px;border-radius:clamp(14px,1.6vw,28px);border:1px solid rgba(212,175,55,0.06);pointer-events:none}
+.quote-glass .quote-mark{font-family:'Playfair Display',serif;font-size:clamp(56px,6vw,96px);line-height:1;color:#D4AF37;opacity:0.06;position:absolute;top:clamp(8px,1vw,16px);left:clamp(16px,2vw,28px)}
+.quote-glass blockquote{font-family:'Playfair Display',serif;font-size:clamp(18px,2.2vw,34px);font-weight:600;color:#2c2420;line-height:1.5;margin-bottom:clamp(12px,1.2vw,20px);font-style:italic}
+.quote-glass .quote-author{font-size:clamp(13px,0.85vw,16px);color:#7a6b5d}
+.quote-glass .quote-author strong{color:#D4AF37;font-weight:500}
+.quote-bg-blur{position:absolute;width:clamp(250px,30vw,500px);height:clamp(250px,30vw,500px);border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,0.06),rgba(245,230,200,0.04));filter:blur(80px);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:-1}
+
+
+
+/* ==============================
+   ENDING / FINAL GOODBYE
+   ============================== */
+.ending{text-align:center;padding:clamp(32px,4vw,60px) 0;position:relative}
+.ending .ending-quote{font-family:'Playfair Display',serif;font-size:clamp(24px,3.2vw,50px);font-weight:700;color:#2c2420;line-height:1.35;max-width:clamp(300px,50vw,700px);margin:0 auto clamp(12px,1.2vw,22px)}
+.ending .ending-sub{font-size:clamp(14px,1vw,18px);color:#7a6b5d;margin-bottom:clamp(16px,2vw,30px);font-weight:300}
+.ending-divider{width:clamp(80px,8vw,160px);height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.4),transparent);margin:clamp(16px,2vw,28px) auto;position:relative}
+.ending-divider::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:#D4AF37;opacity:0.4}
+
+/* ==============================
+   IMAGE LOAD
+   ============================== */
+img{transition:opacity 0.5s ease}
+img[data-src]{opacity:0}
+img.loaded{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="bg-overlay" aria-hidden="true">
+  <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+</div>
+<div class="noise" aria-hidden="true"></div>
+<div class="paper-texture" aria-hidden="true"></div>
+
+<!-- Ribbon paths -->
+<div class="ribbon-path ribbon-path-1" aria-hidden="true">
+  <svg viewBox="0 0 40 2000" preserveAspectRatio="none" width="100%" height="100%">
+    <path d="M20 0 Q5 200 15 400 T20 800 T10 1200 T25 1600 T15 2000" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.5"/>
+    <path d="M20 0 Q30 200 10 400 T15 800 T30 1200 T20 1600 T35 2000" fill="none" stroke="#E6C4C4" stroke-width="1" opacity="0.3"/>
+  </svg>
+</div>
+<div class="ribbon-path ribbon-path-2" aria-hidden="true">
+  <svg viewBox="0 0 32 2000" preserveAspectRatio="none" width="100%" height="100%">
+    <path d="M16 0 Q28 300 8 600 T22 1000 T12 1400 T26 1800 T16 2000" fill="none" stroke="#E6C4C4" stroke-width="1.5" opacity="0.4"/>
+  </svg>
+</div>
+<div class="ribbon-path ribbon-path-3" aria-hidden="true">
+  <svg viewBox="0 0 24 2000" preserveAspectRatio="none" width="100%" height="100%">
+    <path d="M12 0 Q-2 250 8 500 T-4 900 T14 1300 T2 1700 T10 2000" fill="none" stroke="#F2D3C2" stroke-width="1.2" opacity="0.35"/>
+  </svg>
+</div>
+
+<div class="floating-container" aria-hidden="true">
+  <!-- Hero zone (0-20%) -->
+  <div class="float-item float-cap" style="--l:3%;--d:0s"><svg viewBox="0 0 64 64" width="100%" height="100%" fill="currentColor"><path d="M32 4L8 20v8l24-16 24 16v-8L32 4zM8 32v4l24 16 24-16v-4l-24 16zM8 40v4l24 16 24-16v-4l-24 16z"/><rect x="14" y="20" width="36" height="4" rx="2"/></svg></div>
+  <div class="float-item float-cap" style="--l:48%;--d:-8s"><svg viewBox="0 0 64 64" width="100%" height="100%" fill="currentColor"><path d="M32 4L8 20v8l24-16 24 16v-8L32 4zM8 32v4l24 16 24-16v-4l-24 16zM8 40v4l24 16 24-16v-4l-24 16z"/><rect x="14" y="20" width="36" height="4" rx="2"/></svg></div>
+  <div class="float-item float-star" style="--l:12%;--d:-3s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="float-item float-star" style="--l:88%;--d:-20s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="float-item float-sparkle" style="--l:18%;--d:-4s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="float-item float-confetti" style="--l:16%;--d:-2s"><svg viewBox="0 0 16 16" width="100%" height="100%" fill="currentColor"><rect x="2" y="2" width="4" height="4" rx="1" transform="rotate(15,4,4)" opacity="0.4"/></svg></div>
+  <div class="float-item float-heart" style="--l:42%;--d:-14s"><svg viewBox="0 0 32 32" width="100%" height="100%" fill="currentColor"><path d="M16 28c0 0-14-8-14-18C2 6 10 2 16 8c6-6 14-2 14 2 0 10-14 18-14 18z" opacity="0.45"/></svg></div>
+  <div class="float-item float-firework" style="--l:72%;--d:-22s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="2" opacity="0.5"/><line x1="24" y1="24" x2="24" y2="2" opacity="0.3" stroke="currentColor" stroke-width="1"/><line x1="24" y1="24" x2="44" y2="12" opacity="0.25" stroke="currentColor" stroke-width="0.8"/><line x1="24" y1="24" x2="40" y2="28" opacity="0.2" stroke="currentColor" stroke-width="0.8"/><line x1="24" y1="24" x2="6" y2="8" opacity="0.2" stroke="currentColor" stroke-width="0.8"/><circle cx="24" cy="2" r="1" opacity="0.3"/><circle cx="44" cy="12" r="1" opacity="0.2"/><circle cx="40" cy="28" r="0.8" opacity="0.2"/></svg></div>
+
+  <!-- About zone (~20-35%) -->
+  <div class="float-item float-flower" style="--l:22%;--d:-6s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="16" r="6" opacity="0.7"/><circle cx="15" cy="22" r="5" opacity="0.5"/><circle cx="33" cy="22" r="5" opacity="0.5"/><circle cx="18" cy="30" r="5" opacity="0.5"/><circle cx="30" cy="30" r="5" opacity="0.5"/><circle cx="24" cy="24" r="4" fill="#faf6f0"/></svg></div>
+  <div class="float-item float-pocket" style="--l:55%;--d:-12s"><svg viewBox="0 0 40 40" width="100%" height="100%" fill="currentColor"><path d="M10 10h20v14c0 5-4 10-10 10s-10-5-10-10V10z" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35"/><path d="M14 10V8c0-3 2-5 5-5h2c3 0 5 2 5 5v2" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/></svg></div>
+  <div class="float-item float-book" style="--l:78%;--d:-18s"><svg viewBox="0 0 44 44" width="100%" height="100%" fill="currentColor"><rect x="4" y="4" width="16" height="36" rx="2" opacity="0.35"/><rect x="24" y="4" width="16" height="36" rx="2" opacity="0.35"/><path d="M20 4v36" stroke="currentColor" stroke-width="1" opacity="0.2"/><rect x="7" y="8" width="10" height="4" rx="1" opacity="0.15"/><rect x="27" y="8" width="10" height="4" rx="1" opacity="0.15"/></svg></div>
+  <div class="float-item float-leaf" style="--l:32%;--d:-20s"><svg viewBox="0 0 40 40" width="100%" height="100%" fill="currentColor"><path d="M20 2C20 2 6 10 6 24c0 8 6 14 14 14s14-6 14-14C34 10 20 2 20 2z" opacity="0.3"/><path d="M20 6c-6 4-10 10-10 16 0 4 2 8 6 10" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15"/></svg></div>
+
+  <!-- Gallery zone (~35-55%) -->
+  <div class="float-item float-polaroid" style="--l:72%;--d:-15s"><svg viewBox="0 0 44 52" width="100%" height="100%" fill="currentColor"><rect x="4" y="2" width="36" height="40" rx="2" opacity="0.6"/><rect x="7" y="5" width="30" height="26" rx="1" fill="#faf6f0" opacity="0.5"/><rect x="10" y="38" width="24" height="2" rx="1" opacity="0.4"/></svg></div>
+  <div class="float-item float-filmstrip" style="--l:8%;--d:-10s"><svg viewBox="0 0 60 40" width="100%" height="100%" fill="currentColor"><rect x="2" y="2" width="56" height="36" rx="3" opacity="0.6"/><rect x="6" y="6" width="48" height="28" rx="1" fill="#faf6f0" opacity="0.5"/><circle cx="10" cy="35" r="1.5"/><circle cx="18" cy="35" r="1.5"/><circle cx="26" cy="35" r="1.5"/><circle cx="34" cy="35" r="1.5"/><circle cx="42" cy="35" r="1.5"/><circle cx="50" cy="35" r="1.5"/></svg></div>
+  <div class="float-item float-camera" style="--l:35%;--d:-7s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><rect x="4" y="12" width="40" height="28" rx="4" opacity="0.4"/><circle cx="24" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"/><circle cx="24" cy="26" r="4" opacity="0.2"/><rect x="12" y="8" width="8" height="6" rx="2" opacity="0.25"/><circle cx="15" cy="11" r="1.5" opacity="0.15"/></svg></div>
+  <div class="float-item float-photo" style="--l:50%;--d:-16s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><rect x="4" y="8" width="40" height="32" rx="3" opacity="0.35"/><rect x="8" y="12" width="14" height="14" rx="2" opacity="0.15"/><rect x="26" y="12" width="14" height="8" rx="2" opacity="0.15"/><polygon points="8,38 18,26 26,34 34,24 40,30 40,38" opacity="0.12"/></svg></div>
+  <div class="float-item float-plane" style="--l:92%;--d:-22s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><path d="M2 26l12-4 8-8 22-8-8 22-8 8-4 12-6-10L2 26z" opacity="0.35"/></svg></div>
+
+  <!-- Highlights zone (~55-75%) -->
+  <div class="float-item float-cap" style="--l:78%;--d:-16s"><svg viewBox="0 0 64 64" width="100%" height="100%" fill="currentColor"><path d="M32 4L8 20v8l24-16 24 16v-8L32 4zM8 32v4l24 16 24-16v-4l-24 16zM8 40v4l24 16 24-16v-4l-24 16z"/><rect x="14" y="20" width="36" height="4" rx="2"/></svg></div>
+  <div class="float-item float-diploma" style="--l:6%;--d:-5s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><rect x="8" y="10" width="32" height="28" rx="3" opacity="0.5"/><rect x="12" y="14" width="24" height="6" rx="1" opacity="0.3"/><path d="M12 24h24v1H12zM12 28h24v1H12z" opacity="0.2"/><circle cx="24" cy="34" r="4" opacity="0.4"/></svg></div>
+  <div class="float-item float-star" style="--l:55%;--d:-12s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg></div>
+  <div class="float-item float-trophy" style="--l:20%;--d:-9s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><path d="M14 10h20v10c0 6-4 12-10 12s-10-6-10-12V10z" opacity="0.35"/><path d="M14 10V8c0-2-2-4-4-4H8v6c0 4 3 6 6 6" opacity="0.2" fill="none" stroke="currentColor" stroke-width="1"/><path d="M34 10V8c0-2 2-4 4-4h2v6c0 4-3 6-6 6" opacity="0.2" fill="none" stroke="currentColor" stroke-width="1"/><rect x="20" y="34" width="8" height="8" rx="2" opacity="0.2"/><rect x="16" y="42" width="16" height="2" rx="1" opacity="0.15"/></svg></div>
+  <div class="float-item float-sparkle" style="--l:42%;--d:-14s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+  <div class="float-item float-sparkle" style="--l:82%;--d:-25s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+
+  <!-- Quote + ending zone (~75-100%) -->
+  <div class="float-item float-ribbon" style="--l:35%;--d:-7s"><svg viewBox="0 0 32 48" width="100%" height="100%" fill="currentColor"><path d="M16 28L4 44V4h24v40L16 28z" opacity="0.5"/><path d="M16 28L4 44V4h24v40L16 28z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/></svg></div>
+  <div class="float-item float-swag" style="--l:60%;--d:-24s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><path d="M24 6C18 6 8 10 8 20c0 10 16 22 16 22s16-12 16-22c0-10-10-14-16-14z" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"/><path d="M24 10c-4 0-10 3-10 10" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.2"/></svg></div>
+  <div class="float-item float-bookmark" style="--l:74%;--d:-9s"><svg viewBox="0 0 24 48" width="100%" height="100%" fill="currentColor"><rect x="6" y="2" width="12" height="40" rx="2" opacity="0.3"/><rect x="8" y="4" width="8" height="16" rx="1" opacity="0.15"/><polygon points="12,34 8,38 16,38" opacity="0.2"/></svg></div>
+  <div class="float-item float-flower" style="--l:65%;--d:-18s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="16" r="6" opacity="0.7"/><circle cx="15" cy="22" r="5" opacity="0.5"/><circle cx="33" cy="22" r="5" opacity="0.5"/><circle cx="18" cy="30" r="5" opacity="0.5"/><circle cx="30" cy="30" r="5" opacity="0.5"/><circle cx="24" cy="24" r="4" fill="#faf6f0"/></svg></div>
+  <div class="float-item float-music" style="--l:15%;--d:-11s"><svg viewBox="0 0 32 48" width="100%" height="100%" fill="currentColor"><path d="M26 4L12 8v24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.35"/><circle cx="8" cy="34" r="6" opacity="0.3"/><circle cx="26" cy="30" r="5" opacity="0.25"/><rect x="12" y="8" width="14" height="4" rx="1" opacity="0.15"/></svg></div>
+  <div class="float-item float-gift" style="--l:85%;--d:-3s"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><rect x="6" y="22" width="36" height="22" rx="3" opacity="0.3"/><path d="M24 22v22" stroke="currentColor" stroke-width="1" opacity="0.2"/><path d="M6 22h36v4H6z" opacity="0.2"/><path d="M24 8c-4-4-12-2-12 4s12 10 12 10s12-4 12-10s-8-8-12-4z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/></svg></div>
+  <div class="float-item float-bow" style="--l:50%;--d:-28s"><svg viewBox="0 0 40 40" width="100%" height="100%" fill="currentColor"><path d="M20 10C14 4 4 6 4 12s16 8 16 8s16-2 16-8s-10-8-16-2z" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/><circle cx="20" cy="20" r="3" opacity="0.15"/><path d="M20 20l-6 12" stroke="currentColor" stroke-width="0.8" opacity="0.2"/><path d="M20 20l6 12" stroke="currentColor" stroke-width="0.8" opacity="0.2"/></svg></div>
+  <div class="float-item float-confetti" style="--l:38%;--d:-7s;color:#E6C4C4"><svg viewBox="0 0 16 16" width="100%" height="100%" fill="currentColor"><rect x="2" y="2" width="3" height="6" rx="1" transform="rotate(-20,3.5,5)" opacity="0.35"/></svg></div>
+  <div class="float-item float-confetti" style="--l:68%;--d:-18s;color:#F2D3C2"><svg viewBox="0 0 16 16" width="100%" height="100%" fill="currentColor"><circle cx="4" cy="4" r="2" opacity="0.3"/></svg></div>
+  <div class="float-item float-confetti" style="--l:85%;--d:-12s;color:#D4AF37"><svg viewBox="0 0 16 16" width="100%" height="100%" fill="currentColor"><rect x="2" y="2" width="3" height="3" rx="0.5" transform="rotate(45,3.5,3.5)" opacity="0.35"/></svg></div>
+
+  <!-- Extra decorations sprinkled throughout -->
+  <div class="float-item float-circle-ring" style="--l:44%;--d:-24s"><svg viewBox="0 0 40 40" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="12" opacity="0.3"/><circle cx="20" cy="20" r="8" opacity="0.15"/><circle cx="20" cy="20" r="4" opacity="0.2" fill="currentColor"/></svg></div>
+  <div class="float-item float-doodle" style="--l:58%;--d:-11s"><svg viewBox="0 0 40 40" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"><path d="M4 20 Q12 8 20 20 T36 20"/><circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.3"/></svg></div>
+  <div class="float-item float-paperclip" style="--l:92%;--d:-22s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M16.5 6.5l-9 9c-1.5 1.5-1.5 3.5 0 5s3.5 1.5 5 0l7-7c2.5-2.5 2.5-6.5 0-9s-6.5-2.5-9 0l-7 7c-3.5 3.5-3.5 9.5 0 13s9.5 3.5 13 0l7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
+  <div class="float-item float-pin" style="--l:28%;--d:-19s"><svg viewBox="0 0 24 48" width="100%" height="100%" fill="currentColor"><circle cx="12" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35"/><circle cx="12" cy="10" r="3" opacity="0.2"/><path d="M12 18v26" stroke="currentColor" stroke-width="1" opacity="0.25"/></svg></div>
+  <div class="float-item float-streamer" style="--l:70%;--d:-13s"><svg viewBox="0 0 24 48" width="100%" height="100%" fill="currentColor"><path d="M4 4C4 4 20 8 20 24s-16 20-16 20" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/><path d="M6 8c4 2 12 6 12 16" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.15"/></svg></div>
+  <div class="float-item float-corner" style="--l:46%;--d:-26s"><svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M2 2h20v4H6v18H2V2z" opacity="0.25"/></svg></div>
+  <div class="float-item float-heart" style="--l:8%;--d:-23s;color:#E6C4C4"><svg viewBox="0 0 32 32" width="100%" height="100%" fill="currentColor"><path d="M16 28c0 0-14-8-14-18C2 6 10 2 16 8c6-6 14-2 14 2 0 10-14 18-14 18z" opacity="0.35"/></svg></div>
+  <div class="float-item float-firework" style="--l:75%;--d:-30s;color:#D4AF37"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="24" r="2" opacity="0.4"/><line x1="24" y1="24" x2="24" y2="2" opacity="0.25" stroke="currentColor" stroke-width="1"/><line x1="24" y1="24" x2="44" y2="12" opacity="0.2" stroke="currentColor" stroke-width="0.8"/><line x1="24" y1="24" x2="6" y2="8" opacity="0.2" stroke="currentColor" stroke-width="0.8"/></svg></div>
+  <div class="float-item float-gift" style="--l:95%;--d:-17s;color:#F6E0D7"><svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><rect x="6" y="22" width="36" height="22" rx="3" opacity="0.25"/><path d="M24 22v22" stroke="currentColor" stroke-width="1" opacity="0.15"/><path d="M6 22h36v4H6z" opacity="0.15"/></svg></div>
+  <div class="float-item float-music" style="--l:32%;--d:-21s;color:#CFA574"><svg viewBox="0 0 32 48" width="100%" height="100%" fill="currentColor"><path d="M26 4L12 8v24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.25"/><circle cx="8" cy="34" r="6" opacity="0.2"/><circle cx="26" cy="30" r="5" opacity="0.18"/></svg></div>
+</div>
+
+<!-- ==============================
+     SECTION 1: HERO
+     ============================== -->
+<section class="hero section-hero" id="hero">
+  <div class="section-blob" style="width:clamp(300px,35vw,550px);height:clamp(300px,35vw,550px);background:linear-gradient(135deg,rgba(212,175,55,0.04),rgba(245,230,200,0.02));top:-5%;right:-5%;filter:blur(100px);animation-delay:0s"></div>
+  <div class="section-inner">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> Farewell 2025</div>
+        <h1 class="hero-title">Farewell <span class="gold">2K25</span></h1>
+        <p class="hero-subtitle" id="hero-subtitle">"Every Ending Begins With A Memory"</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+            <span><strong id="hero-date">March 2025</strong></span>
+          </div>
+          <div class="hero-meta-item">
+            <svg viewBox="0 0 24 24"><path d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-1.8C18 6.57 15.35 4 12 4s-6 2.57-6 6.2c0 2.34 1.95 5.44 6 9.14 4.05-3.7 6-6.8 6-9.14zM12 2c4.2 0 8 3.22 8 8.2 0 3.32-2.67 7.25-8 11.8-5.33-4.55-8-8.48-8-11.8C4 5.22 7.8 2 12 2z"/></svg>
+            <span><strong id="hero-batch">Batch of 2022–2025</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <div class="hero-image-frame" id="hero-image-wrap">
+          <img id="hero-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Graduating Class" loading="lazy">
+        </div>
+        <div class="hero-cap"><svg viewBox="0 0 64 64" width="100%" height="100%" fill="currentColor"><path d="M32 4L8 20v8l24-16 24 16v-8L32 4zM8 32v4l24 16 24-16v-4l-24 16zM8 40v4l24 16 24-16v-4l-24 16z"/><rect x="14" y="20" width="36" height="4" rx="2"/></svg></div>
+        <div class="hero-gold-particle" style="--po:0.25;--dx:20px;--dy:-30px"></div>
+        <div class="hero-gold-particle" style="--po:0.2;--dx:-15px;--dy:-25px;top:45%;left:55%"></div>
+        <div class="hero-gold-particle" style="--po:0.3;--dx:25px;--dy:-20px;top:20%;left:48%"></div>
+        <div class="hero-ring-outer"></div>
+        <div class="hero-ring-outer-2"></div>
+        <div class="hero-ring" style="width:clamp(160px,18vw,300px);height:clamp(160px,18vw,300px);top:calc(50% - clamp(80px,9vw,150px));left:calc(50% - clamp(80px,9vw,150px))"><div class="hero-ring-dot"></div></div>
+        <div class="hero-ring" style="width:clamp(200px,22vw,360px);height:clamp(200px,22vw,360px);top:calc(50% - clamp(100px,11vw,180px));left:calc(50% - clamp(100px,11vw,180px));animation-duration:25s;animation-direction:reverse"><div class="hero-ring-dot" style="background:#D4AF37"></div></div>
+        <!-- Per-section decorations: Hero corner ornament -->
+        <div style="position:absolute;top:clamp(10px,1.5vw,24px);left:clamp(10px,1.5vw,24px);width:clamp(24px,3vw,48px);height:clamp(24px,3vw,48px);pointer-events:none;opacity:0.08;color:#D4AF37" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><path d="M2 2h16v4H6v14H2V2zM46 2H30v4h12v14h4V2zM2 46h16v-4H6V28H2v18zM46 46H30v-4h12V28h4v18z"/><circle cx="10" cy="10" r="2"/><circle cx="38" cy="10" r="2"/><circle cx="10" cy="38" r="2"/><circle cx="38" cy="38" r="2"/></svg>
+        </div>
+        <div style="position:absolute;bottom:clamp(10px,1.5vw,24px);right:clamp(10px,1.5vw,24px);width:clamp(20px,2.5vw,40px);height:clamp(20px,2.5vw,40px);pointer-events:none;opacity:0.06;color:#7B2331" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><path d="M2 2h16v4H6v14H2V2zM46 2H30v4h12v14h4V2zM2 46h16v-4H6V28H2v18zM46 46H30v-4h12V28h4v18z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transition: Hero → About -->
+<div class="transition-deco" style="position:relative;height:clamp(16px,2vw,32px);overflow:hidden;margin-top:-1px">
+  <div class="td-wave" style="top:0;background:linear-gradient(135deg,#F8F3EC,#F5E6C8)"></div>
+  <div class="td-dots" style="bottom:clamp(4px,0.5vw,8px)">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 2: ABOUT FAREWELL
+     ============================== -->
+<section class="section section-content" id="about">
+  <div class="section-blob" style="width:clamp(200px,25vw,400px);height:clamp(200px,25vw,400px);background:linear-gradient(135deg,rgba(212,175,55,0.04),rgba(245,230,200,0.02));top:10%;right:-5%;filter:blur(80px);animation-delay:-2s"></div>
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-collage reveal-left">
+        <div class="ac-item"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="" alt="Class" loading="lazy" id="about-img-1"></div>
+        <div class="ac-item"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="" alt="Event" loading="lazy" id="about-img-2"></div>
+        <div class="ac-item"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="" alt="Memory" loading="lazy" id="about-img-3"></div>
+      </div>
+      <div class="about-content reveal-right">
+        <div class="section-label">About Farewell</div>
+        <h2 class="section-title">Celebrating Our <br class="hide-mobile"><span style="color:#D4AF37">Graduating Batch</span></h2>
+        <div id="about-desc"></div>
+        <div class="about-tags">
+          <span>🎓 Class of 2025</span>
+          <span>📸 Memories</span>
+          <span>❤️ Forever</span>
+          <span>✨ New Beginnings</span>
+        </div>
+      <!-- Per-section decorations: About leaf accents -->
+      <div style="position:absolute;bottom:clamp(8px,1vw,16px);left:clamp(8px,1vw,16px);width:clamp(18px,2.2vw,36px);height:clamp(18px,2.2vw,36px);pointer-events:none;opacity:0.07;color:#CFA574" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="100%" height="100%" fill="currentColor"><path d="M20 2C20 2 6 10 6 24c0 8 6 14 14 14s14-6 14-14C34 10 20 2 20 2z"/><path d="M20 6c-6 4-10 10-10 16" fill="none" stroke="#faf6f0" stroke-width="1"/></svg>
+      </div>
+      <div style="position:absolute;top:clamp(8px,1vw,16px);right:clamp(8px,1vw,16px);width:clamp(14px,1.8vw,28px);height:clamp(14px,1.8vw,28px);pointer-events:none;opacity:0.06;color:#7B2331" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="100%" height="100%" fill="currentColor"><path d="M20 38C20 38 6 30 6 16c0-8 6-14 14-14s14 6 14 14c0 14-14 22-14 22z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transition: About → Gallery -->
+<div class="transition-deco" style="position:relative;height:clamp(14px,1.8vw,28px);overflow:hidden;margin-top:-1px">
+  <div class="td-wave" style="bottom:0;background:linear-gradient(135deg,#F2D3C2,#EBC8B4);opacity:0.035"></div>
+  <div class="td-dots" style="top:clamp(4px,0.4vw,6px)">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 3: MEMORY GALLERY — PINTEREST MASONRY
+     ============================== -->
+<section class="section section-gallery" id="gallery">
+  <div class="section-blob" style="width:clamp(250px,30vw,450px);height:clamp(250px,30vw,450px);background:linear-gradient(135deg,rgba(230,196,196,0.05),rgba(242,211,194,0.03));bottom:10%;left:-8%;filter:blur(90px);animation-delay:-5s"></div>
+  <div class="section-inner">
+    <div class="text-center section-header reveal">
+      <div class="section-label">Memory Gallery</div>
+      <h2 class="section-title">Our Story in Pictures</h2>
+      <p class="section-sub">Frames from the journey — laughter, learning, and lifelong bonds.</p>
+      <div class="section-divider-wrap">
+      <div class="section-divider-line"></div>
+      <svg class="section-divider-star" viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l2.4 7.2L22 9.6l-5.8 4.6 2.2 7.8L12 17l-6.4 5 2.2-7.8L2 9.6l7.6-.4L12 2z"/></svg>
+      <div class="section-divider-line"></div>
+    </div>
+    </div>
+    <div class="gallery-masonry" id="gallery-masonry"></div>
+    <!-- Per-section decorations: Gallery film reel corners -->
+    <div style="position:absolute;top:clamp(6px,0.8vw,14px);left:clamp(6px,0.8vw,14px);width:clamp(20px,2.5vw,40px);height:clamp(16px,2vw,32px);pointer-events:none;opacity:0.05;color:#CFA574;transform:rotate(-5deg)" aria-hidden="true">
+      <svg viewBox="0 0 60 40" width="100%" height="100%" fill="currentColor"><rect x="2" y="2" width="56" height="36" rx="3"/><circle cx="10" cy="35" r="1.5"/><circle cx="18" cy="35" r="1.5"/><circle cx="26" cy="35" r="1.5"/><circle cx="34" cy="35" r="1.5"/><circle cx="42" cy="35" r="1.5"/><circle cx="50" cy="35" r="1.5"/></svg>
+    </div>
+    <div style="position:absolute;bottom:clamp(6px,0.8vw,14px);right:clamp(6px,0.8vw,14px);width:clamp(16px,2vw,32px);height:clamp(16px,2vw,32px);pointer-events:none;opacity:0.04;color:#D4AF37;transform:rotate(10deg)" aria-hidden="true">
+      <svg viewBox="0 0 44 52" width="100%" height="100%" fill="currentColor"><rect x="4" y="2" width="36" height="40" rx="2"/><rect x="7" y="5" width="30" height="26" rx="1" fill="#faf6f0" opacity="0.6"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     SECTION 5: CLASS QUOTE
+     ============================== -->
+<section class="section section-quote" id="class-quote">
+  <div class="section-blob" style="width:clamp(180px,22vw,350px);height:clamp(180px,22vw,350px);background:radial-gradient(circle,rgba(212,175,55,0.04),transparent);top:50%;right:-5%;filter:blur(60px);animation-delay:-12s"></div>
+  <div class="section-inner">
+    <div class="quote-section reveal-scale">
+      <div class="quote-bg-blur"></div>
+      <div class="quote-glass">
+        <div class="quote-mark">"</div>
+        <blockquote id="class-quote-text">It is not farewell, but see you later. The memories we made will forever echo in these halls.</blockquote>
+        <p class="quote-author">— <strong id="class-quote-author">Class of 2025</strong></p>
+      </div>
+    </div>
+  <!-- Per-section decorations: Quote floral corners -->
+    <div style="position:absolute;top:clamp(8px,1vw,16px);left:clamp(8px,1vw,16px);width:clamp(18px,2vw,32px);height:clamp(18px,2vw,32px);pointer-events:none;opacity:0.06;color:#D4AF37" aria-hidden="true">
+      <svg viewBox="0 0 48 48" width="100%" height="100%" fill="currentColor"><circle cx="24" cy="16" r="6" opacity="0.7"/><circle cx="15" cy="22" r="5" opacity="0.5"/><circle cx="33" cy="22" r="5" opacity="0.5"/><circle cx="18" cy="30" r="5" opacity="0.5"/><circle cx="30" cy="30" r="5" opacity="0.5"/><circle cx="24" cy="24" r="4" fill="#faf6f0"/></svg>
+    </div>
+    <div style="position:absolute;bottom:clamp(8px,1vw,16px);right:clamp(8px,1vw,16px);width:clamp(14px,1.5vw,24px);height:clamp(14px,1.5vw,24px);pointer-events:none;opacity:0.05;color:#7B2331" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- Transition: Quote → Goodbye -->
+<div class="transition-deco" style="position:relative;height:clamp(16px,2vw,32px);overflow:hidden;margin-top:-1px">
+  <div class="td-wave" style="top:0;background:linear-gradient(135deg,#F5E6C8,#F8F3EC);opacity:0.05"></div>
+  <div class="td-dots" style="bottom:clamp(4px,0.5vw,8px)">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 8: FINAL GOODBYE
+     ============================== -->
+<section class="section section-content" id="goodbye">
+  <div class="section-blob" style="width:clamp(200px,24vw,380px);height:clamp(200px,24vw,380px);background:linear-gradient(135deg,rgba(242,211,194,0.04),transparent);top:5%;left:20%;filter:blur(80px);animation-delay:-3s"></div>
+  <div class="section-inner">
+    <div class="ending reveal">
+      <div class="ending-divider"></div>
+      <div class="ending-quote" id="ending-quote">"We arrived as strangers.<br>We leave as memories."</div>
+      <p class="ending-sub" id="ending-sub">Thank you for the journey. Forever grateful.</p>
+    </div>
+  <!-- Per-section decorations: Goodbye corner flourishes -->
+    <div style="position:absolute;top:clamp(6px,0.8vw,12px);left:clamp(6px,0.8vw,12px);width:clamp(16px,2vw,32px);height:clamp(16px,2vw,32px);pointer-events:none;opacity:0.05;color:#D4AF37;transform:rotate(180deg)" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="100%" height="100%" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div style="position:absolute;bottom:clamp(6px,0.8vw,12px);right:clamp(6px,0.8vw,12px);width:clamp(20px,2.5vw,40px);height:clamp(14px,1.8vw,28px);pointer-events:none;opacity:0.04;color:#E6C4C4;transform:rotate(3deg)" aria-hidden="true">
+      <svg viewBox="0 0 32 24" width="100%" height="100%" fill="currentColor"><path d="M2 20c4-4 10-4 14 0s10 4 14 0" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 14c4-4 10-4 14 0s10 4 14 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.6"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ==============================
+     LIGHTBOX
+     ============================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lb-close">×</button>
+  <button class="lb-nav lb-prev" id="lb-prev">‹</button>
+  <button class="lb-nav lb-next" id="lb-next">›</button>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+  <div class="lb-caption" id="lb-caption"></div>
+</div>
+
+<!-- ==============================
+     JAVASCRIPT
+     ============================== -->
+<script>
+// ================================================================
+//  FAREWELL DATA — EDIT ONLY THIS SECTION
+//  No HTML editing required after this.
+// ================================================================
+
+// /* ——— UPDATE HERO IMAGE ——— */
+const HERO_IMAGE = 'https://static.wixstatic.com/media/ab471d_e7308dd0e1484e8da12eff1c2ca8866d~mv2.jpg';
+
+// /* ——— UPDATE ABOUT IMAGES ——— */
+const ABOUT_IMAGES = [
+  'https://static.wixstatic.com/media/ab471d_501f98cf50ff4d84b39e1414774266ab~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_f3048ea3c0114d15ae7f57bc80aaf215~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_229d269737d14c26911349e855583b2a~mv2.jpg'
+];
+
+// /* ——— UPDATE GALLERY IMAGES ——— */
+const GALLERY = [
+  { url: 'https://static.wixstatic.com/media/ab471d_2203b54171c44e6089910fda3fd8c868~mv2.jpg', caption: 'Campus Walk' },
+  { url: 'https://static.wixstatic.com/media/ab471d_0d29a150f91d48a2acd5107042accc56~mv2.jpg', caption: 'Library Days' },
+  { url: 'https://static.wixstatic.com/media/ab471d_b130a924f8904f15a73c02843722bbd8~mv2.jpg', caption: 'Friendship' },
+  { url: 'https://static.wixstatic.com/media/ab471d_80ec0ce962f240db9359084461c1c65d~mv2.jpg', caption: 'Lab Session' },
+  { url: 'https://static.wixstatic.com/media/ab471d_55ff8b29508b4014919cc5e3d41ca7d6~mv2.jpg', caption: 'Sports Day' },
+  { url: 'https://static.wixstatic.com/media/ab471d_549624f0c78e47e19b47aadf1f2aea75~mv2.jpg', caption: 'Fest Celebration' },
+  { url: 'https://static.wixstatic.com/media/ab471d_c8e2d2185f03488685a24f973ccf7bcd~mv2.jpg', caption: 'Study Group' },
+  { url: 'https://static.wixstatic.com/media/ab471d_5c466cbf2d6f4d3492d2683b8c229c45~mv2.jpg', caption: 'Annual Day' },
+  { url: 'https://static.wixstatic.com/media/ab471d_e23923f8a6e440598762aa8699a4a598~mv2.jpg', caption: 'Field Trip' },
+  { url: 'https://static.wixstatic.com/media/ab471d_1e5f40cef2e34be58be657bc37d2f94e~mv2.png', caption: 'Music Club' },
+  { url: 'https://static.wixstatic.com/media/ab471d_e98e15cd78624fa1af7141d43408a5a6~mv2.png', caption: 'Graduation' },
+  { url: 'https://static.wixstatic.com/media/ab471d_ac86577666284cc5a89a50bbbdad90fb~mv2.jpg', caption: 'Group Photo' },
+  { url: 'https://static.wixstatic.com/media/ab471d_22149010989d4417a20ab5d3bc481fa4~mv2.jpg', caption: 'Class Picnic' },
+  { url: 'https://static.wixstatic.com/media/ab471d_6b9f511be06c4750b604a523765d3199~mv2.jpg', caption: 'Workshop' },
+  { url: 'https://static.wixstatic.com/media/ab471d_27be060b2c3c4c9b9cf1bf1001048f61~mv2.jpg', caption: 'Farewell Dinner' },
+  { url: 'https://static.wixstatic.com/media/ab471d_0f2894cd4bed455b9b93cf4fcea4e92c~mv2.jpg', caption: 'Hackathon' },
+  { url: 'https://static.wixstatic.com/media/ab471d_133bf58d7caf458590c639cb4f7e2ce0~mv2.jpg', caption: 'Tea Break' },
+  { url: 'https://static.wixstatic.com/media/ab471d_2055c6501a7e40f68dd30872bce4555d~mv2.jpg', caption: 'Seminar' },
+  { url: 'https://static.wixstatic.com/media/ab471d_c7497adf573c4ce6a4cdee59ef583edc~mv2.jpg', caption: 'Award Ceremony' },
+  { url: 'https://static.wixstatic.com/media/ab471d_fe54d1d852db49f4a25a8cfec87d501e~mv2.jpg', caption: 'Last Day' }
+];
+
+// /* ——— UPDATE QUOTES ——— */
+const CLASS_QUOTE = {
+  text: 'It is not farewell, but see you later. The memories we made will forever echo in these halls.',
+  author: 'Class of 2025'
+};
+
+const ENDING_QUOTE = 'We arrived as strangers.\nWe leave as memories.';
+
+// /* ——— UPDATE ABOUT DESCRIPTION ——— */
+const ABOUT_TEXT = 'As the sun sets on another remarkable chapter, we gather to celebrate the journey of the graduating batch of 2022–2025. These halls have witnessed countless stories — moments of triumph, quiet determination, shared laughter, and the kind of friendships that transcend time. From the first nervous day on campus to the confident stride towards the future, every step has been a testament to resilience and growth. Tonight, we honour not just an academic milestone, but the beautiful tapestry of memories woven over three unforgettable years. May the lessons learned and the bonds formed here light your path forward, wherever it may lead.';
+
+// ================================================================
+//  APP — RENDER
+// ================================================================
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Hero
+  document.getElementById('hero-subtitle').textContent = CLASS_QUOTE.text;
+  document.getElementById('hero-img').src = HERO_IMAGE;
+  document.getElementById('hero-img').classList.add('loaded');
+
+  // About
+  document.getElementById('about-desc').innerHTML = ABOUT_TEXT.split('\n').join('<br>');
+  document.getElementById('about-img-1').src = ABOUT_IMAGES[0];
+  document.getElementById('about-img-1').classList.add('loaded');
+  document.getElementById('about-img-2').src = ABOUT_IMAGES[1];
+  document.getElementById('about-img-2').classList.add('loaded');
+  document.getElementById('about-img-3').src = ABOUT_IMAGES[2];
+  document.getElementById('about-img-3').classList.add('loaded');
+
+  // Gallery
+  var gallery = document.getElementById('gallery-masonry');
+  var galleryHtml = '';
+  for (var i = 0; i < GALLERY.length; i++) {
+    galleryHtml += '<div class="g-item" data-index="' + i + '">' +
+      '<div class="frame-sparkle"></div><div class="frame-sparkle"></div><div class="frame-sparkle"></div><div class="frame-sparkle"></div>' +
+      '<div class="photo-corner photo-corner-tl"></div><div class="photo-corner photo-corner-tr"></div><div class="photo-corner photo-corner-bl"></div><div class="photo-corner photo-corner-br"></div>' +
+      '<div class="g-skeleton"></div>' +
+      '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="' + GALLERY[i].url + '" alt="' + GALLERY[i].caption + '" loading="lazy">' +
+      '<div class="g-overlay">' + GALLERY[i].caption + '</div>' +
+    '</div>';
+  }
+  gallery.innerHTML = galleryHtml;
+
+  var galleryImgs = gallery.querySelectorAll('img[data-src]');
+  var imgObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var img = entry.target;
+        img.src = img.dataset.src;
+        img.onload = function() { img.classList.add('loaded'); var s = img.parentElement.querySelector('.g-skeleton'); if(s) s.remove(); };
+        img.onerror = function() { img.classList.add('loaded'); var s = img.parentElement.querySelector('.g-skeleton'); if(s) s.remove(); };
+        imgObserver.unobserve(img);
+      }
+    });
+  }, { rootMargin: '200px' });
+  galleryImgs.forEach(function(img) { imgObserver.observe(img); });
+
+  // Lightbox
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCaption = document.getElementById('lb-caption');
+  var currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lbImg.src = GALLERY[index].url;
+    lbCaption.textContent = GALLERY[index].caption;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  gallery.addEventListener('click', function(e) {
+    var item = e.target.closest('.g-item');
+    if (item) openLightbox(parseInt(item.dataset.index));
+  });
+
+  document.getElementById('lb-close').addEventListener('click', function() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('lb-prev').addEventListener('click', function() {
+    currentIndex = (currentIndex - 1 + GALLERY.length) % GALLERY.length;
+    openLightbox(currentIndex);
+  });
+  document.getElementById('lb-next').addEventListener('click', function() {
+    currentIndex = (currentIndex + 1) % GALLERY.length;
+    openLightbox(currentIndex);
+  });
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+    if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+  });
+
+  // Class Quote
+  document.getElementById('class-quote-text').textContent = CLASS_QUOTE.text;
+  document.getElementById('class-quote-author').textContent = CLASS_QUOTE.author;
+
+  // Ending
+  document.getElementById('ending-quote').innerHTML = ENDING_QUOTE.split('\n').join('<br>');
+
+  // Reveal animations
+  function setupReveal() {
+    var reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(function(el) { revealObserver.observe(el); });
+  }
+  function setupStagger() {
+    document.querySelectorAll('.reveal-stagger').forEach(function(container) {
+      var items = container.querySelectorAll('.reveal-item');
+      var staggerObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            items.forEach(function(item, i) { setTimeout(function() { item.classList.add('visible'); }, i * 80); });
+            staggerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      staggerObserver.observe(container);
+    });
+  }
+  setupReveal();
+  setupStagger();
+
+  console.log('✅ Farewell 2K25 loaded');
+});
+
+// ================================================================
+//  WIX IFRAME — AUTO HEIGHT
+// ================================================================
+(function() {
+  'use strict';
+  var sending = null;
+  function getDocHeight() {
+    var b = document.body, d = document.documentElement;
+    return Math.max(
+      b.scrollHeight, b.offsetHeight,
+      d.scrollHeight, d.offsetHeight, d.clientHeight
+    );
+  }
+  function sendHeight() {
+    if (sending) return;
+    sending = requestAnimationFrame(function() {
+      var h = getDocHeight();
+      if (window.parent !== window) {
+        window.parent.postMessage({ type: 'resize', height: h }, '*');
+      }
+      sending = null;
+    });
+  }
+  sendHeight();
+  document.addEventListener('DOMContentLoaded', sendHeight);
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(sendHeight);
+    ro.observe(document.body);
+  }
+  if (window.MutationObserver) {
+    var mo = new MutationObserver(sendHeight);
+    mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+  }
+  document.addEventListener('load', function(e) { if (e.target.tagName === 'IMG') sendHeight(); }, true);
+  if (document.fonts) document.fonts.ready.then(sendHeight);
+  setTimeout(sendHeight, 1000);
+  setTimeout(sendHeight, 2000);
+})();
+</script>
+</body>
+</html>

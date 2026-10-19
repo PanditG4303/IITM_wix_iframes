@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#faf7f7;
+overflow-x:hidden;
+position:relative;
+}
+
+body::before{
+content:'';
+position:fixed;
+inset:0;
+z-index:0;
+pointer-events:none;
+opacity:.028;
+background:
+radial-gradient(circle at 20% 50%,#8b1e2d 0,transparent 50%),
+radial-gradient(circle at 80% 30%,#651421 0,transparent 50%),
+url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M20 100 L40 70 L60 100 L80 70 L100 100 L120 70 L140 100 L160 70 L180 100' fill='none' stroke='%238b1e2d' stroke-width='.8'/%3E%3Ccircle cx='30' cy='30' r='12' fill='none' stroke='%238b1e2d' stroke-width='.6'/%3E%3Ccircle cx='170' cy='170' r='18' fill='none' stroke='%238b1e2d' stroke-width='.6'/%3E%3Cpath d='M10 180 L30 160 L50 180 L70 160 L90 180 L110 160 L130 180 L150 160 L170 180 L190 160' fill='none' stroke='%238b1e2d' stroke-width='.6'/%3E%3Cpath d='M100 10 L105 25 L115 30 L105 35 L100 50 L95 35 L85 30 L95 25 Z' fill='%238b1e2d' opacity='.5'/%3E%3Cpath d='M30 80 L36 90 L46 93 L36 96 L30 106 L24 96 L14 93 L24 90 Z' fill='%238b1e2d' opacity='.4'/%3E%3Cpath d='M160 120 L164 128 L172 130 L164 132 L160 140 L156 132 L148 130 L156 128 Z' fill='%238b1e2d' opacity='.4'/%3E%3Crect x='140' y='20' width='20' height='20' rx='3' fill='none' stroke='%238b1e2d' stroke-width='.5'/%3E%3Crect x='40' y='150' width='16' height='16' rx='2' fill='none' stroke='%238b1e2d' stroke-width='.5'/%3E%3C/svg%3E");
+background-repeat:repeat;
+background-size:200px 200px,200px 200px,auto;
+}
+
+:root{
+--maroon:#8b1e2d;
+--dark:#651421;
+--gold:#d4a94f;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:clamp(8px,1.2vw,18px);
+position:relative;
+z-index:1;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+min-height:420px;
+border-radius:28px;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+background:linear-gradient(135deg,rgba(80,12,25,.88),rgba(110,22,35,.85));
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+z-index:0;
+}
+
+.hero-bg img{
+position:absolute;
+width:clamp(160px,22vw,320px);
+height:clamp(120px,16vw,240px);
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 25px 60px rgba(0,0,0,.35);
+animation:heroFloat 6s ease-in-out infinite;
+}
+
+.hero-bg img:nth-child(1){
+top:6%;
+left:4%;
+transform:rotate(-10deg);
+animation-delay:0s;
+}
+
+.hero-bg img:nth-child(2){
+bottom:8%;
+left:10%;
+transform:rotate(7deg);
+animation-delay:1.5s;
+}
+
+.hero-bg img:nth-child(3){
+top:4%;
+right:5%;
+transform:rotate(8deg);
+animation-delay:3s;
+}
+
+.hero-bg img:nth-child(4){
+bottom:6%;
+right:8%;
+transform:rotate(-9deg);
+animation-delay:4.5s;
+}
+
+@keyframes heroFloat{
+0%,100%{transform:var(--tf,rotate(-10deg)) translateY(0);}
+50%{transform:var(--tf,rotate(-10deg)) translateY(-10px);}
+}
+
+.hero-bg img:nth-child(1){--tf:rotate(-10deg);}
+.hero-bg img:nth-child(2){--tf:rotate(7deg);}
+.hero-bg img:nth-child(3){--tf:rotate(8deg);}
+.hero-bg img:nth-child(4){--tf:rotate(-9deg);}
+
+.hero-glass{
+position:absolute;
+inset:0;
+z-index:1;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(4px);
+-webkit-backdrop-filter:blur(4px);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:clamp(20px,3vw,40px);
+}
+
+.hero-content h1{
+font-size:clamp(2rem,5vw,4.2rem);
+font-weight:800;
+letter-spacing:-.02em;
+text-shadow:0 4px 25px rgba(0,0,0,.4);
+}
+
+.hero-content p{
+font-size:clamp(.9rem,1.4vw,1.15rem);
+margin-top:6px;
+opacity:.92;
+font-weight:400;
+text-shadow:0 2px 12px rgba(0,0,0,.25);
+}
+
+.hero-content .sub{
+font-size:clamp(.75rem,1vw,.85rem);
+margin-top:14px;
+display:inline-block;
+background:rgba(255,255,255,.12);
+padding:6px 18px;
+border-radius:50px;
+font-weight:500;
+letter-spacing:.04em;
+backdrop-filter:blur(4px);
+}
+
+/* SECTION TITLE */
+
+.section-title{
+text-align:center;
+margin:clamp(24px,2.8vw,40px) 0 clamp(14px,1.6vw,22px);
+}
+
+.section-title h2{
+color:var(--maroon);
+font-size:clamp(1.3rem,2.5vw,1.9rem);
+font-weight:700;
+}
+
+.section-title .line{
+width:clamp(44px,5vw,70px);
+height:4px;
+background:var(--gold);
+margin:6px auto 0;
+border-radius:50px;
+}
+
+/* FEATURED */
+
+.featured-card{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:clamp(12px,1.6vw,20px);
+align-items:center;
+background:#fff;
+border-radius:22px;
+padding:clamp(10px,1.2vw,16px);
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+margin-bottom:clamp(10px,1vw,12px);
+transition:transform .4s ease,box-shadow .4s ease;
+}
+
+.featured-card:hover{
+transform:translateY(-4px);
+box-shadow:0 16px 40px rgba(0,0,0,.1);
+}
+
+.featured-card--rev{
+direction:rtl;
+}
+
+.featured-card--rev>*{
+direction:ltr;
+}
+
+.featured-img{
+position:relative;
+overflow:hidden;
+border-radius:16px;
+height:clamp(170px,18vw,260px);
+}
+
+.featured-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .6s ease;
+}
+
+.featured-card:hover .featured-img img{
+transform:scale(1.05);
+}
+
+.featured-content{
+padding:clamp(2px,.6vw,10px);
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.featured-content .meta-row{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin-bottom:6px;
+}
+
+.featured-content .tag{
+display:inline-block;
+background:#f7ebed;
+color:var(--maroon);
+padding:3px 10px;
+border-radius:50px;
+font-size:10px;
+font-weight:600;
+letter-spacing:.04em;
+}
+
+.featured-content .cat-badge{
+display:inline-block;
+background:var(--maroon);
+color:#fff;
+padding:3px 10px;
+border-radius:50px;
+font-size:10px;
+font-weight:600;
+letter-spacing:.03em;
+}
+
+.featured-content h3{
+font-size:clamp(1.1rem,1.8vw,1.6rem);
+color:var(--maroon);
+margin-bottom:4px;
+font-weight:700;
+}
+
+.featured-content .date{
+font-size:clamp(.75rem,.85vw,.82rem);
+color:#888;
+margin-bottom:2px;
+}
+
+.featured-content .faculty{
+font-size:clamp(.72rem,.8vw,.78rem);
+color:#999;
+margin-bottom:8px;
+}
+
+.featured-content p{
+font-size:clamp(.78rem,.88vw,.85rem);
+line-height:1.55;
+color:#555;
+margin-bottom:8px;
+}
+
+.featured-content .highlights{
+display:flex;
+flex-wrap:wrap;
+gap:5px;
+}
+
+.featured-content .highlights span{
+background:#f5f0f0;
+padding:3px 10px;
+border-radius:50px;
+font-size:10px;
+font-weight:500;
+color:#444;
+}
+
+/* HIGHLIGHTS */
+
+.highlight-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:clamp(8px,1vw,14px);
+}
+
+.highlight-card{
+background:#fff;
+border-radius:16px;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+transition:transform .35s ease,box-shadow .35s ease;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:clamp(14px,1.8vw,24px) clamp(10px,1.2vw,16px);
+min-height:clamp(140px,16vw,200px);
+}
+
+.highlight-card:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(0,0,0,.09);
+}
+
+.highlight-card-logo{
+width:clamp(48px,5vw,64px);
+height:clamp(48px,5vw,64px);
+display:flex;
+align-items:center;
+justify-content:center;
+background:#fff;
+border-radius:10px;
+padding:6px;
+margin-bottom:clamp(8px,1vw,14px);
+}
+
+.highlight-card-logo img,
+.highlight-card-logo svg{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+display:block;
+}
+
+.archive-card-logo img,
+.archive-card-logo svg{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+display:block;
+}
+
+.archive-card-logo img:hover,
+.archive-card-logo svg:hover{
+transform:scale(1.08);
+}
+
+.highlight-card-body{
+flex:1;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.highlight-card-body h4{
+font-size:clamp(.85rem,1vw,1rem);
+color:var(--maroon);
+font-weight:700;
+margin-bottom:4px;
+}
+
+.highlight-card-body .meta{
+font-size:clamp(.7rem,.78vw,.76rem);
+color:#888;
+line-height:1.4;
+}
+
+/* ARCHIVE */
+
+.archive-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:clamp(8px,1vw,14px);
+}
+
+.archive-card{
+background:#fff;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 6px 20px rgba(0,0,0,.05);
+transition:transform .35s ease,box-shadow .35s ease;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+padding:16px;
+max-width:260px;
+margin:auto;
+min-height:clamp(150px,18vw,210px);
+border-top:3px solid var(--maroon);
+}
+
+.archive-card:hover{
+transform:translateY(-4px);
+box-shadow:0 14px 35px rgba(0,0,0,.1);
+}
+
+.archive-card-logo{
+width:80px;
+height:80px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:10px;
+overflow:hidden;
+}
+
+.archive-card-logo img{
+display:block;
+}
+
+.archive-card-logo.img-wide img{
+width:100%;
+height:auto;
+max-height:100%;
+object-fit:contain;
+}
+
+.archive-card-logo.img-tall img{
+height:100%;
+width:auto;
+max-width:100%;
+object-fit:contain;
+}
+
+.archive-card-logo.img-square img{
+max-width:100%;
+max-height:100%;
+object-fit:contain;
+}
+
+.archive-card-logo img:hover{
+transform:scale(1.08);
+}
+
+.archive-card-body{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.archive-card-body h4{
+font-size:clamp(.82rem,.95vw,.95rem);
+color:var(--maroon);
+font-weight:700;
+margin-bottom:2px;
+}
+
+.archive-card-body .meta{
+font-size:clamp(.65rem,.72vw,.72rem);
+color:#888;
+line-height:1.35;
+margin-bottom:4px;
+}
+
+.archive-card-body .badge{
+display:inline-block;
+background:#f7ebed;
+color:var(--maroon);
+padding:2px 10px;
+border-radius:50px;
+font-size:9px;
+font-weight:600;
+letter-spacing:.03em;
+}
+
+/* INDUSTRIAL VISIT NETWORK */
+
+.iv-network{
+overflow:hidden;
+background:#fff;
+border-radius:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+margin:clamp(12px,1.5vw,20px) 0;
+height:clamp(64px,6.5vw,82px);
+display:flex;
+align-items:center;
+}
+
+.ivn-track{
+display:flex;
+width:max-content;
+animation:marquee 26s linear infinite;
+gap:clamp(28px,3.5vw,50px);
+align-items:center;
+padding:0 clamp(16px,2vw,28px);
+height:100%;
+}
+
+.iv-network:hover .ivn-track{
+animation-play-state:paused;
+}
+
+.ivn-track img{
+height:42px;
+width:auto;
+filter:grayscale(100%);
+opacity:.75;
+transition:filter .5s ease,opacity .5s ease,transform .3s ease;
+flex-shrink:0;
+}
+
+.ivn-track img:hover{
+filter:none;
+opacity:1;
+transform:scale(1.08);
+}
+
+.ivn-track .ivn-text{
+font-size:clamp(.8rem,.95vw,1rem);
+font-weight:700;
+color:var(--maroon);
+white-space:nowrap;
+opacity:.5;
+transition:opacity .3s;
+flex-shrink:0;
+}
+
+.ivn-track .ivn-text:hover{
+opacity:1;
+}
+
+@keyframes marquee{
+0%{transform:translateX(0);}
+100%{transform:translateX(-50%);}
+}
+
+/* CTA */
+
+.cta{
+margin-top:clamp(12px,1.5vw,20px);
+padding:clamp(20px,2.5vw,34px) clamp(16px,1.8vw,22px);
+background:linear-gradient(135deg,var(--maroon),var(--dark));
+color:#fff;
+text-align:center;
+border-radius:22px;
+}
+
+.cta h2{
+font-size:clamp(1.1rem,2.2vw,1.7rem);
+margin-bottom:4px;
+font-weight:700;
+}
+
+.cta p{
+font-size:clamp(.78rem,.95vw,.85rem);
+opacity:.9;
+}
+
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(30px);
+transition:opacity .6s ease,transform .6s ease;
+}
+
+.reveal.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+.featured-img{
+height:clamp(150px,16vw,220px);
+}
+}
+
+@media(max-width:1024px){
+.featured-img{
+height:clamp(130px,14vw,190px);
+}
+
+.highlight-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+.hero{
+min-height:320px;
+}
+
+.hero-bg img{
+width:clamp(100px,18vw,170px);
+height:clamp(75px,13vw,130px);
+border-radius:12px;
+}
+
+.featured-card{
+grid-template-columns:1fr;
+}
+
+.featured-card--rev{
+direction:ltr;
+}
+
+.featured-img{
+height:190px;
+}
+
+.highlight-grid{
+grid-template-columns:1fr;
+}
+}
+
+@media(max-width:480px){
+.hero{
+min-height:220px;
+border-radius:20px;
+}
+
+.hero-bg img{
+width:80px;
+height:60px;
+border-radius:8px;
+}
+
+.hero-bg img:nth-child(1){top:5%;left:3%;}
+.hero-bg img:nth-child(2){bottom:8%;left:7%;}
+.hero-bg img:nth-child(3){top:4%;right:3%;}
+.hero-bg img:nth-child(4){bottom:6%;right:5%;}
+
+.featured-img{
+height:160px;
+}
+
+.highlight-grid{
+grid-template-columns:1fr;
+}
+
+.highlight-card{
+min-height:120px;
+}
+
+.archive-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.archive-card{
+min-height:130px;
+max-width:220px;
+}
+
+.archive-card-logo{
+width:70px;
+height:70px;
+}
+}
+
+@media(max-width:320px){
+.hero{
+min-height:200px;
+border-radius:16px;
+}
+
+.hero-bg img{
+display:none;
+}
+
+.archive-grid{
+grid-template-columns:1fr;
+}
+
+.archive-card{
+min-height:110px;
+max-width:200px;
+}
+
+.archive-card-logo{
+width:60px;
+height:60px;
+}
+}
+
+/* LATEST 2026 */
+
+.latest2026{
+padding:clamp(8px,1vh,12px) 0 clamp(16px,2vw,24px);
+}
+
+.latest2026-desc{
+text-align:center;
+font-size:clamp(.85rem,1vw,.95rem);
+color:#777;
+max-width:700px;
+margin:0 auto clamp(20px,2.5vw,32px);
+line-height:1.6;
+}
+
+.latest2026-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:clamp(12px,1.6vw,20px);
+align-items:stretch;
+}
+
+.latest2026-collage--single .latest2026-main{
+aspect-ratio:4/3;
+}
+
+.latest2026-card{
+background:#fff;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+transition:transform .4s ease,box-shadow .4s ease;
+display:flex;
+flex-direction:column;
+}
+
+.latest2026-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+.latest2026-collage{
+display:flex;
+flex-direction:column;
+gap:8px;
+padding:8px;
+}
+
+.latest2026-main{
+width:100%;
+aspect-ratio:16/9;
+overflow:hidden;
+border-radius:16px;
+}
+
+.latest2026-main img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .5s ease;
+}
+
+.latest2026-card:hover .latest2026-main img{
+transform:scale(1.05);
+}
+
+.latest2026-thumbs{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+}
+
+.latest2026-thumbs .thumb{
+aspect-ratio:4/3;
+overflow:hidden;
+border-radius:12px;
+}
+
+.latest2026-thumbs .thumb img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .5s ease;
+}
+
+.latest2026-card:hover .latest2026-thumbs .thumb img{
+transform:scale(1.05);
+}
+
+.latest2026-content{
+padding:0 16px 18px;
+display:flex;
+flex-direction:column;
+flex:1;
+}
+
+.latest2026-card-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:4px;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.latest2026-card-header h3{
+font-size:clamp(1rem,1.3vw,1.25rem);
+color:var(--maroon);
+font-weight:700;
+}
+
+.latest2026-badge{
+display:inline-block;
+background:var(--maroon);
+color:#fff;
+padding:3px 10px;
+border-radius:50px;
+font-size:10px;
+font-weight:600;
+letter-spacing:.03em;
+white-space:nowrap;
+}
+
+.latest2026-meta-row{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin-bottom:6px;
+}
+
+.latest2026-year{
+display:inline-block;
+background:#f7ebed;
+color:var(--maroon);
+padding:3px 10px;
+border-radius:50px;
+font-size:9px;
+font-weight:600;
+letter-spacing:.03em;
+}
+
+.latest2026-industry-badge{
+display:inline-block;
+background:#f7ebed;
+color:var(--maroon);
+padding:3px 10px;
+border-radius:50px;
+font-size:10px;
+font-weight:600;
+letter-spacing:.04em;
+}
+
+.latest2026-content p{
+font-size:clamp(.75rem,.82vw,.8rem);
+line-height:1.55;
+color:#555;
+margin:6px 0 10px;
+flex:1;
+}
+
+.latest2026-chips{
+display:flex;
+flex-wrap:wrap;
+gap:5px;
+}
+
+.latest2026-chip{
+background:#f5f0f0;
+padding:3px 10px;
+border-radius:50px;
+font-size:9px;
+font-weight:500;
+color:#444;
+}
+
+@media(max-width:1200px){
+.latest2026-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(max-width:768px){
+.latest2026-grid{
+grid-template-columns:1fr;
+}
+.latest2026-card{
+max-width:500px;
+margin:0 auto;
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-bg">
+<img src="https://static.wixstatic.com/media/ee3217_2c6018b1c92b46d8a25ad01d450a494a~mv2.jpg" alt="">
+<img src="https://static.wixstatic.com/media/ee3217_36c371e7b60e4ceb84edf87f5296e3b2~mv2.png" alt="">
+<img src="https://static.wixstatic.com/media/ee3217_c725b6bd97334dd5bf53ec992076cdd1~mv2.png" alt="">
+<img src="https://static.wixstatic.com/media/6f6e0a_9874e3c936334b7baefc0ef7bdcd8a8a~mv2.jpg" alt="">
+</div>
+
+<div class="hero-glass"></div>
+
+<div class="hero-content">
+<h1>Industrial Visits</h1>
+<p>Bridging Academic Learning with Real Industry Experience</p>
+<span class="sub">Industry Exposure &bull; Innovation &bull; Experience</span>
+</div>
+
+</section>
+
+<!-- LATEST 2026 -->
+
+<div class="section-title reveal">
+<h2>Latest Industrial Visits 2026</h2>
+<div class="line"></div>
+</div>
+
+<p class="latest2026-desc reveal">Discover IITM College of Engineering's most recent industry exposure programmes, connecting students with defence research, software innovation and emerging technologies.</p>
+
+<div class="latest2026-grid">
+
+<div class="latest2026-card reveal">
+<div class="latest2026-collage">
+<div class="latest2026-main">
+<img src="https://static.wixstatic.com/media/ab471d_3641c31b51b646dfabb9c0f7a98853ff~mv2.jpg" alt="DRDO Visit" loading="lazy">
+</div>
+<div class="latest2026-thumbs">
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_ac60dd357aa14bf2b9747ff1f40f653c~mv2.jpg" alt="DRDO" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_ae878ab6fdf44023ac8c2cfb55ff5d09~mv2.jpg" alt="DRDO" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_3641c31b51b646dfabb9c0f7a98853ff~mv2.jpg" alt="DRDO" loading="lazy"></div>
+</div>
+</div>
+<div class="latest2026-content">
+<div class="latest2026-card-header">
+<h3>DRDO Visit</h3>
+<span class="latest2026-badge">Defence Research</span>
+</div>
+<div class="latest2026-meta-row">
+<span class="latest2026-year">2026</span>
+<span class="latest2026-industry-badge">Industry Visit</span>
+</div>
+<p>Students explored DRDO laboratories, interacted with defence scientists, and gained first-hand exposure to indigenous defence technologies, advanced research facilities and innovation-driven engineering projects.</p>
+<div class="latest2026-chips">
+<span class="latest2026-chip">Defence Technology</span>
+<span class="latest2026-chip">Innovation Labs</span>
+<span class="latest2026-chip">Scientist Interaction</span>
+<span class="latest2026-chip">R&amp;D Exposure</span>
+</div>
+</div>
+</div>
+
+<div class="latest2026-card reveal">
+<div class="latest2026-collage">
+<div class="latest2026-main">
+<img src="https://static.wixstatic.com/media/ab471d_5cc0a3562bc842cfbc988d78019bb193~mv2.jpg" alt="AppSquadz Technologies" loading="lazy">
+</div>
+<div class="latest2026-thumbs">
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_70e8e24b41a44dbeaba1137170f10dfc~mv2.png" alt="AppSquadz" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_bfb817f11194441fad697a989e5d7c88~mv2.jpg" alt="AppSquadz" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_73768241dbda476291bf07233e769449~mv2.jpg" alt="AppSquadz" loading="lazy"></div>
+</div>
+</div>
+<div class="latest2026-content">
+<div class="latest2026-card-header">
+<h3>AppSquadz Technologies</h3>
+<span class="latest2026-badge">Software Development</span>
+</div>
+<div class="latest2026-meta-row">
+<span class="latest2026-year">2026</span>
+<span class="latest2026-industry-badge">Industry Visit</span>
+</div>
+<p>Students visited AppSquadz Technologies to understand real-world software engineering, mobile application development, startup culture, product engineering and emerging digital technologies.</p>
+<div class="latest2026-chips">
+<span class="latest2026-chip">App Development</span>
+<span class="latest2026-chip">Startup Culture</span>
+<span class="latest2026-chip">Software Engineering</span>
+<span class="latest2026-chip">Career Guidance</span>
+</div>
+</div>
+</div>
+
+<div class="latest2026-card reveal">
+<div class="latest2026-collage">
+<div class="latest2026-main">
+<img src="https://static.wixstatic.com/media/ab471d_ce5b07e40da7455b9f1d7cd8f507814e~mv2.png" alt="IoT Academy by SkillUp" loading="lazy">
+</div>
+<div class="latest2026-thumbs">
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_bd74370cd06c43b6819173c7160b2b68~mv2.png" alt="IoT Academy" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_2f3a29ddd27249f0b8ac648f3accbed4~mv2.png" alt="IoT Academy" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_435729a0bd874e5ea9751c9ca81f1c2e~mv2.png" alt="IoT Academy" loading="lazy"></div>
+</div>
+</div>
+<div class="latest2026-content">
+<div class="latest2026-card-header">
+<h3>IoT Academy by SkillUp</h3>
+<span class="latest2026-badge">Emerging Technologies</span>
+</div>
+<div class="latest2026-meta-row">
+<span class="latest2026-year">2026</span>
+<span class="latest2026-industry-badge">Industry Visit</span>
+</div>
+<p>Students explored practical applications of IoT, Artificial Intelligence, Embedded Systems and Industry 4.0 while interacting with experts from IoT Academy by SkillUp.</p>
+<div class="latest2026-chips">
+<span class="latest2026-chip">IoT</span>
+<span class="latest2026-chip">Embedded Systems</span>
+<span class="latest2026-chip">AI</span>
+<span class="latest2026-chip">Industry 4.0</span>
+</div>
+</div>
+</div>
+
+<div class="latest2026-card reveal">
+<div class="latest2026-collage">
+<div class="latest2026-main">
+<img src="https://static.wixstatic.com/media/ab471d_b59433334d034da588d260aa623f5bd1~mv2.jpg" alt="CSIR Institute of Genomics and Integrative Biology Educational Visit" loading="lazy">
+</div>
+<div class="latest2026-thumbs">
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_4e8b50a619814053ab6dcd846a33079b~mv2.jpg" alt="CSIR Institute of Genomics and Integrative Biology Educational Visit" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_fca380838a944b849957f5605fb5c23e~mv2.jpg" alt="CSIR Institute of Genomics and Integrative Biology Educational Visit" loading="lazy"></div>
+<div class="thumb"><img src="https://static.wixstatic.com/media/ab471d_0888bafd020645f6b8848ef8d176501b~mv2.jpg" alt="CSIR Institute of Genomics and Integrative Biology Educational Visit" loading="lazy"></div>
+</div>
+</div>
+<div class="latest2026-content">
+<div class="latest2026-card-header">
+<h3>CSIR-IGIB</h3>
+<span class="latest2026-badge">Educational Visit</span>
+</div>
+<div class="latest2026-meta-row">
+<span class="latest2026-year">2026</span>
+<span class="latest2026-industry-badge">Genomics &amp; Biotechnology</span>
+</div>
+<p>BCA First Year students visited CSIR-Institute of Genomics & Integrative Biology (CSIR-IGIB), New Delhi, gaining exposure to genomics, integrative biology, scientific research and the role of advanced life-science research in modern technology and innovation.</p>
+<div class="latest2026-chips">
+<span class="latest2026-chip">Genomics</span>
+<span class="latest2026-chip">Integrative Biology</span>
+<span class="latest2026-chip">Scientific Research</span>
+<span class="latest2026-chip">Life Sciences</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- FEATURED VISITS -->
+
+<div class="section-title reveal">
+<h2>Featured Visits</h2>
+<div class="line"></div>
+</div>
+
+<!-- DRDO -->
+
+<div class="featured-card reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/ee3217_2c6018b1c92b46d8a25ad01d450a494a~mv2.jpg" alt="DRDO SSPL Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">Defence Research</span>
+<span class="cat-badge">DRDO SSPL</span>
+</div>
+<h3>DRDO SSPL</h3>
+<div class="date">27 March 2025</div>
+<div class="faculty">Interaction: Dr. R.A. Chouksey</div>
+<p>Students explored advanced semiconductor fabrication and chip-design technologies at India's premier defence research facility, gaining hands-on exposure to cutting-edge R&D.</p>
+<div class="highlights">
+<span>Semiconductor Technology</span>
+<span>Chip Manufacturing</span>
+<span>Wafer Research Lab</span>
+<span>Internship Opportunities</span>
+</div>
+</div>
+
+</div>
+
+<!-- MOTHER DAIRY -->
+
+<div class="featured-card featured-card--rev reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/ee3217_36c371e7b60e4ceb84edf87f5296e3b2~mv2.png" alt="Mother Dairy Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">Food Processing</span>
+<span class="cat-badge">Mother Dairy</span>
+</div>
+<h3>Mother Dairy</h3>
+<div class="date">11 September 2025</div>
+<div class="faculty">Faculty Coordinated Visit</div>
+<p>Students observed large-scale dairy processing, automation systems, packaging operations, and quality-control practices at one of India's largest dairy cooperatives.</p>
+<div class="highlights">
+<span>Milk Processing</span>
+<span>Quality Assurance</span>
+<span>Supply Chain</span>
+<span>Industrial Automation</span>
+</div>
+</div>
+
+</div>
+
+<!-- DABUR -->
+
+<div class="featured-card reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/ee3217_c725b6bd97334dd5bf53ec992076cdd1~mv2.png" alt="Dabur India Ltd Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">FMCG Giant</span>
+<span class="cat-badge">Dabur India Ltd.</span>
+</div>
+<h3>Dabur India Ltd.</h3>
+<div class="date">10 September 2025</div>
+<div class="faculty">Industry Expert Session</div>
+<p>Students gained insights into manufacturing, quality testing, R&D processes, and FMCG operations at India's leading Ayurvedic and natural consumer goods company.</p>
+<div class="highlights">
+<span>Product Manufacturing</span>
+<span>Quality Control</span>
+<span>R&amp;D Processes</span>
+<span>Distribution Network</span>
+</div>
+</div>
+
+</div>
+
+<!-- APPSQUADZ -->
+
+<div class="featured-card featured-card--rev reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/6f6e0a_9874e3c936334b7baefc0ef7bdcd8a8a~mv2.jpg" alt="AppSquadz Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">Tech Innovation</span>
+<span class="cat-badge">AppSquadz</span>
+</div>
+<h3>AppSquadz</h3>
+<div class="date">2025</div>
+<div class="faculty">Technology Workshop</div>
+<p>Students explored the latest in mobile app development, UI/UX design, and digital transformation strategies at a leading software development firm.</p>
+<div class="highlights">
+<span>App Development</span>
+<span>UI/UX Design</span>
+<span>Digital Strategy</span>
+<span>Tech Careers</span>
+</div>
+</div>
+
+</div>
+
+<!-- NPL -->
+
+<div class="featured-card reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/ee3217_4b57e8b4a91e4adda1f37ee4c61c5cb1~mv2.png" alt="NPL Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">Metrology &amp; Research</span>
+<span class="cat-badge">NPL</span>
+</div>
+<h3>National Physical Laboratory (NPL)</h3>
+<div class="date">2024</div>
+<div class="faculty">Faculty Coordinated Visit</div>
+<p>Students visited CSIR-National Physical Laboratory, New Delhi — India's national measurement standards institute — exploring advanced metrology, scientific research, and precision measurement standards.</p>
+<div class="highlights">
+<span>Measurement Science</span>
+<span>Calibration Standards</span>
+<span>Advanced Metrology</span>
+<span>Research Excellence</span>
+</div>
+</div>
+
+</div>
+
+<!-- COCA-COLA -->
+
+<div class="featured-card featured-card--rev reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/d490ea_5e5e9842b07744559ea4bbd9a4235668~mv2.png" alt="Coca-Cola Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">FMCG</span>
+<span class="cat-badge">Coca-Cola</span>
+</div>
+<h3>Coca-Cola</h3>
+<div class="date">20 March 2024</div>
+<div class="faculty">Faculty: Mr. Saurabh Singh</div>
+<p>Students explored the bottling process, supply chain logistics, brand management, and quality assurance operations at Coca-Cola's state-of-the-art facility.</p>
+<div class="highlights">
+<span>Bottling Process</span>
+<span>Supply Chain</span>
+<span>Brand Management</span>
+<span>Quality Assurance</span>
+</div>
+</div>
+
+</div>
+
+<!-- DECATHLON -->
+
+<div class="featured-card reveal">
+
+<div class="featured-img">
+<img src="https://static.wixstatic.com/media/d490ea_f8d4e1b500504aa6b142335bf2f770e4~mv2.jpg" alt="Decathlon Visit">
+</div>
+
+<div class="featured-content">
+<div class="meta-row">
+<span class="tag">Retail Operations</span>
+<span class="cat-badge">Decathlon</span>
+</div>
+<h3>Decathlon</h3>
+<div class="date">08 April 2024</div>
+<div class="faculty">Faculty: Ms. Ashita</div>
+<p>Students experienced retail operations, supply chain management, inventory systems, and sports product innovation at one of the world's largest sporting goods retailers.</p>
+<div class="highlights">
+<span>Retail Operations</span>
+<span>Inventory Systems</span>
+<span>Sports Innovation</span>
+<span>Customer Experience</span>
+</div>
+</div>
+
+</div>
+
+<!-- INDUSTRY EXPOSURE HIGHLIGHTS -->
+
+<div class="section-title reveal">
+<h2>Industry Exposure Highlights</h2>
+<div class="line"></div>
+</div>
+
+<div class="highlight-grid">
+
+<div class="highlight-card reveal">
+<div class="highlight-card-logo">
+<img src="https://upload.wikimedia.org/wikipedia/en/9/9d/Logo_NPL_india.svg" alt="NPL">
+</div>
+<div class="highlight-card-body">
+<h4>NPL</h4>
+<div class="meta">2024<br>Faculty Coordinated Visit</div>
+</div>
+</div>
+
+<div class="highlight-card reveal">
+<div class="highlight-card-logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" alt="Coca-Cola">
+</div>
+<div class="highlight-card-body">
+<h4>Coca-Cola</h4>
+<div class="meta">20 March 2024<br>Mr. Saurabh Singh</div>
+</div>
+</div>
+
+<div class="highlight-card reveal">
+<div class="highlight-card-logo">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_(1990-2024).svg" alt="Decathlon">
+</div>
+<div class="highlight-card-body">
+<h4>Decathlon</h4>
+<div class="meta">08 April 2024<br>Ms. Ashita</div>
+</div>
+</div>
+
+<div class="highlight-card reveal">
+<div class="highlight-card-logo">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appsquadz.com&size=512" alt="AppSquadz">
+</div>
+<div class="highlight-card-body">
+<h4>AppSquadz</h4>
+<div class="meta">30 April 2024<br>Mr. Vishal Ranjan</div>
+</div>
+</div>
+
+</div>
+
+<!-- INDUSTRIAL VISIT ARCHIVE -->
+
+<div class="section-title reveal">
+<h2>Industrial Visit Archive</h2>
+<p style="font-size:clamp(.78rem,.9vw,.88rem);color:#888;margin-top:4px;">A Legacy of Industry Engagement</p>
+<div class="line"></div>
+</div>
+
+<div class="archive-grid">
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-tall">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Defence_Research_and_Development_Organisation.svg/1280px-Defence_Research_and_Development_Organisation.svg.png" alt="DRDO" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>DRDO SSPL</h4>
+<div class="meta">27 Mar 2025<br>Dr. R.A. Chouksey</div>
+<span class="badge">Defence Research</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-wide">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MD_with_R.jpg" alt="Mother Dairy" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Mother Dairy</h4>
+<div class="meta">11 Sep 2025<br>Faculty Coordinated</div>
+<span class="badge">Food Processing</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-square">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Dabur_Logo.svg/1280px-Dabur_Logo.svg.png" alt="Dabur" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Dabur India Ltd.</h4>
+<div class="meta">10 Sep 2025<br>Industry Expert</div>
+<span class="badge">FMCG</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-square">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appsquadz.com&size=512" alt="AppSquadz" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>AppSquadz</h4>
+<div class="meta">30 Apr 2024<br>Mr. Vishal Ranjan</div>
+<span class="badge">Software Development</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-tall">
+<img src="https://upload.wikimedia.org/wikipedia/en/9/9d/Logo_NPL_india.svg" alt="NPL" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>NPL</h4>
+<div class="meta">2024<br>Faculty Coordinated</div>
+<span class="badge">Metrology &amp; Research</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-wide">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/960px-Coca-Cola_logo.svg.png" alt="Coca-Cola" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Coca-Cola</h4>
+<div class="meta">20 Mar 2024<br>Mr. Saurabh Singh</div>
+<span class="badge">FMCG</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-square">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_(1990-2024).svg" alt="Decathlon" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Decathlon</h4>
+<div class="meta">08 Apr 2024<br>Ms. Ashita</div>
+<span class="badge">Retail</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-tall">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://networkbulls.com&size=512" alt="Network Bulls" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Network Bulls</h4>
+<div class="meta">01-02 May 2023<br>Mr. Pankaj Sethi</div>
+<span class="badge">Networking</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-square">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://relaxofootwear.com&size=512" alt="Relaxo" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Relaxo</h4>
+<div class="meta">08 Oct 2022<br>Mr. Ramesh Kumar Dua</div>
+<span class="badge">Manufacturing</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-square">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yakult-Logo.svg" alt="Yakult" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Yakult</h4>
+<div class="meta">20 Jul 2022<br>Ms. Swati &amp; Ms. Divyanshi</div>
+<span class="badge">Healthcare</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-wide">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barclays_wordmark.svg" alt="Barclays" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Barclays</h4>
+<div class="meta">14 Jul 2022<br>Ms. Suvarna &amp; Ms. Kajal</div>
+<span class="badge">Banking</span>
+</div>
+</div>
+
+<div class="archive-card reveal">
+<div class="archive-card-logo img-wide">
+<img src="https://www.safexpress.com/favicon.ico" alt="Safexpress" loading="lazy">
+</div>
+<div class="archive-card-body">
+<h4>Safexpress</h4>
+<div class="meta">22 Feb 2019<br>Ms. Gurvinder Kaur</div>
+<span class="badge">Logistics</span>
+</div>
+</div>
+
+</div>
+
+<!-- INDUSTRIAL VISIT NETWORK -->
+
+<div class="section-title reveal">
+<h2>Industrial Visit Network</h2>
+<div class="line"></div>
+</div>
+
+<div class="iv-network reveal">
+<div class="ivn-track">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Defence_Research_and_Development_Organisation.svg/1280px-Defence_Research_and_Development_Organisation.svg.png" alt="DRDO">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MD_with_R.jpg" alt="Mother Dairy">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Dabur_Logo.svg/1280px-Dabur_Logo.svg.png" alt="Dabur">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appsquadz.com&size=512" alt="AppSquadz">
+<img src="https://upload.wikimedia.org/wikipedia/en/9/9d/Logo_NPL_india.svg" alt="NPL">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/960px-Coca-Cola_logo.svg.png" alt="Coca-Cola">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_(1990-2024).svg" alt="Decathlon">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://networkbulls.com&size=512" alt="Network Bulls">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://relaxofootwear.com&size=512" alt="Relaxo">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yakult-Logo.svg" alt="Yakult">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barclays_wordmark.svg" alt="Barclays">
+<img src="https://www.safexpress.com/favicon.ico" alt="Safexpress">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MD_with_R.jpg" alt="Mother Dairy">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Defence_Research_and_Development_Organisation.svg/1280px-Defence_Research_and_Development_Organisation.svg.png" alt="DRDO">
+
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Defence_Research_and_Development_Organisation.svg/1280px-Defence_Research_and_Development_Organisation.svg.png" alt="DRDO">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MD_with_R.jpg" alt="Mother Dairy">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/65/Dabur_Logo.svg/1280px-Dabur_Logo.svg.png" alt="Dabur">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://appsquadz.com&size=512" alt="AppSquadz">
+<img src="https://upload.wikimedia.org/wikipedia/en/9/9d/Logo_NPL_india.svg" alt="NPL">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/960px-Coca-Cola_logo.svg.png" alt="Coca-Cola">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Decathlon_-_logo_(1990-2024).svg" alt="Decathlon">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://networkbulls.com&size=512" alt="Network Bulls">
+<img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://relaxofootwear.com&size=512" alt="Relaxo">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yakult-Logo.svg" alt="Yakult">
+<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Barclays_wordmark.svg" alt="Barclays">
+<img src="https://www.safexpress.com/favicon.ico" alt="Safexpress">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MD_with_R.jpg" alt="Mother Dairy">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Defence_Research_and_Development_Organisation.svg/1280px-Defence_Research_and_Development_Organisation.svg.png" alt="DRDO">
+
+</div>
+</div>
+
+<!-- CTA -->
+
+<section class="cta reveal">
+<h2>Transforming Learning Through Industry Exposure</h2>
+<p>Connecting IITM students with innovation, technology, and professional excellence.</p>
+</section>
+
+</div>
+
+<script>
+
+const reveals=document.querySelectorAll('.reveal');
+function reveal(){
+reveals.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-80) el.classList.add('show');
+});
+}
+window.addEventListener('scroll',reveal);
+reveal();
+
+</script>
+
+</body>
+</html>

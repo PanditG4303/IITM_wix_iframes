@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>IITM College of Engineering — Excellence in Engineering Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow:hidden}
+body{font-family:'Poppins',sans-serif;background:#faf7f7;margin:0;padding:0;color:#222;-webkit-font-smoothing:antialiased}
+:root{
+--maroon:#7b2d35;--dark:#651421;--gold:#d4a94f;--gold-light:#e8d5a0;--light:#faf5f2;--white:#fff;
+--shadow:0 12px 40px rgba(101,20,33,.1);--shadow-sm:0 6px 20px rgba(101,20,33,.06);
+--space-xs:12px;--space-sm:18px;--space-md:24px;--space-lg:36px;
+--r-sm:12px;--r-md:18px;--r-lg:24px;--r-xl:36px;
+--transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .6s cubic-bezier(.22,1,.36,1)
+}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+.container{max-width:1400px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.section{padding:clamp(28px,4.8vw,56px) 0;position:relative;overflow:hidden}
+.section-title{text-align:center;margin-bottom:clamp(22px,3.8vw,40px)}
+.section-title span{display:inline-block;color:var(--gold);font-weight:600;font-size:clamp(.7rem,1vw,.85rem);letter-spacing:5px;text-transform:uppercase;margin-bottom:10px}
+.section-title span::after{content:'';display:block;width:30px;height:2px;background:var(--gold);margin:8px auto 0;border-radius:2px}
+.section-title h2{font-size:clamp(1.5rem,3.8vw,3rem);font-weight:800;color:var(--maroon);line-height:1.15;letter-spacing:-.5px}
+.section-title .line{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),#e8c66a,var(--gold),#e8c66a,var(--gold));background-size:200% auto;margin:16px auto 0;border-radius:10px;animation:shimmer-move 8s linear infinite}
+.section-bg-alt{background:#f8f4f2}
+.svg-divider{position:absolute;left:0;width:100%;height:clamp(18px,3.2vw,50px);z-index:2;pointer-events:none;overflow:hidden}
+.svg-divider.top{top:-1px}.svg-divider.bottom{bottom:-1px}
+.svg-divider svg{width:100%;height:100%;display:block}
+.bg-blob{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
+.bg-blob-1{width:clamp(200px,30vw,500px);height:clamp(200px,30vw,500px);background:rgba(212,169,79,.06);top:-10%;right:-5%}
+.bg-blob-2{width:clamp(150px,20vw,400px);height:clamp(150px,20vw,400px);background:rgba(123,45,53,.04);bottom:-10%;left:-5%}
+.bg-lines{position:absolute;pointer-events:none;z-index:0;opacity:.02;width:100%;height:100%;top:0;left:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(101,20,33,.15) 40px,rgba(101,20,33,.15) 41px),repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(101,20,33,.15) 40px,rgba(101,20,33,.15) 41px)}
+
+/* ===== CAMPUS HIGHLIGHTS — Landscape Masonry Collage ===== */
+.gallery-content{display:flex;gap:clamp(16px,2.5vw,32px);align-items:flex-start}
+.campus-gallery{flex:1;min-width:0}
+.gallery-grid{display:grid;gap:clamp(6px,0.8vw,10px)}
+.gallery-item{position:relative;background:var(--white);border-radius:clamp(8px,1vw,14px);overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.08);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.gallery-item:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;max-width:none}
+
+/* Desktop (>992px): 12-col editorial collage matching bulletin height */
+@media(min-width:993px){
+.gallery-grid{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr);height:clamp(360px,42vw,500px)}
+.gallery-item:nth-child(1){grid-column:1/6;grid-row:1/5}
+.gallery-item:nth-child(2){grid-column:6/9;grid-row:1/4}
+.gallery-item:nth-child(3){grid-column:9/13;grid-row:1/4}
+.gallery-item:nth-child(4){grid-column:5/13;grid-row:4/6}
+.gallery-item:nth-child(5){grid-column:1/5;grid-row:5/9}
+.gallery-item:nth-child(6){grid-column:5/13;grid-row:6/9}
+}
+
+/* Tablet (769-992px): 2-col mixed spans, all 6 visible */
+@media(min-width:769px) and (max-width:992px){
+.gallery-grid{grid-template-columns:1fr 1fr;height:auto}
+.gallery-item{min-height:130px}
+.gallery-item:nth-child(1){grid-column:1;grid-row:1/3}
+.gallery-item:nth-child(2){grid-column:2;grid-row:1}
+.gallery-item:nth-child(3){grid-column:2;grid-row:2}
+.gallery-item:nth-child(4){grid-column:1/3;grid-row:3}
+.gallery-item:nth-child(5){grid-column:1;grid-row:4}
+.gallery-item:nth-child(6){grid-column:2;grid-row:4}
+}
+
+/* Tablet & below: column layout */
+@media(max-width:992px){
+.gallery-content{flex-direction:column}
+}
+
+/* Mobile (<=768px): 2 cols, all 6 visible */
+@media(max-width:768px){
+.gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:row;grid-auto-rows:auto;gap:8px;width:100%;height:auto}
+.gallery-item,.gallery-item:nth-child(1),.gallery-item:nth-child(2),.gallery-item:nth-child(3),.gallery-item:nth-child(4),.gallery-item:nth-child(5),.gallery-item:nth-child(6){grid-column:auto;grid-row:auto;display:block;width:100%;min-width:0;height:auto;min-height:0;aspect-ratio:4/3;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.gallery-item:nth-child(1),.gallery-item:nth-child(4){grid-column:span 2;aspect-ratio:16/8}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;display:block}
+.campus-gallery{width:100%;min-width:0}
+.gallery-content{flex-direction:column;width:100%;gap:14px}
+#highlights.section{padding-top:16px;padding-bottom:16px}
+#highlights .section-title{margin-bottom:12px}
+}
+
+/* Very narrow (<=340px): 1 column */
+@media(max-width:340px){
+.gallery-grid{grid-template-columns:1fr}
+.gallery-item,.gallery-item:nth-child(1),.gallery-item:nth-child(2),.gallery-item:nth-child(3),.gallery-item:nth-child(4),.gallery-item:nth-child(5),.gallery-item:nth-child(6){grid-column:1/-1;grid-row:auto;aspect-ratio:16/10;width:100%}
+}
+
+/* ===== Gallery Dynamic Flip ===== */
+.gallery-item.flipping,.gallery-item.flipping:hover{transform:rotateY(90deg)!important;transition:transform .35s cubic-bezier(.22,1,.36,1)!important;box-shadow:none!important}
+
+.bulletin{height:auto;align-self:start;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);overflow:hidden;position:sticky;top:var(--space-md);display:flex;flex-direction:column}
+.bulletin-header{background:linear-gradient(135deg,var(--dark),var(--maroon));color:var(--white);padding:clamp(8px,1vw,12px) clamp(12px,1.6vw,18px);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.bulletin-header .bell-wrap{width:clamp(24px,1.8vw,30px);height:clamp(24px,1.8vw,30px);border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center}
+.bulletin-header .bell-wrap svg{width:16px;height:16px}
+.bulletin-header h3{font-size:clamp(0.95rem,1.2vw,1.1rem);font-weight:700;letter-spacing:.3px}
+.bulletin-body{overflow-y:auto;height:clamp(320px,38vw,460px);padding:clamp(4px,0.5vw,8px) clamp(8px,1vw,14px);-ms-overflow-style:none;scrollbar-width:none}
+.bulletin-body::-webkit-scrollbar{display:none}
+.notice-item{position:relative;padding:clamp(6px,0.7vw,10px) clamp(10px,1.2vw,16px);border-radius:8px;cursor:pointer;border:1px solid transparent;margin-bottom:clamp(4px,0.5vw,7px);background:rgba(255,255,255,.5);transition:transform .3s,opacity .3s}
+.notice-item:hover{background:rgba(255,255,255,.9);border-color:rgba(212,169,79,.2);transform:translateX(5px)}
+.notice-item .n-top{display:flex;align-items:center;gap:6px;margin-bottom:3px;flex-wrap:wrap}
+.notice-item .n-badge{display:inline-flex;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 8px;border-radius:8px;background:var(--gold);color:var(--dark)}
+.notice-item .n-text{font-size:clamp(.75rem,0.8vw,.85rem);color:#444;line-height:1.4;font-weight:500;margin-bottom:4px}
+.notice-item .n-link{font-size:.65rem;color:var(--maroon);font-weight:700;margin-top:3px;display:inline-flex;align-items:center;gap:3px;transition:gap .3s;border-bottom:1px solid transparent}
+.notice-item .n-link:hover{gap:6px;border-bottom-color:var(--gold)}
+.notice-item.pinned{background:linear-gradient(135deg,rgba(212,169,79,.06),rgba(255,255,255,.8));border-color:rgba(212,169,79,.15)}
+.notice-item.pinned .pin-icon{position:absolute;top:5px;right:7px;opacity:.6}
+.notice-item.pinned .pin-icon svg{width:11px;height:11px}
+.carousel-wrap{position:relative;padding:clamp(20px,3vw,50px) 0;overflow:hidden;perspective:1200px}
+.carousel-inner{position:relative;width:100%;height:clamp(180px,30vw,440px)}
+.carousel-card{position:absolute;top:50%;left:50%;width:clamp(130px,24vw,380px);height:clamp(170px,32vw,500px);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;backface-visibility:hidden;transition:all .85s cubic-bezier(.22,1,.36,1);box-shadow:var(--shadow-sm);transform-style:preserve-3d;will-change:transform,opacity}
+.carousel-card a{display:block;width:100%;height:100%;text-decoration:none;color:inherit}
+.carousel-card img{width:100%;height:100%;object-fit:cover;display:block}
+.carousel-card .card-overlay{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(101,20,33,.92));display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(12px,2vw,28px);color:#fff;z-index:2}
+.carousel-card .card-overlay h3{font-size:clamp(.8rem,1.1vw,1.2rem);font-weight:700;margin-bottom:3px;line-height:1.3}
+.carousel-card .card-overlay span{display:inline-flex;align-items:center;gap:5px;font-size:clamp(.62rem,.75vw,.75rem);opacity:.75;font-weight:400}
+.carousel-card .card-overlay span svg{width:clamp(10px,.8vw,14px);height:clamp(10px,.8vw,14px)}
+.carousel-card.pos-center{z-index:10;transform:translate(-50%,-50%) translateX(0) scale(1);opacity:1;box-shadow:0 20px 60px rgba(101,20,33,.18)}
+.carousel-card.pos-left1{z-index:8;opacity:.9}
+.carousel-card.pos-left2{z-index:6;opacity:.55}
+.carousel-card.pos-left3{z-index:4;opacity:0;pointer-events:none}
+.carousel-card.pos-right1{z-index:8;opacity:.9}
+.carousel-card.pos-right2{z-index:6;opacity:.55}
+.carousel-card.pos-right3{z-index:4;opacity:0;pointer-events:none}
+.carousel-card.pos-hidden{opacity:0;pointer-events:none}
+.carousel-arrows{display:flex;justify-content:center;gap:12px;margin-top:clamp(12px,1.5vw,22px);position:relative;z-index:20}
+.carousel-arrow{width:clamp(36px,3vw,46px);height:clamp(36px,3vw,46px);border-radius:50%;border:2px solid rgba(123,45,53,.2);background:var(--white);color:var(--maroon);font-size:1rem;cursor:pointer;transition:transform .3s,background .3s,color .3s;display:flex;align-items:center;justify-content:center}
+.carousel-arrow:hover{background:var(--maroon);color:var(--white);border-color:var(--maroon);transform:scale(1.08)}
+.edge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,24px)}
+.edge-card{display:flex;flex-direction:column;padding:clamp(18px,2.2vw,30px);border-radius:24px;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.65);box-shadow:0 6px 24px rgba(101,20,33,.06);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s,background .45s;position:relative;overflow:hidden}
+.edge-card:hover{background:rgba(255,255,255,.94);transform:translateY(-6px);box-shadow:0 16px 48px rgba(101,20,33,.1)}
+.edge-card::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--gold),#e8c66a,var(--gold));opacity:.55;z-index:1}
+.edge-card .ec-icon{width:clamp(32px,3.2vw,44px);height:clamp(32px,3.2vw,44px);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:clamp(8px,1vw,14px)}
+.edge-card .ec-icon svg{width:clamp(18px,2vw,24px);height:clamp(18px,2vw,24px)}
+.edge-card:nth-child(odd) .ec-icon{background:linear-gradient(135deg,rgba(212,169,79,.14),rgba(212,169,79,.04))}
+.edge-card:nth-child(even) .ec-icon{background:linear-gradient(135deg,rgba(123,45,53,.1),rgba(123,45,53,.03))}
+.edge-card .ec-title{font-size:clamp(.85rem,1vw,1.05rem);font-weight:700;color:var(--maroon);line-height:1.25;margin-bottom:0}
+.edge-card .ec-subtitle{font-size:clamp(.75rem,.85vw,.9rem);font-weight:600;color:var(--gold);line-height:1.25;margin-bottom:clamp(6px,.7vw,10px)}
+.edge-card .ec-desc{font-size:clamp(.66rem,.72vw,.76rem);color:#666;line-height:1.65;margin-bottom:clamp(8px,1vw,14px);flex:0 0 auto}
+.edge-card .ec-svg-wrap{width:100%;flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:clamp(80px,9vw,140px);padding:clamp(4px,.6vw,10px) 0 0}
+.edge-card .ec-svg-wrap svg{width:100%;height:100%;max-height:clamp(80px,9vw,140px);filter:drop-shadow(0 3px 10px rgba(101,20,33,.04))}
+/* Background decorations */
+.placement-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(clamp(160px,20vw,220px),1fr));gap:clamp(14px,1.8vw,24px);margin-bottom:clamp(24px,3vw,40px)}
+.pl-feature{background:var(--white);border-radius:var(--r-lg);padding:clamp(18px,2.2vw,28px);box-shadow:var(--shadow-sm);text-align:center;transition:transform .3s}
+.pl-feature:hover{transform:translateY(-4px)}
+.pl-feature .plf-icon{width:clamp(36px,3.5vw,44px);height:clamp(36px,3.5vw,44px);border-radius:12px;background:linear-gradient(135deg,rgba(123,45,53,.08),rgba(123,45,53,.02));display:flex;align-items:center;justify-content:center;margin:0 auto clamp(10px,1.2vw,16px)}
+.pl-feature .plf-icon svg{width:clamp(18px,2vw,24px);height:clamp(18px,2vw,24px)}
+.pl-feature h4{font-size:clamp(.85rem,1vw,1rem);font-weight:700;color:var(--maroon);margin-bottom:6px}
+.pl-feature p{font-size:clamp(.7rem,.78vw,.8rem);color:#888;line-height:1.6}
+.achievement-section{overflow:hidden;padding:clamp(30px,5vw,64px) 0;position:relative}
+.achievement-section .container{overflow:visible;position:relative;z-index:1}
+.stars-marquee-section{padding:clamp(8px,1.5vw,20px) 0;display:flex;flex-direction:column;gap:clamp(14px,2vw,28px);overflow:hidden;position:relative;z-index:1}
+.stars-marquee{overflow:hidden;position:relative;cursor:grab;user-select:none}
+.stars-marquee:active{cursor:grabbing}
+.stars-track{display:flex;gap:clamp(12px,1.8vw,24px);width:max-content;will-change:transform;padding:clamp(6px,1vw,12px) 0}
+.stars-card{flex-shrink:0;border-radius:var(--r-lg);overflow:hidden;background:var(--white);box-shadow:0 8px 28px rgba(101,20,33,.08);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;position:relative;border:1px solid rgba(212,169,79,.1);display:flex;align-items:center;justify-content:center}
+.stars-card a{display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-decoration:none}
+.stars-card img{display:block;object-fit:contain;width:auto;height:clamp(150px,22vw,280px);max-width:calc(90vw - 12px);border-radius:calc(var(--r-lg) - 2px);transition:transform .5s;padding:4px;background:rgba(255,255,255,.5)}
+
+.partners-marquee{overflow:hidden;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:clamp(14px,2vw,22px) 0;position:relative;z-index:1}
+.partners-track{display:flex;gap:clamp(30px,4vw,60px);width:max-content;align-items:center}
+.partner-logo{flex:0 0 auto;height:clamp(28px,2.8vw,44px);display:flex;align-items:center;justify-content:center;opacity:.65;transition:opacity .3s,transform .3s;filter:grayscale(.4) contrast(.9)}
+.partner-logo:hover{opacity:1;filter:grayscale(0) contrast(1);transform:scale(1.12)}
+.partner-logo .pl-text{font-size:clamp(.7rem,1vw,.9rem);font-weight:700;color:var(--maroon);white-space:nowrap;letter-spacing:.5px}
+.tour-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(24px,3.5vw,56px);align-items:center}
+.tour-text h3{font-size:clamp(1.2rem,2vw,2rem);font-weight:700;color:var(--maroon);margin-bottom:clamp(8px,1vw,14px);line-height:1.2}
+.tour-text p{font-size:clamp(.85rem,1vw,1rem);color:#666;line-height:1.8;margin-bottom:clamp(16px,2vw,28px)}
+.tour-text .tour-features{display:flex;flex-wrap:wrap;gap:clamp(8px,1vw,14px)}
+.tour-text .tour-feat{display:flex;align-items:center;gap:6px;font-size:clamp(.72rem,.8vw,.82rem);color:#555;font-weight:500}
+.tour-text .tour-feat .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.tour-player-wrap{position:relative;border-radius:clamp(16px,2.5vw,28px);overflow:hidden;background:#111;box-shadow:0 24px 80px rgba(101,20,33,.2);border:1px solid rgba(212,169,79,.1)}
+.tour-player-wrap video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#111;border:0}
+.tour-play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;cursor:pointer;transition:opacity .5s;pointer-events:auto}
+.tour-play-overlay.hidden{opacity:0;pointer-events:none}
+.tour-play-ring{position:absolute;top:50%;left:50%;width:clamp(56px,6.5vw,84px);height:clamp(56px,6.5vw,84px);border-radius:50%;border:2px solid rgba(255,255,255,.2);animation:tourPulse 2.5s ease-out infinite;pointer-events:none}
+.tour-play-ring:nth-child(2){animation-delay:.8s}
+.tour-play-ring:nth-child(3){animation-delay:1.6s}
+.tour-play-icon{position:relative;z-index:2;width:clamp(52px,6vw,76px);height:clamp(52px,6vw,76px);border-radius:50%;background:rgba(212,169,79,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.tour-play-icon:hover{background:var(--gold);transform:scale(1.08)}
+.tour-play-icon svg{width:clamp(20px,2.2vw,28px);height:clamp(20px,2.2vw,28px);margin-left:3px}
+.tour-controls{position:absolute;bottom:0;left:0;right:0;padding:clamp(8px,1.2vw,16px) clamp(12px,1.6vw,22px);background:linear-gradient(transparent,rgba(0,0,0,.88));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);display:flex;align-items:center;gap:clamp(5px,.8vw,12px);z-index:10;opacity:0;transition:opacity .35s}
+.tour-controls.visible{opacity:1}
+.tour-player-wrap:hover .tour-controls{opacity:1}
+.tour-btn{width:clamp(28px,2.5vw,36px);height:clamp(28px,2.5vw,36px);border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:clamp(.6rem,.85vw,.8rem);cursor:pointer;transition:transform .25s,background .25s;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:600}
+.tour-btn:hover{background:var(--gold);color:var(--dark);transform:scale(1.1)}
+.tour-btn svg{width:clamp(12px,1.1vw,15px);height:clamp(12px,1.1vw,15px)}
+.tour-progress{flex:1;height:5px;background:rgba(255,255,255,.15);border-radius:6px;position:relative;cursor:pointer;min-width:40px}
+.tour-progress .tp-fill{height:100%;background:linear-gradient(90deg,var(--gold),#e8c66a);border-radius:6px;width:0%;position:relative}
+.tour-progress .tp-fill::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:11px;height:11px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .2s}
+.tour-progress:hover .tp-fill::after{opacity:1}
+.tour-time{font-size:clamp(.6rem,.7vw,.72rem);color:rgba(255,255,255,.6);font-weight:400;min-width:30px;font-feature-settings:'tnum';letter-spacing:.3px}
+.tour-volume-wrap{display:flex;align-items:center;gap:4px}
+.tour-volume-slider{width:clamp(40px,4vw,64px);height:3px;accent-color:var(--gold);cursor:pointer;background:rgba(255,255,255,.15);border-radius:3px;-webkit-appearance:none;appearance:none}
+.tour-volume-slider::-webkit-slider-runnable-track{height:3px;border-radius:3px}
+.tour-volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;background:var(--gold);margin-top:-4px;cursor:pointer}
+.tour-volume-slider::-moz-range-track{height:3px;border-radius:3px;background:rgba(255,255,255,.2)}
+.tour-volume-slider::-moz-range-thumb{width:11px;height:11px;border-radius:50%;background:var(--gold);border:0;cursor:pointer}
+.tour-speed-wrap{position:relative}
+.tour-speed-btn{font-size:clamp(.55rem,.7vw,.7rem)!important;font-weight:700!important;letter-spacing:.5px;min-width:clamp(32px,3vw,40px);border-radius:6px!important;font-family:inherit}
+.tour-speed-menu{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:rgba(20,20,25,.92);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:10px;padding:4px;display:none;z-index:20;min-width:46px;border:1px solid rgba(255,255,255,.08)}
+.tour-speed-menu.open{display:block}
+.tour-speed-opt{padding:5px 10px;border-radius:6px;color:rgba(255,255,255,.6);font-size:.7rem;font-weight:500;cursor:pointer;text-align:center;transition:background .2s,color .2s}
+.tour-speed-opt:hover{background:rgba(212,169,79,.15);color:var(--gold)}
+.tour-speed-opt.active{color:var(--gold);font-weight:700}
+.tour-deco{position:absolute;pointer-events:none;z-index:0;opacity:.07}
+.tour-deco svg{width:100%;height:100%}
+.tour-deco-1{top:3%;right:2%;width:clamp(80px,10vw,140px);height:clamp(80px,10vw,140px);animation:float-slow 22s ease-in-out infinite}
+.tour-deco-2{bottom:8%;left:3%;width:clamp(90px,11vw,150px);height:clamp(90px,11vw,150px);animation:float-reverse 26s ease-in-out infinite}
+.tour-deco-3{top:18%;left:5%;width:clamp(60px,8vw,110px);height:clamp(60px,8vw,110px);animation:spin-slow 30s linear infinite}
+.tour-deco-4{bottom:22%;right:3%;width:clamp(70px,9vw,120px);height:clamp(70px,9vw,120px);animation:float-slow 28s ease-in-out infinite;opacity:.08}
+.tour-deco-5{top:50%;left:12%;width:clamp(100px,13vw,180px);height:clamp(100px,13vw,180px);animation:pulse-subtle 5s ease-in-out infinite;opacity:.06}
+.tour-deco-6{top:45%;right:1%;width:clamp(50px,6vw,85px);height:clamp(50px,6vw,85px);animation:spin-slower 25s linear infinite;opacity:.09}
+.cta-btn{display:inline-flex;padding:clamp(10px,1vw,14px) clamp(20px,2.2vw,32px);border-radius:50px;font-weight:700;font-size:clamp(.8rem,.9vw,.88rem);background:var(--maroon);color:var(--white);border:2px solid var(--maroon);cursor:pointer;transition:transform .3s,background .3s;align-items:center;gap:8px;text-decoration:none}
+.cta-btn:hover{background:transparent;color:var(--maroon);transform:translateY(-3px)}
+.cta-btn svg{width:14px;height:14px;flex-shrink:0}
+.reveal{opacity:0;transform:translateY(40px);transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.fade-in{opacity:0;transition:opacity .8s ease}
+.fade-in.active{opacity:1}
+.stagger-children>*{opacity:0;transform:translateY(30px);transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .7s ease}
+.stagger-children.active>*:nth-child(1){transition-delay:.05s;opacity:1;transform:translateY(0)}
+.stagger-children.active>*:nth-child(2){transition-delay:.12s;opacity:1;transform:translateY(0)}
+.stagger-children.active>*:nth-child(3){transition-delay:.19s;opacity:1;transform:translateY(0)}
+.stagger-children.active>*:nth-child(4){transition-delay:.26s;opacity:1;transform:translateY(0)}
+.stagger-children.active>*:nth-child(5){transition-delay:.33s;opacity:1;transform:translateY(0)}
+.stagger-children.active>*:nth-child(6){transition-delay:.4s;opacity:1;transform:translateY(0)}
+.footer{background:var(--dark);color:rgba(255,255,255,.8);padding:clamp(40px,6vw,80px) 0 clamp(20px,3vw,40px);position:relative}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);margin-bottom:clamp(30px,4vw,50px)}
+.footer-brand .footer-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.footer-brand .footer-logo svg{flex-shrink:0}
+.footer-brand .footer-logo span{font-size:clamp(1rem,1.3vw,1.25rem);font-weight:700;color:var(--white)}
+.footer-brand p{font-size:.85rem;line-height:1.7;opacity:.65;max-width:360px}
+.footer-social{display:flex;gap:12px;margin-top:20px}
+.footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.footer-social a:hover{background:var(--gold);transform:translateY(-3px)}
+.footer-social a svg{width:16px;height:16px}
+.footer-col h4{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul li a{font-size:.82rem;opacity:.65;transition:opacity .3s,padding-left .3s;display:inline-block}
+.footer-col ul li a:hover{opacity:1;padding-left:4px;color:var(--gold)}
+.footer-bottom{text-align:center;padding-top:clamp(16px,2vw,24px);border-top:1px solid rgba(255,255,255,.06);font-size:.78rem;opacity:.45}
+@media(max-width:1200px){
+.edge-grid{grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.2vw,16px)}
+.tour-grid{grid-template-columns:1fr}
+.tour-text{text-align:center}
+.tour-text .tour-features{justify-content:center}
+}
+@media(max-width:992px){
+.bulletin{position:static;margin-top:24px}
+.bulletin-body{max-height:320px}
+.carousel-card{width:clamp(110px,20vw,240px);height:clamp(145px,26vw,310px)}
+}
+@media(max-width:768px){
+.edge-grid{grid-template-columns:1fr 1fr;gap:clamp(10px,1.5vw,16px)}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:576px){
+.edge-grid{grid-template-columns:1fr;gap:14px}
+.carousel-card{width:clamp(90px,28vw,140px);height:clamp(115px,36vw,180px)}
+.carousel-card.pos-left2,.carousel-card.pos-right2{opacity:0;pointer-events:none}
+.stars-card img{height:clamp(260px,68vw,440px)}
+.stars-track{gap:clamp(24px,3.6vw,48px);padding:clamp(20px,2.8vw,32px) 0}
+.stars-marquee-section{padding:clamp(24px,4vw,48px) 0;gap:clamp(36px,5.6vw,64px)}
+}
+@media(max-width:430px){
+.carousel-card{width:85px;height:110px}
+.carousel-card.pos-right1{transform:translate(-50%,-50%) translateX(85px) scale(0.78);opacity:.6}
+.tour-volume-slider{width:32px}
+}
+@media(max-width:390px){
+.stars-card img{height:clamp(210px,56vw,330px)}
+.stars-track{gap:clamp(16px,2.4vw,24px);padding:clamp(16px,2.4vw,24px) 0}
+.stars-marquee-section{padding:clamp(20px,3.6vw,40px) 0;gap:clamp(28px,4.8vw,48px)}
+.carousel-card{width:75px;height:100px}
+.carousel-card.pos-left1{transform:translate(-50%,-50%) translateX(-75px) scale(0.75);opacity:.5}
+.carousel-card.pos-right1{transform:translate(-50%,-50%) translateX(75px) scale(0.75);opacity:.5}
+}
+/* ===== Mobile Carousel — scaled desktop hierarchy ===== */
+@media(max-width:768px){
+  .carousel-inner{height:clamp(320px,100vw,420px)}
+  .carousel-card{width:75vw!important;max-width:300px;height:auto!important;aspect-ratio:3/4}
+  .carousel-card.pos-center{transform:translate(-50%,-50%) translateX(0) scale(1)!important;opacity:1!important;z-index:10!important;box-shadow:0 12px 40px rgba(101,20,33,.2)!important}
+  .carousel-card.pos-left1{transform:translate(-50%,-50%) translateX(-58vw) scale(0.85)!important;opacity:.65!important;z-index:8!important}
+  .carousel-card.pos-right1{transform:translate(-50%,-50%) translateX(58vw) scale(0.85)!important;opacity:.65!important;z-index:8!important}
+  .carousel-card.pos-left2,.carousel-card.pos-right2,.carousel-card.pos-left3,.carousel-card.pos-right3,.carousel-card.pos-hidden{opacity:0!important;pointer-events:none!important}
+  .carousel-card .card-overlay{padding:clamp(10px,2vw,16px)}
+  .carousel-card .card-overlay h3{font-size:clamp(.7rem,2.2vw,.85rem)}
+  .carousel-card .card-overlay span{font-size:clamp(.55rem,1.8vw,.7rem)}
+}
+@media(max-width:480px){
+  .carousel-card{width:75vw!important;max-width:300px;height:auto!important;aspect-ratio:3/4}
+  .carousel-card.pos-left1{transform:translate(-50%,-50%) translateX(-65vw) scale(0.82)!important;opacity:.6!important}
+  .carousel-card.pos-right1{transform:translate(-50%,-50%) translateX(65vw) scale(0.82)!important;opacity:.6!important}
+  .carousel-card .card-overlay{padding:clamp(8px,1.8vw,12px)}
+  .carousel-card .card-overlay h3{font-size:clamp(.6rem,2.8vw,.75rem)}
+  .carousel-card .card-overlay span{font-size:clamp(.48rem,2.2vw,.6rem)}
+}
+/* ===== Mobile Stars — 2× cards ===== */
+@media(max-width:768px){
+.stars-card img{height:clamp(240px,44vw,400px);max-width:none}
+.stars-track{gap:clamp(24px,3.6vw,48px);padding:clamp(12px,2vw,24px) 0}
+.stars-marquee-section{padding:clamp(16px,3vw,40px) 0;gap:clamp(28px,4vw,56px)}
+}
+/* ===== Micro Animations ===== */
+@keyframes float-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+@keyframes float-reverse{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+@keyframes spin-slow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes spin-slower{0%{transform:rotate(0deg)}100%{transform:rotate(-360deg)}}
+@keyframes pulse-subtle{0%,100%{opacity:.035}50%{opacity:.055}}
+@keyframes tourPulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.6}100%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
+@keyframes shimmer-move{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes dot-drift{0%,100%{transform:translate(0,0)}25%{transform:translate(6px,-8px)}50%{transform:translate(-4px,10px)}75%{transform:translate(8px,4px)}}
+/* Global decorative elements — opacity nudged up slightly per Part 4 */
+.bg-deco{position:absolute;pointer-events:none;z-index:0}
+.bg-deco svg{width:100%;height:100%}
+.bg-deco-1{top:5%;right:-4%;width:clamp(180px,22vw,360px);height:clamp(180px,22vw,360px);opacity:.08;animation:float-slow 28s ease-in-out infinite}
+.bg-deco-2{bottom:8%;left:-3%;width:clamp(160px,20vw,320px);height:clamp(160px,20vw,320px);opacity:.07;animation:float-reverse 32s ease-in-out infinite}
+.bg-deco-3{top:15%;left:8%;width:clamp(140px,16vw,260px);height:clamp(140px,16vw,260px);opacity:.08;animation:spin-slow 40s linear infinite}
+.bg-deco-4{bottom:25%;right:6%;width:clamp(120px,14vw,220px);height:clamp(120px,14vw,220px);opacity:.07;animation:pulse-subtle 6s ease-in-out infinite}
+.bg-deco-5{top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(280px,35vw,560px);height:clamp(280px,35vw,560px);opacity:.055;animation:spin-slower 50s linear infinite}
+.bg-deco-6{top:10%;right:-2%;width:clamp(200px,26vw,420px);height:clamp(200px,26vw,420px);opacity:.09;animation:float-slow 35s ease-in-out infinite}
+.bg-deco-7{bottom:5%;left:-5%;width:clamp(240px,30vw,480px);height:clamp(240px,30vw,480px);opacity:.08;animation:float-reverse 40s ease-in-out infinite}
+.edge-deco{position:absolute;pointer-events:none;z-index:0}
+.edge-deco svg{width:100%;height:100%}
+.edge-deco-1{top:-5%;right:-5%;width:clamp(280px,36vw,580px);height:clamp(280px,36vw,580px);opacity:.07;animation:float-slow 30s ease-in-out infinite}
+.edge-deco-2{bottom:-8%;left:-5%;width:clamp(240px,30vw,480px);height:clamp(240px,30vw,480px);opacity:.065;animation:spin-slow 45s linear infinite}
+.edge-deco-3{top:40%;left:50%;transform:translate(-50%,-50%);width:clamp(300px,38vw,600px);height:clamp(300px,38vw,600px);opacity:.05;animation:pulse-subtle 8s ease-in-out infinite}
+@media(min-width:1920px){
+.container{max-width:1600px}
+}
+@media(min-width:2560px){
+.container{max-width:1800px}
+}
+/* ===== Maroon Separator Strips ===== */
+.maroon-strip{position:relative;width:100%;height:clamp(20px,3.5vw,50px);overflow:hidden;pointer-events:none;z-index:1}
+.maroon-strip svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.maroon-strip.diagonal{background:linear-gradient(135deg,var(--dark) 0%,var(--maroon) 40%,rgba(212,169,79,.15) 100%)}
+.maroon-strip.ribbon{background:linear-gradient(90deg,transparent 0%,var(--dark) 15%,var(--maroon) 50%,var(--dark) 85%,transparent 100%)}
+.maroon-strip.wave{background:linear-gradient(135deg,var(--maroon) 0%,var(--dark) 100%)}
+.maroon-strip.gold-line{height:clamp(3px,0.4vw,6px);background:linear-gradient(90deg,transparent 0%,var(--gold) 20%,#e8c66a 50%,var(--gold) 80%,transparent 100%)}
+.maroon-strip.gradient-divider{height:clamp(4px,0.6vw,8px);background:linear-gradient(90deg,var(--dark),var(--maroon),var(--gold),var(--maroon),var(--dark))}
+.maroon-strip.geo-edge{height:clamp(12px,2vw,30px);background:repeating-linear-gradient(135deg,var(--dark) 0px,var(--dark) 6px,transparent 6px,transparent 12px),repeating-linear-gradient(-135deg,var(--maroon) 0px,var(--maroon) 6px,transparent 6px,transparent 12px)}
+/* ===== Background Depth Enhancements ===== */
+.bg-glow{position:absolute;pointer-events:none;z-index:0;border-radius:50%;filter:blur(clamp(40px,6vw,100px))}
+.bg-glow-1{width:clamp(300px,40vw,700px);height:clamp(300px,40vw,700px);background:radial-gradient(circle,rgba(212,169,79,.15),transparent 70%);top:-15%;right:-10%}
+.bg-glow-2{width:clamp(250px,35vw,600px);height:clamp(250px,35vw,600px);background:radial-gradient(circle,rgba(123,45,53,.12),transparent 70%);bottom:-10%;left:-8%}
+.bg-glow-3{width:clamp(200px,28vw,500px);height:clamp(200px,28vw,500px);background:radial-gradient(circle,rgba(212,169,79,.12),transparent 70%);top:40%;left:50%;transform:translate(-50%,-50%)}
+.bg-glow-4{width:clamp(180px,24vw,400px);height:clamp(180px,24vw,400px);background:radial-gradient(circle,rgba(123,45,53,.1),transparent 70%);bottom:20%;right:5%}
+.bg-mesh{position:absolute;pointer-events:none;z-index:0;opacity:.08;width:100%;height:100%;top:0;left:0}
+.bg-mesh-1{background:radial-gradient(circle at 20% 30%,var(--maroon) 0%,transparent 50%),radial-gradient(circle at 80% 70%,var(--gold) 0%,transparent 50%)}
+.bg-mesh-2{background:radial-gradient(circle at 10% 80%,var(--gold) 0%,transparent 40%),radial-gradient(circle at 90% 20%,var(--maroon) 0%,transparent 40%)}
+/* ===== Engineering Vector Decorations ===== */
+.bg-vector{position:absolute;pointer-events:none;z-index:0}
+.bg-vector svg{width:100%;height:100%}
+.bg-vector-1{top:8%;right:-3%;width:clamp(160px,20vw,340px);height:clamp(160px,20vw,340px);opacity:.1;animation:float-slow 30s ease-in-out infinite}
+.bg-vector-2{bottom:6%;left:-4%;width:clamp(200px,24vw,400px);height:clamp(200px,24vw,400px);opacity:.095;animation:float-reverse 35s ease-in-out infinite}
+.bg-vector-3{top:20%;left:10%;width:clamp(120px,16vw,280px);height:clamp(120px,16vw,280px);opacity:.1;animation:spin-slow 45s linear infinite}
+.bg-vector-4{bottom:30%;right:4%;width:clamp(140px,18vw,300px);height:clamp(140px,18vw,300px);opacity:.09;animation:pulse-subtle 7s ease-in-out infinite}
+.bg-vector-5{top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(300px,40vw,650px);height:clamp(300px,40vw,650px);opacity:.08;animation:spin-slower 55s linear infinite}
+.bg-vector-6{top:12%;left:2%;width:clamp(140px,18vw,280px);height:clamp(140px,18vw,280px);opacity:.09;animation:float-slow 38s ease-in-out infinite}
+.bg-vector-7{bottom:10%;right:6%;width:clamp(180px,22vw,320px);height:clamp(180px,22vw,320px);opacity:.085;animation:float-reverse 42s ease-in-out infinite}
+.bg-vector-8{top:35%;right:2%;width:clamp(120px,15vw,240px);height:clamp(120px,15vw,240px);opacity:.08;animation:spin-slower 60s linear infinite}
+/* ===== Section Background Variations ===== */
+.section-bg-cream{background:#faf5ed}
+.section-bg-maroon-tint{background:rgba(123,45,53,.02)}
+.section-bg-warm{background:#fcf8f4}
+.section-bg-subtle{background:linear-gradient(180deg,rgba(123,45,53,.03) 0%,transparent 30%,transparent 70%,rgba(212,169,79,.03) 100%)}
+
+/* ===== Premium IITM Background Decorations ===== */
+.bp-grid{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.08;background-image:linear-gradient(rgba(123,45,53,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(123,45,53,.12) 1px,transparent 1px);background-size:clamp(40px,4vw,60px) clamp(40px,4vw,60px)}
+.bp-grid-fade{-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
+.flt-shape{position:absolute;pointer-events:none;z-index:0;opacity:.08}
+.flt-shape svg{width:100%;height:100%;display:block}
+.flt-1{animation:fltFloat1 28s ease-in-out infinite}
+.flt-2{animation:fltFloat2 34s ease-in-out infinite}
+.flt-3{animation:fltFloat3 40s ease-in-out infinite}
+.flt-4{animation:fltSpin 48s linear infinite}
+@keyframes fltFloat1{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes fltFloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+@keyframes fltFloat3{0%,100%{transform:translate(0,0)}25%{transform:translate(8px,-10px)}50%{transform:translate(-6px,10px)}75%{transform:translate(10px,6px)}}
+@keyframes fltSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.gd{position:absolute;pointer-events:none;z-index:0;width:clamp(3px,.3vw,5px);height:clamp(3px,.3vw,5px);border-radius:50%;background:var(--gold);opacity:0;animation:gdPulse 7s ease-in-out infinite}
+@keyframes gdPulse{0%,100%{opacity:0;transform:scale(0)}20%{opacity:.35;transform:scale(1)}80%{opacity:.35;transform:scale(1)}}
+.crn{position:absolute;pointer-events:none;z-index:0;opacity:.08}
+.crn svg{width:100%;height:100%;display:block}
+.crn-tl{top:0;left:0;width:clamp(50px,7vw,110px);height:clamp(50px,7vw,110px)}
+.crn-tr{top:0;right:0;width:clamp(50px,7vw,110px);height:clamp(50px,7vw,110px);transform:scaleX(-1)}
+.crn-bl{bottom:0;left:0;width:clamp(50px,7vw,110px);height:clamp(50px,7vw,110px);transform:scaleY(-1)}
+.crn-br{bottom:0;right:0;width:clamp(50px,7vw,110px);height:clamp(50px,7vw,110px);transform:scale(-1,-1)}
+.sm{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sm::before{content:'';position:absolute;width:clamp(280px,45vw,700px);height:clamp(280px,45vw,700px);border-radius:50%;filter:blur(clamp(50px,7vw,110px));pointer-events:none}
+.sm-gt::before{top:-18%;right:-12%;background:radial-gradient(circle,rgba(212,169,79,.12),transparent 70%)}
+.sm-mb::before{bottom:-18%;left:-12%;background:radial-gradient(circle,rgba(123,45,53,.08),transparent 70%)}
+.sm-gb::before{bottom:-18%;left:-12%;background:radial-gradient(circle,rgba(212,169,79,.09),transparent 70%)}
+.sm-mt::before{top:-18%;right:-12%;background:radial-gradient(circle,rgba(123,45,53,.07),transparent 70%)}
+.blb{position:absolute;pointer-events:none;z-index:0;border-radius:50%;filter:blur(clamp(45px,5vw,80px));opacity:.07}
+.blb-m1{width:clamp(180px,28vw,450px);height:clamp(180px,28vw,450px);background:radial-gradient(circle,rgba(123,45,53,.5),transparent 70%)}
+.blb-m2{width:clamp(160px,22vw,380px);height:clamp(160px,22vw,380px);background:radial-gradient(circle,rgba(123,45,53,.4),transparent 70%)}
+.blb-g{width:clamp(180px,28vw,450px);height:clamp(180px,28vw,450px);background:radial-gradient(circle,rgba(212,169,79,.25),transparent 70%)}
+.slow-parallax{will-change:transform;transition:transform .05s linear}
+
+/* ===== Background Depth — Enhanced Engineering Decorations ===== */
+.bg-ring{position:absolute;pointer-events:none;z-index:0;border-radius:50%;border:1px solid rgba(123,45,53,.12);opacity:.08}
+.bg-ring-1{width:clamp(300px,40vw,600px);height:clamp(300px,40vw,600px);border-width:1px;top:-5%;right:-8%;animation:spin-slower 70s linear infinite}
+.bg-ring-2{width:clamp(200px,28vw,450px);height:clamp(200px,28vw,450px);border-width:.6px;bottom:5%;left:-6%;animation:spin-slow 90s linear infinite;border-color:rgba(212,169,79,.1)}
+.bg-dots-large{position:absolute;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(212,169,79,.12) 1px,transparent 1px);background-size:clamp(20px,2.5vw,35px) clamp(20px,2.5vw,35px)}
+
+/* ===== Latest News & Events ===== */
+.ne-section{padding:clamp(28px,4.8vw,56px) 0;position:relative;overflow:hidden}
+.ne-breaking{display:flex;align-items:center;gap:0;margin-bottom:clamp(16px,2vw,28px);padding:0;background:var(--white);border:1px solid rgba(123,45,53,.1);border-radius:var(--r-sm);overflow:hidden;box-shadow:0 4px 16px rgba(101,20,33,.04)}
+.ne-breaking-label{flex-shrink:0;font-size:clamp(.6rem,.65vw,.7rem);font-weight:800;letter-spacing:2px;padding:clamp(8px,1vw,12px) clamp(14px,1.8vw,20px);background:var(--maroon);color:var(--white);text-transform:uppercase;border-radius:0;min-width:80px;text-align:center}
+.ne-breaking-inner{overflow:hidden;flex:1;white-space:nowrap;font-size:clamp(.68rem,.75vw,.78rem);color:#666;font-weight:500;padding-left:clamp(12px,1.5vw,20px)}
+.ne-breaking-track{display:inline-flex;white-space:nowrap;will-change:transform}
+.ne-breaking-text{white-space:nowrap;flex-shrink:0;padding-right:clamp(24px,3vw,40px)}
+.ne-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(16px,2.5vw,32px);align-items:start}
+.ne-swipe-wrap{position:relative;border-radius:var(--r-lg);overflow:hidden;background:var(--white);box-shadow:var(--shadow)}
+.ne-stage{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#f7f3f1;perspective:2000px}
+.ne-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--white);opacity:0;z-index:1;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:none}
+.ne-slide.current{opacity:1;z-index:3}
+.ne-slide.behind{opacity:1;z-index:2}
+.ne-slide.flip-out{z-index:4;opacity:.55;transform:rotateY(-20deg) scale(0.93);transition:transform .9s cubic-bezier(.22,1,.36,1),opacity .9s ease;box-shadow:18px 0 40px rgba(0,0,0,.1)}
+.ne-img-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:clamp(2px,.3vw,6px)}
+.ne-img-wrap img{max-width:100%;max-height:100%;object-fit:contain;display:block;border-radius:3px}
+.ne-slide-foot{padding:clamp(8px,1vw,14px) clamp(12px,1.4vw,18px);border-top:1px solid rgba(101,20,33,.06);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(4px,.6vw,10px)}
+.ne-slide-foot .nsf-d{font-size:clamp(.6rem,.65vw,.72rem);font-weight:700;color:var(--maroon);letter-spacing:.5px}
+.ne-slide-foot .nsf-b{padding:2px 10px;border-radius:6px;background:rgba(212,169,79,.12);color:var(--gold);font-size:clamp(.52rem,.58vw,.62rem);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.ne-slide-foot .nsf-t{font-size:clamp(.7rem,.82vw,.9rem);font-weight:600;color:#444;width:100%;line-height:1.35}
+.ne-ctrl{display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.2vw,18px);padding:clamp(6px,.8vw,12px);border-top:1px solid rgba(101,20,33,.06)}
+.ne-arrow{width:clamp(28px,2.3vw,34px);height:clamp(28px,2.3vw,34px);border-radius:50%;border:1.5px solid rgba(123,45,53,.15);background:var(--white);color:var(--maroon);font-size:clamp(.95rem,1.1vw,1.2rem);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .3s;font-weight:500;line-height:1}
+.ne-arrow:hover{background:var(--maroon);color:var(--white);transform:scale(1.08)}
+.ne-dots{display:flex;gap:6px}
+.ne-dot{width:clamp(5px,.5vw,7px);height:clamp(5px,.5vw,7px);border-radius:50%;background:rgba(123,45,53,.15);cursor:pointer;transition:background .3s,transform .3s;border:0;padding:0}
+.ne-dot.active{background:var(--maroon);transform:scale(1.35)}
+.ne-headlines{background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);overflow:hidden}
+.ne-headlines-hd{padding:clamp(10px,1.2vw,16px) clamp(14px,1.6vw,20px);font-size:clamp(.75rem,.85vw,.9rem);font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--dark),var(--maroon));letter-spacing:.3px}
+.ne-headlines-bd{max-height:clamp(280px,30vw,400px);overflow:hidden;padding:clamp(4px,.5vw,6px) 0;position:relative}
+.ne-hl-item{display:flex;align-items:center;gap:clamp(6px,.8vw,12px);padding:clamp(7px,.8vw,11px) clamp(12px,1.4vw,18px);cursor:pointer;transition:background .3s,border-color .3s;border-left:3px solid transparent}
+.ne-hl-item:hover{background:rgba(123,45,53,.03)}
+.ne-hl-item.active{background:rgba(212,169,79,.06);border-left-color:var(--gold)}
+.ne-hl-b{flex:0 0 90px;min-width:0;padding:2px 8px;border-radius:5px;font-size:clamp(.48rem,.52vw,.58rem);font-weight:700;text-transform:uppercase;letter-spacing:.5px;background:rgba(212,169,79,.12);color:var(--gold);text-align:center;box-sizing:border-box}
+.ne-new{flex-shrink:0;padding:1px 5px;border-radius:3px;font-size:clamp(.45rem,.48vw,.52rem);font-weight:800;letter-spacing:.3px;background:var(--maroon);color:#fff;line-height:1.3}
+.ne-hl-c{flex:1;min-width:0}
+.ne-hl-t{font-size:clamp(.65rem,.72vw,.78rem);font-weight:600;color:#444;line-height:1.4;margin-bottom:3px}
+.ne-hl-m{font-size:clamp(.52rem,.56vw,.62rem);color:#999;font-weight:500}
+.ne-hl-ar{flex-shrink:0;color:var(--maroon);font-size:.9rem;opacity:0;transform:translateX(-5px);transition:opacity .3s,transform .3s;font-weight:700}
+.ne-hl-item:hover .ne-hl-ar,.ne-hl-item.active .ne-hl-ar{opacity:1;transform:translateX(0)}
+.ne-vm-wrap{animation:neVMarquee 22s linear infinite}
+.ne-headlines-bd.marquee:hover .ne-vm-wrap{animation-play-state:paused}
+@keyframes neVMarquee{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+@media(max-width:992px){
+.ne-layout{grid-template-columns:1fr}
+.ne-stage{aspect-ratio:5/4}
+.ne-headlines-bd{max-height:clamp(200px,22vw,300px)}
+}
+@media(max-width:600px){
+.ne-stage{aspect-ratio:4/3}
+}
+@media(max-width:390px){
+.ne-stage{aspect-ratio:3/4}
+.ne-breaking-label{font-size:.5rem;padding:3px 8px}
+.ne-hl-t{font-size:.6rem}
+}
+
+/* ===== Premium Visual Enhancements ===== */
+.neo-flt{position:absolute;pointer-events:none;z-index:0}
+.neo-flt svg{width:100%;height:100%;display:block}
+.neo-f1{animation:neoF1 30s ease-in-out infinite;opacity:.09}
+.neo-f2{animation:neoF2 36s ease-in-out infinite;opacity:.08}
+.neo-f3{animation:neoF3 44s ease-in-out infinite;opacity:.075}
+.neo-f4{animation:neoSpin 52s linear infinite;opacity:.07}
+@keyframes neoF1{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes neoF2{0%,100%{transform:translateY(0)}50%{transform:translateY(13px)}}
+@keyframes neoF3{0%,100%{transform:translate(0,0)}25%{transform:translate(8px,-9px)}50%{transform:translate(-6px,10px)}75%{transform:translate(10px,5px)}}
+@keyframes neoSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.premium-strip{position:relative;width:100%;height:clamp(18px,2.5vw,30px);overflow:hidden;pointer-events:none;z-index:1;line-height:0}
+.premium-strip svg{width:100%;height:100%;display:block}
+.ne-social{background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.7);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);padding:clamp(12px,1.4vw,20px);margin-top:clamp(12px,1.5vw,20px)}
+.ne-social-title{font-size:clamp(.7rem,.8vw,.85rem);font-weight:700;color:var(--maroon);margin-bottom:clamp(10px,1vw,14px);letter-spacing:.3px}
+.ne-social-btns{display:flex;gap:clamp(8px,.8vw,12px);flex-wrap:wrap}
+.ne-social-btn{display:inline-flex;align-items:center;gap:clamp(6px,.6vw,10px);padding:clamp(6px,.7vw,10px) clamp(12px,1.2vw,18px);border-radius:50px;font-size:clamp(.6rem,.65vw,.72rem);font-weight:600;text-decoration:none;transition:transform .3s,box-shadow .3s;border:1.5px solid transparent;cursor:pointer}
+.ne-social-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(101,20,33,.1)}
+.ne-social-btn svg{width:clamp(14px,1.2vw,18px);height:clamp(14px,1.2vw,18px);flex-shrink:0}
+.ne-sb-ig{background:linear-gradient(135deg,#feda77,#d62976,#962fbf,#4f5bd5);color:var(--white);border-color:transparent}
+.ne-sb-li{background:#0a66c2;color:var(--white);border-color:#0a66c2}
+.ne-sb-yt{background:#ff0000;color:var(--white);border-color:#ff0000}
+.ne-sb-fb{background:#1877F2;color:var(--white);border-color:#1877F2}
+.ne-sb-x{background:#000;color:var(--white);border-color:#000}
+@media(min-width:993px){
+  .ne-layout{align-items:stretch}
+  .ne-swipe-wrap{display:flex;flex-direction:column;height:100%}
+  .ne-stage{aspect-ratio:auto;flex:1}
+}
+@media(max-width:480px){.ne-social-btns{flex-direction:column}}
+
+/* ===== Scholarships & Government Schemes ===== */
+.sch-section{padding:clamp(24px,4vw,44px) 0;position:relative;overflow:hidden;background:#faf7f7}
+.sch-showcase{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);border:1px solid rgba(212,169,79,.12);overflow:hidden}
+.sch-slider{position:relative}
+.sch-slide{display:flex;gap:0;min-height:400px;animation:schFadeIn .4s ease-out}
+@keyframes schFadeIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+.sch-poster-panel{flex:0 0 42%;background:var(--light);display:flex;align-items:center;justify-content:center;padding:clamp(16px,2vw,28px)}
+.sch-poster{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.08);border-radius:6px}
+.sch-info-panel{flex:1;padding:clamp(20px,2.5vw,36px) clamp(20px,2.5vw,36px) clamp(16px,2vw,28px);display:flex;flex-direction:column;justify-content:center;gap:10px}
+.sch-badge{display:inline-flex;align-items:center;gap:5px;font-size:clamp(.55rem,.58vw,.65rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);padding:4px 12px;background:rgba(212,169,79,.08);border-radius:20px;border:1px solid rgba(212,169,79,.15)}
+.sch-heading{font-size:clamp(1.1rem,1.6vw,1.5rem);font-weight:800;color:var(--dark);line-height:1.2;margin:0}
+.sch-authority{font-size:clamp(.7rem,.78vw,.82rem);color:#777;line-height:1.4}
+.sch-description{font-size:clamp(.68rem,.72vw,.78rem);color:#888;line-height:1.55;margin:2px 0}
+.sch-deadline{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;font-size:clamp(.62rem,.65vw,.7rem);font-weight:600;color:var(--white);background:var(--maroon);border-radius:100px}
+.sch-details-btn{display:inline-flex;align-items:center;gap:8px;padding:clamp(8px,.7vw,11px) clamp(16px,1.3vw,24px);border-radius:50px;font-size:clamp(.68rem,.72vw,.78rem);font-weight:700;background:var(--maroon);color:var(--white);border:2px solid var(--maroon);cursor:pointer;transition:transform .3s,background .3s,color .3s;text-decoration:none;font-family:'Poppins',sans-serif;margin-top:4px}
+.sch-details-btn:hover{background:transparent;color:var(--maroon);transform:translateY(-2px)}
+.sch-details-btn svg{width:13px;height:13px;flex-shrink:0}
+.sch-heading-block{margin-bottom:6px}
+.sch-heading-block span{display:inline-block;color:var(--gold);font-weight:600;font-size:clamp(.6rem,.7vw,.75rem);letter-spacing:3px;text-transform:uppercase;margin-bottom:2px}
+.sch-heading-block h2{font-size:clamp(1rem,1.3vw,1.25rem);font-weight:800;color:var(--maroon);line-height:1.15;letter-spacing:-.3px;margin:0}
+.sch-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.sch-secondary-btn{display:inline-flex;align-items:center;gap:8px;padding:clamp(8px,.7vw,11px) clamp(16px,1.3vw,24px);border-radius:50px;font-size:clamp(.68rem,.72vw,.78rem);font-weight:700;background:transparent;color:var(--maroon);border:2px solid var(--maroon);cursor:pointer;transition:transform .3s,background .3s,color .3s;text-decoration:none;font-family:'Poppins',sans-serif;margin-top:4px}
+.sch-secondary-btn:hover{background:var(--maroon);color:var(--white);transform:translateY(-2px)}
+.sch-secondary-btn svg{width:13px;height:13px;flex-shrink:0}
+.sch-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:10px 20px 16px;border-top:1px solid rgba(123,45,53,.05)}
+.sch-arrow{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(123,45,53,.12);background:var(--white);color:var(--maroon);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;font-family:'Poppins',sans-serif;padding:0}
+.sch-arrow:hover,.sch-arrow:focus{border-color:var(--maroon);background:var(--light)}
+.sch-arrow:disabled{opacity:.25;cursor:default;pointer-events:none}
+.sch-arrow svg{width:18px;height:18px;display:block}
+.sch-counter{font-size:clamp(.65rem,.7vw,.75rem);font-weight:600;color:#999;letter-spacing:1px;min-width:45px;text-align:center}
+@media(max-width:768px){
+.sch-slide{flex-direction:column;min-height:0}
+.sch-poster-panel{flex:none;padding:16px}
+.sch-poster{max-height:360px;width:auto;margin:0 auto}
+.sch-info-panel{padding:16px 18px 14px;gap:8px}
+.sch-badge{font-size:.6rem}
+.sch-heading{font-size:1.05rem}
+.sch-deadline,.sch-details-btn,.sch-secondary-btn{width:100%;justify-content:center}
+.sch-actions{flex-direction:column}
+.sch-controls{padding:8px 16px 14px}
+}
+@media(max-width:480px){
+.sch-section{padding:16px 0}
+.sch-poster-panel{padding:8px}
+.sch-poster{max-height:280px}
+.sch-info-panel{padding:12px 14px 10px;gap:6px}
+.sch-heading{font-size:.95rem}
+.sch-authority,.sch-description{font-size:.65rem}
+.sch-details-btn{font-size:.65rem;padding:8px 14px}
+.sch-arrow{width:32px;height:32px}
+.sch-arrow svg{width:15px;height:15px}
+}
+@media(prefers-reduced-motion:reduce){.sch-slide{animation:none}}
+</style>
+</head>
+<body>
+<main>
+
+<section class="section section-bg-alt section-bg-cream" id="highlights" style="position:relative;padding:clamp(10px,1.6vw,20px) 0">
+  <div class="bp-grid bp-grid-fade"></div>
+  <div class="sm sm-gt"></div>
+  <div class="blb blb-m1" style="top:10%;right:-5%"></div>
+  <div class="gd" style="top:8%;left:15%;animation-delay:0s"></div>
+  <div class="gd" style="top:25%;right:20%;animation-delay:2.3s"></div>
+  <div class="gd" style="bottom:30%;left:30%;animation-delay:4.1s"></div>
+  <div class="gd" style="top:45%;right:8%;animation-delay:1.1s"></div>
+  <div class="gd" style="bottom:15%;right:25%;animation-delay:3.4s"></div>
+  <div class="gd" style="top:70%;left:10%;animation-delay:5.2s"></div>
+  <div class="gd" style="top:30%;left:45%;animation-delay:.6s"></div>
+  <div class="gd" style="bottom:45%;right:45%;animation-delay:2.8s"></div>
+  <div class="gd" style="top:60%;right:35%;animation-delay:4.6s"></div>
+  <div class="gd" style="bottom:10%;left:55%;animation-delay:1.9s"></div>
+  <div class="flt-shape flt-1" style="top:5%;left:3%;width:clamp(60px,7vw,110px);height:clamp(60px,7vw,110px);opacity:.04"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50" stroke="#7b2d35" stroke-width="1.2" fill="none"/><circle cx="60" cy="60" r="30" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="60" cy="60" r="10" stroke="#7b2d35" stroke-width=".5" fill="none"/><path d="M10 60 L110 60" stroke="#7b2d35" stroke-width=".4"/><path d="M60 10 L60 110" stroke="#7b2d35" stroke-width=".4"/></svg></div>
+  <div class="flt-shape flt-2" style="bottom:8%;right:4%;width:clamp(70px,8vw,130px);height:clamp(70px,8vw,130px);opacity:.04"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M50 18 L75 32 L75 68 L50 82 L25 68 L25 32 Z" stroke="#d4a94f" stroke-width=".8" fill="none"/></svg></div>
+  <div class="flt-shape flt-3" style="top:50%;left:60%;width:clamp(40px,5vw,80px);height:clamp(40px,5vw,80px);opacity:.035"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="60" height="60" rx="8" stroke="#7b2d35" stroke-width="1" fill="none"/><rect x="22" y="22" width="36" height="36" rx="5" stroke="#d4a94f" stroke-width=".7" fill="none"/></svg></div>
+  <div class="crn crn-tl"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 115 L5 5 L115 5" stroke="#7b2d35" stroke-width="1.2"/><path d="M15 105 L15 15 L105 15" stroke="#7b2d35" stroke-width="1.2"/><circle cx="15" cy="15" r="3" stroke="#d4a94f" stroke-width="1.2" fill="none"/><path d="M5 60 L20 60" stroke="#7b2d35" stroke-width="1"/><path d="M60 5 L60 20" stroke="#7b2d35" stroke-width="1"/><path d="M15 55 L55 55 L55 15" stroke="#d4a94f" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+  <div class="crn crn-br"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 115 L5 5 L115 5" stroke="#7b2d35" stroke-width="1.2"/><path d="M15 105 L15 15 L105 15" stroke="#7b2d35" stroke-width="1.2"/><circle cx="15" cy="15" r="3" stroke="#d4a94f" stroke-width="1.2" fill="none"/><path d="M5 60 L20 60" stroke="#7b2d35" stroke-width="1"/><path d="M60 5 L60 20" stroke="#7b2d35" stroke-width="1"/><path d="M15 55 L55 55 L55 15" stroke="#d4a94f" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+  <div class="neo-flt neo-f3" style="bottom:15%;right:10%;width:clamp(70px,8vw,130px);height:clamp(70px,8vw,130px);opacity:.035"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="20" y1="180" x2="180" y2="180" stroke="#7b2d35" stroke-width=".8"/><line x1="20" y1="20" x2="20" y2="180" stroke="#7b2d35" stroke-width=".8"/><line x1="20" y1="20" x2="180" y2="20" stroke="#d4a94f" stroke-width=".6"/><circle cx="100" cy="100" r="50" stroke="#7b2d35" stroke-width=".8" fill="none" stroke-dasharray="4 4"/><circle cx="100" cy="100" r="70" stroke="#d4a94f" stroke-width=".6" fill="none" stroke-dasharray="2 6"/><line x1="100" y1="30" x2="100" y2="170" stroke="#7b2d35" stroke-width=".4"/><line x1="30" y1="100" x2="170" y2="100" stroke="#7b2d35" stroke-width=".4"/><circle cx="100" cy="100" r="3" fill="#d4a94f" opacity=".5"/></svg></div>
+  <div class="neo-flt neo-f1" style="top:12%;right:20%;width:clamp(45px,5vw,80px);height:clamp(45px,5vw,80px);opacity:.03"><svg viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="40" width="80" height="90" stroke="#7b2d35" stroke-width="1" fill="none"/><rect x="35" y="55" width="20" height="20" stroke="#d4a94f" stroke-width=".7" fill="none"/><rect x="65" y="55" width="20" height="20" stroke="#7b2d35" stroke-width=".7" fill="none"/><rect x="40" y="85" width="40" height="45" stroke="#d4a94f" stroke-width=".7" fill="none"/><line x1="60" y1="85" x2="60" y2="130" stroke="#7b2d35" stroke-width=".5"/><path d="M20 40 L60 10 L100 40" stroke="#7b2d35" stroke-width="1" fill="none"/><line x1="60" y1="10" x2="60" y2="40" stroke="#d4a94f" stroke-width=".6"/></svg></div>
+  <div class="neo-flt neo-f4" style="top:55%;left:8%;width:clamp(35px,4vw,60px);height:clamp(35px,4vw,60px);opacity:.03"><svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L90 32 L50 54 L10 32 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M50 22 L72 35 L50 48 L28 35 Z" stroke="#d4a94f" stroke-width=".7" fill="none"/><path d="M25 45 L25 60 C25 67 38 72 50 72 C62 72 75 67 75 60 L75 45" stroke="#7b2d35" stroke-width=".8" fill="none"/><line x1="50" y1="54" x2="50" y2="62" stroke="#7b2d35" stroke-width=".7"/></svg></div>
+  <div class="bg-mesh bg-mesh-1"></div>
+  <div class="bg-glow bg-glow-3"></div>
+  <div class="bg-blob bg-blob-1"></div>
+  <div class="bg-blob bg-blob-2"></div>
+  <div class="bg-vector bg-vector-2"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="150" r="130" stroke="#7b2d35" stroke-width="1" fill="none" stroke-dasharray="6 8"/><circle cx="150" cy="150" r="85" stroke="#d4a94f" stroke-width=".7" fill="none"/><circle cx="150" cy="150" r="40" stroke="#7b2d35" stroke-width=".5" fill="none" stroke-dasharray="4 6"/><path d="M20 150 H280" stroke="#7b2d35" stroke-width=".3"/><path d="M150 20 V280" stroke="#7b2d35" stroke-width=".3"/></svg></div>
+  <div class="bg-deco bg-deco-1"><svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 200 L200 40 L360 200 L200 360 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M80 200 L200 80 L320 200 L200 320 Z" stroke="#d4a94f" stroke-width=".8" fill="none"/><path d="M120 200 L200 120 L280 200 L200 280 Z" stroke="#7b2d35" stroke-width=".5" fill="none"/><circle cx="200" cy="200" r="4" fill="#d4a94f"/><line x1="200" y1="40" x2="200" y2="360" stroke="#7b2d35" stroke-width=".4"/><line x1="40" y1="200" x2="360" y2="200" stroke="#7b2d35" stroke-width=".4"/></svg></div>
+  <div class="bg-deco bg-deco-6"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="150" cy="150" r="130" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="150" cy="150" r="90" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="150" cy="150" r="50" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M20 150 L280 150" stroke="#7b2d35" stroke-width=".4"/><path d="M150 20 L150 280" stroke="#7b2d35" stroke-width=".4"/><circle cx="150" cy="150" r="5" fill="#d4a94f"/></svg></div>
+  <!-- Added engineering-themed decos: blueprint grid + graduation-cap outline (Part 4) -->
+  <div class="bg-deco" style="top:2%;left:-2%;width:clamp(140px,18vw,260px);height:clamp(140px,18vw,260px);opacity:.06;animation:float-reverse 30s ease-in-out infinite">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 20h160v160H20z" stroke="#7b2d35" stroke-width=".4" fill="none"/>
+      <path d="M20 60h160M20 100h160M20 140h160M60 20v160M100 20v160M140 20v160" stroke="#7b2d35" stroke-width=".2"/>
+      <circle cx="100" cy="100" r="3" fill="#d4a94f"/>
+    </svg>
+  </div>
+  <div class="bg-deco" style="bottom:0%;right:2%;width:clamp(120px,15vw,220px);height:clamp(90px,11vw,160px);opacity:.07;animation:pulse-subtle 6s ease-in-out infinite">
+    <svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 20 L180 55 L100 90 L20 55 Z" stroke="#7b2d35" stroke-width=".6" fill="none"/>
+      <path d="M55 62v30c0 8 20 16 45 16s45-8 45-16V62" stroke="#d4a94f" stroke-width=".5" fill="none"/>
+      <line x1="170" y1="55" x2="170" y2="100" stroke="#7b2d35" stroke-width=".4"/>
+      <circle cx="170" cy="104" r="4" fill="#d4a94f"/>
+    </svg>
+  </div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>Campus Life</span>
+      <h2>Campus Highlights</h2>
+      <p style="font-size:clamp(.85rem,1.1vw,1.05rem);color:#888;font-weight:400;margin-top:8px;line-height:1.4">Experience Life at IITM College of Engineering</p>
+      <div class="line"></div>
+    </div>
+    <div class="gallery-content">
+      <div class="campus-gallery">
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+      <div class="bulletin">
+        <div class="bulletin-header">
+          <div class="bell-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Notices and Circulars</h3>
+        </div>
+        <div class="bulletin-body" id="bulletinBody">
+          <div class="notice-item pinned">
+            <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2"/></svg></div>
+            <div class="n-top">
+              <span class="n-badge">New</span>
+            </div>
+            <div class="n-text"><strong>Fresher's Party 2K26 🎉</strong><br>Dear First-Year Students (BBA, BCA &amp; B.Tech),<br><br>Get ready to celebrate the beginning of an exciting new journey as we warmly welcome you to the Fresher's Party 2K26! ✨<br><br>A day filled with fun, excitement, new friendships, and unforgettable memories awaits you! 💫<br><br>📢 <strong>Important Details:</strong><br>📅 Date: 25th September 2026<br>📍 Venue: Hyatt Centric, Janakpuri, New Delhi</div>
+          </div>
+          <div class="notice-item pinned">
+            <div class="pin-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2"/></svg></div>
+            <div class="n-top">
+              <span class="n-badge">Important</span>
+            </div>
+            <div class="n-text"><strong>Internal Examination Notice</strong><br><br>Internal Examinations for <strong>BBA, BCA &amp; B.Tech</strong> students will commence from <strong>5th October 2026 onwards</strong>.<br><br>📢 The detailed examination date sheet will be announced soon.</div>
+            <a class="n-link" href="https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_063c94c572684973bfebf7cd6d906c38.pdf" target="_blank" rel="noopener noreferrer">View Internal Examination Notice PDF →</a>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Admissions Open for Session 2026-27 — Apply Now</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Farewell 2K26 — Batch of 2022-26 Celebration</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Fiesta 2K26 — Cultural & Technical Fest Results</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Industrial Visit to DRDO SSPL — Report Published</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Sports Day 2026 — Championship Results</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">International Conference on Emerging Technologies — Paper Submission Open</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Summer Training Programs — Registrations Open</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">Merit Scholarship List 2025-26 Published</div>
+          </div>
+          <div class="notice-item">
+            <div class="n-text">NPTEL Course Enrollment for July-December 2026 Open</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-divider bottom"><svg preserveAspectRatio="none" viewBox="0 0 1440 80"><path d="M0,40 C240,0 1200,0 1440,40 L1440,80 L0,80 Z" fill="#f8f4f2"/></svg></div>
+</section>
+
+<!-- ===== Scholarships & Government Schemes ===== -->
+<section class="sch-section" style="position:relative">
+  <div class="container">
+
+    <div class="section-title">
+      <span>STUDENT SUPPORT</span>
+      <h2>Scholarship Schemes</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="sch-showcase" id="scholarshipShowcase">
+      <div class="sch-slider" id="schSliderInner"></div>
+      <div class="sch-controls">
+        <button class="sch-arrow sch-arrow-prev" id="schPrevBtn" aria-label="Previous Scholarship">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="sch-counter" id="schCounter">01 / 01</span>
+        <button class="sch-arrow sch-arrow-next" id="schNextBtn" aria-label="Next Scholarship">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="premium-strip"><svg preserveAspectRatio="none" viewBox="0 0 1440 30" width="1440" height="30"><defs><linearGradient id="ps1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="20%" stop-color="#651421"/><stop offset="45%" stop-color="#7b2d35"/><stop offset="70%" stop-color="#d4a94f"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,15 C120,0 240,30 360,15 S480,0 600,15 S720,30 840,15 S960,0 1080,15 S1200,30 1320,15 S1440,0 1440,15 L1440,30 L0,30 Z" fill="url(#ps1)"/></svg></div>
+<div class="maroon-strip ribbon"></div>
+<section class="section section-bg-subtle" id="programmes" style="position:relative">
+  <div class="bp-grid bp-grid-fade" style="opacity:.03"></div>
+  <div class="sm sm-mt"></div>
+  <div class="blb blb-g" style="top:-10%;right:-8%"></div>
+  <div class="gd" style="top:12%;left:10%;animation-delay:1s"></div>
+  <div class="gd" style="top:40%;right:15%;animation-delay:3.2s"></div>
+  <div class="gd" style="bottom:25%;left:25%;animation-delay:5s"></div>
+  <div class="gd" style="top:60%;left:60%;animation-delay:.5s"></div>
+  <div class="gd" style="top:20%;right:35%;animation-delay:2s"></div>
+  <div class="gd" style="bottom:15%;right:10%;animation-delay:4s"></div>
+  <div class="gd" style="top:75%;left:15%;animation-delay:1.4s"></div>
+  <div class="gd" style="top:8%;right:8%;animation-delay:3.8s"></div>
+  <div class="gd" style="bottom:40%;left:55%;animation-delay:.9s"></div>
+  <div class="flt-shape flt-4" style="top:6%;right:6%;width:clamp(50px,6vw,100px);height:clamp(50px,6vw,100px);opacity:.04"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M50 18 L75 32 L75 68 L50 82 L25 68 L25 32 Z" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="50" cy="50" r="6" stroke="#7b2d35" stroke-width=".6" fill="none"/></svg></div>
+  <div class="flt-shape flt-1" style="top:50%;left:2%;width:clamp(60px,7vw,110px);height:clamp(60px,7vw,110px);opacity:.035"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M10 60 L110 60" stroke="#7b2d35" stroke-width=".4"/><path d="M60 10 L60 110" stroke="#7b2d35" stroke-width=".4"/><path d="M30 30 L90 90" stroke="#d4a94f" stroke-width=".5" stroke-dasharray="4 4"/><path d="M90 30 L30 90" stroke="#d4a94f" stroke-width=".5" stroke-dasharray="4 4"/></svg></div>
+  <div class="flt-shape flt-2" style="bottom:10%;right:3%;width:clamp(55px,6vw,95px);height:clamp(55px,6vw,95px);opacity:.04"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 5 L55 20 L55 40 L40 55 L25 40 L25 20 Z" stroke="#d4a94f" stroke-width="1" fill="none"/><path d="M40 15 L48 22 L48 38 L40 45 L32 38 L32 22 Z" stroke="#7b2d35" stroke-width=".6" fill="none"/></svg></div>
+  <div class="neo-flt neo-f2" style="top:8%;left:8%;width:clamp(65px,7vw,110px);height:clamp(45px,5vw,75px);opacity:.035"><svg viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 60 L40 60 L40 30 L70 30" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M10 80 L50 80 L50 100 L90 100" stroke="#d4a94f" stroke-width=".7" fill="none" stroke-dasharray="3 3"/><path d="M170 40 L140 40 L140 70 L100 70" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="70" cy="30" r="3" stroke="#7b2d35" stroke-width=".7" fill="none"/><circle cx="90" cy="100" r="3" stroke="#d4a94f" stroke-width=".7" fill="none"/><circle cx="100" cy="70" r="3" stroke="#7b2d35" stroke-width=".7" fill="none"/><circle cx="30" cy="60" r="2" fill="#7b2d35"/><circle cx="55" cy="80" r="2" fill="#d4a94f"/></svg></div>
+  <div class="neo-flt neo-f3" style="bottom:12%;left:5%;width:clamp(50px,5vw,85px);height:clamp(50px,5vw,85px);opacity:.03"><svg viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="50" r="4" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="75" cy="20" r="4" stroke="#d4a94f" stroke-width="1" fill="none"/><circle cx="130" cy="50" r="4" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="75" cy="80" r="4" stroke="#d4a94f" stroke-width="1" fill="none"/><path d="M20 50 L75 20 L130 50 L75 80 Z" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M20 50 L75 80" stroke="#d4a94f" stroke-width=".5" stroke-dasharray="3 3"/><path d="M75 20 L75 80" stroke="#7b2d35" stroke-width=".5"/></svg></div>
+  <div class="bg-glow bg-glow-4"></div>
+  <div class="bg-mesh bg-mesh-2"></div>
+  <div class="bg-vector bg-vector-4"><svg viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M125 20 L230 75 L230 175 L125 230 L20 175 L20 75 Z" stroke="#d4a94f" stroke-width="1" fill="none"/><path d="M125 50 L200 88 L200 162 L125 200 L50 162 L50 88 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><circle cx="125" cy="125" r="4" fill="#d4a94f"/></svg></div>
+  <div class="bg-deco bg-deco-2"><svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="320" height="320" rx="24" stroke="#7b2d35" stroke-width="1.2" fill="none"/><rect x="80" y="80" width="240" height="240" rx="16" stroke="#d4a94f" stroke-width=".8" fill="none"/><rect x="120" y="120" width="160" height="160" rx="10" stroke="#7b2d35" stroke-width=".6" fill="none"/><line x1="40" y1="200" x2="360" y2="200" stroke="#7b2d35" stroke-width=".4"/><line x1="200" y1="40" x2="200" y2="360" stroke="#7b2d35" stroke-width=".4"/><circle cx="40" cy="40" r="6" fill="#d4a94f"/><circle cx="360" cy="40" r="6" fill="#d4a94f"/><circle cx="40" cy="360" r="6" fill="#d4a94f"/><circle cx="360" cy="360" r="6" fill="#d4a94f"/></svg></div>
+  <div class="bg-deco bg-deco-7"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M150 30 L270 90 L270 210 L150 270 L30 210 L30 90 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M150 60 L240 105 L240 195 L150 240 L60 195 L60 105 Z" stroke="#d4a94f" stroke-width=".8" fill="none"/><path d="M150 90 L210 120 L210 180 L150 210 L90 180 L90 120 Z" stroke="#7b2d35" stroke-width=".5" fill="none"/><circle cx="150" cy="150" r="4" fill="#d4a94f"/></svg></div>
+  <div class="neo-flt neo-f4" style="top:25%;right:2%;width:clamp(100px,14vw,220px);height:clamp(100px,14vw,220px);opacity:.025"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="80" stroke="#7b2d35" stroke-width=".8" fill="none" stroke-dasharray="4 8"/><circle cx="100" cy="100" r="55" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="100" cy="100" r="30" stroke="#7b2d35" stroke-width=".5" fill="none" stroke-dasharray="3 5"/><line x1="20" y1="100" x2="180" y2="100" stroke="#7b2d35" stroke-width=".3"/><line x1="100" y1="20" x2="100" y2="180" stroke="#7b2d35" stroke-width=".3"/></svg></div>
+  <div class="flt-shape flt-2" style="top:70%;left:4%;width:clamp(80px,10vw,160px);height:clamp(80px,10vw,160px);opacity:.02"><svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 130 L80 30 L130 130 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M50 110 L80 50 L110 110 Z" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="80" cy="80" r="4" stroke="#7b2d35" stroke-width=".6" fill="none"/><line x1="30" y1="130" x2="130" y2="130" stroke="#7b2d35" stroke-width=".4"/></svg></div>
+  <div class="bg-ring bg-ring-1" style=""></div>
+  <div class="bg-dots-large" style="position:absolute;pointer-events:none;z-index:0;inset:0;opacity:.06;-webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%);mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)"></div>
+  <div class="flt-shape flt-3" style="bottom:5%;right:2%;width:clamp(90px,12vw,200px);height:clamp(90px,12vw,200px);opacity:.055"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 100 L100 30 L170 100 L100 170 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><line x1="30" y1="100" x2="170" y2="100" stroke="#d4a94f" stroke-width="1"/><line x1="100" y1="30" x2="100" y2="170" stroke="#d4a94f" stroke-width="1"/><circle cx="100" cy="100" r="4" fill="#d4a94f"/></svg></div>
+  <div class="container">
+    <div class="section-title reveal">
+      <span>Academic Excellence</span>
+      <h2>Our Programmes</h2>
+      <div class="line"></div>
+    </div>
+    <div class="carousel-wrap">
+      <div class="carousel-inner" id="carouselInner"></div>
+      <div class="carousel-arrows">
+        <button class="carousel-arrow carousel-arrow--left" id="carPrev" aria-label="Previous">&#8249;</button>
+        <button class="carousel-arrow carousel-arrow--right" id="carNext" aria-label="Next">&#8250;</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="premium-strip"><svg preserveAspectRatio="none" viewBox="0 0 1440 26" width="1440" height="26"><defs><linearGradient id="ps5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="20%" stop-color="#651421"/><stop offset="45%" stop-color="#7b2d35"/><stop offset="70%" stop-color="#d4a94f"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,13 C240,26 480,0 720,13 S960,26 1200,13 S1440,0 1440,13 L1440,26 L0,26 Z" fill="url(#ps5)"/></svg></div>
+<div class="maroon-strip geo-edge"></div>
+
+<!-- ===== Latest News & Events ===== -->
+<section class="section section-bg-cream ne-section" id="newsEvents" style="position:relative">
+  <div class="bp-grid bp-grid-fade"></div>
+  <div class="sm sm-gt"></div>
+  <div class="blb blb-g" style="top:-10%;right:-8%"></div>
+  <div class="gd" style="top:8%;left:12%;animation-delay:1s"></div>
+  <div class="gd" style="top:35%;right:10%;animation-delay:3.5s"></div>
+  <div class="gd" style="bottom:25%;left:30%;animation-delay:2s"></div>
+  <div class="gd" style="top:55%;right:25%;animation-delay:4.2s"></div>
+  <div class="gd" style="bottom:15%;right:40%;animation-delay:.7s"></div>
+  <div class="gd" style="top:70%;left:8%;animation-delay:3s"></div>
+  <div class="gd" style="bottom:40%;left:55%;animation-delay:5.1s"></div>
+  <div class="gd" style="top:25%;left:55%;animation-delay:1.8s"></div>
+  <div class="bg-ring bg-ring-2" style=""></div>
+  <div class="flt-shape flt-4" style="top:15%;right:5%;width:clamp(80px,10vw,160px);height:clamp(80px,10vw,160px);opacity:.06"><svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M80 15 L145 50 L145 110 L80 145 L15 110 L15 50 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M80 35 L125 58 L125 102 L80 125 L35 102 L35 58 Z" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="80" cy="80" r="3" fill="#d4a94f"/></svg></div>
+  <div class="bg-vector bg-vector-6"><svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M120 20 L220 70 L220 170 L120 220 L20 170 L20 70 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M120 50 L190 85 L190 155 L120 190 L50 155 L50 85 Z" stroke="#d4a94f" stroke-width=".6" fill="none"/><line x1="20" y1="120" x2="220" y2="120" stroke="#7b2d35" stroke-width=".3"/><line x1="120" y1="20" x2="120" y2="220" stroke="#7b2d35" stroke-width=".3"/><circle cx="120" cy="120" r="4" fill="#d4a94f"/></svg></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>IITM Newsroom</span>
+      <h2>Latest News &amp; Events</h2>
+      <div class="line"></div>
+    </div>
+    <div class="ne-breaking reveal">
+      <div class="ne-breaking-label">BREAKING</div>
+      <div class="ne-breaking-inner"><div id="neBreakingTrack" class="ne-breaking-track"></div></div>
+    </div>
+    <div class="ne-layout reveal">
+      <div class="ne-swipe-wrap">
+        <div class="ne-stage" id="neStage"></div>
+        <div class="ne-slide-foot" id="neSlideFoot"></div>
+        <div class="ne-ctrl">
+          <button class="ne-arrow" id="nePrev" aria-label="Previous">&#8249;</button>
+          <div class="ne-dots" id="neDots"></div>
+          <button class="ne-arrow" id="neNext" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="ne-headlines" id="neHeadlines">
+        <div class="ne-headlines-hd">Latest Headlines</div>
+        <div class="ne-headlines-bd" id="neHeadlinesBd"></div>
+        <div class="ne-social">
+          <div class="ne-social-title">Connect With IITM</div>
+          <div class="ne-social-btns">
+            <a class="ne-social-btn ne-sb-ig" href="https://www.instagram.com/iitm_college_of_engineering/?hl=en" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>Instagram</span></a>
+            <a class="ne-social-btn ne-sb-li" href="https://www.linkedin.com/company/iitm-college-of-engineering/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a>
+            <a class="ne-social-btn ne-sb-yt" href="https://www.youtube.com/@iitm_mdu" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></a>
+            <a class="ne-social-btn ne-sb-fb" href="https://www.facebook.com/IITMCollegeBahadurgarh/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></a>
+            <a class="ne-social-btn ne-sb-x" href="https://x.com/iitm_coe" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="premium-strip"><svg preserveAspectRatio="none" viewBox="0 0 1440 30" width="1440" height="30"><defs><linearGradient id="ps2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="20%" stop-color="#651421"/><stop offset="45%" stop-color="#7b2d35"/><stop offset="70%" stop-color="#d4a94f"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,15 C180,30 360,0 540,15 S720,30 900,15 S1080,0 1260,15 S1440,30 1440,15 L1440,30 L0,30 Z" fill="url(#ps2)"/></svg></div>
+<div class="maroon-strip gold-line"></div>
+<section class="section section-bg-alt" id="edge" style="position:relative;background:linear-gradient(180deg,#f8f4f2 0%,rgba(123,45,53,.015) 100%)">
+  <div class="bp-grid bp-grid-fade" style="opacity:.025"></div>
+  <div class="sm sm-gb"></div>
+  <div class="blb blb-m2" style="bottom:5%;right:3%"></div>
+  <div class="gd" style="top:18%;left:8%;animation-delay:.7s"></div>
+  <div class="gd" style="top:35%;right:18%;animation-delay:2.9s"></div>
+  <div class="gd" style="bottom:40%;left:35%;animation-delay:4.5s"></div>
+  <div class="gd" style="top:55%;right:40%;animation-delay:1.8s"></div>
+  <div class="gd" style="top:10%;right:8%;animation-delay:3.3s"></div>
+  <div class="gd" style="bottom:20%;right:25%;animation-delay:.5s"></div>
+  <div class="gd" style="top:70%;left:25%;animation-delay:4.1s"></div>
+  <div class="gd" style="top:45%;left:10%;animation-delay:2.4s"></div>
+  <div class="gd" style="bottom:15%;left:55%;animation-delay:5.6s"></div>
+  <div class="flt-shape flt-1" style="top:8%;left:2%;width:clamp(65px,7vw,115px);height:clamp(65px,7vw,115px);opacity:.04"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="38" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M50 10 L55 48 L50 50 L45 48 Z" stroke="#7b2d35" stroke-width=".8" fill="none"/><path d="M50 90 L45 52 L50 50 L55 52 Z" stroke="#d4a94f" stroke-width=".7" fill="none"/><path d="M10 50 L48 45 L50 50 L48 55 Z" stroke="#7b2d35" stroke-width=".8" fill="none"/><path d="M90 50 L52 55 L50 50 L52 45 Z" stroke="#d4a94f" stroke-width=".7" fill="none"/><circle cx="50" cy="50" r="3" fill="#d4a94f" opacity=".5"/></svg></div>
+  <div class="flt-shape flt-2" style="bottom:10%;right:5%;width:clamp(70px,8vw,125px);height:clamp(70px,8vw,125px);opacity:.04"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="22" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="14" stroke="#d4a94f" stroke-width=".7" fill="none"/><path d="M50 10 L54 22 L46 22 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><path d="M50 90 L54 78 L46 78 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><path d="M10 50 L22 54 L22 46 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><path d="M90 50 L78 54 L78 46 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><path d="M72 28 L78 34 L72 40 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M28 72 L34 78 L28 84 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M72 72 L66 66 L72 60 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M28 28 L34 22 L28 16 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/></svg></div>
+  <div class="flt-shape flt-3" style="top:40%;left:55%;width:clamp(45px,5vw,80px);height:clamp(45px,5vw,80px);opacity:.035"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 10 L70 28 L70 52 L40 70 L10 52 L10 28 Z" stroke="#d4a94f" stroke-width="1" fill="none"/><path d="M40 20 L58 30 L58 50 L40 60 L22 50 L22 30 Z" stroke="#7b2d35" stroke-width=".6" fill="none"/></svg></div>
+  <div class="crn crn-tr"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 115 L5 5 L115 5" stroke="#7b2d35" stroke-width="1.2"/><path d="M15 105 L15 15 L105 15" stroke="#7b2d35" stroke-width="1.2"/><circle cx="15" cy="15" r="3" stroke="#d4a94f" stroke-width="1.2" fill="none"/><path d="M5 60 L20 60" stroke="#7b2d35" stroke-width="1"/><path d="M60 5 L60 20" stroke="#7b2d35" stroke-width="1"/><path d="M15 55 L55 55 L55 15" stroke="#d4a94f" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+  <div class="crn crn-bl"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 115 L5 5 L115 5" stroke="#7b2d35" stroke-width="1.2"/><path d="M15 105 L15 15 L105 15" stroke="#7b2d35" stroke-width="1.2"/><circle cx="15" cy="15" r="3" stroke="#d4a94f" stroke-width="1.2" fill="none"/><path d="M5 60 L20 60" stroke="#7b2d35" stroke-width="1"/><path d="M60 5 L60 20" stroke="#7b2d35" stroke-width="1"/><path d="M15 55 L55 55 L55 15" stroke="#d4a94f" stroke-width="1" stroke-dasharray="3 3"/></svg></div>
+  <div class="neo-flt neo-f3" style="bottom:10%;left:8%;width:clamp(55px,6vw,95px);height:clamp(45px,5vw,80px);opacity:.035"><svg viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 90 L110 90 L110 40 L10 90 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><line x1="10" y1="90" x2="110" y2="40" stroke="#d4a94f" stroke-width=".8"/><line x1="30" y1="80" x2="50" y2="63" stroke="#7b2d35" stroke-width=".6"/><line x1="50" y1="80" x2="70" y2="63" stroke="#7b2d35" stroke-width=".6"/><line x1="70" y1="80" x2="90" y2="63" stroke="#7b2d35" stroke-width=".6"/><line x1="10" y1="80" x2="110" y2="80" stroke="#7b2d35" stroke-width=".4"/><line x1="10" y1="70" x2="110" y2="70" stroke="#7b2d35" stroke-width=".4"/></svg></div>
+  <div class="neo-flt neo-f1" style="top:12%;left:15%;width:clamp(40px,4.5vw,70px);height:clamp(40px,4.5vw,70px);opacity:.03"><svg viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="50" r="4" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="75" cy="20" r="4" stroke="#d4a94f" stroke-width="1" fill="none"/><circle cx="130" cy="50" r="4" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="75" cy="80" r="4" stroke="#d4a94f" stroke-width="1" fill="none"/><path d="M20 50 L75 20 L130 50 L75 80 Z" stroke="#7b2d35" stroke-width=".8" fill="none"/><path d="M20 50 L75 80" stroke="#d4a94f" stroke-width=".6" stroke-dasharray="3 3"/><path d="M75 20 L75 80" stroke="#7b2d35" stroke-width=".6"/></svg></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-vector bg-vector-3"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 10 L180 50 L180 150 L100 190 L20 150 L20 50 Z" stroke="#7b2d35" stroke-width="1.2" fill="none"/><path d="M100 35 L155 65 L155 135 L100 165 L45 135 L45 65 Z" stroke="#d4a94f" stroke-width=".8" fill="none"/><path d="M100 60 L130 80 L130 120 L100 140 L70 120 L70 80 Z" stroke="#7b2d35" stroke-width=".6" fill="none"/></svg></div>
+  <div class="edge-deco edge-deco-1"><svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="200" cy="200" r="160" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="200" cy="200" r="120" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="200" cy="200" r="80" stroke="#7b2d35" stroke-width=".6" fill="none"/><circle cx="200" cy="200" r="40" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M40 200 L360 200" stroke="#7b2d35" stroke-width=".4"/><path d="M200 40 L200 360" stroke="#7b2d35" stroke-width=".4"/><path d="M130 40 Q200 100 200 200 Q200 300 270 360" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M40 130 Q100 200 200 200 Q300 200 360 270" stroke="#d4a94f" stroke-width=".5" fill="none"/><circle cx="200" cy="200" r="5" fill="#d4a94f"/></svg></div>
+  <div class="edge-deco edge-deco-2"><svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="320" height="320" rx="32" stroke="#7b2d35" stroke-width="1" fill="none"/><rect x="80" y="80" width="240" height="240" rx="20" stroke="#d4a94f" stroke-width=".8" fill="none"/><rect x="120" y="120" width="160" height="160" rx="12" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M40 200 L360 200" stroke="#d4a94f" stroke-width=".4"/><path d="M200 40 L200 360" stroke="#d4a94f" stroke-width=".4"/><circle cx="80" cy="80" r="5" fill="#d4a94f"/><circle cx="320" cy="80" r="5" fill="#d4a94f"/><circle cx="80" cy="320" r="5" fill="#d4a94f"/><circle cx="320" cy="320" r="5" fill="#d4a94f"/></svg></div>
+  <div class="edge-deco edge-deco-3"><svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M250 30 L400 140 L400 360 L250 470 L100 360 L100 140 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M250 70 L365 155 L365 345 L250 430 L135 345 L135 155 Z" stroke="#d4a94f" stroke-width=".7" fill="none"/><path d="M250 110 L330 170 L330 330 L250 390 L170 330 L170 170 Z" stroke="#7b2d35" stroke-width=".5" fill="none"/><line x1="250" y1="30" x2="250" y2="470" stroke="#7b2d35" stroke-width=".3"/><line x1="100" y1="250" x2="400" y2="250" stroke="#7b2d35" stroke-width=".3"/><circle cx="250" cy="250" r="6" fill="#d4a94f"/></svg></div>
+  <div class="bg-lines"></div>
+  <div class="neo-flt neo-f2" style="top:65%;right:3%;width:clamp(90px,12vw,190px);height:clamp(90px,12vw,190px);opacity:.04"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="140" height="140" rx="10" stroke="#7b2d35" stroke-width=".3" fill="none"/><rect x="40" y="40" width="100" height="100" rx="6" stroke="#d4a94f" stroke-width=".2" fill="none"/><path d="M20 90 L160 90" stroke="#7b2d35" stroke-width=".1"/><path d="M90 20 L90 160" stroke="#7b2d35" stroke-width=".1"/><circle cx="90" cy="90" r="3" fill="#d4a94f"/><path d="M50 50 L130 130" stroke="#d4a94f" stroke-width=".1" stroke-dasharray="3 4"/><path d="M130 50 L50 130" stroke="#d4a94f" stroke-width=".1" stroke-dasharray="3 4"/></svg></div>
+  <div class="flt-shape flt-3" style="top:10%;left:55%;width:clamp(70px,8vw,130px);height:clamp(70px,8vw,130px);opacity:.04"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 10 L110 35 L110 85 L60 110 L10 85 L10 35 Z" stroke="#d4a94f" stroke-width=".35" fill="none"/><path d="M60 25 L95 42 L95 78 L60 95 L25 78 L25 42 Z" stroke="#7b2d35" stroke-width=".2" fill="none"/><circle cx="60" cy="60" r="3" fill="#7b2d35"/><line x1="10" y1="60" x2="110" y2="60" stroke="#7b2d35" stroke-width=".1"/><line x1="60" y1="10" x2="60" y2="110" stroke="#7b2d35" stroke-width=".1"/></svg></div>
+  <div class="bg-ring" style="top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(400px,55vw,800px);height:clamp(400px,55vw,800px);border-color:rgba(123,45,53,.06);border-width:.5px;opacity:.06"></div>
+  <div class="flt-shape flt-1" style="bottom:5%;left:3%;width:clamp(100px,14vw,220px);height:clamp(100px,14vw,220px);opacity:.05"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 20 L180 60 L180 140 L100 180 L20 140 L20 60 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M100 45 L155 72 L155 128 L100 155 L45 128 L45 72 Z" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="100" cy="100" r="4" fill="#d4a94f"/><line x1="20" y1="100" x2="180" y2="100" stroke="#7b2d35" stroke-width=".25"/><line x1="100" y1="20" x2="100" y2="180" stroke="#7b2d35" stroke-width=".25"/></svg></div>
+  <div class="bg-vector bg-vector-7"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="220" height="220" rx="12" stroke="#7b2d35" stroke-width="1" fill="none"/><rect x="70" y="70" width="160" height="160" rx="8" stroke="#d4a94f" stroke-width=".6" fill="none"/><path d="M40 150 L260 150" stroke="#7b2d35" stroke-width=".3"/><path d="M150 40 L150 260" stroke="#7b2d35" stroke-width=".3"/><circle cx="150" cy="150" r="4" fill="#d4a94f"/></svg></div>
+  <div class="svg-divider top"><svg preserveAspectRatio="none" viewBox="0 0 1440 80"><path d="M0,0 L1440,0 L1440,40 C1200,80 240,80 0,40 Z" fill="#faf7f7"/></svg></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>Why IITM</span>
+      <h2>IITM College of Engineering EDGE</h2>
+      <div class="line"></div>
+    </div>
+    <div class="edge-grid stagger-children reveal">
+      <div class="edge-card">
+        <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M12 6V2"/><path d="M6 6V4"/><path d="M18 6V4"/></svg></div>
+        <div class="ec-title">State-of-the-art</div>
+        <div class="ec-subtitle">Infrastructure</div>
+        <div class="ec-desc">Modern classrooms, advanced laboratories, smart learning spaces and innovation facilities that create an exceptional engineering ecosystem.</div>
+        <div class="ec-svg-wrap"><svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="30" width="140" height="90" rx="8" stroke="#7b2d35" stroke-width="1.2" fill="rgba(123,45,53,.04)"/><rect x="42" y="48" width="40" height="28" rx="4" stroke="#7b2d35" stroke-width="1.1" fill="rgba(212,169,79,.08)"/><rect x="90" y="48" width="28" height="40" rx="4" stroke="#7b2d35" stroke-width="1.1" fill="rgba(212,169,79,.08)"/><rect x="126" y="48" width="28" height="28" rx="4" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><path d="M42 90h60v30H42z" stroke="#7b2d35" stroke-width="1" fill="rgba(123,45,53,.03)"/><path d="M110 95l-5-5h-8l-5 5" stroke="#7b2d35" stroke-width="1.1" fill="none" stroke-linecap="round"/><path d="M100 88v12" stroke="#7b2d35" stroke-width="1.1" stroke-linecap="round"/><rect x="50" y="18" width="16" height="12" rx="2" stroke="#d4a94f" stroke-width="1.1" fill="rgba(212,169,79,.1)"/><rect x="74" y="10" width="20" height="20" rx="3" stroke="#d4a94f" stroke-width="1.1" fill="rgba(212,169,79,.1)"/><path d="M130 18l-13 7-3-5-10 5" stroke="#d4a94f" stroke-width="1.1" stroke-linecap="round" fill="none"/></svg></div>
+      </div>
+      <div class="edge-card">
+        <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg></div>
+        <div class="ec-title">Global Academic</div>
+        <div class="ec-subtitle">Partnerships</div>
+        <div class="ec-desc">International collaborations, exchange programs and research opportunities connecting students with universities worldwide.</div>
+        <div class="ec-svg-wrap"><svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="60" r="36" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><ellipse cx="100" cy="60" rx="36" ry="13" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M64 60c0 20 8 36 36 36s36-16 36-36S100 24 100 24s36 16 36 36" stroke="#7b2d35" stroke-width="1" fill="none"/><line x1="100" y1="24" x2="100" y2="96" stroke="#7b2d35" stroke-width="1"/><circle cx="100" cy="42" r="4" fill="rgba(212,169,79,.2)" stroke="#d4a94f" stroke-width="1.1"/><circle cx="88" cy="55" r="3" fill="rgba(212,169,79,.18)" stroke="#d4a94f" stroke-width="1"/><circle cx="118" cy="72" r="3" fill="rgba(212,169,79,.18)" stroke="#d4a94f" stroke-width="1"/><path d="M88 55l12-13 16 10-12 13z" fill="rgba(123,45,53,.04)" stroke="#7b2d35" stroke-width="1"/><path d="M50 110h100l-10 10H60z" stroke="#7b2d35" stroke-width="1.2" fill="rgba(212,169,79,.08)"/><circle cx="100" cy="115" r="3" fill="#7b2d35"/><path d="M100 96v14" stroke="#7b2d35" stroke-width="1"/></svg></div>
+      </div>
+      <div class="edge-card">
+        <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="ec-title">Faculty</div>
+        <div class="ec-subtitle">From Top Ranked Colleges</div>
+        <div class="ec-desc">Experienced faculty from IITs, NITs and leading institutions mentoring students with academic excellence and industry knowledge.</div>
+        <div class="ec-svg-wrap"><svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="34" r="16" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><path d="M68 64c0-16 14-30 32-30s32 14 32 30v30H68V64z" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><rect x="58" y="94" width="84" height="8" rx="4" stroke="#7b2d35" stroke-width="1.1" fill="rgba(212,169,79,.08)"/><path d="M88 22l22-4-6 12h-10z" stroke="#d4a94f" stroke-width="1.1" fill="rgba(212,169,79,.1)"/><circle cx="82" cy="30" r="2" fill="#7b2d35"/><circle cx="118" cy="30" r="2" fill="#7b2d35"/><path d="M92 50l8 5 8-5" stroke="#d4a94f" stroke-width="1.1" stroke-linecap="round" fill="none"/><rect x="96" y="102" width="8" height="12" rx="2" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><rect x="84" y="114" width="32" height="6" rx="3" stroke="#d4a94f" stroke-width="1" fill="rgba(212,169,79,.08)"/></svg></div>
+      </div>
+      <div class="edge-card">
+        <div class="ec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="ec-title">Industry Exposure</div>
+        <div class="ec-subtitle">Placement Assistance</div>
+        <div class="ec-desc">Industrial visits, internships, live projects and placement support preparing students for successful engineering careers.</div>
+        <div class="ec-svg-wrap"><svg viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="28" width="120" height="62" rx="7" stroke="#7b2d35" stroke-width="1.1" fill="rgba(123,45,53,.04)"/><rect x="55" y="44" width="45" height="4" rx="2" stroke="#d4a94f" stroke-width="1.1" fill="rgba(212,169,79,.1)"/><rect x="55" y="54" width="60" height="4" rx="2" stroke="#7b2d35" stroke-width="1" fill="rgba(123,45,53,.04)"/><rect x="55" y="64" width="50" height="4" rx="2" stroke="#7b2d35" stroke-width="1" fill="rgba(123,45,53,.04)"/><path d="M128 36l16 16-16 16" stroke="#d4a94f" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M144 52h-20" stroke="#d4a94f" stroke-width="1.4" stroke-linecap="round" fill="none"/><path d="M82 90v12h36V90" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M72 102h56l-8 10H80z" stroke="#7b2d35" stroke-width="1.1" fill="rgba(212,169,79,.06)"/><circle cx="100" cy="33" r="3" fill="rgba(212,169,79,.2)" stroke="#d4a94f" stroke-width="1"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="svg-divider bottom"><svg preserveAspectRatio="none" viewBox="0 0 1440 80"><path d="M0,40 C240,0 1200,0 1440,40 L1440,80 L0,80 Z" fill="#f8f4f2"/></svg></div>
+</section>
+<div class="premium-strip"><svg preserveAspectRatio="none" viewBox="0 0 1440 28" width="1440" height="28"><defs><linearGradient id="ps3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="20%" stop-color="#651421"/><stop offset="45%" stop-color="#7b2d35"/><stop offset="70%" stop-color="#d4a94f"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,14 C160,28 320,0 480,14 S640,28 800,14 S960,0 1120,14 S1280,28 1440,14 L1440,28 L0,28 Z" fill="url(#ps3)"/></svg></div>
+<div class="maroon-strip wave" style="height:clamp(8px,1.2vw,18px);background:linear-gradient(90deg,var(--dark) 0%,var(--maroon) 50%,var(--dark) 100%)"></div>
+<section class="achievement-section" id="achievements" style="position:relative">
+  <div class="bp-grid bp-grid-fade" style="opacity:.025;background-size:clamp(30px,3vw,45px) clamp(30px,3vw,45px)"></div>
+  <div class="sm sm-mb"></div>
+  <div class="blb blb-g" style="bottom:0;left:0"></div>
+  <div class="gd" style="top:15%;left:12%;animation-delay:.3s"></div>
+  <div class="gd" style="top:30%;right:22%;animation-delay:2.5s"></div>
+  <div class="gd" style="bottom:20%;left:40%;animation-delay:3.8s"></div>
+  <div class="gd" style="top:50%;right:10%;animation-delay:5.2s"></div>
+  <div class="flt-shape flt-3" style="top:4%;right:8%;width:clamp(45px,5vw,80px);height:clamp(45px,5vw,80px);opacity:.04"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L58 35 L88 35 L63 53 L72 83 L50 65 L28 83 L37 53 L12 35 L42 35 Z" stroke="#d4a94f" stroke-width=".7" fill="none"/><circle cx="50" cy="50" r="4" fill="#d4a94f" opacity=".3"/></svg></div>
+  <div class="flt-shape flt-1" style="bottom:12%;left:3%;width:clamp(55px,6vw,95px);height:clamp(55px,6vw,95px);opacity:.035"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="44" stroke="#7b2d35" stroke-width=".5" fill="none"/><circle cx="50" cy="50" r="30" stroke="#d4a94f" stroke-width=".35" fill="none"/><path d="M50 6 L53 18 L47 18 Z" stroke="#7b2d35" stroke-width=".4" fill="none"/><path d="M50 94 L53 82 L47 82 Z" stroke="#7b2d35" stroke-width=".4" fill="none"/><path d="M6 50 L18 53 L18 47 Z" stroke="#7b2d35" stroke-width=".4" fill="none"/><path d="M94 50 L82 53 L82 47 Z" stroke="#7b2d35" stroke-width=".4" fill="none"/></svg></div>
+  <div class="flt-shape flt-2" style="top:60%;left:50%;width:clamp(35px,4vw,65px);height:clamp(35px,4vw,65px);opacity:.03"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 L55 30 L30 55 L5 30 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M30 16 L44 30 L30 44 L16 30 Z" stroke="#7b2d35" stroke-width=".3" fill="none"/></svg></div>
+  <div class="bg-blob bg-blob-1" style="background:rgba(212,169,79,.04)"></div>
+  <div class="bg-vector bg-vector-5"><svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="30" y="30" width="340" height="340" rx="20" stroke="#7b2d35" stroke-width=".35" fill="none" stroke-dasharray="8 6"/><rect x="60" y="60" width="280" height="280" rx="14" stroke="#d4a94f" stroke-width=".3" fill="none"/><rect x="90" y="90" width="220" height="220" rx="10" stroke="#7b2d35" stroke-width=".25" fill="none" stroke-dasharray="5 4"/><path d="M30 200 L370 200" stroke="#d4a94f" stroke-width=".12"/><path d="M200 30 L200 370" stroke="#d4a94f" stroke-width=".12"/><circle cx="200" cy="200" r="5" fill="#d4a94f"/></svg></div>
+  <div class="bg-deco bg-deco-5"><svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="250" cy="250" r="220" stroke="#7b2d35" stroke-width=".4" fill="none"/><circle cx="250" cy="250" r="170" stroke="#d4a94f" stroke-width=".4" fill="none"/><circle cx="250" cy="250" r="120" stroke="#7b2d35" stroke-width=".3" fill="none"/><circle cx="250" cy="250" r="70" stroke="#d4a94f" stroke-width=".25" fill="none"/><path d="M250 30 L250 470" stroke="#7b2d35" stroke-width=".12"/><path d="M30 250 L470 250" stroke="#7b2d35" stroke-width=".12"/><path d="M100 100 L400 400" stroke="#7b2d35" stroke-width=".1"/><path d="M400 100 L100 400" stroke="#7b2d35" stroke-width=".1"/><circle cx="250" cy="250" r="6" fill="#d4a94f"/></svg></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>Shining Stars of IITM</span>
+      <h2>Celebrating Excellence of Our Students &amp; Faculty</h2>
+      <div class="line"></div>
+    </div>
+  </div>
+  <div class="stars-marquee-section" id="starsMarqueeSection">
+    <div class="stars-marquee" id="starsMarqueeTop"></div>
+  </div>
+</section>
+<div class="maroon-strip gradient-divider"></div>
+<section class="section section-bg-alt" id="placements" style="position:relative">
+  <div class="bp-grid bp-grid-fade" style="opacity:.025"></div>
+  <div class="sm sm-gt"></div>
+  <div class="blb blb-m1" style="top:-5%;left:-5%"></div>
+  <div class="gd" style="top:10%;left:20%;animation-delay:1.2s"></div>
+  <div class="gd" style="top:45%;right:12%;animation-delay:3s"></div>
+  <div class="gd" style="bottom:35%;left:30%;animation-delay:4.8s"></div>
+  <div class="gd" style="top:25%;right:30%;animation-delay:2.1s"></div>
+  <div class="gd" style="bottom:20%;right:15%;animation-delay:4s"></div>
+  <div class="gd" style="top:65%;left:10%;animation-delay:.6s"></div>
+  <div class="gd" style="top:15%;left:55%;animation-delay:3.5s"></div>
+  <div class="gd" style="bottom:45%;right:40%;animation-delay:5.2s"></div>
+  <div class="flt-shape flt-2" style="top:7%;left:5%;width:clamp(70px,8vw,120px);height:clamp(60px,7vw,100px);opacity:.04"><svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="40" r="4" stroke="#7b2d35" stroke-width=".6" fill="none"/><circle cx="170" cy="30" r="4" stroke="#7b2d35" stroke-width=".6" fill="none"/><circle cx="100" cy="70" r="4" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="40" cy="110" r="4" stroke="#7b2d35" stroke-width=".6" fill="none"/><circle cx="160" cy="120" r="4" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M30 40 L100 70 L170 30" stroke="#7b2d35" stroke-width=".3"/><path d="M100 70 L40 110 L30 40" stroke="#d4a94f" stroke-width=".3"/><path d="M100 70 L160 120 L170 30" stroke="#7b2d35" stroke-width=".3"/><path d="M40 110 L160 120" stroke="#d4a94f" stroke-width=".2" stroke-dasharray="4 4"/></svg></div>
+  <div class="flt-shape flt-1" style="bottom:8%;right:2%;width:clamp(60px,7vw,105px);height:clamp(50px,6vw,90px);opacity:.035"><svg viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="120" height="80" rx="4" stroke="#7b2d35" stroke-width=".5" fill="none"/><rect x="30" y="35" width="40" height="4" rx="2" stroke="#d4a94f" stroke-width=".4" fill="none"/><rect x="30" y="45" width="55" height="4" rx="2" stroke="#7b2d35" stroke-width=".35" fill="none"/><rect x="30" y="55" width="45" height="4" rx="2" stroke="#7b2d35" stroke-width=".35" fill="none"/><path d="M90 45 L105 45" stroke="#d4a94f" stroke-width=".4"/><path d="M90 55 L100 55" stroke="#d4a94f" stroke-width=".4"/></svg></div>
+  <div class="flt-shape flt-4" style="top:55%;left:3%;width:clamp(40px,5vw,75px);height:clamp(40px,5vw,75px);opacity:.03"><svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 L55 30 L30 55 L5 30 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M30 16 L44 30 L30 44 L16 30 Z" stroke="#7b2d35" stroke-width=".3" fill="none"/></svg></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-vector bg-vector-1"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 150 L150 30 L270 150 L150 270 Z" stroke="#7b2d35" stroke-width=".5" fill="none"/><path d="M60 150 L150 60 L240 150 L150 240 Z" stroke="#d4a94f" stroke-width=".35" fill="none"/><path d="M90 150 L150 90 L210 150 L150 210 Z" stroke="#7b2d35" stroke-width=".25" fill="none"/></svg></div>
+  <div class="bg-deco bg-deco-1" style="top:auto;bottom:5%;right:3%;width:clamp(200px,26vw,400px);height:clamp(200px,26vw,400px);animation-duration:35s"><svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="220" height="220" rx="16" stroke="#7b2d35" stroke-width=".5" fill="none" stroke-dasharray="10 5"/><rect x="70" y="70" width="160" height="160" rx="10" stroke="#d4a94f" stroke-width=".35" fill="none"/><path d="M40 150 L260 150" stroke="#d4a94f" stroke-width=".2"/><path d="M150 40 L150 260" stroke="#d4a94f" stroke-width=".2"/><circle cx="70" cy="70" r="5" fill="#d4a94f"/><circle cx="230" cy="70" r="5" fill="#d4a94f"/><circle cx="70" cy="230" r="5" fill="#d4a94f"/><circle cx="230" cy="230" r="5" fill="#d4a94f"/></svg></div>
+  <div class="bg-blob bg-blob-2" style="background:rgba(212,169,79,.03)"></div>
+  <div class="bg-ring" style="top:50%;left:50%;transform:translate(-50%,-50%);width:clamp(350px,48vw,700px);height:clamp(350px,48vw,700px);border-color:rgba(212,169,79,.07);border-width:.5px;opacity:.05"></div>
+  <div class="flt-shape flt-3" style="top:60%;right:5%;width:clamp(80px,10vw,150px);height:clamp(80px,10vw,150px);opacity:.05"><svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="100" height="100" rx="8" stroke="#7b2d35" stroke-width="1" fill="none"/><line x1="20" y1="70" x2="120" y2="70" stroke="#d4a94f" stroke-width=".5"/><line x1="70" y1="20" x2="70" y2="120" stroke="#d4a94f" stroke-width=".5"/><circle cx="70" cy="70" r="3" fill="#d4a94f"/></svg></div>
+  <div class="bg-vector bg-vector-8"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="80" stroke="#7b2d35" stroke-width="1" fill="none" stroke-dasharray="4 8"/><circle cx="100" cy="100" r="50" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="100" cy="100" r="20" stroke="#7b2d35" stroke-width=".4" fill="none"/><line x1="20" y1="100" x2="180" y2="100" stroke="#7b2d35" stroke-width=".25"/><line x1="100" y1="20" x2="100" y2="180" stroke="#7b2d35" stroke-width=".25"/></svg></div>
+  <div class="svg-divider top"><svg preserveAspectRatio="none" viewBox="0 0 1440 80"><path d="M0,0 L1440,0 L1440,40 C1200,80 240,80 0,40 Z" fill="#faf7f7"/></svg></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>Placement Partners</span>
+      <h2>Building Careers With Industry Leaders</h2>
+      <div class="line"></div>
+    </div>
+    <div class="placement-features reveal">
+      <div class="pl-feature">
+        <div class="plf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Industry Ready Graduates</h4>
+        <p>Our curriculum bridges academia and industry, producing job-ready engineers with hands-on project experience.</p>
+      </div>
+      <div class="pl-feature">
+        <div class="plf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <h4>Dedicated Placement Cell</h4>
+        <p>A specialized team works year-round to connect students with top-tier companies and prepare them for recruitment.</p>
+      </div>
+      <div class="pl-feature">
+        <div class="plf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/><path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10"/></svg></div>
+        <h4>Corporate Collaborations</h4>
+        <p>Strategic partnerships with industry leaders drive internships, workshops, and placement drives throughout the year.</p>
+      </div>
+      <div class="pl-feature">
+        <div class="plf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h4>Career Guidance</h4>
+        <p>From resume building to mock interviews, students receive comprehensive career mentoring and professional development.</p>
+      </div>
+      <div class="pl-feature">
+        <div class="plf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7b2d35" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h4>Internship Opportunities</h4>
+        <p>Students gain real-world exposure through summer internships, live projects, and industry-sponsored research programs.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:clamp(24px,3vw,40px)"><a href="https://www.iitm.tech/recruiter-logo" class="cta-btn">See Our Recruiters <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    <div class="partners-marquee fade-in">
+      <div class="partners-track" id="partnersTrack">
+        <span class="partner-logo"><span class="pl-text">Microsoft</span></span>
+        <span class="partner-logo"><span class="pl-text">Google</span></span>
+        <span class="partner-logo"><span class="pl-text">Amazon</span></span>
+        <span class="partner-logo"><span class="pl-text">TCS</span></span>
+        <span class="partner-logo"><span class="pl-text">Infosys</span></span>
+        <span class="partner-logo"><span class="pl-text">Wipro</span></span>
+        <span class="partner-logo"><span class="pl-text">Accenture</span></span>
+        <span class="partner-logo"><span class="pl-text">Deloitte</span></span>
+        <span class="partner-logo"><span class="pl-text">IBM</span></span>
+        <span class="partner-logo"><span class="pl-text">Cognizant</span></span>
+        <span class="partner-logo"><span class="pl-text">Capgemini</span></span>
+        <span class="partner-logo"><span class="pl-text">Oracle</span></span>
+        <span class="partner-logo"><span class="pl-text">Microsoft</span></span>
+        <span class="partner-logo"><span class="pl-text">Google</span></span>
+        <span class="partner-logo"><span class="pl-text">Amazon</span></span>
+        <span class="partner-logo"><span class="pl-text">TCS</span></span>
+        <span class="partner-logo"><span class="pl-text">Infosys</span></span>
+        <span class="partner-logo"><span class="pl-text">Wipro</span></span>
+        <span class="partner-logo"><span class="pl-text">Accenture</span></span>
+        <span class="partner-logo"><span class="pl-text">Deloitte</span></span>
+        <span class="partner-logo"><span class="pl-text">IBM</span></span>
+        <span class="partner-logo"><span class="pl-text">Cognizant</span></span>
+        <span class="partner-logo"><span class="pl-text">Capgemini</span></span>
+        <span class="partner-logo"><span class="pl-text">Oracle</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="svg-divider bottom"><svg preserveAspectRatio="none" viewBox="0 0 1440 80"><path d="M0,40 C240,0 1200,0 1440,40 L1440,80 L0,80 Z" fill="#f8f4f2"/></svg></div>
+</section>
+<div class="premium-strip"><svg preserveAspectRatio="none" viewBox="0 0 1440 26" width="1440" height="26"><defs><linearGradient id="ps4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="20%" stop-color="#651421"/><stop offset="45%" stop-color="#7b2d35"/><stop offset="70%" stop-color="#d4a94f"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,13 C240,26 480,0 720,13 S960,26 1200,13 S1440,0 1440,13 L1440,26 L0,26 Z" fill="url(#ps4)"/></svg></div>
+<div class="maroon-strip geo-edge"></div>
+<section class="section section-bg-warm" id="tour" style="position:relative">
+  <div class="bp-grid bp-grid-fade" style="opacity:.025"></div>
+  <div class="sm sm-mt"></div>
+  <div class="blb blb-m2" style="bottom:0;right:0"></div>
+  <div class="gd" style="top:5%;left:25%;animation-delay:.8s"></div>
+  <div class="gd" style="top:50%;right:8%;animation-delay:2.7s"></div>
+  <div class="gd" style="bottom:15%;left:15%;animation-delay:4.3s"></div>
+  <div class="gd" style="top:35%;right:30%;animation-delay:.3s"></div>
+  <div class="gd" style="bottom:35%;right:15%;animation-delay:5s"></div>
+  <div class="gd" style="top:70%;left:10%;animation-delay:2.1s"></div>
+  <div class="gd" style="top:45%;left:35%;animation-delay:4.8s"></div>
+  <div class="flt-shape flt-3" style="top:6%;left:6%;width:clamp(65px,7vw,110px);height:clamp(65px,7vw,110px);opacity:.04"><svg viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 130 C40 100 60 120 75 75 C90 30 110 50 130 20" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M20 130 L20 115 M20 130 L35 130" stroke="#7b2d35" stroke-width=".5"/><circle cx="130" cy="20" r="4" stroke="#d4a94f" stroke-width=".5" fill="none"/><path d="M75 75 L85 75 M75 75 L75 65" stroke="#d4a94f" stroke-width=".4"/><path d="M40 95 L55 95 L55 80" stroke="#7b2d35" stroke-width=".3" stroke-dasharray="3 3"/></svg></div>
+  <div class="flt-shape flt-1" style="bottom:5%;right:4%;width:clamp(55px,6vw,95px);height:clamp(55px,6vw,95px);opacity:.035"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L95 30 L50 55 L5 30 Z" stroke="#7b2d35" stroke-width=".7" fill="none"/><path d="M50 20 L75 35 L50 50 L25 35 Z" stroke="#d4a94f" stroke-width=".4" fill="none"/><path d="M20 42 L20 60 C20 68 35 72 50 72 C65 72 80 68 80 60 L80 42" stroke="#7b2d35" stroke-width=".6" fill="none"/></svg></div>
+  <div class="tour-deco tour-deco-1"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60 10L110 40v40L60 110 10 80V40z" stroke="#d4a94f" stroke-width="1.2" fill="none"/><path d="M60 24L96 44v32L60 96 24 76V44z" stroke="#7b2d35" stroke-width=".8" fill="none"/><path d="M60 38L82 50v20L60 82 38 70V50z" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="60" cy="56" r="3" fill="#d4a94f"/></svg></div>
+  <div class="tour-deco tour-deco-2"><svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="44" stroke="#7b2d35" stroke-width="1" fill="none"/><circle cx="60" cy="60" r="30" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="60" cy="60" r="16" stroke="#7b2d35" stroke-width=".6" fill="none"/><path d="M16 60h20M84 60h20M60 16v20M60 84v20" stroke="#d4a94f" stroke-width=".6"/><circle cx="60" cy="60" r="4" fill="#d4a94f"/></svg></div>
+  <div class="tour-deco tour-deco-3"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 14l12 8-4 14 14 4-4 14 14 8-14 14-8-14-14 4-4-14-14-8 8-14-4-14 14-4z" stroke="#d4a94f" stroke-width="1" fill="none"/><circle cx="50" cy="50" r="8" stroke="#7b2d35" stroke-width=".8" fill="none"/><circle cx="50" cy="50" r="3" fill="#d4a94f"/></svg></div>
+  <div class="tour-deco tour-deco-4"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 20L80 80M80 20L20 80" stroke="#d4a94f" stroke-width=".8"/><circle cx="50" cy="50" r="30" stroke="#7b2d35" stroke-width=".8" fill="none" stroke-dasharray="4 6"/><circle cx="50" cy="50" r="10" stroke="#d4a94f" stroke-width=".6" fill="none"/><circle cx="50" cy="50" r="2" fill="#d4a94f"/></svg></div>
+  <div class="tour-deco tour-deco-5"><svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="100" height="100" rx="12" stroke="#7b2d35" stroke-width="1" fill="none"/><rect x="35" y="35" width="70" height="70" rx="8" stroke="#d4a94f" stroke-width=".7" fill="none"/><path d="M50 70L65 55l15 15L95 45" stroke="#d4a94f" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="70" r="2" fill="#d4a94f"/><circle cx="65" cy="55" r="2" fill="#d4a94f"/><circle cx="80" cy="70" r="2" fill="#d4a94f"/><circle cx="95" cy="45" r="2" fill="#d4a94f"/></svg></div>
+  <div class="tour-deco tour-deco-6"><svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40 10v20M40 50v20M10 40h20M50 40h20" stroke="#7b2d35" stroke-width=".8"/><circle cx="40" cy="40" r="10" stroke="#d4a94f" stroke-width=".8" fill="none"/><circle cx="40" cy="40" r="3" fill="#d4a94f"/></svg></div>
+  <div class="gd" style="top:15%;right:15%;animation-delay:1.5s"></div>
+  <div class="gd" style="bottom:20%;left:20%;animation-delay:3.7s"></div>
+  <div class="flt-shape flt-4" style="top:40%;left:3%;width:clamp(50px,6vw,90px);height:clamp(50px,6vw,90px);opacity:.025"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L72 20 L72 55 L50 70 L28 55 L28 20 Z" stroke="#7b2d35" stroke-width=".35" fill="none"/><path d="M50 18 L62 27 L62 48 L50 57 L38 48 L38 27 Z" stroke="#d4a94f" stroke-width=".2" fill="none"/><circle cx="50" cy="38" r="2" fill="#d4a94f"/></svg></div>
+  <div class="bg-deco" style="bottom:5%;left:-2%;width:clamp(160px,20vw,300px);height:clamp(160px,20vw,300px);opacity:.03;animation:float-reverse 35s ease-in-out infinite"><svg viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M130 30 L230 80 L230 180 L130 230 L30 180 L30 80 Z" stroke="#7b2d35" stroke-width=".3" fill="none"/><path d="M130 55 L205 90 L205 170 L130 205 L55 170 L55 90 Z" stroke="#d4a94f" stroke-width=".2" fill="none"/><path d="M130 80 L180 100 L180 160 L130 180 L80 160 L80 100 Z" stroke="#7b2d35" stroke-width=".15" fill="none"/><circle cx="130" cy="130" r="3" fill="#d4a94f"/></svg></div>
+  <div class="bg-vector bg-vector-6"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 10 L190 55 L190 145 L100 190 L10 145 L10 55 Z" stroke="#7b2d35" stroke-width="1" fill="none"/><path d="M100 30 L165 60 L165 140 L100 170 L35 140 L35 60 Z" stroke="#d4a94f" stroke-width=".5" fill="none"/><circle cx="100" cy="100" r="20" stroke="#7b2d35" stroke-width=".4" fill="none"/><circle cx="100" cy="100" r="5" fill="#d4a94f"/></svg></div>
+  <div class="bg-ring bg-ring-2" style="top:60%;right:-5%;width:clamp(180px,22vw,340px);height:clamp(180px,22vw,340px);border-color:rgba(123,45,53,.06)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-title reveal">
+      <span>Campus Tour</span>
+      <h2>Explore Our Campus</h2>
+      <div class="line"></div>
+    </div>
+    <div class="tour-grid reveal">
+      <div class="tour-text">
+        <h3>Experience IITM in Motion</h3>
+        <p>Experience the vibrant campus of IITM College of Engineering, Bahadurgarh, Haryana, through an engaging campus tour that highlights its serene and salubrious environment, state-of-the-art infrastructure, advanced academic facilities, and dynamic student life. Designed to foster academic excellence and holistic development, the campus provides the perfect blend of learning, innovation, and co-curricular engagement, empowering students to evolve into confident, skilled, and future-ready professionals.</p>
+        <div class="tour-features">
+          <span class="tour-feat"><span class="dot"></span>Smart Classrooms</span>
+          <span class="tour-feat"><span class="dot"></span>Advanced Labs</span>
+          <span class="tour-feat"><span class="dot"></span>Sports Complex</span>
+          <span class="tour-feat"><span class="dot"></span>Central Library</span>
+          <span class="tour-feat"><span class="dot"></span>Student Hub</span>
+          <span class="tour-feat"><span class="dot"></span>Auditorium</span>
+        </div>
+      </div>
+      <div class="tour-player-wrap">
+        <div class="tour-play-overlay" id="tourPlayOverlay">
+          <div class="tour-play-ring"></div>
+          <div class="tour-play-ring"></div>
+          <div class="tour-play-ring"></div>
+          <div class="tour-play-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><polygon points="8,5 19,12 8,19"/></svg></div>
+        </div>
+        <video id="tourVideo" preload="metadata" autoplay muted loop playsinline>
+          <source src="https://video.wixstatic.com/video/ab471d_9e6be6204fe040889887020bf461c5aa/1080p/mp4/file.mp4" type="video/mp4">
+        </video>
+        <div class="tour-controls visible" id="tourControls">
+          <button class="tour-btn" id="tourPlayBtn" aria-label="Play/Pause"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></button>
+          <div class="tour-progress" id="tourProgress">
+            <div class="tp-fill" id="tourProgressFill"></div>
+          </div>
+          <span class="tour-time" id="tourTime">0:00</span>
+          <div class="tour-volume-wrap">
+            <button class="tour-btn" id="tourMuteBtn" aria-label="Mute"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>
+            <input type="range" class="tour-volume-slider" id="tourVolume" min="0" max="1" step="0.05" value="0.5">
+          </div>
+          <div class="tour-speed-wrap">
+            <button class="tour-btn tour-speed-btn" id="tourSpeedBtn">1x</button>
+            <div class="tour-speed-menu" id="tourSpeedMenu">
+              <div class="tour-speed-opt" data-speed="0.5">0.5x</div>
+              <div class="tour-speed-opt active" data-speed="1">1x</div>
+              <div class="tour-speed-opt" data-speed="1.5">1.5x</div>
+              <div class="tour-speed-opt" data-speed="2">2x</div>
+            </div>
+          </div>
+          <button class="tour-btn" id="tourPiPBtn" aria-label="Picture in Picture"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><rect x="12" y="9" width="8" height="6" rx="1"/></svg></button>
+          <button class="tour-btn" id="tourFullscreenBtn" aria-label="Fullscreen"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" stroke="currentColor" stroke-width=".5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+(function() {
+'use strict';
+
+// ===== JSON DATA =====
+
+var programmesData = [
+  { title: 'Computer Science & Engineering', link: 'https://www.iitm.tech/btech-cse', img: 'https://static.wixstatic.com/media/ab471d_78a7676d1b95443c9ef31b6d8b26bffe~mv2.png' },
+  { title: 'Electronics & Communication Engineering', link: 'https://www.iitm.tech/btech-electric-engineering', img: 'https://static.wixstatic.com/media/ab471d_3622b45c402549a798d77192e40efddf~mv2.png' },
+  { title: 'Civil Engineering', link: 'https://www.iitm.tech/btech-civil', img: 'https://static.wixstatic.com/media/ab471d_adcf75e86f9f4f95973b6c6ab3f89e0e~mv2.png' },
+  { title: 'Artificial Intelligence & Machine Learning', link: 'https://www.iitm.tech/ai-and-ml', img: 'https://static.wixstatic.com/media/ab471d_e2d5ef09a9244312bc83d0fa61389223~mv2.png' },
+  { title: 'BBA', link: 'https://www.iitm.tech/bba', img: 'https://static.wixstatic.com/media/ab471d_c27e0c9f35794a38be5a1d345431e9ee~mv2.png' },
+  { title: 'BCA', link: 'https://www.iitm.tech/bca', img: 'https://static.wixstatic.com/media/ab471d_b9705f855c2f4e43847aab30a8791d6c~mv2.png' }
+];
+
+function navigateTo(url) {
+  if (window.top !== window.self) {
+    try { window.top.location.href = url; }
+    catch(e) { window.parent.postMessage({ type: "navigate", url: url }, "*"); }
+  } else {
+    window.location.href = url;
+  }
+}
+
+// =============================
+// STUDENT EXCELLENCE DATA
+// Edit the JSON below to add, remove, or modify achievement cards.
+//   title       — Card heading (required)
+//   image       — URL to the achievement image (any aspect ratio is fine)
+//   badge       — Small colored label (e.g. "Winner", "Google")
+//   description — Short text below the title
+//   featured    — true = larger card with gold border; false = regular card
+// =============================
+var achievementsData = [
+  { title: 'Google Student Ambassador',       image: 'https://static.wixstatic.com/media/ab471d_bff7f62c97e44cca99572884b4037502~mv2.png', badge: 'Google',   description: 'IITM College of Engineering',      featured: false },
+  { title: 'AWS Student Builder Group',        image: 'https://static.wixstatic.com/media/ab471d_033efb186ba34b32adc8f2ca760e7297~mv2.png', badge: 'AWS',      description: 'Cloud Computing Community',       featured: false },
+  { title: 'SIH 2025 Finalist',               image: 'https://static.wixstatic.com/media/ab471d_65ed006c1c484a4db5c4e2d9c053d8d1~mv2.png', badge: 'SIH 2025', description: 'Team KAIZEN — Led by Vaibhav Trivedi', featured: true  },
+  { title: 'NPTEL Topper',                     image: 'https://static.wixstatic.com/media/ab471d_70d7bc16e5f64729a74170c3ab840d1d~mv2.png', badge: 'NPTEL',    description: 'National Rank #1 in Cloud Computing', featured: false },
+  { title: 'Smart India Hackathon',            image: 'https://static.wixstatic.com/media/ab471d_b3bf3e83d1c54261bbb0eada37fe75c4~mv2.png', badge: 'Winner',   description: 'Regional Level Winners',            featured: false },
+  { title: 'GDSC Lead',                        image: 'https://static.wixstatic.com/media/ab471d_0dd95da8e4a74c19946b702303899978~mv2.png', badge: 'Google',   description: 'Google Developer Student Club',     featured: false },
+  { title: 'National Idea Competition',        image: 'https://static.wixstatic.com/media/ab471d_c9639588ffc34ee5af9bac3c87488da8~mv2.png', badge: '1st Prize', description: 'Sustainable Innovation Award',       featured: false },
+  { title: 'Microsoft Learn Student Ambassador', image: 'https://static.wixstatic.com/media/ab471d_1898e01536b8463fa12dcdaece42b5a6~mv2.png', badge: 'Microsoft', description: 'Gold Level Ambassador',              featured: true  },
+  { title: 'Inter-College Coding Contest',     image: 'https://static.wixstatic.com/media/ab471d_f3531e4beb1b4caeb3e0acb51f8432b1~mv2.png', badge: 'Champion',  description: '1st Place — Team IITM',           featured: false },
+  { title: 'Research Paper Published',         image: 'https://static.wixstatic.com/media/ab471d_65ed006c1c484a4db5c4e2d9c053d8d1~mv2.png', badge: 'IEEE',      description: 'IEEE International Conference',    featured: false },
+  { title: 'National Quiz Champions',          image: 'https://static.wixstatic.com/media/ab471d_0dd95da8e4a74c19946b702303899978~mv2.png', badge: 'National',  description: 'General Knowledge Trophy',         featured: false },
+  { title: 'Hackathon Grand Winners',          image: 'https://static.wixstatic.com/media/ab471d_70d7bc16e5f64729a74170c3ab840d1d~mv2.png', badge: '1st Place', description: 'Smart City Hackathon 2025',        featured: true  },
+  { title: 'Inter-College Athletics',          image: 'https://static.wixstatic.com/media/ab471d_c9639588ffc34ee5af9bac3c87488da8~mv2.png', badge: 'Gold',      description: 'Gold Medal — Track & Field',       featured: false },
+  { title: 'Cultural Fest Champions',          image: 'https://static.wixstatic.com/media/ab471d_1898e01536b8463fa12dcdaece42b5a6~mv2.png', badge: 'Best Team', description: 'Overall Trophy Winners',            featured: false },
+  { title: 'Startup Pitch Winners',            image: 'https://static.wixstatic.com/media/ab471d_f3531e4beb1b4caeb3e0acb51f8432b1~mv2.png', badge: 'Startup',   description: 'Seed Funding Awarded',             featured: false },
+  { title: 'Innovation Award',                 image: 'https://static.wixstatic.com/media/ab471d_b3bf3e83d1c54261bbb0eada37fe75c4~mv2.png', badge: 'Innovation', description: 'Sustainable Solutions Challenge',   featured: false }
+];
+
+// ===== Bulletin Marquee (translateY) =====
+(function initBulletinMarquee() {
+  var body = document.getElementById('bulletinBody');
+  if (!body) return;
+  var inner = document.createElement('div');
+  while (body.firstChild) inner.appendChild(body.firstChild);
+  body.appendChild(inner);
+  inner.innerHTML += inner.innerHTML;
+  var pos = 0, paused = false, speed = 0.25;
+  function step() {
+    if (!paused) {
+      pos -= speed;
+      var halfH = inner.scrollHeight / 2;
+      if (Math.abs(pos) >= halfH) pos = 0;
+      inner.style.transform = 'translateY(' + pos + 'px)';
+    }
+    requestAnimationFrame(step);
+  }
+  body.addEventListener('mouseenter', function() { paused = true; });
+  body.addEventListener('mouseleave', function() { paused = false; });
+  requestAnimationFrame(step);
+})();
+
+// ===== Scroll Reveal Observer =====
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) entry.target.classList.add('active');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .fade-in, .stagger-children, .partner-logo').forEach(function(el) {
+  observer.observe(el);
+});
+
+// ===== Programmes Carousel (position-based, dynamic responsive, JSON-driven) =====
+(function initCarousel() {
+  var inner = document.getElementById('carouselInner');
+  if (!inner) return;
+
+  inner.innerHTML = '';
+  programmesData.forEach(function(p, i) {
+    var card = document.createElement('div');
+    card.className = 'carousel-card';
+    card.innerHTML = '<a href="javascript:void(0)"><img src="' + p.img + '" alt="' + p.title + '" loading="lazy"><div class="card-overlay"><h3>' + p.title + '</h3><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>Learn More</span></div></a>';
+    card.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!card.classList.contains('pos-center')) { goTo(i); }
+      else { navigateTo(p.link); }
+    });
+    inner.appendChild(card);
+  });
+
+  var cards = inner.querySelectorAll('.carousel-card');
+  var total = cards.length;
+  var current = 0, isAnimating = false, autoTimer;
+
+  function calcOffset() {
+    var containerW = inner.offsetWidth;
+    if (containerW < 1) return 0;
+    var cardW = cards[0].offsetWidth;
+    var gap = Math.max(24, Math.min(containerW * 0.06, 60));
+    var offset = cardW * 0.5 + gap;
+    var maxOffset = containerW * 0.42;
+    return Math.min(offset, maxOffset);
+  }
+
+  function setPositions(index) {
+    var offset = calcOffset();
+    cards.forEach(function(c, i) {
+      var diff = (i - index + total) % total;
+      if (diff > total / 2) diff -= total;
+      var cls = 'pos-hidden', tx = 0, sc = 1, op = 0;
+      if (diff === 0) { cls = 'pos-center'; tx = 0; sc = 1; op = 1; }
+      else if (Math.abs(diff) === 1) { cls = diff < 0 ? 'pos-left1' : 'pos-right1'; tx = diff * offset; sc = 0.88; op = 0.9; }
+      else if (Math.abs(diff) === 2) { cls = diff < 0 ? 'pos-left2' : 'pos-right2'; tx = diff * offset; sc = 0.68; op = 0.55; }
+      else if (Math.abs(diff) === 3) { cls = diff < 0 ? 'pos-left3' : 'pos-right3'; tx = diff * offset; sc = 0.48; op = 0; }
+      else { cls = 'pos-hidden'; op = 0; }
+      c.className = 'carousel-card ' + cls;
+      c.style.transform = 'translate(-50%,-50%) translateX(' + tx + 'px) scale(' + sc + ')';
+      c.style.opacity = op;
+      c.style.pointerEvents = op < 0.01 ? 'none' : '';
+    });
+  }
+
+  function goTo(index) {
+    if (isAnimating || index === current) return;
+    isAnimating = true;
+    current = index;
+    setPositions(index);
+    setTimeout(function() { isAnimating = false; }, 850);
+  }
+
+  function next() { goTo((current + 1) % total); }
+  function prev() { goTo((current - 1 + total) % total); }
+
+  function startAuto() { autoTimer = setInterval(next, 3500); }
+  function stopAuto() { clearInterval(autoTimer); }
+
+  inner.addEventListener('mouseenter', stopAuto);
+  inner.addEventListener('mouseleave', startAuto);
+
+  document.getElementById('carNext').addEventListener('click', function() { stopAuto(); next(); startAuto(); });
+  document.getElementById('carPrev').addEventListener('click', function() { stopAuto(); prev(); startAuto(); });
+
+  // Swipe support
+  (function() {
+    var startX = 0, isSwiping = false;
+    inner.addEventListener('mousedown', function(e) { startX = e.clientX; isSwiping = true; });
+    inner.addEventListener('mousemove', function(e) { if (isSwiping) e.preventDefault(); });
+    inner.addEventListener('mouseup', function(e) {
+      if (!isSwiping) return;
+      isSwiping = false;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) { stopAuto(); dx > 0 ? prev() : next(); startAuto(); }
+    });
+    inner.addEventListener('mouseleave', function() { isSwiping = false; });
+    inner.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isSwiping = true; }, {passive:true});
+    inner.addEventListener('touchmove', function(e) { if (isSwiping) e.preventDefault(); });
+    inner.addEventListener('touchend', function(e) {
+      if (!isSwiping) return;
+      isSwiping = false;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) { stopAuto(); dx > 0 ? prev() : next(); startAuto(); }
+    });
+  })();
+
+  setPositions(0);
+  startAuto();
+
+  // Recalculate on resize
+  var resizeTimer;
+  function recalcPositions() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() { setPositions(current); }, 120);
+  }
+  window.addEventListener('resize', recalcPositions);
+  inner.addEventListener('customResize', recalcPositions);
+})();
+
+// ===== Shining Stars — Dual-row Infinite Marionette Gallery =====
+// Add new achievements by appending an object to topRowData or bottomRowData.
+// Each entry: { title: 'Display Name', image: 'url', link: 'url' }
+var singleRowData = [
+ // { title: 'GeekForGeeks Campus Mantri', image: 'https://static.wixstatic.com/media/ab471d_24aed8ca169b4bc2a8aa2d1cc719d80b~mv2.png', link: '#' },
+  //{ title: 'Gemini Student Ambassadors', image: 'https://static.wixstatic.com/media/ab471d_3a9761cd2f364f4198bea5d0a638e40d~mv2.png', link: '#' },
+  //{ title: 'AWS Student Builder Campus Leader', image: 'https://static.wixstatic.com/media/ab471d_fbd2738e25f14a3c84f8f070a1f829eb~mv2.png', link: '#' },
+  { title: 'Vaibhav Trivedi — NPTEL Cloud Computing Elite Top 1%', image: 'https://static.wixstatic.com/media/ab471d_ec7f5c5d73524d4a8a518750833f855b~mv2.png', link: '#' },
+  { title: 'Shikhar Prajapati — NPTEL Deep Learning Elite Silver', image: 'https://static.wixstatic.com/media/ab471d_33cc9d1caac54fb282cb639ef25bc258~mv2.png', link: '#' },
+  { title: 'Himanshi — NPTEL Foundation of OOP Elite', image: 'https://static.wixstatic.com/media/ab471d_cf22948b9bd84f34b43f72c86cadeefa~mv2.png', link: '#' },
+  { title: 'Niharika Sharma — NPTEL Cloud Computing Elite Silver', image: 'https://static.wixstatic.com/media/ab471d_eecb977d66ef47d79a40a9e62cdbb6d8~mv2.png', link: '#' },
+  { title: 'IDE Bootcamp Selected Teams', image: 'https://static.wixstatic.com/media/ab471d_1a241445e36d49dcaca219301fb8c163~mv2.png', link: '#' },
+  { title: 'SIH 2025 Finalist Team KAIZEN', image: 'https://static.wixstatic.com/media/ab471d_4def277d7c414c95ab47bb35085f41da~mv2.png', link: '#' },
+  { title: 'Dr. Antim Dev Mishra — NPTEL SPOC Felicitation', image: 'https://static.wixstatic.com/media/ab471d_0551844f78f24445abf3eb49bfc627a6~mv2.jpg', link: '#' }
+];
+
+(function initStarsMarquee() {
+  var topEl = document.getElementById('starsMarqueeTop');
+  if (!topEl) return;
+
+  var DURATION = 3000; // ms per full loop (~60% faster)
+
+  function buildMarquee(container, data, direction, speedMult) {
+    speedMult = speedMult || 1;
+    var track = document.createElement('div');
+    track.className = 'stars-track';
+    var items = data.concat(data);
+    var cards = [];
+    var pendingImgs = [];
+
+    items.forEach(function(item) {
+      var card = document.createElement('div');
+      card.className = 'stars-card';
+      var a = document.createElement('a');
+      a.href = item.link;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      var img = document.createElement('img');
+      img.src = item.image;
+      img.alt = item.title;
+      img.draggable = false;
+      pendingImgs.push(img);
+      cards.push({ card: card, img: img });
+      a.appendChild(img);
+      card.appendChild(a);
+      track.appendChild(card);
+    });
+    container.appendChild(track);
+
+    var pos = 0, paused = false, speed = 0, running = false;
+    var duration = DURATION / speedMult;
+
+    function setCardWidths() {
+      cards.forEach(function(ref) {
+        var img = ref.img;
+        var card = ref.card;
+        var h = img.offsetHeight;
+        if (h > 0 && img.naturalWidth > 0) {
+          card.style.width = Math.round(img.naturalWidth / img.naturalHeight * h) + 'px';
+        }
+      });
+    }
+
+    function calcSpeed() {
+      var halfW = track.scrollWidth / 2;
+      if (halfW > 0) {
+        speed = (direction === 'left' ? -halfW : halfW) / duration;
+        return true;
+      }
+      return false;
+    }
+
+    function waitAllImages(cb) {
+      var remaining = pendingImgs.length;
+      if (remaining === 0) { cb(); return; }
+      function oneDone() {
+        remaining--;
+        if (remaining === 0) cb();
+      }
+      pendingImgs.forEach(function(img) {
+        if (img.complete && img.naturalWidth > 0) { oneDone(); return; }
+        img.onload = oneDone;
+        img.onerror = oneDone;
+      });
+    }
+
+    function start() {
+      setCardWidths();
+      track.style.display = ''; // ensure visible
+      void track.offsetHeight; // force layout
+      if (!calcSpeed()) { setTimeout(start, 100); return; }
+      running = true;
+      tick();
+    }
+
+    waitAllImages(start);
+
+    // Hover pause / resume
+    container.addEventListener('mouseenter', function() { paused = true; });
+    container.addEventListener('mouseleave', function() { paused = false; });
+
+    // Drag / swipe
+    (function() {
+      var startX = 0, dragX = 0, isDown = false;
+      container.addEventListener('mousedown', function(e) {
+        startX = e.clientX; dragX = 0; isDown = true; paused = true;
+      });
+      document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        dragX = e.clientX - startX;
+        track.style.transform = 'translate3d(' + (pos + dragX) + 'px,0,0)';
+      });
+      document.addEventListener('mouseup', function() {
+        if (!isDown) return; isDown = false;
+        if (Math.abs(dragX) > 20) pos += dragX;
+        paused = false;
+      });
+      container.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX; dragX = 0; isDown = true; paused = true;
+      }, { passive: true });
+      container.addEventListener('touchmove', function(e) {
+        if (!isDown) return;
+        dragX = e.touches[0].clientX - startX;
+        track.style.transform = 'translate3d(' + (pos + dragX) + 'px,0,0)';
+      }, { passive: true });
+      container.addEventListener('touchend', function() {
+        if (!isDown) return; isDown = false;
+        if (Math.abs(dragX) > 20) pos += dragX;
+        paused = false;
+      });
+    })();
+
+    function tick() {
+      if (running && !paused) {
+        pos += speed;
+        var halfW = track.scrollWidth / 2;
+        if (speed < 0 && pos <= -halfW) pos = 0;
+        else if (speed > 0 && pos >= 0) pos = -halfW;
+        track.style.transform = 'translate3d(' + pos + 'px,0,0)';
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // Recalc on resize / orientation change
+    var resizeTimer;
+    function recalc() {
+      setCardWidths();
+      void track.offsetHeight;
+      calcSpeed();
+    }
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(recalc, 200);
+    });
+    window.addEventListener('orientationchange', function() {
+      setTimeout(recalc, 400);
+    });
+  }
+
+  buildMarquee(topEl, singleRowData, 'left', 1);
+})();
+
+// ===== Partners Marquee =====
+(function initPartnersScroll() {
+  var track = document.getElementById('partnersTrack');
+  if (!track) return;
+  var pos = 0;
+  function scrollPartners() {
+    pos -= 0.4;
+    var w = track.scrollWidth / 2;
+    if (Math.abs(pos) >= w) pos = 0;
+    track.style.transform = 'translateX(' + pos + 'px)';
+    requestAnimationFrame(scrollPartners);
+  }
+  scrollPartners();
+})();
+
+// ===== Tour Video Controls — Premium Player =====
+(function initTourVideo() {
+  var video = document.getElementById('tourVideo');
+  if (!video) return;
+
+  var playOverlay = document.getElementById('tourPlayOverlay');
+  var playBtn = document.getElementById('tourPlayBtn');
+  var progressFill = document.getElementById('tourProgressFill');
+  var progress = document.getElementById('tourProgress');
+  var timeDisplay = document.getElementById('tourTime');
+  var muteBtn = document.getElementById('tourMuteBtn');
+  var volumeSlider = document.getElementById('tourVolume');
+  var controls = document.getElementById('tourControls');
+  var fullscreenBtn = document.getElementById('tourFullscreenBtn');
+  var pipBtn = document.getElementById('tourPiPBtn');
+  var speedBtn = document.getElementById('tourSpeedBtn');
+  var speedMenu = document.getElementById('tourSpeedMenu');
+
+  var hideTimer;
+  var speeds = [0.5, 1, 1.5, 2];
+
+  function showControls() {
+    controls.classList.add('visible');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function() { if (!video.paused) controls.classList.remove('visible'); }, 3000);
+  }
+
+  // Play / Pause
+  function togglePlay() {
+    if (video.paused) {
+      video.play();
+      playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+      if (playOverlay) playOverlay.classList.add('hidden');
+    } else {
+      video.pause();
+      playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>';
+      if (playOverlay && video.currentTime > 0) playOverlay.classList.remove('hidden');
+    }
+  }
+
+  // Progress
+  function updateProgress() {
+    if (!video.duration) return;
+    var pct = (video.currentTime / video.duration) * 100;
+    progressFill.style.width = pct + '%';
+    var m = Math.floor(video.currentTime / 60);
+    var s = Math.floor(video.currentTime % 60);
+    timeDisplay.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  // Mute
+  function updateMuteIcon() {
+    muteBtn.innerHTML = video.muted
+      ? '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>'
+      : '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+  }
+
+  // Fullscreen
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      var el = video.closest('.tour-player-wrap');
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    }
+  }
+
+  // Picture-in-Picture
+  function togglePip() {
+    if (document.pictureInPictureElement) {
+      document.exitPictureInPicture().catch(function() {});
+    } else if (video.requestPictureInPicture) {
+      video.requestPictureInPicture().catch(function() {});
+    }
+  }
+
+  // Speed
+  function setSpeed(speed) {
+    video.playbackRate = speed;
+    speedBtn.textContent = speed + 'x';
+    var opts = speedMenu.querySelectorAll('.tour-speed-opt');
+    opts.forEach(function(o) { o.classList.toggle('active', parseFloat(o.dataset.speed) === speed); });
+    speedMenu.classList.remove('open');
+  }
+
+  // Event listeners
+  if (playBtn) playBtn.addEventListener('click', togglePlay);
+  if (playOverlay) playOverlay.addEventListener('click', togglePlay);
+  video.addEventListener('click', togglePlay);
+  video.addEventListener('timeupdate', updateProgress);
+
+  video.addEventListener('play', function() {
+    playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+    if (playOverlay) playOverlay.classList.add('hidden');
+    showControls();
+  });
+  video.addEventListener('pause', function() {
+    playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>';
+    if (playOverlay && video.currentTime > 0) playOverlay.classList.remove('hidden');
+  });
+  video.addEventListener('ended', function() {
+    playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg>';
+    if (playOverlay) playOverlay.classList.remove('hidden');
+  });
+
+  video.addEventListener('mousemove', showControls);
+  if (controls) {
+    controls.addEventListener('mousemove', showControls);
+    controls.addEventListener('mouseenter', function() { clearTimeout(hideTimer); });
+  }
+
+  // Progress bar click
+  if (progress) {
+    progress.addEventListener('click', function(e) {
+      var rect = progress.getBoundingClientRect();
+      var pct = (e.clientX - rect.left) / rect.width;
+      video.currentTime = pct * video.duration;
+    });
+  }
+
+  // Mute
+  if (muteBtn) {
+    muteBtn.addEventListener('click', function() {
+      video.muted = !video.muted;
+      updateMuteIcon();
+    });
+  }
+
+  // Volume
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', function() {
+      video.volume = this.value;
+      if (video.volume > 0 && video.muted) { video.muted = false; updateMuteIcon(); }
+    });
+  }
+
+  // Fullscreen
+  if (fullscreenBtn) fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+  // PiP
+  if (pipBtn && video.requestPictureInPicture) {
+    pipBtn.addEventListener('click', togglePip);
+  } else if (pipBtn) {
+    pipBtn.style.display = 'none';
+  }
+
+  // Speed
+  if (speedBtn && speedMenu) {
+    speedBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      speedMenu.classList.toggle('open');
+    });
+    speedMenu.querySelectorAll('.tour-speed-opt').forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        setSpeed(parseFloat(this.dataset.speed));
+      });
+    });
+    document.addEventListener('click', function() { speedMenu.classList.remove('open'); });
+  }
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    var sec = 10;
+    switch (e.key.toLowerCase()) {
+      case ' ':
+        e.preventDefault();
+        togglePlay();
+        break;
+      case 'arrowleft':
+        e.preventDefault();
+        video.currentTime = Math.max(0, video.currentTime - sec);
+        break;
+      case 'arrowright':
+        e.preventDefault();
+        video.currentTime = Math.min(video.duration || Infinity, video.currentTime + sec);
+        break;
+      case 'arrowup':
+        e.preventDefault();
+        if (volumeSlider) { volumeSlider.value = Math.min(1, parseFloat(volumeSlider.value) + 0.05); video.volume = parseFloat(volumeSlider.value); }
+        break;
+      case 'arrowdown':
+        e.preventDefault();
+        if (volumeSlider) { volumeSlider.value = Math.max(0, parseFloat(volumeSlider.value) - 0.05); video.volume = parseFloat(volumeSlider.value); }
+        break;
+      case 'f':
+        e.preventDefault();
+        toggleFullscreen();
+        break;
+      case 'p':
+        e.preventDefault();
+        togglePip();
+        break;
+      case 'm':
+        e.preventDefault();
+        video.muted = !video.muted;
+        updateMuteIcon();
+        break;
+    }
+  });
+
+  // Init
+  video.volume = 0.5;
+  var tourWrap = video.closest('.tour-player-wrap') || video.parentElement;
+  var videoAutoStarted = false;
+  var videoObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !videoAutoStarted) {
+        videoAutoStarted = true;
+        video.play().catch(function() {});
+        videoObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  if (tourWrap) videoObserver.observe(tourWrap);
+})();
+
+// ===== Resize Engine — automatically recalculates layouts on resize =====
+(function initResizeEngine() {
+  var carouselInner = document.getElementById('carouselInner');
+  var rafId;
+
+  function onResize() {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(function() {
+      if (carouselInner) {
+        carouselInner.dispatchEvent(new CustomEvent('customResize'));
+      }
+      rafId = null;
+    });
+  }
+
+  var ro;
+  try { ro = new ResizeObserver(onResize); } catch(e) { ro = null; }
+  if (ro) {
+    if (carouselInner) ro.observe(carouselInner);
+  }
+  window.addEventListener('orientationchange', onResize);
+  window.addEventListener('resize', onResize);
+})();
+
+})();
+
+// ===== Latest News & Events =====
+(function(){
+'use strict';
+
+var latestNews = [
+{
+  id: 101,
+  month: "September",
+  year: "2026",
+  date: "25 September 2026",
+  category: "Fresher's Party",
+  headline: "25 Sep 2026 | Fresher's Party 2K26 for First-Year BBA, BCA &amp; B.Tech at Hyatt Centric, Janakpuri",
+  short: "First-year BBA, BCA & B.Tech students are invited to the Fresher's Party on 25th September 2026 at Hyatt Centric, Janakpuri, New Delhi."
+},
+{
+  id: 102,
+  month: "October",
+  year: "2026",
+  date: "05 October 2026",
+  category: "Examination",
+  headline: "05 Oct 2026 onwards | Internal Examinations for BBA, BCA &amp; B.Tech — Date Sheet Soon",
+  short: "Internal examinations for BBA, BCA & B.Tech students will commence from 5th October 2026 onwards. Detailed date sheet will be announced soon.",
+  link: "https://ab471de8-5367-47f7-9146-a01672be61b7.usrfiles.com/ugd/ab471d_063c94c572684973bfebf7cd6d906c38.pdf"
+},
+
+{
+  id: 1,
+  month: "June",
+  year: "2026",
+  date: "08 June 2026",
+  category: "Community Outreach",
+  headline: "08 June 2026 | IITM Honours Janpratinidhis and Promotes Sustainable Community Development",
+  short: "IITM College organised a Janpratinidhi Sabha honouring community representatives while promoting education, rural welfare and sustainable development.",
+  image: "https://static.wixstatic.com/media/ab471d_3ed5a877a1e94b5891431bb1b4213abb~mv2.png"
+},
+
+{
+  id: 2,
+  month: "June",
+  year: "2026",
+  date: "06 June 2026",
+  category: "Environment",
+  headline: "06 June 2026 | IITM Celebrates World Environment Day with Campus Plantation Drive",
+  short: "Students, faculty and management participated in a plantation drive to encourage environmental conservation and sustainable development.",
+  image: "https://static.wixstatic.com/media/ab471d_604f7020479f4d4c9aafb0382d435975~mv2.png"
+},
+
+{
+  id: 3,
+  month: "May",
+  year: "2026",
+  date: "30 May 2026",
+  category: "Career Development",
+  headline: "30 May 2026 | Nayi Disha 2026 Inspires Students Towards Successful Careers",
+  short: "The Nayi Disha 2026 programme connected students with career opportunities, higher education guidance and industry experts.",
+  image: "https://static.wixstatic.com/media/ab471d_70c9e820d28847bb85adffb901f73745~mv2.png"
+},
+
+{
+  id: 4,
+  month: "May",
+  year: "2026",
+  date: "29 May 2026",
+  category: "Career Guidance",
+  headline: "29 May 2026 | IITM Announces Nayi Disha 2026 Career Guidance Programme",
+  short: "Students were invited to explore career counselling, industry interaction and future-ready skills through Nayi Disha 2026.",
+  image: "https://static.wixstatic.com/media/ab471d_0faf50201526473ebfdadf190ca89ade~mv2.png"
+},
+
+{
+  id: 5,
+  month: "April",
+  year: "2026",
+  date: "24–25 April 2026",
+  category: "International Conference",
+  headline: "24–25 April 2026 | IITM Successfully Hosts International Conference on Emerging Technologies (ICETIEMT 2026)",
+  short: "Researchers, academicians and industry experts participated in IITM's two-day International Conference on Emerging Technologies and Innovation.",
+  image: "https://static.wixstatic.com/media/ab471d_430beee5eb644c1d9719a4538bb73ab3~mv2.png"
+},
+
+{
+  id: 6,
+  month: "April",
+  year: "2026",
+  date: "08 April 2026",
+  category: "Leadership",
+  headline: "08 April 2026 | Sankalp 2.0 Principal Meet Highlights Responsible Youth Development",
+  short: "Education leaders discussed responsible leadership, innovation and holistic student development during Sankalp 2.0.",
+  image: "https://static.wixstatic.com/media/ab471d_383cb86c9e8b49d09ed758667832013b~mv2.png"
+},
+{
+  id: 7,
+  month: "July",
+  year: "2026",
+  date: "11 July 2026",
+  category: "Environment",
+  headline: "11 July 2026 | IITM Celebrates World Population day with a Awareness Program, focusing on sustainability, youth empowerment, and the future.",
+  short: "Students, faculty and management participated in a awareness Program with lecture by our Honorable Director sir about development and youth, future & sutainability.",
+  image: "https://static.wixstatic.com/media/ab471d_87dd653a8ade4d6da258271f94c63680~mv2.jpeg"
+}
+];
+
+var stage=document.getElementById('neStage');
+if(!stage) return;
+
+var foot=document.getElementById('neSlideFoot');
+var dotsEl=document.getElementById('neDots');
+var headlinesBd=document.getElementById('neHeadlinesBd');
+var breakTrack=document.getElementById('neBreakingTrack');
+
+var slideNews=latestNews.filter(function(n){return !!n.image;});
+var ci=0,total=slideNews.length,animating=false,autoTimer,swipeX=0,swiping=false;
+var allTotal=latestNews.length;
+
+function buildSlides(){
+  stage.innerHTML='';
+  slideNews.forEach(function(n,i){
+    var s=document.createElement('div');
+    s.className='ne-slide';
+    s.innerHTML='<div class="ne-img-wrap"><img src="'+n.image+'" alt="'+n.title+'" loading="lazy"></div>';
+    stage.appendChild(s);
+  });
+  if(total>0){
+    stage.children[0].classList.add('current');
+    if(total>1) stage.children[1].classList.add('behind');
+  }
+}
+
+function buildDots(){
+  dotsEl.innerHTML='';
+  for(var i=0;i<total;i++){
+    var d=document.createElement('button');
+    d.className='ne-dot'+(i===0?' active':'');
+    d.setAttribute('data-idx',i);
+    d.addEventListener('click',function(){goTo(parseInt(this.getAttribute('data-idx'),10));});
+    dotsEl.appendChild(d);
+  }
+}
+
+function buildHeadlines(){
+  headlinesBd.innerHTML='';
+  var wrap=document.createElement('div');
+  wrap.className='ne-hl-wrap';
+  var items=allTotal>5?latestNews.concat(latestNews):latestNews;
+  items.forEach(function(n,i){
+    var idx=i%allTotal;
+    var sIdx=slideNews.indexOf(n);
+    var hl=document.createElement('div');
+    hl.className='ne-hl-item'+(sIdx===0?' active':'');
+    hl.setAttribute('data-idx',idx);
+    if(sIdx>=0) hl.setAttribute('data-sidx',sIdx);
+    hl.innerHTML='<span class="ne-new">NEW</span><span class="ne-hl-b">'+n.category+'</span><div class="ne-hl-c"><div class="ne-hl-t">'+n.headline+'</div><div class="ne-hl-m">'+n.month+' '+n.year+'</div></div><span class="ne-hl-ar">→</span>';
+    hl.addEventListener('click',function(){
+      var s=this.getAttribute('data-sidx');
+      if(s!==null&&s!==''){goTo(parseInt(s,10));}
+      else if(n.link){window.open(n.link,'_blank','noopener');}
+    });
+    wrap.appendChild(hl);
+  });
+  if(allTotal>5){
+    headlinesBd.classList.add('marquee');
+    wrap.className='ne-vm-wrap';
+  }
+  headlinesBd.appendChild(wrap);
+}
+
+function buildBreaking(){
+  breakTrack.innerHTML='';
+  var cats=[];
+  latestNews.forEach(function(n){
+    if(cats.indexOf(n.category)<0) cats.push(n.category);
+  });
+  if(total>5){
+    var text=cats.join('  &bull;  ')+'  &bull;  ';
+    breakTrack.innerHTML='<span class="ne-breaking-text">'+text+'</span><span class="ne-breaking-text">'+text+'</span>';
+    var pos=0,paused=false,speed=0.35;
+    var inner=breakTrack.parentNode;
+    function tick(){
+      if(!paused){
+        pos-=speed;
+        var w=breakTrack.scrollWidth/2;
+        if(pos<=-w) pos=0;
+        breakTrack.style.transform='translateX('+pos+'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+    var bar=breakTrack.closest('.ne-breaking');
+    if(bar){
+      bar.addEventListener('mouseenter',function(){paused=true;});
+      bar.addEventListener('mouseleave',function(){paused=false;});
+    }
+    requestAnimationFrame(tick);
+  } else {
+    var text=cats.join('  &bull;  ');
+    breakTrack.innerHTML='<span class="ne-breaking-text">'+text+'</span>';
+  }
+}
+
+function updateFoot(idx){
+  var n=slideNews[idx];
+  foot.innerHTML='<span class="nsf-d">'+n.month+' '+n.year+'</span><span class="nsf-b">'+n.category+'</span><span class="nsf-t">'+n.headline+'</span>';
+}
+
+function updateDots(idx){
+  var ds=dotsEl.querySelectorAll('.ne-dot');
+  ds.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+}
+
+function updateHL(idx){
+  var items=headlinesBd.querySelectorAll('.ne-hl-item');
+  items.forEach(function(h){var s=h.getAttribute('data-sidx');h.classList.toggle('active',s!==null&&s!==''&&parseInt(s,10)===idx);});
+}
+
+function goTo(idx){
+  if(animating||idx===ci||idx<0||idx>=total) return;
+  animating=true;
+  var slides=stage.querySelectorAll('.ne-slide');
+  var curS=slides[ci];
+  var tarS=slides[idx];
+  slides.forEach(function(s){s.classList.remove('current','behind','flip-out');});
+  tarS.classList.add('behind');
+  curS.classList.add('flip-out');
+  setTimeout(function(){
+    slides.forEach(function(s){s.classList.remove('current','behind','flip-out');});
+    tarS.classList.add('current');
+    var ni=(idx+1)%total;
+    if(ni!==idx) slides[ni].classList.add('behind');
+    ci=idx;
+    animating=false;
+    updateFoot(idx);
+    updateDots(idx);
+    updateHL(idx);
+  },900);
+}
+
+function next(){goTo((ci+1)%total);}
+function prev(){goTo((ci-1+total)%total);}
+
+function startAuto(){if(total>1) autoTimer=setInterval(next,6000);}
+function stopAuto(){clearInterval(autoTimer);}
+
+// Hover pause
+stage.addEventListener('mouseenter',stopAuto);
+stage.addEventListener('mouseleave',startAuto);
+
+// Swipe
+stage.addEventListener('mousedown',function(e){swipeX=e.clientX;swiping=true;e.preventDefault();});
+document.addEventListener('mousemove',function(e){if(swiping)e.preventDefault();});
+document.addEventListener('mouseup',function(e){
+  if(!swiping) return; swiping=false;
+  var dx=e.clientX-swipeX;
+  if(Math.abs(dx)>40){stopAuto();dx>0?prev():next();startAuto();}
+});
+stage.addEventListener('touchstart',function(e){swipeX=e.touches[0].clientX;swiping=true;},{passive:true});
+stage.addEventListener('touchmove',function(e){if(swiping)e.preventDefault();},{passive:false});
+stage.addEventListener('touchend',function(e){
+  if(!swiping) return; swiping=false;
+  var dx=e.changedTouches[0].clientX-swipeX;
+  if(Math.abs(dx)>40){stopAuto();dx>0?prev():next();startAuto();}
+});
+
+// Arrow buttons
+document.getElementById('neNext').addEventListener('click',function(){stopAuto();next();startAuto();});
+document.getElementById('nePrev').addEventListener('click',function(){stopAuto();prev();startAuto();});
+
+// Init
+buildSlides();
+buildDots();
+buildHeadlines();
+buildBreaking();
+if(total>0){updateFoot(0);updateHL(0);}
+startAuto();
+
+})();
+</script>
+
+<script>
+var galleryImages = [
+  'https://static.wixstatic.com/media/ab471d_4f40b1c05ccb474896b0af381602441c~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_b1f3d05cdf8743aca2aecf275451d15e~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_788467c72ccb4998b6efb39888912b75~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_b45b33cc70ad42c1b6c18cafe4d2122c~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_3b2912da50a544f08fe6d74d86d55dba~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_9aa9b5ddaf984bf29c8cad2e6d2e7b18~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_ff6481df4ef442cc9e15bfe2878fcb6f~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_45f414cc8faa4d0f8389848ba298fdac~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_abf31db1de974d138050e25c97c9203f~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_454a5e39c1b34bfa8d1a31f4462a64ed~mv2.png',
+  'https://static.wixstatic.com/media/ab471d_6f9afb42b08a4099bab715e4401fd7cd~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_26f3310d4f88491681778e84c9196ac6~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_47549fa5cda04e6e8d2d12650cc84059~mv2.jpeg',
+  'https://static.wixstatic.com/media/ab471d_3641c31b51b646dfabb9c0f7a98853ff~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_ac60dd357aa14bf2b9747ff1f40f653c~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_ae878ab6fdf44023ac8c2cfb55ff5d09~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_5cc0a3562bc842cfbc988d78019bb193~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_70e8e24b41a44dbeaba1137170f10dfc~mv2.png',
+  'https://static.wixstatic.com/media/ab471d_bfb817f11194441fad697a989e5d7c88~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_73768241dbda476291bf07233e769449~mv2.jpg',
+  'https://static.wixstatic.com/media/ab471d_ce5b07e40da7455b9f1d7cd8f507814e~mv2.png',
+  'https://static.wixstatic.com/media/ab471d_bd74370cd06c43b6819173c7160b2b68~mv2.png',
+  'https://static.wixstatic.com/media/ab471d_2f3a29ddd27249f0b8ac648f3accbed4~mv2.png',
+  'https://static.wixstatic.com/media/ab471d_435729a0bd874e5ea9751c9ca81f1c2e~mv2.png'
+];
+
+(function(){
+  var grid=document.getElementById('galleryGrid');
+  if(!grid) return;
+  var all=galleryImages, visibleCount, visibleImgs=[], availImgs=[], lastIdx=-1, flipTimer, paused=false;
+
+  function shuffle(a){
+    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}
+    return a
+  }
+
+  function getCount(){
+    return 6
+  }
+
+  function build(n){
+    grid.innerHTML='';
+    var s=shuffle(all.slice());
+    visibleImgs=s.slice(0,n);
+    availImgs=s.slice(n);
+    visibleCount=n;
+    for(var i=0;i<n;i++){
+      var item=document.createElement('div');
+      item.className='gallery-item';
+      item.dataset.idx=i;
+      var img=document.createElement('img');
+      img.src=visibleImgs[i];
+      img.alt='IITM Campus Life';
+      img.loading='lazy';
+      item.appendChild(img);
+      grid.appendChild(item)
+    }
+  }
+
+  function flipOne(){
+    if(paused) return;
+    if(availImgs.length<1){
+      availImgs=all.filter(function(u){return visibleImgs.indexOf(u)===-1});
+      if(availImgs.length<1) return
+    }
+    var idx;
+    var tries=0;
+    do{idx=Math.floor(Math.random()*visibleCount);tries++}while(idx===lastIdx&&tries<20);
+    lastIdx=idx;
+    var ai=Math.floor(Math.random()*availImgs.length);
+    var nu=availImgs[ai];
+    availImgs.splice(ai,1);
+    var items=grid.querySelectorAll('.gallery-item');
+    var item=items[idx];
+    var old=visibleImgs[idx];
+    visibleImgs[idx]=nu;
+    availImgs.push(old);
+    item.classList.add('flipping');
+    setTimeout(function(){
+      var img=item.querySelector('img');
+      img.src=nu;
+      var done=function(){item.classList.remove('flipping')};
+      if(img.complete&&img.naturalWidth>0) done();
+      else{img.onload=done;img.onerror=done}
+    },350)
+  }
+
+  build(getCount());
+  flipTimer=setInterval(flipOne,3000);
+  grid.addEventListener('mouseenter',function(){paused=true});
+  grid.addEventListener('mouseleave',function(){paused=false});
+  var rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      var nc=getCount();
+      if(nc!==visibleCount){clearInterval(flipTimer);build(nc);flipTimer=setInterval(flipOne,3000)}
+    },200)
+  })
+})();
+
+(function() {
+  var bgEls = document.querySelectorAll('.bg-vector, .bg-deco, .tour-deco, .flt-shape, .neo-flt, .bg-ring, .bg-dots-large');
+  if (bgEls.length === 0) return;
+  var origins = [];
+  bgEls.forEach(function(el) {
+    var rect = el.getBoundingClientRect();
+    origins.push({
+      el: el,
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+      tx: 0,
+      ty: 0
+    });
+  });
+  document.addEventListener('mousemove', function(e) {
+    var cx = window.innerWidth / 2;
+    var cy = window.innerHeight / 2;
+    var dx = (e.clientX - cx) / cx;
+    var dy = (e.clientY - cy) / cy;
+    origins.forEach(function(o) {
+      var strength = 6;
+      var nx = o.x / window.innerWidth;
+      var ny = o.y / window.innerHeight;
+      var tx = dx * strength * (0.5 + nx * 0.5);
+      var ty = dy * strength * (0.5 + ny * 0.5);
+      tx = Math.round(tx * 10) / 10;
+      ty = Math.round(ty * 10) / 10;
+      if (o.tx !== tx || o.ty !== ty) {
+        o.tx = tx;
+        o.ty = ty;
+        o.el.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+      }
+    });
+  });
+})();
+
+// ===== Scholarship Slider =====
+(function initScholarshipSlider() {
+  var section = document.getElementById('scholarshipShowcase');
+  if (!section) return;
+
+  var scholarshipData = [
+    {
+      title: 'Udaan Merit Based Scholarship Scheme for Girl Students',
+      badge: 'IITM COLLEGE OF ENGINEERING &middot; 2026-27',
+      authority: 'IITM College of Engineering',
+      description: 'Udaan is a merit-based scholarship initiative by IITM College of Engineering created exclusively to support and encourage girl students in pursuing higher education. The scholarship offers eligible girl students an opportunity to receive up to 100% scholarship based on merit, helping talented students take the next step toward their academic and professional aspirations.',
+      deadline: 'Up to 100% Scholarship &middot; Limited Seats',
+      image: 'https://static.wixstatic.com/media/ab471d_cb2b94cc351f4a94ba13c076ea535f21~mv2.png',
+      buttons: []
+    },
+    {
+      title: 'Kalpana Chawla Chhatravrati Yojna for Girls',
+      badge: 'GOVERNMENT OF HARYANA &middot; 2025-26',
+      authority: 'Haryana State Council for Science, Innovation & Technology, Panchkula',
+      description: 'The Kalpana Chawla Chhatravrati Yojna for Girls is a Government of Haryana scholarship initiative designed to encourage and support eligible girl students pursuing higher education. The scheme promotes educational opportunities for girls and provides students with access to official scholarship information and application resources through the Haryana scholarship system.',
+      deadline: 'Last Date: 10.08.2026',
+      image: 'https://static.wixstatic.com/media/ab471d_5a525da6d119402ba14022bd9863940c~mv2.jpg',
+      buttons: [
+        { label: 'Visit Scholarship Portal', url: 'https://harchhatravratti.highereduhry.ac.in/' },
+        { label: 'View Scheme Guidelines', url: 'https://harchhatravratti.highereduhry.ac.in/Notices/GuidelinesKalpanaChawlaChatravratiYojnaforGirls.pdf' }
+      ]
+    },
+    {
+      title: 'National Scholarship Portal (NSP)',
+      sectionHeading: 'Schemes on NSP',
+      badge: 'GOVERNMENT OF INDIA &middot; NATIONAL SCHOLARSHIP PORTAL',
+      authority: 'Government of India',
+      description: "The National Scholarship Portal (NSP) is the Government of India's digital platform for scholarship services. It provides students with a centralized system to discover eligible scholarship schemes, submit applications, track application status, and access scholarship-related services offered by participating government ministries, departments and authorities.",
+      deadline: 'Official Government Scholarship Portal',
+      image: 'https://static.wixstatic.com/media/ab471d_73d3a5126cac438f88f5ed1d24bbaa8a~mv2.png',
+      buttons: [
+        { label: 'Visit National Scholarship Portal', url: 'https://scholarships.gov.in/All-Scholarships' }
+      ]
+    }
+  ];
+
+  var current = 0;
+  var sliderEl = document.getElementById('schSliderInner');
+  var prevBtn = document.getElementById('schPrevBtn');
+  var nextBtn = document.getElementById('schNextBtn');
+  var counterEl = document.getElementById('schCounter');
+
+  function renderSlide(index) {
+    var item = scholarshipData[index];
+    if (!item) return;
+    var buttonsHtml = '';
+    for (var b = 0; b < item.buttons.length; b++) {
+      var btn = item.buttons[b];
+      var btnClass = b === 0 ? 'sch-details-btn' : 'sch-secondary-btn';
+      buttonsHtml += '<a href="' + btn.url + '" class="' + btnClass + '" target="_blank" rel="noopener noreferrer">' + btn.label + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>';
+    }
+    var headingBlock = '';
+    if (item.sectionHeading) {
+      headingBlock =
+        '<div class="sch-heading-block">' +
+          '<span>NATIONAL SCHOLARSHIP PORTAL</span>' +
+          '<h2>' + item.sectionHeading + '</h2>' +
+        '</div>';
+    }
+    sliderEl.innerHTML =
+      '<div class="sch-slide">' +
+        '<div class="sch-poster-panel">' +
+          '<img src="' + item.image + '" alt="' + item.title + '" class="sch-poster" loading="lazy">' +
+        '</div>' +
+        '<div class="sch-info-panel">' +
+          headingBlock +
+          '<div class="sch-badge">' + item.badge + '</div>' +
+          '<h3 class="sch-heading">' + item.title + '</h3>' +
+          '<div class="sch-authority">' + item.authority + '</div>' +
+          '<p class="sch-description">' + item.description + '</p>' +
+          '<div class="sch-deadline">' + item.deadline + '</div>' +
+          '<div class="sch-actions">' + buttonsHtml + '</div>' +
+        '</div>' +
+      '</div>';
+
+    updateControls();
+  }
+
+  function updateControls() {
+    var total = scholarshipData.length;
+    if (counterEl) {
+      counterEl.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    }
+  }
+
+  function goTo(index) {
+    if (index < 0) index = scholarshipData.length - 1;
+    if (index >= scholarshipData.length) index = 0;
+    if (index === current) return;
+    current = index;
+    renderSlide(current);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+  renderSlide(0);
+})();
+
+</script>
+
+<script>
+(function() {
+  'use strict';
+  if (window.top === window.self) return;
+
+  var lastHeight = -1;
+  var sendTimer = null;
+  var MIN_CHANGE = 2;
+
+  function getContentHeight() {
+    var sentinel = document.getElementById('content-sentinel');
+    if (sentinel) {
+      var rect = sentinel.getBoundingClientRect();
+      var h = rect.top;
+      return h > 0 ? Math.ceil(h) : document.documentElement.scrollHeight;
+    }
+    return document.documentElement.scrollHeight;
+  }
+
+  function sendHeight() {
+    if (sendTimer) {
+      clearTimeout(sendTimer);
+    }
+    sendTimer = setTimeout(function() {
+      sendTimer = null;
+      var h = getContentHeight();
+      if (h > 0 && Math.abs(h - lastHeight) > MIN_CHANGE) {
+        lastHeight = h;
+        try {
+          window.parent.postMessage({ type: 'resize', height: h }, '*');
+        } catch(e) {}
+      }
+    }, 150);
+  }
+
+  try {
+    var ro = new ResizeObserver(sendHeight);
+    ro.observe(document.documentElement);
+  } catch(e) {}
+
+  document.addEventListener('DOMContentLoaded', sendHeight);
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  window.addEventListener('orientationchange', sendHeight);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(sendHeight);
+  }
+
+  var imgs = document.querySelectorAll('img');
+  for (var i = 0; i < imgs.length; i++) {
+    if (!imgs[i].complete) {
+      imgs[i].addEventListener('load', sendHeight);
+      imgs[i].addEventListener('error', sendHeight);
+    }
+  }
+
+  var videos = document.querySelectorAll('video');
+  for (var j = 0; j < videos.length; j++) {
+    videos[j].addEventListener('loadedmetadata', sendHeight);
+  }
+
+  sendHeight();
+})();
+</script>
+
+<div id="content-sentinel" aria-hidden="true" style="height:0;width:0;pointer-events:none;overflow:hidden"></div>
+</body>
+</html>

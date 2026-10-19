@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#ffffff;
+overflow:hidden;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.marquee{
+width:100%;
+overflow:hidden;
+padding:15px 0;
+}
+
+.track{
+display:flex;
+gap:28px;
+width:max-content;
+animation:scroll 45s linear infinite;
+}
+
+@keyframes scroll{
+0%{
+transform:translateX(-50%);
+}
+100%{
+transform:translateX(0%);
+}
+}
+
+.card{
+width:360px;
+height:360px;
+flex-shrink:0;
+
+display:flex;
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+border:1px solid #e5e5e5;
+
+box-shadow:
+0 8px 18px rgba(0,0,0,.08),
+0 18px 40px rgba(0,0,0,.12);
+}
+
+.left{
+width:58%;
+background:#fafafa;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+
+padding:12px;
+
+border-right:1px solid #ececec;
+}
+
+.logoWrap{
+display:flex;
+align-items:flex-start;
+gap:8px;
+width:100%;
+}
+
+.logo{
+width:72px;
+height:auto;
+flex-shrink:0;
+}
+
+.collegeBlock{
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+flex:1;
+min-width:0;
+}
+
+.iitm{
+font-size:34px;
+font-weight:900;
+line-height:1;
+color:#f34f1d;
+letter-spacing:.5px;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.collegeSmall{
+font-size:10px;
+font-weight:600;
+color:#333;
+margin-top:3px;
+line-height:1.2;
+word-break:break-word;
+}
+
+.congrats{
+font-family:"Brush Script MT",cursive;
+font-size:26px;
+line-height:1.2;
+margin-top:12px;
+color:#222;
+text-align:center;
+}
+
+.text{
+font-size:13px;
+text-align:center;
+line-height:1.5;
+margin-top:10px;
+padding:0 6px;
+color:#444;
+}
+
+.companyLogo{
+max-width:120px;
+max-height:55px;
+margin-top:auto;
+margin-bottom:15px;
+object-fit:contain;
+}
+
+.right{
+width:42%;
+
+background:linear-gradient(
+180deg,
+#ff7248 0%,
+#f34f1d 100%
+);
+
+color:#fff;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.heading{
+font-size:16px;
+font-weight:700;
+margin-top:14px;
+}
+
+.photo{
+width:130px;
+height:170px;
+
+object-fit:cover;
+
+margin-top:18px;
+
+border-radius:16px;
+
+border:4px solid rgba(255,255,255,.18);
+
+box-shadow:
+0 10px 20px rgba(0,0,0,.25);
+}
+
+.name{
+font-size:19px;
+font-weight:700;
+text-align:center;
+margin-top:12px;
+padding:0 8px;
+}
+
+.course{
+font-size:16px;
+font-weight:600;
+margin-top:3px;
+}
+
+.batch{
+font-size:13px;
+margin-top:3px;
+opacity:.95;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="marquee">
+<div class="track" id="track"></div>
+</div>
+
+<script>
+
+/* =========================================
+   EDIT ONLY THIS SECTION
+========================================= */
+
+const IITM_LOGO =
+"https://static.wixstatic.com/media/ee3217_6f9a952bb201441d8f7ce1bf9559a012~mv2.png";
+
+const students = [
+
+{
+name:"Shreyas Kumar",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ygkKb_Es2gtyV6QUfK8pG8O_QxQfvX0t2A&s",
+photo:"https://static.wixstatic.com/media/ab471d_80e4afc1c092464e9d56b43d48fdbc07~mv2.png"
+},
+
+{
+name:"Daksh",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ygkKb_Es2gtyV6QUfK8pG8O_QxQfvX0t2A&s",
+photo:"https://static.wixstatic.com/media/ab471d_c54bdb7548eb4ef990aa0a6a490d95a6~mv2.png"
+},
+
+{
+name:"Tushar Kumar",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://volume9.in/logo.png",
+photo:"https://static.wixstatic.com/media/ab471d_1757aa1d08484105ab4cceb5e9a8c404~mv2.png"
+},
+
+{
+name:"Hazel Mongha",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuRlKesHMjgvBDykjRnLuAXBtXfWsAVI0iTA&s",
+photo:"https://static.wixstatic.com/media/ab471d_956b26e8f7fb41b9ae20610ff8d52265~mv2.png"
+},
+
+{
+name:"Rudra Pratap",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmD1XlfO1sapmGCCmNkbDArG1oO9YVZBgNGQ&s",
+photo:"https://static.wixstatic.com/media/ab471d_4a5a8c20be984af29c5e746d9d78c804~mv2.png"
+},
+
+{
+name:"Suhani Rathore",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://upload.wikimedia.org/wikipedia/commons/1/17/BT_Group_2022.svg",
+photo:"https://static.wixstatic.com/media/ab471d_ff8e9593bf8f4297b9db7fb4f4e82f41~mv2.png"
+},
+
+{
+name:"Farhan Khan",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://lh3.googleusercontent.com/GNWzVNkMKg5qbuD3D-LvVh72WnDKPL5GCM1AalncpohsM0698ttgoaANMDLGEabOTiAvmYDOb4DbONX6yzZeSPiUHfPq5cHmykO7=h200",
+photo:"https://static.wixstatic.com/media/ab471d_c205f5eea0a643169fbc6647c7edd810~mv2.png"
+},
+
+{
+name:"Abhilash Kumar",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYFjhtcIUVoVibjm9_KNY-TyeX1BOMbH-umg&s",
+photo:"https://static.wixstatic.com/media/ab471d_8e03299778b3464ab2c561dae0d27aea~mv2.png"
+},
+
+{
+name:"Khushi Saluja",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://media.licdn.com/dms/image/v2/C560BAQHdTYRejMu8sQ/company-logo_200_200/company-logo_200_200/0/1641799279035/brinc_corporate_solutions_logo?e=2147483647&v=beta&t=dicnzIFrRzbfYK12S0R41l-WL_8h7WS6YWfmzKgLds0",
+photo:"https://static.wixstatic.com/media/ab471d_a1dcafecc2394586831f15d76830a68d~mv2.png"
+},
+
+{
+name:"Prakash Kumar Singh",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://media.licdn.com/dms/image/v2/D5616AQGFnG3pmJwpAQ/profile-displaybackgroundimage-shrink_200_800/B56ZVgEGooGQAU-/0/1741073444347?e=2147483647&v=beta&t=tDMhBCP2OYQ64vPzlYytpoPRzJAgQ7VYuKNw-jRXYkA",
+photo:"https://static.wixstatic.com/media/ab471d_06a7d78ebf05495681f8682207df4b23~mv2.png"
+},
+
+{
+name:"Himonish Mandal",
+course:"BBA",
+batch:"2023-2026",
+companyLogo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpe1NecOWx7qSBLTIh3qs1ly730_JLyQQ6CA&s",
+photo:"https://static.wixstatic.com/media/ab471d_16baebb4f5504028bc1b9439d00e10fc~mv2.png"
+}
+
+
+];
+
+/* =========================================
+   DO NOT EDIT BELOW
+========================================= */
+
+function createCard(student){
+
+return `
+<div class="card">
+
+<div class="left">
+
+<div class="logoWrap">
+
+<img
+class="logo"
+src="${IITM_LOGO}"
+alt="IITM Logo"
+>
+
+<div class="collegeBlock">
+
+<div class="iitm">
+IITM
+</div>
+
+<div class="collegeSmall">
+College of Engineering
+</div>
+
+</div>
+
+</div>
+
+<div class="congrats">
+Congratulations!
+</div>
+
+<div class="text">
+We are pleased to announce the successful placement of our student.
+</div>
+
+<img
+class="companyLogo"
+src="${student.companyLogo}"
+alt="Company Logo"
+>
+
+</div>
+
+<div class="right">
+
+<div class="heading">
+Placement Cell
+</div>
+
+<img
+class="photo"
+src="${student.photo}"
+alt="${student.name}"
+>
+
+<div class="name">
+${student.name}
+</div>
+
+<div class="course">
+${student.course}
+</div>
+
+<div class="batch">
+${student.batch}
+</div>
+
+</div>
+
+</div>
+`;
+
+}
+
+const track=document.getElementById("track");
+
+track.innerHTML=
+students.map(createCard).join("")
++
+students.map(createCard).join("");
+
+</script>
+
+</body>
+</html>
